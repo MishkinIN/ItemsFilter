@@ -5,7 +5,6 @@
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
              xmlns:bsFilter="http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:local="clr-namespace:Northwind.NET.Sample"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:model="clr-namespace:Northwind.NET.EF6Model;assembly=Northwind.NET.EF6Model"
@@ -15,7 +14,7 @@
              DataContextChanged="UserControl_DataContextChanged"
              Loaded="UserControl_Loaded"
              Unloaded="UserControl_Unloaded"
-              d:DataContext="{d:DesignInstance Type=vm:OrdersVm,
+             d:DataContext="{d:DesignInstance Type=vm:OrdersVm,
                                               IsDesignTimeCreatable=True}"
              d:DesignHeight="616.5"
              d:DesignWidth="668.5"
@@ -52,7 +51,7 @@
 
     <Grid x:Name="LayoutRoot">
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="EmployeeFilterState" ei:ExtendedVisualStateManager.UseFluidLayout="True">
+            <VisualStateGroup x:Name="EmployeeFilterState">
                 <VisualState x:Name="Unfiltered" />
                 <VisualState x:Name="Filtered">
                     <Storyboard>
@@ -71,9 +70,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <VisualStateManager.CustomVisualStateManager>
-            <ei:ExtendedVisualStateManager />
-        </VisualStateManager.CustomVisualStateManager>
+
         <Border Grid.Row="1"
                 Margin="0,3,0,0"
                 Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"
@@ -374,7 +371,7 @@
                                                 NotifyOnValidationError=true,
                                                 ValidatesOnExceptions=true}" />
                         <!--
-                            <Label Grid.Row="3"
+                            <Label Grid.Row="0"
                             Grid.Column="0"
                             Margin="3"
                             HorizontalAlignment="Left"
@@ -391,12 +388,11 @@
                                  HorizontalAlignment="Center"
                                  BorderBrush="{x:Null}"
                                  FontFamily="Times New Roman"
-                                 FontSize="16"
+                                 FontSize="18"
+                                 FontStyle="Italic"
+                                 Foreground="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"
                                  IsReadOnly="True"
-                                 Text="{Binding Product.Name,
-                                                Mode=TwoWay,
-                                                NotifyOnValidationError=true,
-                                                ValidatesOnExceptions=true}"
+                                 Text="{Binding Name}"
                                  TextWrapping="Wrap" />
                         <Label Grid.Row="4"
                                Grid.Column="0"
