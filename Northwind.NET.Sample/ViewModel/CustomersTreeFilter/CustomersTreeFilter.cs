@@ -1,82 +1,90 @@
 ﻿using BolapanControl.ItemsFilter.Model;
-using Northwind.NET.Sample.View;
+using Northwind.NET.EF6Model;
 using System;
-using System.Collections.Generic;
 using System.Windows.Data;
 
 namespace Northwind.NET.Sample.ViewModel {
-    [View(typeof(CustomersTreeFilterView))]
-    public class CustomersTreeFilter : CityItemFilter, IFilter {
-        private static CityItemFilterInitializer citiItemFilterInitializer = new CityItemFilterInitializer();
-        private string countryCompareTo;
-        private bool isCountryCompareActive;
-        private Dictionary<CountryCustomersTreeItem, CityItemFilter> cityFilters = new Dictionary<CountryCustomersTreeItem, CityItemFilter>();
-        internal CustomersTreeFilter(string key):base(key) {
+    public class CustomersTreeFilter : Filter, IFilter {
+        private string key;
+        private string contactCompareTo;
+        private string nameCompareTo;
+        private bool isNameCompareActive;
+        private bool isContactCompareActive;
+        CollectionView collectionView;
+        internal protected CustomersTreeFilter(string key) {
+            this.key = key;
         }
-
-
-        public string CountryCompareTo {
-            get { return countryCompareTo; }
+        public string Key {
+            get { return key; }
+        }
+         public string ContactCompareTo {
+            get { return contactCompareTo; }
             set {
-                if (countryCompareTo != value) {
-                    countryCompareTo = value;
-                    isCountryCompareActive = !String.IsNullOrEmpty(value);
+                if (contactCompareTo != value) {
+                    contactCompareTo = value;
+                    isContactCompareActive = !String.IsNullOrEmpty(value);
                     IDisposable defer = this.FilterPresenter == null ? null : this.FilterPresenter.DeferRefresh();
+                    SendChangesToChild();
+                    IsActive= CheckIsActive();
+                    RaiseFilterChanged();
+                     if (defer != null)
+                        defer.Dispose();
+                    RaisePropertyChanged("ContactCompareTo");
+                }
+            }
+        }
+         public int Count {
+             get { return collectionView == null ? 0 : collectionView.Count; }
+         }
+
+        public string NameCompareTo {
+            get { return nameCompareTo; }
+            set {
+                if (nameCompareTo != value) {
+                    nameCompareTo = value;
+                    isNameCompareActive = !String.IsNullOrEmpty(value);
+                    IDisposable defer = this.FilterPresenter == null ? null : this.FilterPresenter.DeferRefresh();
+                    SendChangesToChild();
                     IsActive = CheckIsActive();
                     RaiseFilterChanged();
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged("CountryCompareTo");
+                    RaisePropertyChanged("NameCompareTo");
                 }
             }
         }
         public override void IsMatch(BolapanControl.ItemsFilter.FilterPresenter sender, BolapanControl.ItemsFilter.FilterEventArgs e) {
-            if (IsActive && e.Accepted) {
+            if (IsActive & e.Accepted) {
                 if (e.Item == null)
                     e.Accepted = false;
                 else {
-                    CountryCustomersTreeItem item =(CountryCustomersTreeItem)e.Item;
-                    if(isCountryCompareActive)
-                        e.Accepted &=item.Country!=null && item.Country.Contains(countryCompareTo);
-                    if (e.Accepted)
-                        //e.Accepted = ((ListCollectionView)(cityFilters[item].FilterPresenter.CollectionView)).Count > 0;
-                        e.Accepted = cityFilters[item].Count > 0;
-                }
+                    Customer customer = ((Customer)e.Item);
+                    if (isNameCompareActive)
+                        e.Accepted = customer.Name != null & customer.Name.Contains(nameCompareTo);
+                    if (isContactCompareActive)
+                        e.Accepted &= customer.ContactName != null && customer.ContactName.Contains(contactCompareTo);
+               }
             }
         }
         protected override void OnAttachPresenter(BolapanControl.ItemsFilter.FilterPresenter presenter) {
-            foreach (CountryCustomersTreeItem country in ((CustomersTreeVm)(presenter.CollectionView.SourceCollection))) {
-                BolapanControl.ItemsFilter.FilterPresenter citiesPresenter = BolapanControl.ItemsFilter.FilterPresenter.TryGet(country.Cities);
-                CityItemFilter cityFilter =  citiesPresenter.TryGetFilter(Key, citiItemFilterInitializer) as CityItemFilter;
-                if (cityFilter!=null) {
-                    cityFilter.CityCompareTo = CityCompareTo;
-                    cityFilter.NameCompareTo = NameCompareTo;
-                    cityFilter.ContactCompareTo = ContactCompareTo;
-                    cityFilters[country] = cityFilter; 
-                }
-            }
+            collectionView = presenter.CollectionView as CollectionView;
         }
         protected override void OnDetachPresenter(BolapanControl.ItemsFilter.FilterPresenter presenter) {
-            cityFilters.Clear();
+            collectionView = null;
         }
         protected override void OnIsActiveChanged() {
             base.OnIsActiveChanged();
             if (!IsActive) {
-                CountryCompareTo = null;
+                NameCompareTo = null;
+                ContactCompareTo = null;
             }
         }
-        protected override bool CheckIsActive() {
-            return isCountryCompareActive | base.CheckIsActive();
-
+         protected virtual void SendChangesToChild() {
+           
         }
-        protected override void SendChangesToChild() {
-            foreach (var entry in cityFilters) {
-                entry.Value.CityCompareTo = CityCompareTo;
-                entry.Value.ContactCompareTo = ContactCompareTo;
-                entry.Value.NameCompareTo = NameCompareTo;
-
-            }
-
+       protected virtual bool CheckIsActive() {
+            return isNameCompareActive | isContactCompareActive;
+            
         }
     }
 }

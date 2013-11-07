@@ -12,7 +12,6 @@
              xmlns:vw="clr-namespace:Northwind.NET.Sample.View"
              x:Name="UserControl"
              DataContextChanged="UserControl_DataContextChanged"
-             Loaded="UserControl_Loaded"
              Unloaded="UserControl_Unloaded"
              d:DataContext="{d:DesignInstance Type=vm:OrdersVm,
                                               IsDesignTimeCreatable=True}"
@@ -25,6 +24,7 @@
         <vw:TextToImageSourceConverter x:Key="TextToImageSourceConverter" />
         <vw:ProductToProductConverter x:Key="ProductToProductConverter" />
         <vw:ProductToNameConverter x:Key="ProductToNameConverter" />
+        <vw:NullToUnsetValueConverter x:Key="NullToUnsetValueConverter" />
         <ControlTemplate x:Key="ProductIDTextBoxTemplate" TargetType="{x:Type TextBox}">
             <Themes:ListBoxChrome x:Name="Bd"
                                   Background="{TemplateBinding Background}"
@@ -78,7 +78,7 @@
                 BorderThickness="1"
                 CornerRadius="5">
             <!--  d:DataContext="{d:DesignData Source=../SampleData/Order.xaml}"  -->
-            <Grid Margin="5" DataContext="{Binding OrdersView.CurrentItem}">
+            <Grid Margin="5" DataContext="{Binding OrdersCollectionView.CurrentItem}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
@@ -110,21 +110,15 @@
                                    FontSize="13.333"
                                    Text="Employee" />
                         <bsFilter:ColumnFilter Key="Employee"
-                                               x:Name="employeeFilter"
                                                Grid.Column="1"
-                                               ParentCollection="{Binding DataContext.OrdersView,
+                                               ParentCollection="{Binding DataContext.OrdersCollectionView,
                                                                           ElementName=LayoutRoot}">
                             <bsFilter:ColumnFilter.Resources>
                                 <DataTemplate DataType="{x:Type model:Employee}">
-                                    <TextBlock><Run Text="{Binding FirstName}" /><Run Text=" " /><Run Text=" " /><Run Text=" " /><Run Text="{Binding LastName}" />
+                                    <TextBlock><Run Text="{Binding FirstName}" /><Run Text=" " /><Run Text="{Binding LastName}" />
                                     </TextBlock>
                                 </DataTemplate>
                             </bsFilter:ColumnFilter.Resources>
-                            <bsFilter:ColumnFilter.FilterInitializersManager>
-                                <vm:FilterInitializersManager>
-                                    <bsFilter:EqualFilterInitializer />
-                                </vm:FilterInitializersManager>
-                            </bsFilter:ColumnFilter.FilterInitializersManager>
                         </bsFilter:ColumnFilter>
                         <Image Grid.Row="1"
                                Grid.ColumnSpan="2"
@@ -232,12 +226,12 @@
                                       Height="20"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Center"
-                                      ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle}"
                                       ItemsSource="{Binding Customers,
-                                                            Source={x:Static local:Workspace.This}}"
-                                      SelectionChanged="customerComboBox_SelectionChanged"
+                                                            Source={StaticResource Workspace}}"
+                                      SelectedItem="{Binding Customer,
+                                                             Converter={StaticResource NullToUnsetValueConverter}}"
                                       Style="{DynamicResource ComboBoxStyle}" />
-
+                          
                         </StackPanel>
 
                     </Border>
@@ -556,7 +550,7 @@
                                VerticalAlignment="Center"
                                Foreground="{Binding BorderBrush,
                                                     ElementName=navigator}"
-                               Padding="4"><Run Text="{Binding OrdersView.CurrentPosition, Mode=OneWay}" /><Run Text=" " /><Run Text="/" /><Run Text=" " /><Run Text="{Binding OrdersView.Count, Mode=OneWay}" />
+                               Padding="4"><Run Text="{Binding OrdersCollectionView.CurrentPosition, Mode=OneWay}" /><Run Text=" " /><Run Text="/" /><Run Text=" " /><Run Text="{Binding OrdersCollectionView.Count, Mode=OneWay}" />
                     </TextBlock>
                 </Border>
                 <RepeatButton Margin="5"

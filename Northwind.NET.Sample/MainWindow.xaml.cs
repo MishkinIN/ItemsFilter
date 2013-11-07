@@ -15,8 +15,8 @@ namespace Northwind.NET.Sample {
             mainFrame.Content = new ProductsView();
         }
 
-        private void ShowEmployesView(object sender, RoutedEventArgs e) {
-            mainFrame.Content = new EmployesView();
+        private void ShowEmployeesView(object sender, RoutedEventArgs e) {
+            mainFrame.Content = new EmployeesView();
         }
         private void ShowCategoriesView(object sender, RoutedEventArgs e) {
             mainFrame.Content = new CategoriesView();

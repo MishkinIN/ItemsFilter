@@ -35,7 +35,7 @@ namespace Northwind.NET.Sample.ViewModel {
             moveToLastCommand = new RelayCommand(MoveToLast, CanMoveToLast);
 
         }
-        public ICollectionView OrdersView {
+        public ICollectionView OrdersCollectionView {
             get { return ordersView; }
         }
         public ICommand MoveToLastCommand {

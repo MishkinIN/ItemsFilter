@@ -20,10 +20,8 @@ namespace BolapanControl.ItemsFilter {
     [TemplateVisualState(GroupName = "FilterState", Name = "Open")]
     [TemplateVisualState(GroupName = "FilterState", Name = "OpenActive")]
     [TemplatePart(Name = ColumnFilter.PART_FiltersView, Type = typeof(Popup))]
-    [TemplatePart(Name = ColumnFilter.PART_DropDown, Type = typeof(Button))]
     public class ColumnFilter : FilterControl {
         internal const string PART_FiltersView = "PART_FilterView";
-        internal const string PART_DropDown = "PART_DropDown";
         #region BindingPath
 
         /// <summary>
@@ -80,15 +78,16 @@ namespace BolapanControl.ItemsFilter {
         
         static ColumnFilter() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ColumnFilter), new FrameworkPropertyMetadata(typeof(ColumnFilter)));
+            CommandManager.RegisterClassCommandBinding(typeof(ColumnFilter),
+                new CommandBinding(FilterCommand.Show, DoShowFilter, CanShowFilter));
            }
 
         private Popup partFilterView;
-        private Button partDropDown;
         /// <summary>
         /// Create new instance of BolapanControls.PropertyFilter.ColumnFilter class.
         /// </summary>
          public ColumnFilter() {
-            CommandBindings.Add(new CommandBinding(FilterCommand.Show,DoShowFilter,CanShowFilter));
+            //CommandBindings.Add(new CommandBinding(FilterCommand.Show,DoShowFilter,CanShowFilter));
         }
 
         /// <summary>
@@ -97,10 +96,6 @@ namespace BolapanControl.ItemsFilter {
         public override void OnApplyTemplate() {
             base.OnApplyTemplate();
             partFilterView = GetTemplateChild(PART_FiltersView) as Popup;
-            partDropDown = GetTemplateChild(PART_DropDown) as Button;
-            if (partFilterView != null && partDropDown != null) {
-                partFilterView.Closed += _filtersView_Closed;
-            }
           }
        
         /// <summary>
@@ -153,14 +148,13 @@ namespace BolapanControl.ItemsFilter {
              base.OnMouseLeftButtonDown(e);
              
          }
-        private void CanShowFilter(object sender, CanExecuteRoutedEventArgs e) {
-            e.CanExecute = Model != null && Model.IsEnable && partFilterView!=null;
+        private static void CanShowFilter(object sender, CanExecuteRoutedEventArgs e) {
+            ColumnFilter filter = (ColumnFilter)sender;
+            e.CanExecute = filter.Model != null && filter.Model.IsEnable && filter.partFilterView != null;
         }
 
-        private void DoShowFilter(object sender, ExecutedRoutedEventArgs e) {
-            Model.IsOpen = true;
-            if (partDropDown != null)
-                partDropDown.IsEnabled = false;
+        private static void DoShowFilter(object sender, ExecutedRoutedEventArgs e) {
+            ((ColumnFilter)sender).Model.IsOpen = true;
         }
 
         private string GetColumnKey(DataGridColumn column) {
@@ -199,9 +193,7 @@ namespace BolapanControl.ItemsFilter {
             return bindingPath;
         }
 
-        private  void _filtersView_Closed(object sender, EventArgs e) {
-            partDropDown.IsEnabled = true;
-        }
+      
         
     }
 

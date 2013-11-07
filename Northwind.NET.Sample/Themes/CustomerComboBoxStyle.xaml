@@ -8,19 +8,6 @@
                     xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel"
                     xmlns:vw="clr-namespace:Northwind.NET.Sample.View"
                     mc:Ignorable="d">
-    <Style x:Key="ComboBoxFocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="4,4,21,4"
-                               SnapsToDevicePixels="true"
-                               Stroke="Black"
-                               StrokeDashArray="1 2"
-                               StrokeThickness="1" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     <LinearGradientBrush x:Key="ButtonNormalBackground" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#F3F3F3" />
         <GradientStop Offset="0.5" Color="#EBEBEB" />
@@ -98,26 +85,32 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock HorizontalAlignment="Right"
-						   Margin="3"
+                <TextBlock Margin="3"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
                            Foreground="{DynamicResource FilterPressedPenColor}"
                            Text="QuickFilter:"
-                           TextWrapping="Wrap" VerticalAlignment="Center" />
+                           TextWrapping="Wrap" />
                 <TextBox x:Name="PART_Input"
                          Grid.Column="1"
+                         MinWidth="80"
                          Margin="1"
                          Padding="1"
                          Text="{Binding Model.Value,
                                         Mode=TwoWay,
                                         RelativeSource={RelativeSource TemplatedParent},
                                         UpdateSourceTrigger=PropertyChanged}"
-                         TextWrapping="NoWrap" MinWidth="80" />
-						 <Button Grid.Column="1" Style="{DynamicResource FilterClearButtonStyle}" HorizontalContentAlignment="Center" HorizontalAlignment="Right"/>
+                         TextWrapping="NoWrap" />
+                <Button Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Center"
+                        Style="{DynamicResource FilterClearButtonStyle}" />
                 <TextBlock Grid.Column="2"
-				Margin="3"
+                           Margin="3"
                            VerticalAlignment="Center"
                            FontFamily="/Northwind.NET.Sample;component/Fonts/#Vijaya"
-                           Foreground="{DynamicResource FilterPressedPenColor}" FontSize="13.333">
+                           FontSize="13.333"
+                           Foreground="{DynamicResource FilterPressedPenColor}">
                     Find in Code, Name, ContactName, etc.
                 </TextBlock>
             </Grid>
@@ -128,152 +121,6 @@
 
     </Style>
 
-    <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="AllowDrop" Value="true" />
-        <Setter Property="MinWidth" Value="0" />
-        <Setter Property="MinHeight" Value="0" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type TextBox}">
-                    <ScrollViewer x:Name="PART_ContentHost"
-                                  Background="Transparent"
-                                  Focusable="false"
-                                  HorizontalScrollBarVisibility="Hidden"
-                                  VerticalScrollBarVisibility="Hidden" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="IsTabStop" Value="false" />
-        <Setter Property="Focusable" Value="false" />
-        <Setter Property="ClickMode" Value="Press" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Themes:ButtonChrome x:Name="Chrome"
-                                         Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"
-                                         Background="{TemplateBinding Background}"
-                                         BorderBrush="{TemplateBinding BorderBrush}"
-                                         RenderMouseOver="{TemplateBinding IsMouseOver}"
-                                         RenderPressed="{TemplateBinding IsPressed}"
-                                         RoundCorners="false"
-                                         SnapsToDevicePixels="true">
-                        <Path x:Name="Arrow"
-                              Margin="0,1,0,0"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Data="{StaticResource DownArrowGeometry}"
-                              Fill="Black" />
-                    </Themes:ButtonChrome>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="Chrome" Property="RenderPressed" Value="true" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="Arrow" Property="Fill" Value="#AFAFAF" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
-        <Grid x:Name="Placement" SnapsToDevicePixels="true">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Popup x:Name="PART_Popup"
-                   Grid.ColumnSpan="2"
-                   AllowsTransparency="true"
-                   IsOpen="{Binding IsDropDownOpen,
-                                    RelativeSource={RelativeSource TemplatedParent}}"
-                   Placement="Bottom"
-                   PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Themes:SystemDropShadowChrome x:Name="Shdw"
-                                               MinWidth="{Binding ActualWidth,
-                                                                  ElementName=Placement}"
-                                               MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                               Color="Transparent">
-                    <Border x:Name="DropDownBorder"
-                            Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
-                            BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
-                            BorderThickness="1">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <bsFilter:FilterControl Key="CustomerAnyFieldFilter"
-                                                    MinWidth="300"
-                                                    HorizontalAlignment="Left"
-                                                    ParentCollection="{Binding Items,
-                                                                               RelativeSource={RelativeSource FindAncestor,
-                                                                                                              AncestorType={x:Type ComboBox}}}">
-                                <bsFilter:FilterControl.Resources>
-                                    <Style BasedOn="{StaticResource CustomerComboBox_StringFilterStyle}" TargetType="{x:Type bsFilter:StringFilterView}" />
-                                </bsFilter:FilterControl.Resources>
-                                <bsFilter:FilterControl.FilterInitializersManager>
-                                    <bsFilter:FilterInitializersManager>
-                                        <vm:CustomersComboBoxFilterInitializer />
-                                    </bsFilter:FilterInitializersManager>
-                                </bsFilter:FilterControl.FilterInitializersManager>
-                            </bsFilter:FilterControl>
-
-                            <ScrollViewer Grid.Row="1" CanContentScroll="true">
-                                <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            </ScrollViewer>
-                        </Grid>
-                    </Border>
-                </Themes:SystemDropShadowChrome>
-            </Popup>
-            <Themes:ListBoxChrome x:Name="Border"
-                                  Grid.ColumnSpan="2"
-                                  Background="{TemplateBinding Background}"
-                                  BorderBrush="{TemplateBinding BorderBrush}"
-                                  BorderThickness="{TemplateBinding BorderThickness}"
-                                  RenderFocused="{TemplateBinding IsKeyboardFocusWithin}"
-                                  RenderMouseOver="{TemplateBinding IsMouseOver}" />
-            <TextBox x:Name="PART_EditableTextBox"
-                     Margin="{TemplateBinding Padding}"
-                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                     IsReadOnly="{Binding IsReadOnly,
-                                          RelativeSource={RelativeSource TemplatedParent}}"
-                     Style="{StaticResource ComboBoxEditableTextBox}" />
-            <ToggleButton Grid.Column="1"
-                          IsChecked="{Binding IsDropDownOpen,
-                                              Mode=TwoWay,
-                                              RelativeSource={RelativeSource TemplatedParent}}"
-                          Style="{StaticResource ComboBoxToggleButton}" />
-        </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="IsKeyboardFocusWithin" Value="true">
-                <Setter Property="Foreground" Value="Black" />
-            </Trigger>
-            <Trigger Property="IsDropDownOpen" Value="true">
-                <Setter TargetName="Border" Property="RenderFocused" Value="true" />
-            </Trigger>
-            <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="DropDownBorder" Property="Height" Value="95" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                <Setter Property="Background" Value="#FFF4F4F4" />
-            </Trigger>
-            <Trigger Property="IsGrouping" Value="true">
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-            </Trigger>
-            <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
-                <Setter TargetName="Shdw" Property="Margin" Value="0,0,5,5" />
-                <Setter TargetName="Shdw" Property="Color" Value="#71000000" />
-            </Trigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
     <DataTemplate x:Key="CustomerDataTemplate" DataType="{x:Type model:Customer}">
         <Border Grid.Row="0"
                 Grid.ColumnSpan="1"
@@ -314,57 +161,8 @@
             </Grid>
         </Border>
     </DataTemplate>
-    <DataTemplate x:Key="CustomerSelectedDataTemplate" DataType="{x:Type model:Customer}">
-        <Border Grid.Row="0"
-                Grid.ColumnSpan="1"
-                Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}"
-                BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"
-                BorderThickness="2,2,3,3"
-                CornerRadius="5"
-                Padding="2"
-                d:DataContext="{d:DesignData Source=../SampleData/Customer.xaml}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.ColumnSpan="2"
-                           Margin="5,0"
-                           Block.TextAlignment="Center"
-                           FontFamily="Century"
-                           FontSize="13.333">
-                    <Bold><Run Text="{Binding Name}" />
-                    </Bold>
-                </TextBlock>
-                <TextBlock Grid.Row="1"
-                           Margin="10,0"
-                           FontFamily="Century"
-                           FontSize="12"
-                           LineStackingStrategy="BlockLineHeight"><Run Text="{Binding Country}" /><Run Text=" " /><Run Text=",   " /><Run Text=" " /><Run Text="{Binding City}" />
-                    <LineBreak />
-                    <Italic><Run FontFamily="Times New Roman" Text="{Binding ContactTitle}" />
-                    </Italic><Run Text=" " /><Run Text="  " /><Run Text=" " />
-                    <Bold><Run Text="{Binding ContactName}" />
-                    </Bold>
-                </TextBlock>
-            </Grid>
-        </Border>
-    </DataTemplate>
-
     <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
-        <!--  <Setter Property="FocusVisualStyle" Value="{StaticResource ComboBoxFocusVisual}" />  -->
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
-        <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
-        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="Padding" Value="4,3" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -399,9 +197,7 @@
                                                                 Height="25"
                                                                 MinWidth="300"
                                                                 HorizontalAlignment="Left"
-                                                                ParentCollection="{Binding Items,
-                                                                                           RelativeSource={RelativeSource FindAncestor,
-                                                                                                                          AncestorType={x:Type ComboBox}}}">
+                                                                ParentCollection="{TemplateBinding ItemsSource}">
                                             <bsFilter:FilterControl.Resources>
                                                 <Style BasedOn="{StaticResource CustomerComboBox_StringFilterStyle}" TargetType="{x:Type bsFilter:StringFilterView}" />
                                             </bsFilter:FilterControl.Resources>
@@ -427,17 +223,7 @@
                                                           RelativeSource={RelativeSource TemplatedParent}}"
                                       Style="{StaticResource ComboBoxReadonlyToggleButton}" />
 
-                        <!--
-                            <ContentPresenter Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Content="{TemplateBinding Text}"
-                            ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
-                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            IsHitTestVisible="false"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        -->
+
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
@@ -461,51 +247,7 @@
         <Setter Property="ItemTemplate" Value="{StaticResource CustomerDataTemplate}" />
         <Setter Property="IsSynchronizedWithCurrentItem" Value="False" />
         <Setter Property="IsReadOnly" Value="False" />
-        <Style.Triggers>
-            <Trigger Property="IsEditable" Value="true">
-                <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorder}" />
-                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
-                <Setter Property="IsTabStop" Value="false" />
-                <Setter Property="Padding" Value="3" />
-                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-    <Style x:Key="ComboBoxItemContainerStyle" TargetType="{x:Type ComboBoxItem}">
-        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="Padding" Value="3,0,3,0" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                    <Border x:Name="Bd"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Padding="{TemplateBinding Padding}"
-                            SnapsToDevicePixels="true">
-                        <Button Background="{x:Null}"
-                                Command="vw:OrdersView.SetCustomer"
-                                CommandParameter="{Binding}">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              IsHitTestVisible="False"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Button>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsHighlighted" Value="true">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+
     </Style>
 
 

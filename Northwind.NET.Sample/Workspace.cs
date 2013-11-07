@@ -93,7 +93,7 @@ namespace Northwind.NET.Sample {
             }
         }
         private static ObservableCollection<Employee> employes;
-        internal static ObservableCollection<Employee> Employes {
+        internal static ObservableCollection<Employee> Employees {
             get {
                 if (employes == null) {
                     try {
@@ -214,7 +214,7 @@ namespace Northwind.NET.Sample {
                             customer.Orders.Add(order);
                             order.Customer = customer;
                         }
-                        Employee employee = instance.Employes.Where(empl => empl.ID == order.EmployeeID).FirstOrDefault();
+                        Employee employee = instance.Employees.Where(empl => empl.ID == order.EmployeeID).FirstOrDefault();
                         if (employee != null) {
                             employee.Orders.Add(order);
                             order.Employee = employee;
@@ -256,7 +256,7 @@ namespace Northwind.NET.Sample {
     }
     public class WorkspaceInstance{
         #region fields
-        private IList<Employee> _Employes;
+        private IList<Employee> _Employees;
         private IList<Order> _Orders;
         private CustomersTreeVm _CustomersTreeList;
         private IList<Supplier> _Suppliers;
@@ -275,7 +275,7 @@ namespace Northwind.NET.Sample {
                     connection = ((IObjectContextAdapter)Workspace.NorthwindModel).ObjectContext.Connection;
                     connection.Open();
                     if (connection.State.HasFlag(System.Data.ConnectionState.Open)) {
-                        _Employes = Workspace.Employes;
+                        _Employees = Workspace.Employees;
                         _Orders = Workspace.Orders;
                         _CustomersTreeList = Workspace.CustomersTreeList;
                         _Suppliers = Workspace.Suppliers;
@@ -305,12 +305,12 @@ namespace Northwind.NET.Sample {
                 }
             }
         }
-        public IList<Employee> Employes {
-            get { return _Employes; }
+        public IList<Employee> Employees {
+            get { return _Employees; }
             set {
-                if (_Employes != value) {
-                    _Employes = value;
-                    //RaisePropertyChanged("Employes");
+                if (_Employees != value) {
+                    _Employees = value;
+                    //RaisePropertyChanged("Employees");
                 }
             }
         }

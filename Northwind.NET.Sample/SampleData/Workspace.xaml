@@ -25080,8 +25080,8 @@
                             ShipperId="2" />
         </sampledata:Orders>
     </local:WorkspaceInstance.Orders>
-    <local:WorkspaceInstance.Employes>
-        <sampledata:Employes>
+    <local:WorkspaceInstance.Employees>
+        <sampledata:Employees>
             <EF6Model:Employee Title="Sales Representative"
                                Address="507 - 20th Ave. E. &#10;Apt. 2A"
                                BirthDate="1968-12-08T00:00:00"
@@ -25230,8 +25230,8 @@
                                PostalCode="WG2 7LT"
                                ReportsTo="5"
                                TitleOfCourtesy="Ms." />
-        </sampledata:Employes>
-    </local:WorkspaceInstance.Employes>
+        </sampledata:Employees>
+    </local:WorkspaceInstance.Employees>
     <local:WorkspaceInstance.Customers>
         <sampledata:Customers>
             <EF6Model:Customer Name="Alfreds Futterkiste"

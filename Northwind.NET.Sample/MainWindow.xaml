@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <Image Source="Resources/StartupNorthwindLogo.jpg" />
         <StackPanel Grid.Row="1">
-            <Button Click="ShowEmployesView">Employes</Button>
+            <Button Click="ShowEmployeesView">Employees</Button>
             <Button Click="ShowCategoriesView">Categories</Button>
             <Button Click="ShowProductsView">Products</Button>
             <Button Click="ShowOrdersView">Orders</Button>

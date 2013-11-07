@@ -8,7 +8,7 @@ namespace Northwind.NET.Sample.ViewModel {
 
         public override Filter NewFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
             if (key != null && key is string && filterPresenter.CollectionView.SourceCollection is CustomersTreeVm) {
-                return new CustomersTreeFilter((string)key);
+                return new CountriesTreeFilter((string)key);
             }
             return null;
         }
@@ -17,7 +17,7 @@ namespace Northwind.NET.Sample.ViewModel {
 
         public override Filter NewFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
             if (key != null && key is string && filterPresenter.CollectionView.SourceCollection is IEnumerable<CityCustomersTreeItem>) {
-                return new CityItemFilter((string)key);
+                return new CitiesTreeFilter((string)key);
             }
             return null;
         }
@@ -26,7 +26,7 @@ namespace Northwind.NET.Sample.ViewModel {
 
         public override Filter NewFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
             if (key != null && key is string && filterPresenter.CollectionView.SourceCollection is IEnumerable<Customer>) {
-                return new CustomerItemFilter((string)key);
+                return new CustomersTreeFilter((string)key);
             }
             return null;
         }

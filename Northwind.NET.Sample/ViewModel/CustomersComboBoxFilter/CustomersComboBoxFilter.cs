@@ -7,10 +7,13 @@ using System.Linq;
 using System.Text;
 
 namespace Northwind.NET.Sample.ViewModel {
+    
     [View(typeof(StringFilterView))]
+    // Define specialized filter for CustomersComboBox.
     public sealed class CustomersComboBoxFilter : StringFilter, IFilter {
         private static StringBuilder sb = new StringBuilder(6);
         internal CustomersComboBoxFilter()
+            // To search for combine the values of several properties.
             : base(item => 
             {
                 Customer customer = (Customer)item;

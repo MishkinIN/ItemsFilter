@@ -8,8 +8,6 @@
              xmlns:model="clr-namespace:Northwind.NET.EF6Model;assembly=Northwind.NET.EF6Model"
              xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel"
              xmlns:vw="clr-namespace:Northwind.NET.Sample.View"
-             DataContext="{Binding Path=Products,
-                                   Source={StaticResource Workspace}}"
              d:DesignHeight="331"
              d:DesignWidth="694"
              mc:Ignorable="d">
@@ -22,7 +20,8 @@
         <DataGrid x:Name="productDataGrid"
                   Grid.Row="1"
                   AutoGenerateColumns="False"
-                  ItemsSource="{Binding}">
+                  ItemsSource="{Binding Path=Products,
+                                        Source={StaticResource Workspace}}">
             <DataGrid.Resources>
                 <DataTemplate DataType="{x:Type model:Category}">
                     <TextBlock Text="{Binding Name}" />

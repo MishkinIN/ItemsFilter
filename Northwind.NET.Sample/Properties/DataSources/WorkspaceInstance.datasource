@@ -60,7 +60,7 @@
             </PropertyUISettings>
          </TypeUISetting>
       </GenericObjectDataSource>
-      <GenericObjectDataSource DisplayName="Employes" Version="1.0">
+      <GenericObjectDataSource DisplayName="Employees" Version="1.0">
          <TypeInfo>Northwind.NET.EF6Model.Employee, Northwind.NET.EF6Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
          <TypeUISetting>
             <PropertyUISettings>
