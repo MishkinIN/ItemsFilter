@@ -11,9 +11,8 @@ using System.Windows;
 using System.Windows.Data;
 
 namespace BolapanControl.ItemsFilter {
-    //TODO:Translate.
-    // <summary>
-    // Представление фильтра(?) (FilterPresenter) выполняет роль менеджера, управляющего созданием экземпляров фильтров и подключением их к представлению коллекции (Collection view).
+   // <summary>
+    // FilterPresenter performs the role of a manager that manages the instantiation of filters and their connection to the CollectionView.
     // </summary>
     public sealed class FilterPresenter : DependencyObject {
         private static Dictionary<ICollectionView,WeakReference> filterPresenters=new Dictionary<ICollectionView,WeakReference>();
@@ -26,14 +25,12 @@ namespace BolapanControl.ItemsFilter {
         private readonly Dictionary<string, FiltersCollection> filters;
         private event FilterEventHandler _Filter;
         private readonly FilteredEventArgs filteredEventArgs;
-        //TODO:Translate.
-        // <summary>
-        // Возвращает представление фильтра для предоставленного представления коллекции.
-        // Если вместо представления коллекции передается непосредственно сама коллекция, используется представление коллекции по умолчанию.
-        // При передаче null возвращается нулевое значение.
+       // <summary>
+        // Returns FilterPresenter, connected to a pass source .
+        // If pass instance of ICollectionView, FilterPresenter connected to passed instance, otherwise, filterPresenter connected to default view for passed collection.
         // </summary>
-        // <param name="source">Коллекция или представление коллекции.</param>
-        // <returns>Представление фильтра коллекции или null.</returns>
+        // <param name="source">ICollectionView for source or source</param>
+        // <returns>FilterPresenter, connected to source, or null if source is null.</returns>
         public static FilterPresenter TryGet(IEnumerable source){
             if (source==null)
                 return null;
@@ -69,9 +66,8 @@ namespace BolapanControl.ItemsFilter {
             filters = new Dictionary<string, FiltersCollection>();
           }
 
-        //TODO:Translate.
         // <summary>
-        // Возвращает представление коллекции, к которому подключен экземпляр filterPresenter.
+        // Returns the connected  collection.
         // </summary>
         public ICollectionView CollectionView {
             get { return collectionView; }
@@ -91,12 +87,11 @@ namespace BolapanControl.ItemsFilter {
                 }
             }
         }
-        //TODO:Translate.
         // <summary>
-        // Производит инициализацию и настройку ViewModel for FilterControl.
+        // Initializes and configures the ViewModel for FilterControl.
         // </summary>
-        // <param name="viewKey">Строка, представляющая вхождение коллекции фильтров.</param>
-        // <param name="filterInitializers">Инициализатор фильтров, определяющий допустимый состав фильтров в коллекции.</param>
+        // <param name="viewKey">A string representing the key for a set of filters.</param>
+        // <param name="filterInitializers"> Filter initialisers to determine permissible set of the filters in the FilterControlVm.</param>
         // <returns>Instance of FilterControlVm that was bind to view.</returns>
         public FilterControlVm TryGetFilterControlVm(string viewKey, IEnumerable<FilterInitializer> filterInitializers) {
             //string viewKey = view.Key;
@@ -136,14 +131,12 @@ namespace BolapanControl.ItemsFilter {
             }
             return viewModel;
         }
-        //TODO:Translate.
-        // <summary>
-        // Извлекает модель фильтра, используя в качестве ключа пару {viewKey,initializer}.
-        // Если модель фильтра не была создана, производит инициализацию и настройку модели фильтра.
-        // </summary>
-        // <param name="viewKey">Строка, представляющая вхождение коллекции фильтров.</param>
-        // <param name="initializer">Инициализатор фильтра, определяющий фильтр в коллекции фильтров.</param>
-        // <returns>Представление фильтра Filter, если было создано ранее или его создание возможно для предоставленной пары viewKey и initializer. Иначе, null.</returns>
+        /// <summary>
+        /// Retrieves  or tries to create the filter model, using as a key pair {viewKey, initializer}.
+        /// </summary>
+        /// <param name="viewKey">A string representing a key of the set of filters.</param>
+        /// <param name="initializer">Initialiser filter that defines filter in the collection of filters.</param>
+        /// <returns>FilterPresenter instance, if it is possible provide for couples viewKey and initializer. Otherwise, null.</returns>
         public Filter TryGetFilter(string viewKey, FilterInitializer initializer) {
             Filter filter = null;
             if (viewKey != null) {
@@ -207,14 +200,18 @@ namespace BolapanControl.ItemsFilter {
                 }
             }
         }
-        //TODO:Translate.
-        // Происходит при изменении условий фильтра сразу после обновления представления коллекции.
+        /// <summary>
+        /// Occurs after filtration when changing the filter conditions.
+        /// </summary>
         public EventHandler<FilteredEventArgs> Filtered;
-        //TODO: Translate.
         // Сообщает FilterPresenter об изменении состояния фильтра.
         // Для экземпляра фильтра в активном состоянии, производится включение фильтра в условие фильтрации представления коллекции.
         // Для экземпляра фильтра в пассивном состоянии, производится исключение фильтра из условия фильтрации коллекции.
-        public void ReceiveFilterChanged(IFilter filter) {
+        /// <summary>
+        /// Receives notice of the change filter conditions and IsActive property.
+        /// </summary>
+        /// <param name="filter"></param>
+        internal void ReceiveFilterChanged(IFilter filter) {
             var defer = DeferRefresh();
             Filter -= filter.IsMatch;
             if (filter.IsActive)

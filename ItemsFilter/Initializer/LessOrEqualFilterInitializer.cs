@@ -13,12 +13,9 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <summary>
         /// Create LessOrEqualFilter for instance of FilterPresenter, if it is possible.
         /// </summary>
-        //TODO: Translate: экземпляр FilterPresenter, для которого должен быть создан фильтр.
-        /// <param name="filterPresenter"></param>
-        //TODO: Translate: Экземпляр ItemPropertyInfo, указывающий на (идентифицирующий?) свойство, для которого создается фильтр.
-        /// <param name="key"></param>
-        //TODO: Translate: Экземпляр LessOrEqualFilter, если его создание возможно для переданных значений filterPresenter и propertyInfo, или null.
-        /// <returns></returns>
+        /// <param name="filterPresenter">FilterPresenter, which can be attached Filter</param>
+        /// <param name="key">ItemPropertyInfo for binding to property.</param>
+        /// <returns>Instance of LessOrEqualFilter class or null</returns>
         protected override PropertyFilter NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
             Debug.Assert(filterPresenter != null);
             Debug.Assert(propertyInfo != null);

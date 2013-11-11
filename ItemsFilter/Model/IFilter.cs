@@ -7,7 +7,6 @@ namespace BolapanControl.ItemsFilter.Model {
     /// Defines the contract for a filter used by the FilteredCollection
     /// </summary>
     public interface IFilter {
-        //TODO: Translate: Получает или задает значение определяющее участвует ли фильтр в фильтрации представления коллекции.
         /// <summary>
         /// Get or set value that indicates are filter include in filter function.
         /// </summary>

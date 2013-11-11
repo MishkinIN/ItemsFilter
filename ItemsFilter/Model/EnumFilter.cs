@@ -21,8 +21,7 @@ namespace BolapanControl.ItemsFilter.Model
         /// <summary>
         /// Create new instance of EnumFilter.
         /// </summary>
-        //TODO: Translate: propertyInfo, используемое для доступа к свойству члена коллекции .
-        /// <param name="propertyInfo"></param>
+        /// <param name="propertyInfo">propertyInfo, used to access a property of the collection item</param>
         public EnumFilter(ItemPropertyInfo propertyInfo)
             : base(propertyInfo) {
                 Debug.Assert(propertyInfo.PropertyType == typeof(T), "Invalid property type, the return type is not matching the class generic type.");

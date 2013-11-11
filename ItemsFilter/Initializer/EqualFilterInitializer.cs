@@ -30,10 +30,8 @@ namespace BolapanControl.ItemsFilter.Initializer {
             }
             return null;
         }
-        //TODO: Translate 
-        // Возвращает запрос, возвращающий уникальные значения свойства членов коллекции ItemsSource.
         /// <summary>
-        /// Returns query for the available property values in ItemsSource.
+        /// Returns a query that returns the unique item property values in the ItemsSource collection..
         /// </summary>
         public static IEnumerable GetAvailableValuesQuery(FilterPresenter filterPresenter, ItemPropertyInfo propInfo) {
               IEnumerable source = filterPresenter.CollectionView.SourceCollection;

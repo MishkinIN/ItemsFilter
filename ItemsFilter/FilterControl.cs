@@ -82,7 +82,7 @@ namespace BolapanControl.ItemsFilter {
         /// Gets or sets the source collection for filtering. 
         /// May be ICollectionView or any IEnumerable.
         /// If Parent is ICollectionView, FilterControl bind to Parent itself;
-        /// otherwise, FilterControl bind to default view for the given source collection.
+        /// otherwise, FilterControl bind to default collection view for the given source collection.
         /// </summary>
         public IEnumerable ParentCollection {
             get {
@@ -123,11 +123,13 @@ namespace BolapanControl.ItemsFilter {
             DependencyProperty.Register("Key", typeof(string), typeof(FilterControl),
                 new FrameworkPropertyMetadata((string)null,
                     new PropertyChangedCallback(OnKeyChanged)));
-        //TODO: Translate.
         /// <summary>
-        /// Возвращает или задает ключ для идентификации фильтра (набора фильтров) для представления коллекции Parent.
-        /// Несколько экземпляров FilterControl могут ссылаться на одно и то же представление коллекции и содержать одинаковые значения Key. 
-        /// В таком случае, все эти экземпляры будут представлять один и тот же набор фильтров представления коллекции.
+        /// Gets or sets the key for the identification filter (the filter set) in the parent collection view filters.
+        /// The key and initializers from FilterInitializersManager define a set of filters that ItemsPresenter provides into a view model for the  FilterControl.
+        /// If multiple instances of the Filter Control have the same key and FilterInitializer in FilterInitializersManager, 
+        /// then these instances  will display the same filter in the view model.
+        /// Derived classes can give an additional meaning to the value of the properties Key. 
+        /// For example, the class ColumnFilter uses key value as name of the item property.
         /// </summary>
         public string Key {
             get {
@@ -166,11 +168,12 @@ namespace BolapanControl.ItemsFilter {
             DependencyProperty.Register("FilterInitializersManager", typeof(FilterInitializersManager), typeof(FilterControl),
                 new FrameworkPropertyMetadata((FilterInitializersManager)null,
                     new PropertyChangedCallback(OnFilterInitializersManagerChanged)));
-        //TODO: Translate.
         /// <summary>
         /// Gets or sets the FilterInitializersManager.
-        /// FilterInitializersManager содержит перечень инициализаторов фильтров. 
-        /// При присоединении FilterControl к FilterPresenter инициализатор фильтра извлекает экземпляр фильтра, если это возможно.
+        /// FilterInitializersManager contains a set of initializers determines the composition of the filters in the view model.
+        /// If FIlterInitializersManager is null, it used default FilterInitialisersManager that provided by FilterInitializersManager.Default static property.
+        /// FilterInitializersManager.Default included EqualFilterInitializer, LessOrEqualFilterInitializer, GreaterOrEqualFilterInitializer,
+        ///                                         RangeFilterInitializer(), StringFilterInitializer(), EnumFilterInitializer().
         /// </summary>
         public FilterInitializersManager FilterInitializersManager {
             get {
@@ -178,6 +181,7 @@ namespace BolapanControl.ItemsFilter {
             }
             set {
                 SetValue(FilterInitializersManagerProperty, value);
+                
             }
         }
 

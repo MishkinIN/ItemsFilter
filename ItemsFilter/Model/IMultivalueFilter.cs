@@ -3,24 +3,20 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace BolapanControl.ItemsFilter.Model {
-    //TODO: Translate: Фильтр, использующий в критерии отбора коллекцию значений.
     /// <summary>
-    /// 
+    /// Define a filter that  using a collection of values ​​for the selection criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public interface IMultiValueFilter : IFilter {
         IEnumerable AvailableValues {
             get;
             set;
         }
-        //TODO: Translate: Коллеция значений, котоая используется в критерии отбора фильтра.
         /// <summary>
-        /// 
+        /// Collection of values ​​involved in composition the selection criteria.
         /// </summary>
         ReadOnlyObservableCollection<object> SelectedValues { get; }
-        //TODO: Translate: Синхронизирует коллекцию SelectedValues.
         /// <summary>
-        /// Change filtered values.
+        /// Receive SelectionChanged event for synchronize the collection SelectedValues.
         /// </summary>
         void SelectedValuesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e);
         

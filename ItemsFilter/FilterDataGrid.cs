@@ -7,7 +7,6 @@ using System.Windows.Controls;
 
 namespace BolapanControl.ItemsFilter
 {
-    //TODO: CheckTranslate: Представляет стандартный DataGrid с включенным в шаблок заголовка столбца фильтром.
     /// <summary>
     /// Define a standard DataGrid with the included ColumnFilter in the column header template.
     /// </summary>

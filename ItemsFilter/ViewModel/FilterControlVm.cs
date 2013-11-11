@@ -8,12 +8,12 @@ using System.Text;
 
 namespace BolapanControl.ItemsFilter.ViewModel {
     public delegate void FilterControlStateChangedEventHandler(FilterControlVm sender, FilterControl.State newValue);
-    //TODO: Translate.
     /// <summary>
-    /// View model for FilterControl. 
-    /// При добавлении экземпляра фильтра в коллекцию FilterControlVm регистрируется в экземпляре фильтра для приема извещений об изменениях состояния фильтра.
-    /// При удалении экземпляра фильтра из коллекции прием извещений отменяется.
-    /// Instance of FilterControlVm created and disposed by FilterControl when it need this.
+    /// View model for <c>FilterControl</c>.
+    /// FilterControlVm is IEnumerable&lt;Filter&gt;. 
+    /// An instance of FilterControlVm not created directly. Instead, the procedure FilterPresenter.TryGetFilterControlVm(string viewKey, IEnumerable&lt;FilterInitializer&gt; filterInitializers)
+    /// prepares a model for FilterControl, as IEnumerable&lt;Filter&gt;, where each Filter instance bound to FilterControlVm for the transmission of changes.
+    /// Usually, instance of FilterControlVm created by FilterControl when it need this and disposed on raise Unload event.
     /// </summary>
     public class FilterControlVm:ObservableCollection<Filter>,IDisposable {
         private readonly object lockFlag=new Object();
@@ -186,13 +186,6 @@ namespace BolapanControl.ItemsFilter.ViewModel {
                 FilterChanged(null);
             }
         }
-        internal void FilterChanged(Filter filter) {
-            bool active = false;
-            foreach (var item in base.Items) {
-                active |= item.IsActive;
-            }
-            IsActive = active;
-        }
         /// <summary>
         /// Detach FilterControlVm from all filters and remove all filters from collection.
         /// </summary>
@@ -203,6 +196,13 @@ namespace BolapanControl.ItemsFilter.ViewModel {
                     Clear();
                 }
             }
+        }
+        internal void FilterChanged(Filter filter) {
+            bool active = false;
+            foreach (var item in base.Items) {
+                active |= item.IsActive;
+            }
+            IsActive = active;
         }
     }
 }

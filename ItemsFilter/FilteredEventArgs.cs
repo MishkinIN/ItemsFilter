@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 
 namespace BolapanControl.ItemsFilter {
-    //TODO:Translate: Представляет аргументы события изменения фильтра коллекции.
     /// <summary>
-    /// 
+    /// Provides data for the <see cref="Filtered"/> event
     /// </summary>
     public class FilteredEventArgs:EventArgs {
         private readonly ICollectionView cv;
@@ -15,7 +14,7 @@ namespace BolapanControl.ItemsFilter {
             this.cv = cv;
         }
         /// <summary>
-        /// Filtered Collection view.
+        /// Filtered CollectionView.
         /// </summary>
         public ICollectionView CollectionView {
             get { return cv; }

@@ -59,16 +59,14 @@ namespace BolapanControl.ItemsFilter.Model {
                 }
             }
         }
-        //TODO:Translate. Предоставляет производным классам событие подключения FilterPresenter.
         /// <summary>
-        /// Provide derived class attach filter presenter event.
+        /// Provides class handling for the AttachPresenter event that occurs when FilterPresenter is attached.
         /// </summary>
         protected virtual void OnAttachPresenter(FilterPresenter presenter){
-
+            
         }
-        //TODO:Translate. Предоставляет производным классам событие отключения FilterPresenter.
         /// <summary>
-        /// Provide derived class detach filter presenter event.
+        /// Provides class handling for the DetachPresenter event that occurs when FilterPresenter is detached.
         /// </summary>
         protected virtual void OnDetachPresenter(FilterPresenter presenter) {
         }
