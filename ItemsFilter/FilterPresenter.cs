@@ -1,4 +1,11 @@
-﻿using BolapanControl.ItemsFilter.Initializer;
+﻿// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
+using BolapanControl.ItemsFilter.Initializer;
 using BolapanControl.ItemsFilter.Model;
 using BolapanControl.ItemsFilter.ViewModel;
 using System;
@@ -108,7 +115,7 @@ namespace BolapanControl.ItemsFilter {
                     filters.Add(viewKey, filtersEntry);
                 }
                 filterInitializers = filterInitializers ?? FilterInitializersManager.Default;
-                viewModel =new FilterControlVm();
+                
                 foreach (FilterInitializer initializer in filterInitializers)
                 {
                     Type filterKey = initializer.GetType();
@@ -123,6 +130,7 @@ namespace BolapanControl.ItemsFilter {
                     }
                     if (filter != null)
                     {
+                        viewModel =viewModel?? new FilterControlVm();
                         viewModel.Add(filter);
                         
                     }

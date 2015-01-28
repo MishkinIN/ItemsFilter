@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.NET.Sample", "Northwind.NET.Sample\Northwind.NET.Sample.csproj", "{657E6A5E-5FA1-4A80-93D0-98A4B494A2DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsFilter", "ItemsFilter\ItemsFilter.csproj", "{AAB57BB1-A448-457C-AD53-16B32A1C1F1D}"

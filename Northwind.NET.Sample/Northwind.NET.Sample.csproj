@@ -64,7 +64,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -73,8 +73,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>Northwind.NET.Sample.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>ItemsFilter.ico</ApplicationIcon>
@@ -142,9 +141,6 @@
     <Compile Include="ViewModel\CustomersTreeFilter\CoutnriesTreeFilter.cs" />
     <Compile Include="ViewModel\CustomersTreeFilter\CustomersTreeFilterInitializers.cs" />
     <Compile Include="ViewModel\CustomersTreeVm.cs" />
-    <Compile Include="ViewModel\FilterInitializerManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="ViewModel\OrdersVm.cs" />
     <Compile Include="ViewModel\UnitPriceFilter.cs" />
     <Compile Include="View\Converters\BoolToEffectConverter.cs" />
@@ -155,6 +151,7 @@
       <DependentUpon>CategoryFilterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Converters\NullToUnsetValueConverter.cs" />
+    <Compile Include="View\CustomersComboBoxFIM.cs" />
     <Compile Include="View\CustomersTreeFilterView.cs" />
     <Compile Include="View\CustomersTreeFilterViewTemplate.xaml.cs">
       <DependentUpon>CustomersTreeFilterViewTemplate.xaml</DependentUpon>
@@ -175,6 +172,7 @@
     <Compile Include="View\Converters\ProductToProductConverter.cs" />
     <Compile Include="View\Converters\ProductToNameConverter.cs" />
     <Compile Include="View\Converters\TextToImageSourceConverter.cs" />
+    <Compile Include="View\SupplierNameFIM.cs" />
     <Compile Include="Workspace.cs" />
     <Page Include="..\ItemsFilter\Themes\ItemsFilterStyle.xaml">
       <Link>Themes\ItemsFilterStyle.xaml</Link>

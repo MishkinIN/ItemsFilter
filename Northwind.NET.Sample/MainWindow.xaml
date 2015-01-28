@@ -1,4 +1,13 @@
-﻿<Window x:Class="Northwind.NET.Sample.MainWindow"
+﻿<!--
+// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
+-->
+<Window x:Class="Northwind.NET.Sample.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Northwind.NET.Sample"

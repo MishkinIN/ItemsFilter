@@ -1,8 +1,14 @@
+// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
 using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-using System.Windows.Media.Media3D;
 
 
 namespace Shazzam.Shaders {

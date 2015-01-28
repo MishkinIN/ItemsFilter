@@ -1,4 +1,11 @@
-﻿using BolapanControl.ItemsFilter.Initializer;
+﻿// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
+using BolapanControl.ItemsFilter.Initializer;
 using BolapanControl.ItemsFilter.Model;
 using BolapanControl.ItemsFilter.View;
 using BolapanControl.ItemsFilter.ViewModel;

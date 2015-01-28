@@ -1,4 +1,11 @@
-﻿using System;
+﻿// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -187,9 +194,11 @@ namespace BolapanControl.ItemsFilter {
                 bindingPath = binding == null ? null : binding.Path.Path;
             }
            
-            if (bindingPath==null|| bindingPath.Contains(".") || string.IsNullOrEmpty(bindingPath)) {
+            if (bindingPath==null || string.IsNullOrEmpty(bindingPath)) {
                 return null;
             }
+            if (bindingPath.Contains("."))
+                return bindingPath;
             return bindingPath;
         }
 

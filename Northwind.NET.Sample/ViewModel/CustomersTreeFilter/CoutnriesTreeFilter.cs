@@ -2,7 +2,6 @@
 using Northwind.NET.Sample.View;
 using System;
 using System.Collections.Generic;
-using System.Windows.Data;
 
 namespace Northwind.NET.Sample.ViewModel {
     [View(typeof(CustomersTreeFilterView))]

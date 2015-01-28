@@ -1,4 +1,13 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<!--
+// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:bsFilter="http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter"
@@ -202,9 +211,10 @@
                                                 <Style BasedOn="{StaticResource CustomerComboBox_StringFilterStyle}" TargetType="{x:Type bsFilter:StringFilterView}" />
                                             </bsFilter:FilterControl.Resources>
                                             <bsFilter:FilterControl.FilterInitializersManager>
-                                                <bsFilter:FilterInitializersManager>
+                                                <!--<bsFilter:FilterInitializersManager>
                                                     <vm:CustomersComboBoxFilterInitializer />
-                                                </bsFilter:FilterInitializersManager>
+                                                </bsFilter:FilterInitializersManager>-->
+                                                <vw:CustomersComboBoxFIM></vw:CustomersComboBoxFIM>
                                             </bsFilter:FilterControl.FilterInitializersManager>
                                         </bsFilter:FilterControl>
                                         <ScrollViewer Grid.Row="1" CanContentScroll="true">

@@ -1,4 +1,13 @@
-﻿<bsFilter:MultiValueFilterView x:Class="Northwind.NET.Sample.View.CategoryFilterView"
+﻿<!--
+// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
+-->
+<bsFilter:MultiValueFilterView x:Class="Northwind.NET.Sample.View.CategoryFilterView"
                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                xmlns:bsFilter="http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter"

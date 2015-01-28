@@ -1,16 +1,19 @@
-﻿using Northwind.NET.EF6Model;
-using System.Data.Entity;
+﻿// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
+using Northwind.NET.EF6Model;
+using Northwind.NET.Sample.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using System.Collections;
-using System.Windows;
-using System.Windows.Ink;
-using Northwind.NET.Sample.ViewModel;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Windows;
 
 namespace Northwind.NET.Sample {
     public static class Workspace {

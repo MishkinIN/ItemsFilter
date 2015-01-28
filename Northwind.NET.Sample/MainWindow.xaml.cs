@@ -1,4 +1,11 @@
-﻿using Northwind.NET.Sample.View;
+﻿// ****************************************************************************
+// <author>mishkin Ivan</author>
+// <email>Mishkin_Ivan@mail.ru</email>
+// <date>28.01.2015</date>
+// <project>ItemsFilter</project>
+// <license> GNU General Public License version 3 (GPLv3) </license>
+// ****************************************************************************
+using Northwind.NET.Sample.View;
 using Northwind.NET.Sample.ViewModel;
 using System.Windows;
 

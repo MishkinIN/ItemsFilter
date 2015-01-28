@@ -11,7 +11,7 @@ using System.Windows.Markup;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Bolapansoft")]
 [assembly: AssemblyProduct("ItemsFilter")]
-[assembly: AssemblyCopyright("Copyright ©2013 Bolapansoft")]
+[assembly: AssemblyCopyright("Copyright ©2013,2015 Bolapansoft")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
