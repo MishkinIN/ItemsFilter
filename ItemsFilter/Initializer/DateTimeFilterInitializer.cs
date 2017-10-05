@@ -1,9 +1,10 @@
 ﻿// ****************************************************************************
-// <author>mishkin Ivan</author>
-// <email>Mishkin_Ivan@mail.ru</email>
-// <date>28.01.2015</date>
+// <author>Jonas Tampier</author>
+// <email>jonas@tampier.de</email>
+// <date>02.10.2017</date>
 // <project>ItemsFilter</project>
-// <license> GNU General Public License version 3 (GPLv3) </license>
+// <license> GNU Lesser General Public License version 3 (LGPLv3) </license>
+// based on code from Ivan Mishkin
 // ****************************************************************************
 using System;
 using System.ComponentModel;
@@ -12,9 +13,9 @@ using System.Diagnostics;
 
 namespace BolapanControl.ItemsFilter.Initializer {
     /// <summary>
-    /// Define RangeFilter initializer.
+    /// Define DateTimeFilter initializer.
     /// </summary>
-    public class RangeFilterInitializer : PropertyFilterInitializer {
+    public class DateTimeFilterInitializer : PropertyFilterInitializer {
         private const string _filterName = "Between";
         #region IPropertyFilterInitializer Members
 
@@ -23,15 +24,15 @@ namespace BolapanControl.ItemsFilter.Initializer {
             Debug.Assert(propertyInfo != null);
 
             Type propertyType = propertyInfo.PropertyType;
+            Type genericArgument = null;
+            if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                genericArgument = propertyType.GetGenericArguments()[0];
+
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
-                && typeof(IComparable).IsAssignableFrom(propertyType)
-                && propertyType != typeof(String)
-                && propertyType != typeof(bool)
-                && propertyType != typeof(DateTime)
-                && !propertyType.IsEnum
+                && propertyType == typeof(DateTime)
                 )
             {
-                return (PropertyFilter)Activator.CreateInstance(typeof(RangeFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo);
+                return (PropertyFilter)Activator.CreateInstance(typeof(DateTimeFilter), propertyInfo);
             }
             return null;
         }

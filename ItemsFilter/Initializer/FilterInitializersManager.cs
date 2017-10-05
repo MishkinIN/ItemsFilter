@@ -32,6 +32,9 @@ namespace BolapanControl.ItemsFilter.Initializer {
                         new RangeFilterInitializer(),
                         new StringFilterInitializer(),
                         new EnumFilterInitializer(),
+                        new NullableRangeFilterInitializer(),
+                        new NullableDateTimeFilterInitializer(),
+                        new DateTimeFilterInitializer(),
                     };
 
                 return _default;

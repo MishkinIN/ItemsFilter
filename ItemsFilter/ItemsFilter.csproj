@@ -63,9 +63,13 @@
     <Compile Include="FilteredEventArgs.cs" />
     <Compile Include="FilterEventArgs.cs" />
     <Compile Include="FilterEventHandler.cs" />
+    <Compile Include="Initializer\NullableDateTimeFilterInitializer.cs" />
     <Compile Include="Initializer\EnumFilterInitializer.cs" />
+    <Compile Include="Initializer\DateTimeFilterInitializer.cs" />
     <Compile Include="Initializer\PropertyFilterInitializer.cs" />
+    <Compile Include="Initializer\NullableRangeFilterInitializer.cs" />
     <Compile Include="Initializer\ValueFilterInitializer.cs" />
+    <Compile Include="Model\NullableDateTimeFilter.cs" />
     <Compile Include="Model\EnumFilter.cs" />
     <Compile Include="Model\EqualFilter.cs" />
     <Compile Include="Model\Filter.cs" />
@@ -78,7 +82,9 @@
     <Compile Include="Model\IRangeFilter.cs" />
     <Compile Include="Model\IStringFilter.cs" />
     <Compile Include="Model\LessOrEqualFilter.cs" />
+    <Compile Include="Model\DateTimeFilter.cs" />
     <Compile Include="Model\PropertyFilter.cs" />
+    <Compile Include="Model\NullableRangeFilter.cs" />
     <Compile Include="Model\RangeFilter.cs" />
     <Compile Include="Model\StringFilter.cs" />
     <Compile Include="Model\StringFilterMode.cs" />
@@ -116,6 +122,7 @@
     <Compile Include="View\FilterViewBase.cs" />
     <Compile Include="View\IFilterView.cs" />
     <Compile Include="View\MultiValueFilterView.cs" />
+    <Compile Include="View\DateTimeFilterView.cs" />
     <Compile Include="View\RangeFilterView.cs" />
     <Compile Include="View\Converters\SimplePropertyConverter.cs" />
     <Compile Include="View\StringFilterView.cs" />

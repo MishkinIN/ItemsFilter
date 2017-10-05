@@ -481,7 +481,7 @@
         </Setter>
     </Style>
 
-    <!--  Filters View  -->
+    <!--  Range Filter View  -->
     <Style TargetType="{x:Type vw:RangeFilterView}">
         <Setter Property="Template">
             <Setter.Value>
@@ -550,6 +550,82 @@
                                                     UpdateSourceTrigger=Explicit,
                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                      TextWrapping="NoWrap" />
+                            <Button Grid.Column="2" Style="{StaticResource FilterClearButtonStyle}" />
+
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  DateTime Filter View  -->
+    <Style TargetType="{x:Type vw:DateTimeFilterView}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type vw:DateTimeFilterView}">
+                    <Border Height="Auto"
+                            Margin="{TemplateBinding Margin}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            Style="{StaticResource borderStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="PART_Name"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       Style="{StaticResource FilterNameStyle}" />
+
+                            <TextBlock Grid.Row="1"
+                                       Margin="1,1,1,1"
+                                       HorizontalAlignment="Left"
+                                       Padding="1,1,1,1"
+                                       Text="From:"
+                                       TextAlignment="Left"
+                                       TextWrapping="NoWrap" />
+
+                            <DatePicker x:Name="PART_From"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="2"
+                                     Margin="1,1,1,1"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Center"
+                                     Padding="1,1,1,1"
+                                     SelectedDate="{Binding Model.CompareFrom,
+                                                    UpdateSourceTrigger=Explicit,
+                                                    RelativeSource={RelativeSource TemplatedParent}}"
+                                     />
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Margin="1,1,1,1"
+                                       Padding="1,1,1,1"
+                                       Text="To :"
+                                       TextWrapping="Wrap" />
+
+                            <DatePicker x:Name="PART_To"
+                                     Grid.Row="2"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="2"
+                                     Margin="1,1,1,1"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Center"
+                                     Padding="1,1,1,1"
+                                     SelectedDate="{Binding Model.CompareTo,
+                                                    UpdateSourceTrigger=Explicit,
+                                                    RelativeSource={RelativeSource TemplatedParent}}"
+                                      />
                             <Button Grid.Column="2" Style="{StaticResource FilterClearButtonStyle}" />
 
                         </Grid>

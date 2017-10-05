@@ -1,9 +1,10 @@
 ﻿// ****************************************************************************
-// <author>mishkin Ivan</author>
-// <email>Mishkin_Ivan@mail.ru</email>
-// <date>28.01.2015</date>
+// <author>Jonas Tampier</author>
+// <email>jonas@tampier.de</email>
+// <date>02.10.2017</date>
 // <project>ItemsFilter</project>
-// <license> GNU General Public License version 3 (GPLv3) </license>
+// <license> GNU Lesser General Public License version 3 (LGPLv3) </license>
+// based on code from Ivan Mishkin
 // ****************************************************************************
 using BolapanControl.ItemsFilter.View;
 using System;
@@ -12,38 +13,40 @@ using System.Reflection;
 using System.Diagnostics;
 
 namespace BolapanControl.ItemsFilter.Model {
+
+
     /// <summary>
     /// Defines the range filter.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [View(typeof(RangeFilterView))]
-    public class RangeFilter<T> : PropertyFilter, IRangeFilter<T>
-        where T :struct, IComparable {
-        Func<object, T> getter;
+    public class NullableRangeFilter<T> : PropertyFilter, IRangeFilter<T>
+        where T : struct, IComparable
+        {
+        Func<object, T?> getter;
         private T? _compareTo = null;
         private T? _compareFrom = null;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
+        /// Initializes a new instance of the <see cref="NullableRangeFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item values to compare.</param>
-        protected RangeFilter(Func<object, T> getter) {
+        protected NullableRangeFilter(Func<object, T?> getter) {
             Debug.Assert(getter != null, "getter is null.");
             this.getter = getter;
         }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="RangeFilter&lt;T&gt;"/> class.
+        /// Initializes a new instance of the <see cref="NullableRangeFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="propertyInfo">The property info.</param>
-        public RangeFilter(ItemPropertyInfo propertyInfo)
+        public NullableRangeFilter(ItemPropertyInfo propertyInfo)
             : base() {
             //if (!typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType))
             //    throw new ArgumentOutOfRangeException("propertyInfo", "typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType) return False.");
             Debug.Assert(propertyInfo != null, "propertyInfo is null.");
-            Debug.Assert(typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType) ||
-                (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType.GetGenericArguments()[0]))
-                , "The typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType) return False.");
+            Debug.Assert((propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType.GetGenericArguments()[0]))
+                , "propertyInfo.PropertyType) is no Nullable<IComparable>.");
             base.PropertyInfo = propertyInfo;
             Func<object, object> getterItem = ((PropertyDescriptor)(PropertyInfo.Descriptor)).GetValue;
             getter = t => ((T)getterItem(t));
@@ -51,12 +54,12 @@ namespace BolapanControl.ItemsFilter.Model {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RangeFilter&lt;T&gt;"/> class.
+        /// Initializes a new instance of the <see cref="NullableRangeFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="propertyInfo">The property info.</param>
         /// <param name="CompareFrom">Minimum value.</param>
         /// <param name="CompareTo">Maximum value.</param>
-        public RangeFilter(ItemPropertyInfo propertyInfo, T CompareFrom, T CompareTo)
+        public NullableRangeFilter(ItemPropertyInfo propertyInfo, T CompareFrom, T CompareTo)
             : this(propertyInfo) {
                 _compareTo = CompareTo;
             _compareFrom = CompareFrom;
@@ -118,13 +121,9 @@ namespace BolapanControl.ItemsFilter.Model {
                 if (e.Item == null)
                     e.Accepted = false;
                 else {
-                    T value = getter(e.Item);
-                    if(typeof(T).IsGenericType &&  typeof(T).GetGenericTypeDefinition() == typeof(Nullable<>))
-                        e.Accepted = (Object.ReferenceEquals(_compareFrom, null) | Nullable.Compare(value, _compareFrom) >= 0)
-                            && (Object.ReferenceEquals(_compareTo, null) | Nullable.Compare(value, _compareTo) <= 0);
-                    else
-                        e.Accepted = (Object.ReferenceEquals(_compareFrom, null)| value.CompareTo(_compareFrom) >= 0)
-                            && (Object.ReferenceEquals(_compareTo, null) | value.CompareTo(_compareTo) <= 0);
+                    T? value = getter(e.Item);
+                    e.Accepted = (Object.ReferenceEquals(_compareFrom, null) | Nullable.Compare(value, _compareFrom) >= 0)
+                        && (Object.ReferenceEquals(_compareTo, null) | Nullable.Compare(value, _compareTo) <= 0);
                 }
             }
         }
