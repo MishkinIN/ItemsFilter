@@ -17,7 +17,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// Base class for a filter.
     /// </summary>
     public abstract class Filter : IFilter,INotifyPropertyChanged {
-        private string name = "Filter:";
+        private string name = Properties.Resources.FilterName;
         private bool isActive;
         private FilterPresenter filterPresenter;
         private readonly List<FilterControlVm> attachedFilterControlVmodels = new List<FilterControlVm>();

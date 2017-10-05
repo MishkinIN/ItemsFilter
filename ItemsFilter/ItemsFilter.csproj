@@ -100,6 +100,11 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Properties\Resources.de-de.Designer.cs">
+      <DependentUpon>Resources.de-de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +123,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="View\Converters\FilterControlVmToVisibilityConverter.cs" />
+    <Compile Include="View\Converters\LocalizedEnumConverter.cs" />
+    <Compile Include="View\Converters\ResourceEnumConverter.cs" />
     <Compile Include="View\ModelViewAttribute.cs" />
     <Compile Include="View\FilterViewBase.cs" />
     <Compile Include="View\IFilterView.cs" />
@@ -126,8 +133,12 @@
     <Compile Include="View\RangeFilterView.cs" />
     <Compile Include="View\Converters\SimplePropertyConverter.cs" />
     <Compile Include="View\StringFilterView.cs" />
+    <EmbeddedResource Include="Properties\Resources.de-de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.de-de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="ClassDiagram.cd" />
@@ -143,16 +154,17 @@
   <ItemGroup>
     <Resource Include="ItemsFilter.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Themes\ItemsFilterStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Content Include="Themes\ItemsFilterStyle.xaml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

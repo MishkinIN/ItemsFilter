@@ -46,7 +46,7 @@ namespace BolapanControl.ItemsFilter.Model {
             
             Func<object, object> getterItem = ((PropertyDescriptor)(PropertyInfo.Descriptor)).GetValue;
             getter = t => ((T)getterItem(t));
-            base.Name = "Less or equal:";
+            base.Name = Properties.Resources.LessOrEqualFilterName;
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="LessOrEqualFilter&lt;T&gt;"/> class.

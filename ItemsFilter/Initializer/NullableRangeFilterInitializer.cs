@@ -16,7 +16,6 @@ namespace BolapanControl.ItemsFilter.Initializer {
     /// Define RangeFilter initializer.
     /// </summary>
     public class NullableRangeFilterInitializer : PropertyFilterInitializer {
-        private const string _filterName = "Between";
         #region IPropertyFilterInitializer Members
 
         protected override PropertyFilter NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {

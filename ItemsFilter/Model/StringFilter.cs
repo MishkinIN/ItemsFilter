@@ -46,7 +46,7 @@ namespace BolapanControl.ItemsFilter.Model {
             _filterMode = filterMode;
             Func<object, object> getterItem = ((PropertyDescriptor)(PropertyInfo.Descriptor)).GetValue;
             this.getter = t => ((string)(getterItem(t)));
-            base.Name = "String";
+            base.Name = Properties.Resources.StringFilterName;
         }
 
         /// <summary>

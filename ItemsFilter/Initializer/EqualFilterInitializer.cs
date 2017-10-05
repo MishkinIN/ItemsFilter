@@ -17,8 +17,6 @@ namespace BolapanControl.ItemsFilter.Initializer {
     /// Define EqualFilter initializer.
     /// </summary>
     public class EqualFilterInitializer : PropertyFilterInitializer {
-        private const string _filterName = "Equality";
-        
         protected override PropertyFilter NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
             Debug.Assert(filterPresenter != null);
             Debug.Assert(propertyInfo != null);

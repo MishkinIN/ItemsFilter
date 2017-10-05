@@ -47,7 +47,7 @@ namespace BolapanControl.ItemsFilter.Model {
             base.PropertyInfo = propertyInfo;
             Func<object, object> getterItem = ((PropertyDescriptor)(PropertyInfo.Descriptor)).GetValue;
             getter = t => ((T)getterItem(t));
-            base.Name = "In range:";
+            base.Name = Properties.Resources.RangeFilterName;
         }
 
         /// <summary>
