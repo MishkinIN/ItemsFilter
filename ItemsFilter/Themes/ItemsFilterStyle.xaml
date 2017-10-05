@@ -14,6 +14,7 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:gl="clr-namespace:System.Globalization;assembly=mscorlib"
                     mc:Ignorable="d">
     <!--  <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />  -->
     <bsFilter:FilterControlVmToVisibilityConverter x:Key="FilterControlVmToVisibilityConverter" />
@@ -709,7 +710,6 @@
                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          ContentStringFormat="G"
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </CheckBox>
@@ -773,7 +773,13 @@
                          SelectedValuePath="{x:Null}"
                          SelectionMode="Multiple"
                          SnapsToDevicePixels="False"
-                         VirtualizingStackPanel.VirtualizationMode="Recycling" />
+                         VirtualizingStackPanel.VirtualizationMode="Recycling">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding StringFormat='G', ConverterCulture={x:Static gl:CultureInfo.CurrentUICulture}}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
                 <TextBlock x:Name="PART_Name"
                            Grid.Row="0"

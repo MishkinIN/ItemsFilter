@@ -17,6 +17,7 @@
                     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:vw="clr-namespace:BolapanControl.ItemsFilter.View"
                     xmlns:resx="clr-namespace:BolapanControl.ItemsFilter.Properties"
+                    xmlns:gl="clr-namespace:System.Globalization;assembly=mscorlib"
                     mc:Ignorable="d">
     <!--  <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />  -->
     <vw:FilterControlVmToVisibilityConverter x:Uid="vw:FilterControlVmToVisibilityConverter_1" x:Key="FilterControlVmToVisibilityConverter" />
@@ -701,7 +702,6 @@
                         <ContentPresenter x:Uid="ContentPresenter_2" Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          ContentStringFormat="G"
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </CheckBox>
@@ -765,7 +765,13 @@
                          SelectedValuePath="{x:Null}"
                          SelectionMode="Multiple"
                          SnapsToDevicePixels="False"
-                         VirtualizingStackPanel.VirtualizationMode="Recycling" />
+                         VirtualizingStackPanel.VirtualizationMode="Recycling" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:Uid="DateTemplate_1">
+                            <TextBlock Text="{Binding StringFormat='G', ConverterCulture={x:Static gl:CultureInfo.CurrentUICulture}}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
                 <TextBlock x:Uid="TextBlock_10" x:Name="PART_Name"
                            Grid.Row="0"
@@ -802,7 +808,7 @@
             </Grid>
         </Border>
     </ControlTemplate>
-
+        
     <Style x:Uid="Style_12" TargetType="{x:Type bsFilter:FilterControl}">
         <Setter x:Uid="Setter_38" Property="Template" Value="{StaticResource FilterControlTemplate}" />
     </Style>
