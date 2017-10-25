@@ -13,7 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -47,6 +48,7 @@
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -55,6 +57,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingEvaluator.cs" />
     <Compile Include="ColumnFilter.cs" />
     <Compile Include="Design\MultivalueFilterModel.cs" />
     <Compile Include="FilterCommand.cs" />
@@ -66,9 +69,11 @@
     <Compile Include="Initializer\NullableDateTimeFilterInitializer.cs" />
     <Compile Include="Initializer\EnumFilterInitializer.cs" />
     <Compile Include="Initializer\DateTimeFilterInitializer.cs" />
+    <Compile Include="Initializer\PropertyPathFilterInitializer.cs" />
     <Compile Include="Initializer\PropertyFilterInitializer.cs" />
     <Compile Include="Initializer\NullableRangeFilterInitializer.cs" />
     <Compile Include="Initializer\ValueFilterInitializer.cs" />
+    <Compile Include="Model\IPropertyPathFilter.cs" />
     <Compile Include="Model\NullableDateTimeFilter.cs" />
     <Compile Include="Model\EnumFilter.cs" />
     <Compile Include="Model\EqualFilter.cs" />
@@ -83,6 +88,7 @@
     <Compile Include="Model\IStringFilter.cs" />
     <Compile Include="Model\LessOrEqualFilter.cs" />
     <Compile Include="Model\DateTimeFilter.cs" />
+    <Compile Include="Model\PropertyPathFilter.cs" />
     <Compile Include="Model\PropertyFilter.cs" />
     <Compile Include="Model\NullableRangeFilter.cs" />
     <Compile Include="Model\RangeFilter.cs" />
