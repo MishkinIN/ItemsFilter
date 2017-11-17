@@ -28,9 +28,9 @@ namespace BolapanControl.ItemsFilter {
         /// </summary>
         public static readonly RoutedUICommand Clear;
         static FilterCommand() {
-            Show = new RoutedUICommand("Show QuickFilter menu.", "Show", typeof(FilterCommand));
+            Show = new RoutedUICommand(Properties.Resources.ShowQuickFilter, Properties.Resources.Show, typeof(FilterCommand));
             Show.InputGestures.Add(new KeyGesture(Key.F, ModifierKeys.Control | ModifierKeys.Alt));
-            Clear = new RoutedUICommand("Clear filter.", "Clear", typeof(FilterCommand));
+            Clear = new RoutedUICommand(Properties.Resources.ClearFilter, Properties.Resources.Clear, typeof(FilterCommand));
  
         }
         /// <summary>

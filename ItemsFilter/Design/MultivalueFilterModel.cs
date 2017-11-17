@@ -69,7 +69,7 @@ namespace BolapanControl.ItemsFilter.Design {
 
         public string Name {
             get {
-                return "Equality:";
+                return Properties.Resources.MultiValueFilterModelName;
             }
             set {
                 ;

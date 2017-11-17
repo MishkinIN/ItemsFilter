@@ -25,7 +25,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <param name="getter">Func that return from item IComparable value to compare.</param>
         public GreaterOrEqualFilter(ItemPropertyInfo propertyInfo)
             : base(propertyInfo) {
-              base.Name = "Greater or equal:";
+              base.Name = Properties.Resources.GreaterOrEqualFilterName;
         }
 
         /// <summary>

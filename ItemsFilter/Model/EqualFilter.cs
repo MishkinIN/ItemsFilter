@@ -28,7 +28,7 @@ namespace BolapanControl.ItemsFilter.Model {
         protected EqualFilter() {
             selectedValues = new ObservableCollection<object>();
             _selectedValues = new ReadOnlyObservableCollection<object>(selectedValues);
-            base.Name = "Equal:";
+            base.Name = Properties.Resources.EqualFilterName;
         }
 
         public ReadOnlyObservableCollection<object> SelectedValues {

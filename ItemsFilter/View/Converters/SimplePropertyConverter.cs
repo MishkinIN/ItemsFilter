@@ -66,15 +66,18 @@ namespace BolapanControl.ItemsFilter.View
             TypeConverter converter = TypeDescriptor.GetConverter(targetType);
             try
             {
-                if (converter.CanConvertTo(null,typeof(string)))
-                {
-                    //return converter.ConvertTo(value, typeof(string));
-                    return converter.ConvertTo(null, CultureInfo.CurrentCulture, value, typeof(string));
-                }
+                if (value != null)
+                    if (converter.CanConvertTo(null, typeof(string)))
+                    {
+                        //return converter.ConvertTo(value, typeof(string));
+                        return converter.ConvertTo(null, CultureInfo.CurrentCulture, value, typeof(string));
+                    }
+                    else
+                    {
+                        return value.ToString();
+                    }
                 else
-                {
-                    return value.ToString();
-                }
+                    return value;
             }
             catch (Exception)
             {
@@ -87,15 +90,17 @@ namespace BolapanControl.ItemsFilter.View
             TypeConverter converter = TypeDescriptor.GetConverter(targetType);
             try
             {
-              
-                if (converter.CanConvertFrom(null,value.GetType()))
-                {
-                    return converter.ConvertFrom(null, CultureInfo.CurrentCulture, value);
-                }
+                if (value != null)
+                    if (converter.CanConvertFrom(null, value.GetType()))
+                    {
+                        return converter.ConvertFrom(null, CultureInfo.CurrentCulture, value);
+                    }
+                    else
+                    {
+                        return converter.ConvertFrom(value.ToString());
+                    }
                 else
-                {
-                    return converter.ConvertFrom(value.ToString());
-                }
+                    return value;
             }
             catch (Exception)
             {

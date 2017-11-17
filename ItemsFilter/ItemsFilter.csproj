@@ -13,7 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -47,6 +48,7 @@
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -55,6 +57,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingEvaluator.cs" />
     <Compile Include="ColumnFilter.cs" />
     <Compile Include="Design\MultivalueFilterModel.cs" />
     <Compile Include="FilterCommand.cs" />
@@ -63,9 +66,15 @@
     <Compile Include="FilteredEventArgs.cs" />
     <Compile Include="FilterEventArgs.cs" />
     <Compile Include="FilterEventHandler.cs" />
+    <Compile Include="Initializer\NullableDateTimeFilterInitializer.cs" />
     <Compile Include="Initializer\EnumFilterInitializer.cs" />
+    <Compile Include="Initializer\DateTimeFilterInitializer.cs" />
+    <Compile Include="Initializer\PropertyPathFilterInitializer.cs" />
     <Compile Include="Initializer\PropertyFilterInitializer.cs" />
+    <Compile Include="Initializer\NullableRangeFilterInitializer.cs" />
     <Compile Include="Initializer\ValueFilterInitializer.cs" />
+    <Compile Include="Model\IPropertyPathFilter.cs" />
+    <Compile Include="Model\NullableDateTimeFilter.cs" />
     <Compile Include="Model\EnumFilter.cs" />
     <Compile Include="Model\EqualFilter.cs" />
     <Compile Include="Model\Filter.cs" />
@@ -78,7 +87,10 @@
     <Compile Include="Model\IRangeFilter.cs" />
     <Compile Include="Model\IStringFilter.cs" />
     <Compile Include="Model\LessOrEqualFilter.cs" />
+    <Compile Include="Model\DateTimeFilter.cs" />
+    <Compile Include="Model\PropertyPathFilter.cs" />
     <Compile Include="Model\PropertyFilter.cs" />
+    <Compile Include="Model\NullableRangeFilter.cs" />
     <Compile Include="Model\RangeFilter.cs" />
     <Compile Include="Model\StringFilter.cs" />
     <Compile Include="Model\StringFilterMode.cs" />
@@ -93,6 +105,11 @@
     <Compile Include="Model\ViewAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.de-de.Designer.cs">
+      <DependentUpon>Resources.de-de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -112,15 +129,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="View\Converters\FilterControlVmToVisibilityConverter.cs" />
+    <Compile Include="View\Converters\LocalizedEnumConverter.cs" />
+    <Compile Include="View\Converters\ResourceEnumConverter.cs" />
     <Compile Include="View\ModelViewAttribute.cs" />
     <Compile Include="View\FilterViewBase.cs" />
     <Compile Include="View\IFilterView.cs" />
     <Compile Include="View\MultiValueFilterView.cs" />
+    <Compile Include="View\DateTimeFilterView.cs" />
     <Compile Include="View\RangeFilterView.cs" />
     <Compile Include="View\Converters\SimplePropertyConverter.cs" />
     <Compile Include="View\StringFilterView.cs" />
+    <EmbeddedResource Include="Properties\Resources.de-de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.de-de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="ClassDiagram.cd" />
@@ -136,16 +160,17 @@
   <ItemGroup>
     <Resource Include="ItemsFilter.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Themes\ItemsFilterStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Content Include="Themes\ItemsFilterStyle.xaml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

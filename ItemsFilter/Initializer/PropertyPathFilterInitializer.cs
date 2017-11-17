@@ -8,27 +8,37 @@
 using BolapanControl.ItemsFilter.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
-namespace BolapanControl.ItemsFilter.Initializer {
+namespace BolapanControl.ItemsFilter.Initializer
+{
     /// <summary>
-    /// Define ValueFilter initializer.
+    /// Base class for PropertyFilter initialiser.
     /// </summary>
-    public class ValueFilterInitializer : FilterInitializer {
-
+    public abstract class PropertyPathFilterInitializer:FilterInitializer
+    {
         /// <summary>
         /// Generate new instance of Filter class, if it is possible for filterPresenter and key.
         /// </summary>
         /// <param name="filterPresenter">FilterPresenter, which can be attached Filter</param>
         /// <param name="key">Key for generated Filter. For PropertyFilter, key used as the name for binding property in filterPresenter.Parent collection.</param>
         /// <returns>Instance of Filter class or null.</returns>
-        public override Model.Filter NewFilter(FilterPresenter filterPresenter, object key) {
+        public sealed override Filter NewFilter(FilterPresenter filterPresenter, object key)
+        {
             Debug.Assert(filterPresenter != null);
             Debug.Assert(key != null);
-            EqualFilter<object> filter = new EqualFilter<object>(item => item, filterPresenter.CollectionView.SourceCollection);
-            return filter;
+            if (key is string && key != null)
+            {
+                string path = (string)key;
+                return NewFilter(filterPresenter, path);
+            }
+            return null;
         }
+
+        protected abstract PropertyPathFilter NewFilter(FilterPresenter filterPresenter, string key);
     }
 }

@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Markup;
+using System.Resources;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -39,14 +40,16 @@ using System.Windows.Markup;
                                       // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls", "BolapanControl")]
-[assembly: XmlnsPrefix("http://schemas.bolapansoft.com/xaml/Controls", "bsControl")]
+//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls", "BolapanControl")]
+//[assembly: XmlnsPrefix("http://schemas.bolapansoft.com/xaml/Controls", "bsControl")]
 
-[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter")]
-[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.View")]
-[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.ViewModel")]
-[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Initializer")]
-[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Model")]
-//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Presentation")]
-[assembly: XmlnsPrefix("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "bsFilter")]
+//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter")]
+//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.View")]
+//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.ViewModel")]
+//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Initializer")]
+//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Model")]
+////[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Presentation")]
+//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Properties")]
+//[assembly: XmlnsPrefix("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "bsFilter")]
 
+[assembly: NeutralResourcesLanguageAttribute("en-US", UltimateResourceFallbackLocation.MainAssembly)]

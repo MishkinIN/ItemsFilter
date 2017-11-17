@@ -1,28 +1,29 @@
 ﻿// ****************************************************************************
-// <author>mishkin Ivan</author>
-// <email>Mishkin_Ivan@mail.ru</email>
-// <date>28.01.2015</date>
+// <author>Jonas Tampier</author>
+// <email>jonas@tampier.de</email>
+// <date>06.10.2017</date>
 // <project>ItemsFilter</project>
-// <license> GNU General Public License version 3 (GPLv3) </license>
+// <license> GNU Lesser General Public License version 3 (LGPLv3) </license>
 // ****************************************************************************
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace BolapanControl.ItemsFilter.Model
 {
     /// <summary>
-    /// Defines the contract for Property filter.
+    /// Defines the contract for PropertyPath filter.
     /// </summary>
-    public interface IPropertyFilter : IFilter
+    public interface IPropertyPathFilter : IFilter
     {
         /// <summary>
-        /// Gets the property info that use to get property value from item.
+        /// Gets the property path that use to get property value from item.
         /// </summary>
-        /// <value>The property info.</value>
-        ItemPropertyInfo PropertyInfo
+        /// <value>The property path.</value>
+        string PropertyPath
         {
             get;
         }

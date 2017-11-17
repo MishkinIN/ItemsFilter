@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Löschen</value>
   </data>
   <data name="ClearFilter" xml:space="preserve">
-    <value>Clear filter.</value>
+    <value>FIlter löschen.</value>
   </data>
   <data name="EqualFilterName" xml:space="preserve">
-    <value>Equal:</value>
+    <value>Gleich:</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
@@ -133,48 +133,48 @@
     <value>Filter:</value>
   </data>
   <data name="Find" xml:space="preserve">
-    <value>Find:</value>
+    <value>Suche:</value>
   </data>
   <data name="From" xml:space="preserve">
-    <value>From:</value>
+    <value>Von:</value>
   </data>
   <data name="GreaterOrEqualFilterName" xml:space="preserve">
-    <value>Greater or equal:</value>
+    <value>Größer oder gleich:</value>
   </data>
   <data name="LessOrEqualFilterName" xml:space="preserve">
-    <value>Less or equal:</value>
+    <value>Kleiner oder gleich:</value>
   </data>
   <data name="MultiValueFilterModelName" xml:space="preserve">
-    <value>Equality:</value>
+    <value>Gleich:</value>
   </data>
   <data name="RangeFilterName" xml:space="preserve">
-    <value>In range:</value>
+    <value>Zwischen:</value>
   </data>
   <data name="SearchType" xml:space="preserve">
-    <value>Search type:</value>
+    <value>Methode:</value>
   </data>
   <data name="Show" xml:space="preserve">
-    <value>Show</value>
+    <value>Anzeigen</value>
   </data>
   <data name="ShowQuickFilter" xml:space="preserve">
-    <value>Show QuickFilter menu.</value>
+    <value>Schnellfilter anzeigen.</value>
   </data>
   <data name="StringFilterMode_Contains" xml:space="preserve">
-    <value>Contains</value>
+    <value>Enthält</value>
   </data>
   <data name="StringFilterMode_EndsWith" xml:space="preserve">
-    <value>Ends with</value>
+    <value>Endet mit</value>
   </data>
   <data name="StringFilterMode_Equals" xml:space="preserve">
-    <value>Equals</value>
+    <value>Gleich</value>
   </data>
   <data name="StringFilterMode_StartsWith" xml:space="preserve">
-    <value>Starts with</value>
+    <value>Startet mit</value>
   </data>
   <data name="StringFilterName" xml:space="preserve">
-    <value>String:</value>
+    <value>Text:</value>
   </data>
   <data name="To" xml:space="preserve">
-    <value>To:</value>
+    <value>Bis:</value>
   </data>
 </root>
