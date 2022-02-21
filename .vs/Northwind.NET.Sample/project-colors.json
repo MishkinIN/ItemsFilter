@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "aab57bb1-a448-457c-ad53-16b32a1c1f1d": {
+      "ProjectGuid": "aab57bb1-a448-457c-ad53-16b32a1c1f1d",
+      "DisplayName": "ItemsFilter",
+      "ColorIndex": 0
+    },
+    "d70688e6-6b4f-47eb-b17a-6f6b53a97113": {
+      "ProjectGuid": "d70688e6-6b4f-47eb-b17a-6f6b53a97113",
+      "DisplayName": "ItemsFilter.net6",
+      "ColorIndex": 1
+    },
+    "07b2f821-5f3b-49cf-b99d-098f8cb82c60": {
+      "ProjectGuid": "07b2f821-5f3b-49cf-b99d-098f8cb82c60",
+      "DisplayName": "Nortwind.Model.net6",
+      "ColorIndex": 2
+    },
+    "a7d88eef-3cd3-4acb-a460-151554d98bdf": {
+      "ProjectGuid": "a7d88eef-3cd3-4acb-a460-151554d98bdf",
+      "DisplayName": "Northwind.NET.EF6Model",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    },
+    "657e6a5e-5fa1-4a80-93d0-98a4b494a2dc": {
+      "ProjectGuid": "657e6a5e-5fa1-4a80-93d0-98a4b494a2dc",
+      "DisplayName": "Northwind.NET.Sample",
+      "ColorIndex": 4
+    },
+    "0fd5fb82-3b4f-4c3f-8e03-e2464422a170": {
+      "ProjectGuid": "0fd5fb82-3b4f-4c3f-8e03-e2464422a170",
+      "DisplayName": "Nortwind.Sample.net6",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

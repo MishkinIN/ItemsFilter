@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<DebugType>full</DebugType>
+		<BaseOutputPath>..\bin</BaseOutputPath>
+		<Description>Data model for ItemsFilter sample</Description>
+		<Copyright>Copyright ©2013,2015, 2022 Bolapansoft</Copyright>
+		<PackageProjectUrl></PackageProjectUrl>
+		<RepositoryUrl>https://github.com/MishkinIN/ItemsFilter</RepositoryUrl>
+		<PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
+		<Authors>MishkinIN</Authors>
+		<Company>Bolapansoft</Company>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+
+</Project>
