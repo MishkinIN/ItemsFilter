@@ -1,8 +1,8 @@
-﻿<Application x:Class="Nortwind.Sample.net6.App"
+﻿<Application x:Class="Northwind.NET.Sample.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Nortwind.Sample.net6"
-              xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel"
+             xmlns:local="clr-namespace:Northwind.NET.Sample"
+             xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel"
              xmlns:vw="clr-namespace:Northwind.NET.Sample.View"
             StartupUri="MainWindow.xaml">
     <Application.Resources>

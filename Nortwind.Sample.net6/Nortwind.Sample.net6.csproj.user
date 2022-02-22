@@ -12,10 +12,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="..\Northwind.NET.Sample\SampleData\Customer.xaml">
+    <Page Update="..\ItemsFilter\Themes\ItemsFilterStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="..\Northwind.NET.Sample\SampleData\Order.xaml">
+    <Page Update="..\Northwind.NET.Sample\SampleData\Customer.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="..\Northwind.NET.Sample\SampleData\Workspace.xaml">
@@ -55,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ProjectDataSources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SampleData\Order.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

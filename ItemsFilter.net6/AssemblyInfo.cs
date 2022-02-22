@@ -1,4 +1,8 @@
+using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Markup;
+
+[assembly: ComVisible(false)]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
@@ -8,3 +12,13 @@ using System.Windows;
                                               //(used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
+[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls", "BolapanControl")]
+[assembly: XmlnsPrefix("http://schemas.bolapansoft.com/xaml/Controls", "bsControl")]
+
+[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter")]
+[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.View")]
+[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.ViewModel")]
+[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Initializer")]
+[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Model")]
+//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Presentation")]
+[assembly: XmlnsPrefix("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "bsFilter")]

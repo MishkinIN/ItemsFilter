@@ -1,0 +1,116 @@
+﻿<model:Order xmlns:collection="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:model="clr-namespace:Northwind.NET.EF6Model;assembly=Northwind.NET.EF6Model"
+             xmlns:sample="clr-namespace:Northwind.NET.Sample.SampleData"
+             CustomerId="85"
+             EmployeeId="5"
+             Freight="32.38"
+             Id="10248"
+             OrderDate="1996-07-04T00:00:00"
+             RequiredDate="1996-08-01T00:00:00"
+             ShipAddress="59 rue de l'Abbaye"
+             ShipCity="Reims"
+             ShipCountry="France"
+             ShipName="Vins et alcools Chevalier"
+             ShipPostalCode="51100"
+             ShippedDate="1996-07-16T00:00:00"
+             ShipperId="3">
+    <model:Order.Customer>
+        <model:Customer Name="Vins et alcools Chevalier"
+                        Address="59 rue de l'Abbaye"
+                        City="Reims"
+                        Code="VINET"
+                        ContactName="Paul Henriot"
+                        ContactTitle="Accounting Manager"
+                        Country="France"
+                        Fax="26.47.15.11"
+                        Id="85"
+                        Phone="26.47.15.10"
+                        PostalCode="51100" />
+    </model:Order.Customer>
+
+    <model:Order.OrderDetails>
+        <sample:OrderDetailsCollection>
+            <model:OrderDetail Discount="0"
+                               Id="1"
+                               OrderId="10248"
+                               ProductId="11"
+                               Quantity="12"
+                               UnitPrice="14">
+                <model:OrderDetail.Product>
+                    <model:Product Name="Queso Cabrales"
+                                   CategoryId="4"
+                                   Discontinued="False"
+                                   Id="11"
+                                   QuantityPerUnit="1 kg pkg."
+                                   ReorderLevel="30"
+                                   SupplierId="5"
+                                   UnitPrice="21"
+                                   UnitsInStock="22"
+                                   UnitsOnOrder="30" />
+                </model:OrderDetail.Product>
+            </model:OrderDetail>
+            <model:OrderDetail Discount="0"
+                               Id="2"
+                               OrderId="10248"
+                               ProductId="42"
+                               Quantity="10"
+                               UnitPrice="9.8">
+                <model:OrderDetail.Product>
+                    <model:Product Name="Singaporean Hokkien Fried Mee"
+                                   CategoryId="5"
+                                   Discontinued="True"
+                                   Id="42"
+                                   QuantityPerUnit="32 - 1 kg pkgs."
+                                   ReorderLevel="0"
+                                   SupplierId="20"
+                                   UnitPrice="14"
+                                   UnitsInStock="26"
+                                   UnitsOnOrder="0" />
+                </model:OrderDetail.Product>
+            </model:OrderDetail>
+            <model:OrderDetail Discount="0"
+                               Id="3"
+                               OrderId="10248"
+                               ProductId="72"
+                               Quantity="5"
+                               UnitPrice="34.8">
+                <model:OrderDetail.Product>
+                    <model:Product Name="Mozzarella di Giovanni"
+                                   CategoryId="4"
+                                   Discontinued="False"
+                                   Id="72"
+                                   QuantityPerUnit="24 - 200 g pkgs."
+                                   ReorderLevel="0"
+                                   SupplierId="14"
+                                   UnitPrice="34.8"
+                                   UnitsInStock="14"
+                                   UnitsOnOrder="0" />
+                </model:OrderDetail.Product>
+            </model:OrderDetail>
+        </sample:OrderDetailsCollection>
+    </model:Order.OrderDetails>
+
+    <model:Order.Employee>
+        <model:Employee Title="Sales Manager"
+                        Address="14 Garrett Hill"
+                        BirthDate="1955-03-04T00:00:00"
+                        City="London"
+                        Country="UK"
+                        Extension="3453"
+                        FirstName="Steven"
+                        HireDate="1993-10-17T00:00:00"
+                        HomePhone="(71) 555-4848"
+                        Id="5"
+                        LastName="Buchanan"
+                        Notes="Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree.  Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager.  Mr. Buchanan has completed the courses &quot;Successful Telemarketing&quot; and &quot;International Sales Management.&quot;  He is fluent in French."
+                        Photo="EmpID5.bmp"
+                        PostalCode="SW1 8JR"
+                        ReportsTo="2"
+                        TitleOfCourtesy="Mr." />
+    </model:Order.Employee>
+    <model:Order.Shipper>
+        <model:Shipper Name="Federal Shipping"
+                       Id="3"
+                       Phone="(503) 555-9931" />
+    </model:Order.Shipper>
+</model:Order>

@@ -40,8 +40,8 @@
 
                 <DataGridTextColumn x:Name="iDColumn"
                                     Width="Auto"
-                                    Binding="{Binding ID}"
-                                    Header="ID" />
+                                    Binding="{Binding Id}"
+                                    Header="Id" />
                 <DataGridTextColumn x:Name="supplier"
                                     Width="Auto"
                                     Binding="{Binding Supplier.Name}"

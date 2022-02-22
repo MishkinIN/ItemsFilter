@@ -8,7 +8,7 @@
 using Microsoft.EntityFrameworkCore;
 using Northwind.NET.EF6Model;
 using Northwind.NET.Sample.ViewModel;
-using Nortwind.Sample.net6;
+using Northwind.NET.Sample;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,9 +19,9 @@ using System.Windows;
 
 namespace Northwind.NET.Sample {
     public static class Workspace {
-        private static NorthwindNETEntities northwindModel;
-        private static WorkspaceInstance thisInstance;
-        public static WorkspaceInstance This {
+        private static NorthwindNETEntities? northwindModel;
+        private static WorkspaceInstance? thisInstance;
+        public static WorkspaceInstance? This {
             get {
                 if (thisInstance == null)
                     thisInstance = Application.Current.Resources["Workspace"] as WorkspaceInstance;

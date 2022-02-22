@@ -1,4 +1,6 @@
-﻿<Customer xmlns="clr-namespace:Northwind.NET.EF6Model;assembly=Northwind.NET.EF6Model"
+﻿<Customer 
+    
+    xmlns="clr-namespace:Northwind.NET.EF6Model;assembly=Northwind.NET.EF6Model"
           Name="Vins et alcools Chevalier"
           Address="59 rue de l'Abbaye"
           City="Reims"
@@ -7,6 +9,6 @@
           ContactTitle="Accounting Manager"
           Country="France"
           Fax="26-47-15-11"
-          ID="85"
+          Id="85"
           Phone="26-47-15-10"
           PostalCode="51100" />

@@ -188,36 +188,36 @@ namespace Northwind.NET.Sample {
                 if (System.Windows.Application.GetResourceStream(resourceUri) != null) {
                     System.Windows.Application.LoadComponent(instance, resourceUri);
                     foreach (Product product in instance.Products) {
-                        Category category = instance.Categories.Where(cat => cat.ID == product.CategoryID).FirstOrDefault();
+                        Category category = instance.Categories.Where(cat => cat.Id == product.CategoryId).FirstOrDefault();
                         if (category != null) {
                             product.Category = category;
                             category.Products.Add(product);
                         }
-                        Supplier supplier = instance.Suppliers.Where(suppl => suppl.ID == product.SupplierID).FirstOrDefault();
+                        Supplier supplier = instance.Suppliers.Where(suppl => suppl.Id == product.SupplierId).FirstOrDefault();
                         if (supplier != null) {
                             supplier.Products.Add(product);
                             product.Supplier = supplier;
                         }
                     }
                     foreach (OrderDetail orderDetail in instance.OrderDetails) {
-                        Product product = instance.Products.Where(prod => prod.ID == orderDetail.ProductID).FirstOrDefault();
+                        Product product = instance.Products.Where(prod => prod.Id == orderDetail.ProductId).FirstOrDefault();
                         if (product != null) {
                             product.OrderDetails.Add(orderDetail);
                             orderDetail.Product = product;
                         }
-                        Order order = instance.Orders.Where(ord => ord.ID == orderDetail.OrderID).FirstOrDefault();
+                        Order order = instance.Orders.Where(ord => ord.Id == orderDetail.OrderId).FirstOrDefault();
                         if (order != null) {
                             order.OrderDetails.Add(orderDetail);
                             orderDetail.Order = order;
                         }
                     }
                     foreach (Order order in instance.Orders) {
-                        Customer customer = instance.Customers.Where(cust => cust.ID == order.CustomerId).FirstOrDefault();
+                        Customer customer = instance.Customers.Where(cust => cust.Id == order.CustomerId).FirstOrDefault();
                         if (customer != null) {
                             customer.Orders.Add(order);
                             order.Customer = customer;
                         }
-                        Employee employee = instance.Employees.Where(empl => empl.ID == order.EmployeeID).FirstOrDefault();
+                        Employee employee = instance.Employees.Where(empl => empl.Id == order.EmployeeId).FirstOrDefault();
                         if (employee != null) {
                             employee.Orders.Add(order);
                             order.Employee = employee;

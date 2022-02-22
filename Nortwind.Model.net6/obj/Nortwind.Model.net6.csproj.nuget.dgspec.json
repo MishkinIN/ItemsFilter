@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "G:\\Projects\\DcSokod\\itemsfilter\\Nortwind.Model.net6\\Nortwind.Model.net6.csproj",
-        "projectName": "Nortwind.Model.net6",
+        "projectName": "Northwind.NET.EF6Model",
         "projectPath": "G:\\Projects\\DcSokod\\itemsfilter\\Nortwind.Model.net6\\Nortwind.Model.net6.csproj",
         "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
         "outputPath": "G:\\Projects\\DcSokod\\itemsfilter\\Nortwind.Model.net6\\obj\\",

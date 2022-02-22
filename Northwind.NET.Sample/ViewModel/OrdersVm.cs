@@ -25,7 +25,7 @@ namespace Northwind.NET.Sample.ViewModel {
         public OrdersVm() {
             try {
                 cvs.Source = Workspace.This.Orders
-                        .OrderBy(ord => ord.Employee == null ? -1 : ord.Employee.ID)
+                        .OrderBy(ord => ord.Employee == null ? -1 : ord.Employee.Id)
                         .Select(ord => ord)
                         .ToList();
             }
@@ -73,7 +73,7 @@ namespace Northwind.NET.Sample.ViewModel {
                 .Add(new Order
                 {
                     Employee = ((Order)(ordersView.CurrentItem)).Employee,
-                    ID = Workspace.This.Orders.Select(order => order.ID).Max(),
+                    Id = Workspace.This.Orders.Select(order => order.Id).Max(),
                     OrderDate = DateTime.Now
                 });
 

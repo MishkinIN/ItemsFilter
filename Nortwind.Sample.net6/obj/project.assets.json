@@ -608,7 +608,7 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
-      "Nortwind.Model.net6/1.0.0": {
+      "Northwind.NET.EF6Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -616,10 +616,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.2"
         },
         "compile": {
-          "bin/placeholder/Nortwind.Model.net6.dll": {}
+          "bin/placeholder/Northwind.NET.EF6Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Nortwind.Model.net6.dll": {}
+          "bin/placeholder/Northwind.NET.EF6Model.dll": {}
         }
       }
     }
@@ -1791,7 +1791,7 @@
       "path": "../ItemsFilter.net6/ItemsFilter.net6.csproj",
       "msbuildProject": "../ItemsFilter.net6/ItemsFilter.net6.csproj"
     },
-    "Nortwind.Model.net6/1.0.0": {
+    "Northwind.NET.EF6Model/1.0.0": {
       "type": "project",
       "path": "../Nortwind.Model.net6/Nortwind.Model.net6.csproj",
       "msbuildProject": "../Nortwind.Model.net6/Nortwind.Model.net6.csproj"
@@ -1800,7 +1800,7 @@
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "ItemsFilter.net6 >= 1.0.0",
-      "Nortwind.Model.net6 >= 1.0.0"
+      "Northwind.NET.EF6Model >= 1.0.0"
     ]
   },
   "packageFolders": {

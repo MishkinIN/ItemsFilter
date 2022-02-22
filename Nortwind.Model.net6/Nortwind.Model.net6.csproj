@@ -13,6 +13,7 @@
 		<PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
 		<Authors>MishkinIN</Authors>
 		<Company>Bolapansoft</Company>
+		<AssemblyName>Northwind.NET.EF6Model</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

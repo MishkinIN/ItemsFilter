@@ -39,7 +39,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\net.fw.4.0\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -119,6 +119,7 @@
     <Compile Include="Command\WeakFunc.cs" />
     <Compile Include="SampleData\Employes.cs" />
     <Compile Include="SampleData\OrderDetails.cs" />
+    <Compile Include="SampleData\OrderDetailsCollection.cs" />
     <Compile Include="SampleData\Orders.cs" />
     <Compile Include="SampleData\Products.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

@@ -157,7 +157,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Margin="10,5"
                                FontFamily="Times New Roman"
-                               FontSize="20"><Run Text="#" /><Run Text=" " /><Run FontWeight="Bold" Text="{Binding ID}" /><Run Text=" " /><Run Text="     " /><Run Text=" " /><Run FontSize="16" Text="{Binding OrderDate}" />
+                               FontSize="20"><Run Text="#" /><Run Text=" " /><Run FontWeight="Bold" Text="{Binding Id}" /><Run Text=" " /><Run Text="     " /><Run Text=" " /><Run FontSize="16" Text="{Binding OrderDate}" />
                     </TextBlock>
                     <Border Grid.Row="2"
                             Grid.ColumnSpan="2"
@@ -321,7 +321,7 @@
                                Margin="3"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
-                               Content="Category ID:" />
+                               Content="Category Id:" />
                         <TextBox x:Name="categoryIDTextBox"
                                  Grid.Row="1"
                                  Grid.Column="1"
@@ -332,7 +332,7 @@
                                  VerticalAlignment="Center"
                                  BorderThickness="1"
                                  IsReadOnly="True"
-                                 Text="{Binding CategoryID,
+                                 Text="{Binding CategoryId,
                                                 Mode=TwoWay,
                                                 NotifyOnValidationError=true,
                                                 ValidatesOnExceptions=true}" />
@@ -359,7 +359,7 @@
                                Margin="3"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
-                               Content="ID:" />
+                               Content="Id:" />
                         <TextBox x:Name="iDTextBox"
                                  Grid.Row="3"
                                  Grid.Column="1"
@@ -369,7 +369,7 @@
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center"
                                  IsReadOnly="True"
-                                 Text="{Binding ID,
+                                 Text="{Binding Id,
                                                 Mode=TwoWay,
                                                 NotifyOnValidationError=true,
                                                 ValidatesOnExceptions=true}" />
@@ -440,7 +440,7 @@
                                Margin="3"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
-                               Content="Supplier ID:" />
+                               Content="Supplier Id:" />
                         <TextBox x:Name="supplierIDTextBox"
                                  Grid.Row="6"
                                  Grid.Column="1"
@@ -450,7 +450,7 @@
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center"
                                  IsReadOnly="True"
-                                 Text="{Binding SupplierID,
+                                 Text="{Binding SupplierId,
                                                 Mode=TwoWay,
                                                 NotifyOnValidationError=true,
                                                 ValidatesOnExceptions=true}" />

@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <RootNamespace>Northwind.NET.Sample</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,7 @@
     <Compile Include="..\Northwind.NET.Sample\SampleData\Customers.cs" Link="SampleData\Customers.cs" />
     <Compile Include="..\Northwind.NET.Sample\SampleData\Employes.cs" Link="SampleData\Employes.cs" />
     <Compile Include="..\Northwind.NET.Sample\SampleData\OrderDetails.cs" Link="SampleData\OrderDetails.cs" />
+    <Compile Include="..\Northwind.NET.Sample\SampleData\OrderDetailsCollection.cs" Link="SampleData\OrderDetailsCollection.cs" />
     <Compile Include="..\Northwind.NET.Sample\SampleData\Orders.cs" Link="SampleData\Orders.cs" />
     <Compile Include="..\Northwind.NET.Sample\SampleData\Products.cs" Link="SampleData\Products.cs" />
     <Compile Include="..\Northwind.NET.Sample\SampleData\Suppliers.cs" Link="SampleData\Suppliers.cs" />
@@ -35,7 +37,6 @@
     <Compile Include="..\Northwind.NET.Sample\ViewModel\UnitPriceFilter.cs" Link="ViewModel\UnitPriceFilter.cs" />
     <Compile Include="..\Northwind.NET.Sample\View\CategoriesView.xaml.cs" Link="View\CategoriesView.xaml.cs" />
     <Compile Include="..\Northwind.NET.Sample\View\CategoryFilterView.xaml.cs" Link="View\CategoryFilterView.xaml.cs" />
-    <Compile Include="..\Northwind.NET.Sample\View\CityFilter.cs" Link="View\CityFilter.cs" />
     <Compile Include="..\Northwind.NET.Sample\View\Converters\BoolToEffectConverter.cs" Link="View\Converters\BoolToEffectConverter.cs" />
     <Compile Include="..\Northwind.NET.Sample\View\Converters\NullToUnsetValueConverter.cs" Link="View\Converters\NullToUnsetValueConverter.cs" />
     <Compile Include="..\Northwind.NET.Sample\View\Converters\ObjectToCustomerConverter.cs" Link="View\Converters\ObjectToCustomerConverter.cs" />
@@ -93,10 +94,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Include="..\Northwind.NET.Sample\SampleData\Customer.xaml" Link="SampleData\Customer.xaml">
+    <Page Include="..\ItemsFilter\Themes\ItemsFilterStyle.xaml" Link="Themes\ItemsFilterStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="..\Northwind.NET.Sample\SampleData\Order.xaml" Link="SampleData\Order.xaml">
+    <Page Include="..\Northwind.NET.Sample\SampleData\Customer.xaml" Link="SampleData\Customer.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="..\Northwind.NET.Sample\SampleData\Workspace.xaml" Link="SampleData\Workspace.xaml">

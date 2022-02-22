@@ -17,8 +17,8 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Data model for ItemsFilter sample")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("Nortwind.Model.net6")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Nortwind.Model.net6")]
+[assembly: System.Reflection.AssemblyProductAttribute("Northwind.NET.EF6Model")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Northwind.NET.EF6Model")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/MishkinIN/ItemsFilter")]
 

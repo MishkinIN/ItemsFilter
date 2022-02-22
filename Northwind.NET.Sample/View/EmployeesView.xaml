@@ -42,10 +42,10 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn x:Name="iDColumn"
                                         Width="SizeToHeader"
-                                        Header="ID">
+                                        Header="Id">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding ID}" />
+                            <TextBlock Text="{Binding Id}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

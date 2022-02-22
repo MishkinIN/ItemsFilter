@@ -30,8 +30,8 @@
                   ItemsSource="{Binding}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="Auto"
-                                    Binding="{Binding ID}"
-                                    Header="ID" />
+                                    Binding="{Binding Id}"
+                                    Header="Id" />
                 <DataGridTextColumn Width="Auto"
                                     Binding="{Binding Name}"
                                     Header="Category name" />
