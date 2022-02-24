@@ -69,7 +69,7 @@ namespace Northwind.NET.Sample {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Nortwind.Sample.net6;component/view/categoriesview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Nortwind.Sample.net6;V1.0.0.0;component/view/categoriesview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Northwind.NET.Sample\View\CategoriesView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
