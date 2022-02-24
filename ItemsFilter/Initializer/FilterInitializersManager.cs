@@ -17,14 +17,17 @@ namespace BolapanControl.ItemsFilter.Initializer {
     /// Define a class that represent set of filter initializers.
     /// </summary>
     public  class FilterInitializersManager : List<FilterInitializer>, IList<FilterInitializer>,IEnumerable<FilterInitializer> {
-        private static FilterInitializersManager _default;
+        private static Lazy<FilterInitializersManager> _lzdefault = new Lazy<FilterInitializersManager>(GetDefaults);
         /// <summary>
         /// Represent default instance of FilterInitializersManager that include common used initializers.
         /// </summary>
         public static IEnumerable<FilterInitializer> Default {
             get{
-                if (_default == null)
-                    _default = new FilterInitializersManager
+                return _lzdefault.Value;
+            }
+        }
+        private static FilterInitializersManager GetDefaults() {
+            return new FilterInitializersManager
                     {
                         new EqualFilterInitializer(),
                         new LessOrEqualFilterInitializer(),
@@ -33,9 +36,6 @@ namespace BolapanControl.ItemsFilter.Initializer {
                         new StringFilterInitializer(),
                         new EnumFilterInitializer(),
                     };
-
-                return _default;
-            }
         }
         /// <summary>
         /// Create empty instance of FilterInitializersManager.

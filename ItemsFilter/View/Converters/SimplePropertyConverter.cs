@@ -30,7 +30,7 @@ namespace BolapanControl.ItemsFilter.View
     [ValueConversion(typeof(bool), typeof(String))]
     public class SimplePropertyConverter : IValueConverter
     {
-        private static SimplePropertyConverter _This=new SimplePropertyConverter();
+        private static readonly SimplePropertyConverter _This=new SimplePropertyConverter();
 
         private static CultureInfo GetCulture(FrameworkElement element) {
             CultureInfo culture;

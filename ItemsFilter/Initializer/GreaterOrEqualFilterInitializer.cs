@@ -28,13 +28,10 @@ namespace BolapanControl.ItemsFilter.Initializer {
         ///           && propertyInfo.PropertyType != typeof(bool)
         ///           && !propertyType.IsEnum
         ///  otherwise, null.</returns>
-        protected override PropertyFilter NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo key)
+        protected override PropertyFilter NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo)
         {
-            if (filterPresenter == null)
+            if (filterPresenter == null | propertyInfo == null)
                 return null;
-            if (key == null)
-                return null;
-            ItemPropertyInfo propertyInfo = (ItemPropertyInfo)key;
             Type propertyType = propertyInfo.PropertyType;
             if (filterPresenter.ItemProperties.Contains(propertyInfo) 
                 && typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType)

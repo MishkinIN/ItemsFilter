@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -7,18 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModel\CustomersTreeFilter\**" />
+    <EmbeddedResource Remove="ViewModel\CustomersTreeFilter\**" />
+    <None Remove="ViewModel\CustomersTreeFilter\**" />
+    <Page Remove="ViewModel\CustomersTreeFilter\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="..\Northwind.NET.Sample\Command\RelayCommand.cs" Link="Command\RelayCommand.cs" />
     <Compile Include="..\Northwind.NET.Sample\Command\WeakAction.cs" Link="Command\WeakAction.cs" />
     <Compile Include="..\Northwind.NET.Sample\Command\WeakFunc.cs" Link="Command\WeakFunc.cs" />
     <Compile Include="..\Northwind.NET.Sample\Shaders\MonochromeEffect.cs" Link="Shaders\MonochromeEffect.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersComboBoxFilter\CustomersComboBoxFilter.cs" Link="ViewModel\CustomersComboBoxFilter\CustomersComboBoxFilter.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersComboBoxFilter\CustomersComboBoxFilterInitializer.cs" Link="ViewModel\CustomersComboBoxFilter\CustomersComboBoxFilterInitializer.cs" />
-    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CitiesTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CitiesTreeFilter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CityItemFilter.cs" Link="ViewModel\CustomersTreeFilter\CityItemFilter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CoutnriesTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CoutnriesTreeFilter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomerItemFilter.cs" Link="ViewModel\CustomersTreeFilter\CustomerItemFilter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomersTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CustomersTreeFilter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomersTreeFilterInitializers.cs" Link="ViewModel\CustomersTreeFilter\CustomersTreeFilterInitializers.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeVm.cs" Link="ViewModel\CustomersTreeVm.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\FilterInitializerManager.cs" Link="ViewModel\FilterInitializerManager.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\OrdersVm.cs" Link="ViewModel\OrdersVm.cs" />
@@ -36,7 +37,6 @@
     <Folder Include="Shaders\" />
     <Folder Include="ViewModel\Converters\" />
     <Folder Include="ViewModel\CustomersComboBoxFilter\" />
-    <Folder Include="ViewModel\CustomersTreeFilter\" />
   </ItemGroup>
 
   <ItemGroup>

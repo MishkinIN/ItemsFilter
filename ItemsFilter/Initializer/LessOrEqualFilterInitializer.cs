@@ -27,7 +27,6 @@ namespace BolapanControl.ItemsFilter.Initializer {
             Debug.Assert(filterPresenter != null);
             Debug.Assert(propertyInfo != null);
 
-            //ItemPropertyInfo propertyInfo = (ItemPropertyInfo)key;
             Type propertyType = propertyInfo.PropertyType;
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
                 && typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType)

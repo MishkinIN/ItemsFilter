@@ -44,14 +44,14 @@ namespace BolapanControl.ItemsFilter.Initializer {
               IEnumerable source = filterPresenter.CollectionView.SourceCollection;
               if (source == null)
                 return new object[0];
-            var propertyDescriptor = propInfo.Descriptor as PropertyDescriptor;
+            var propertyDescriptor =(PropertyDescriptor)( propInfo.Descriptor);
             var sourceQuery = source.OfType<object>().Select(item => propertyDescriptor.GetValue(item));
             var propType = propertyDescriptor.PropertyType;
             if (typeof(IComparable).IsAssignableFrom(propType)) {
                 sourceQuery = sourceQuery.OrderBy(item => item);
             }
             else
-                sourceQuery = sourceQuery.OrderBy(item =>item==null?"": item.ToString());
+                sourceQuery = sourceQuery.OrderBy(item =>item==null?String.Empty: item.ToString());
             sourceQuery = sourceQuery.Distinct();
             return sourceQuery;
         }

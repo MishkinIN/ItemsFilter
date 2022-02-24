@@ -16,7 +16,7 @@ namespace BolapanControl.ItemsFilter.Design {
     class MultiValueFilterModel : IMultiValueFilter {
 
         private string[] values;
-        private ObservableCollection<object> selectedValues;
+        private readonly ObservableCollection<object> selectedValues;
         public MultiValueFilterModel() {
             values = new string[]{
                 "Item 1",
@@ -34,27 +34,27 @@ namespace BolapanControl.ItemsFilter.Design {
             }
         }
 
-        public System.Collections.ObjectModel.ReadOnlyObservableCollection<object> SelectedValues {
-            get { return new System.Collections.ObjectModel.ReadOnlyObservableCollection<object>(selectedValues); }
+        public ReadOnlyObservableCollection<object> SelectedValues {
+            get { return new ReadOnlyObservableCollection<object>(selectedValues); }
         }
 
         public void SelectedValuesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
             ;
         }
 
-        public void Attach(BolapanControl.ItemsFilter.FilterPresenter presenter) {
+        public void Attach(FilterPresenter presenter) {
             ;
         }
 
-        public void Detach(BolapanControl.ItemsFilter.FilterPresenter presenter) {
+        public void Detach(FilterPresenter presenter) {
             ;
         }
 
-        public void Attach(BolapanControl.ItemsFilter.ViewModel.FilterControlVm vm) {
+        public void Attach(ViewModel.FilterControlVm vm) {
             ;
         }
 
-        public void Detach(BolapanControl.ItemsFilter.ViewModel.FilterControlVm vm) {
+        public void Detach(ViewModel.FilterControlVm vm) {
             ;
         }
 
@@ -76,7 +76,7 @@ namespace BolapanControl.ItemsFilter.Design {
             }
         }
 
-        public void IsMatch(BolapanControl.ItemsFilter.FilterPresenter sender, BolapanControl.ItemsFilter.FilterEventArgs e) {
+        public void IsMatch(FilterPresenter sender, FilterEventArgs e) {
             ;
         }
     }

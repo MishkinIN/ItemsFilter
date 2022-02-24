@@ -21,3 +21,17 @@ G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\Northwind.N
 G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\ref\Northwind.NET.EF6Model.dll
 G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\Northwind.NET.EF6Model.pdb
 G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.csproj.AssemblyReference.cache
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0\Northwind.NET.EF6Model.deps.json
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0\Northwind.NET.EF6Model.runtimeconfig.json
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0\Northwind.NET.EF6Model.dll
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0\ref\Northwind.NET.EF6Model.dll
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0\Northwind.NET.EF6Model.pdb
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.csproj.AssemblyReference.cache
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.AssemblyInfoInputs.cache
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.AssemblyInfo.cs
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.csproj.CoreCompileInputs.cache
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Northwind.NET.EF6Model.dll
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\ref\Northwind.NET.EF6Model.dll
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Northwind.NET.EF6Model.pdb
+D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.genruntimeconfig.cache

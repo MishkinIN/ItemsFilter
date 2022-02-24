@@ -4,7 +4,7 @@
 library
 C#
 .cs
-G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\
+D:\Projects\ItemsFilter.github.com\ItemsFilter.net6\obj\Debug\net6.0-windows\
 ItemsFilter.net6
 none
 false
@@ -16,5 +16,5 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 1941142463650
 ..\ItemsFilter\Themes\Generic.xaml;
 
-False
+True
 
