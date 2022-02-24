@@ -30,7 +30,7 @@ namespace Northwind.NET.Sample.ViewModel {
                         .ToList();
             }
             catch (Exception ex) {
-                App.LogException(ex);
+                //App.LogException(ex);
             }
             ordersView = cvs.View;
             moveFirstCommand = new RelayCommand(MoveToFirst, CanMoveToFirst);

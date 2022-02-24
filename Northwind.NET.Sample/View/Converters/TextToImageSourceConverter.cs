@@ -18,7 +18,7 @@ namespace Northwind.NET.Sample.View {
             try {
                 string picName = (((string)value).Split('.'))[0];
                 return new BitmapImage(
-                    new System.Uri("/Northwind.NET.Sample;component/Resources/" + picName + ".gif", System.UriKind.Relative));
+                    new System.Uri($"/{Workspace.CallingAssemblyShortName};component/Resources/{picName}.gif", System.UriKind.Relative));
             }
             catch (Exception) {
                 return null;

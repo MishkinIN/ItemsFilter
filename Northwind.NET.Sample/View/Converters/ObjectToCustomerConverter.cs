@@ -15,9 +15,9 @@ namespace Northwind.NET.Sample.View {
     class ObjectToCustomerConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             if (value is Northwind.NET.EF6Model.Customer)
-                return value as Northwind.NET.EF6Model.Customer;
+                return (Northwind.NET.EF6Model.Customer)value;
             else
-                return null;
+                return new EF6Model.Customer();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {

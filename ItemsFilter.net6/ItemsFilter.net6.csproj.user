@@ -2,11 +2,11 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <EmbeddedResource Update="..\ItemsFilter\Themes\Generic.xaml">
+    <Page Update="..\ItemsFilter\Themes\Generic.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="..\ItemsFilter\Themes\ItemsFilterStyle.xaml">
+    </Page>
+    <Content Update="..\ItemsFilter\Themes\ItemsFilterStyle.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </Content>
   </ItemGroup>
 </Project>

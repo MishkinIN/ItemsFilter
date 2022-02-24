@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -12,6 +13,11 @@ namespace Northwind.NET.Sample {
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application {
+        static readonly string assemblyShortName;
+        static App() {
+            Assembly a = typeof(App).Assembly;
+            assemblyShortName = a.ToString().Split(',')[0];
+        }
         internal static void LogException(Exception ex) {
             int identLvl = Debug.IndentLevel;
             do {
@@ -24,6 +30,8 @@ namespace Northwind.NET.Sample {
             Debug.IndentLevel = identLvl;
             return;
         }
-
+        public static Uri MakePackUri(string relativeFile) {
+            return new Uri($"pack://application:,,,/{assemblyShortName};component/{relativeFile}");
+        }
     }
 }

@@ -621,6 +621,23 @@
         "runtime": {
           "bin/placeholder/Northwind.NET.EF6Model.dll": {}
         }
+      },
+      "Northwind.ViewModel.net6/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ItemsFilter.net6": "1.0.0",
+          "Northwind.NET.EF6Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Northwind.ViewModel.net6.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Northwind.ViewModel.net6.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       }
     }
   },
@@ -1795,12 +1812,18 @@
       "type": "project",
       "path": "../Nortwind.Model.net6/Nortwind.Model.net6.csproj",
       "msbuildProject": "../Nortwind.Model.net6/Nortwind.Model.net6.csproj"
+    },
+    "Northwind.ViewModel.net6/1.0.0": {
+      "type": "project",
+      "path": "../Northwind.ViewModel.net6/Northwind.ViewModel.net6.csproj",
+      "msbuildProject": "../Northwind.ViewModel.net6/Northwind.ViewModel.net6.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "ItemsFilter.net6 >= 1.0.0",
-      "Northwind.NET.EF6Model >= 1.0.0"
+      "Northwind.NET.EF6Model >= 1.0.0",
+      "Northwind.ViewModel.net6 >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1840,6 +1863,9 @@
           "projectReferences": {
             "G:\\Projects\\DcSokod\\itemsfilter\\ItemsFilter.net6\\ItemsFilter.net6.csproj": {
               "projectPath": "G:\\Projects\\DcSokod\\itemsfilter\\ItemsFilter.net6\\ItemsFilter.net6.csproj"
+            },
+            "G:\\Projects\\DcSokod\\itemsfilter\\Northwind.ViewModel.net6\\Northwind.ViewModel.net6.csproj": {
+              "projectPath": "G:\\Projects\\DcSokod\\itemsfilter\\Northwind.ViewModel.net6\\Northwind.ViewModel.net6.csproj"
             },
             "G:\\Projects\\DcSokod\\itemsfilter\\Nortwind.Model.net6\\Nortwind.Model.net6.csproj": {
               "projectPath": "G:\\Projects\\DcSokod\\itemsfilter\\Nortwind.Model.net6\\Nortwind.Model.net6.csproj"

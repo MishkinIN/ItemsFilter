@@ -77,12 +77,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="..\ItemsFilter\Themes\Generic.xaml" Link="Themes\Generic.xaml">
+    <Page Include="..\ItemsFilter\Themes\Generic.xaml" Link="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\ItemsFilter\Themes\ItemsFilterStyle.xaml" Link="Themes\ItemsFilterStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
+    </Page>
+    <Content Include="..\ItemsFilter\Themes\ItemsFilterStyle.xaml" Link="Themes\ItemsFilterStyle.xaml">
+      <Generator></Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

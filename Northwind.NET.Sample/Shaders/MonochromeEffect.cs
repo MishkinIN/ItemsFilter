@@ -6,9 +6,11 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using System;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
+using Northwind.NET.Sample;
 
 
 namespace Shazzam.Shaders {
@@ -19,7 +21,9 @@ namespace Shazzam.Shaders {
 		public static readonly DependencyProperty FilterColorProperty = DependencyProperty.Register("FilterColor", typeof(Color), typeof(MonochromeEffect), new UIPropertyMetadata(Colors.Gray, PixelShaderConstantCallback(0)));
 		public MonochromeEffect() {
 			PixelShader pixelShader = new PixelShader();
-            pixelShader.UriSource = new Uri("/Northwind.NET.Sample;component/Shaders/MonochromeEffect.ps", UriKind.Relative);
+			//pixelShader.UriSource = new Uri("/Northwind.NET.Sample;component/Shaders/MonochromeEffect.ps", UriKind.Relative);
+			var assemblyShortName = typeof(MonochromeEffect).Assembly.ToString().Split(',')[0];
+			pixelShader.UriSource = new Uri($"pack://application:,,,/{assemblyShortName};component/Shaders/MonochromeEffect.ps");
 			this.PixelShader = pixelShader;
 
 			this.UpdateShaderValue(InputProperty);

@@ -310,11 +310,11 @@ namespace BolapanControl.ItemsFilter {
                     }
                     catch (Exception ex) {
                         int identLevel = Debug.IndentLevel;
-                        do {
+                        while (ex != null) {
                             Debug.WriteLine(ex.Message);
-                            ex = ex.InnerException;
                             Debug.Indent();
-                        } while (ex!=null);
+                            ex = ex.InnerException;
+                        } 
                         Debug.IndentLevel = identLevel;
                     }
                     ((ContentPresenter)container).Content = view;

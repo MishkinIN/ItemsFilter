@@ -34,13 +34,10 @@ namespace Northwind.NET.Sample.View {
         // Returns:
         //     A converted value. If the method returns null, the valid null value is used.
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
-            try {
-                string result = ((Product)value).Name;
-                return result;
-            }
-            catch (Exception ex) {
-                return null;
-            }
+            if (value is Product)
+                return ((Product)value).Name;
+            else
+                return String.Empty;
         }
 
         //

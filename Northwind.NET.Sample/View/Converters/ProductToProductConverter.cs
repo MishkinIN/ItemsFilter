@@ -15,24 +15,19 @@ using System.Windows;
 using System.Windows.Data;
 
 namespace Northwind.NET.Sample.View {
-    public class ProductToProductConverter:IValueConverter {
+    public class ProductToProductConverter : IValueConverter {
 
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
-            try {
-                object result= (Product)value;
-                return result;
-            }
-            catch (Exception ex) {
-                App.LogException(new ApplicationException("ProductToIDStringConverter.Convert raise exception.",ex));
-                return null;
-            }
+            if (value is Product)
+                return (Product)value;
+            return new Product();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             if (value == null || !(value is Product))
                 return DependencyProperty.UnsetValue;
-                return value;
+            return value;
         }
     }
 }

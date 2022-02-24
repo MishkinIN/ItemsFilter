@@ -15,10 +15,13 @@
     <Page Update="..\ItemsFilter\Themes\ItemsFilterStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="..\Northwind.NET.Sample\SampleData\Customer.xaml">
+    <DesignDataWithDesignTimeCreatableTypes Update="..\Northwind.NET.Sample\SampleData\Customer.xaml">
+      <SubType>Designer</SubType>
+    </DesignDataWithDesignTimeCreatableTypes>
+    <Page Update="..\Northwind.NET.Sample\SampleData\Workspace.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="..\Northwind.NET.Sample\SampleData\Workspace.xaml">
+    <Page Update="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="..\Northwind.NET.Sample\Themes\CustomerComboBoxStyle.xaml">
@@ -57,8 +60,8 @@
     <Page Update="ProjectDataSources.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SampleData\Order.xaml">
+    <DesignDataWithDesignTimeCreatableTypes Update="SampleData\Order.xaml">
       <SubType>Designer</SubType>
-    </Page>
+    </DesignDataWithDesignTimeCreatableTypes>
   </ItemGroup>
 </Project>
