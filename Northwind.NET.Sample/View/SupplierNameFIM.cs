@@ -24,7 +24,7 @@ namespace Northwind.NET.Sample.View {
         }
     }
     class SupplierNameStringFilterInitializer : FilterInitializer {
-        public override Filter NewFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
+        public override Filter TrygetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
             if (key is string && (string)key == "Supplier.Name") {
                 return new SupplierNameStringFilter();
             }

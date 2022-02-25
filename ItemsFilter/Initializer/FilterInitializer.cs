@@ -23,7 +23,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <param name="filterPresenter">FilterPresenter, which can be attached Filter</param>
         /// <param name="key">Key for generated Filter. For PropertyFilter, key used as the name for binding property in filterPresenter.Parent collection.</param>
         /// <returns>Instance of Filter class or null.</returns>
-        public abstract Filter NewFilter(FilterPresenter filterPresenter, object key);
+        public abstract Filter TrygetFilter(FilterPresenter filterPresenter, object key);
     }
    
 }

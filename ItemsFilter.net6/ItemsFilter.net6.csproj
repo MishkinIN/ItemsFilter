@@ -14,76 +14,28 @@
     <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
     <Authors>MishkinIN</Authors>
     <Company>Bolapansoft</Company>
+    <RootNamespace>BolapanControl.ItemsFilter</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\ItemsFilter\ColumnFilter.cs" Link="ColumnFilter.cs" />
-    <Compile Include="..\ItemsFilter\Design\MultivalueFilterModel.cs" Link="Design\MultivalueFilterModel.cs" />
-    <Compile Include="..\ItemsFilter\FilterCommand.cs" Link="FilterCommand.cs" />
-    <Compile Include="..\ItemsFilter\FilterControl.cs" Link="FilterControl.cs" />
-    <Compile Include="..\ItemsFilter\FilterDataGrid.cs" Link="FilterDataGrid.cs" />
-    <Compile Include="..\ItemsFilter\FilteredEventArgs.cs" Link="FilteredEventArgs.cs" />
-    <Compile Include="..\ItemsFilter\FilterEventArgs.cs" Link="FilterEventArgs.cs" />
-    <Compile Include="..\ItemsFilter\FilterEventHandler.cs" Link="FilterEventHandler.cs" />
-    <Compile Include="..\ItemsFilter\FilterPresenter.cs" Link="FilterPresenter.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\EnumFilterInitializer.cs" Link="Initializer\EnumFilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\EqualFilterInitializer.cs" Link="Initializer\EqualFilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\FilterInitializer.cs" Link="Initializer\FilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\FilterInitializersManager.cs" Link="Initializer\FilterInitializersManager.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\GreaterOrEqualFilterInitializer.cs" Link="Initializer\GreaterOrEqualFilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\LessOrEqualFilterInitializer.cs" Link="Initializer\LessOrEqualFilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\PropertyFilterInitializer.cs" Link="Initializer\PropertyFilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\RangeFilterInitializer.cs" Link="Initializer\RangeFilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\StringFilterInitializer.cs" Link="Initializer\StringFilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Initializer\ValueFilterInitializer.cs" Link="Initializer\ValueFilterInitializer.cs" />
-    <Compile Include="..\ItemsFilter\Model\EnumFilter.cs" Link="Model\EnumFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\EqualFilter.cs" Link="Model\EqualFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\Filter.cs" Link="Model\Filter.cs" />
-    <Compile Include="..\ItemsFilter\Model\FiltersCollection.cs" Link="Model\FiltersCollection.cs" />
-    <Compile Include="..\ItemsFilter\Model\GreaterOrEqualFilter.cs" Link="Model\GreaterOrEqualFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\IComparableFilter.cs" Link="Model\IComparableFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\IFilter.cs" Link="Model\IFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\IMultivalueFilter.cs" Link="Model\IMultivalueFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\IPropertyFilter.cs" Link="Model\IPropertyFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\IRangeFilter.cs" Link="Model\IRangeFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\IStringFilter.cs" Link="Model\IStringFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\LessOrEqualFilter.cs" Link="Model\LessOrEqualFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\PropertyFilter.cs" Link="Model\PropertyFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\RangeFilter.cs" Link="Model\RangeFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\StringFilter.cs" Link="Model\StringFilter.cs" />
-    <Compile Include="..\ItemsFilter\Model\StringFilterMode.cs" Link="Model\StringFilterMode.cs" />
-    <Compile Include="..\ItemsFilter\Model\ViewAttribute.cs" Link="Model\ViewAttribute.cs" />
-    <Compile Include="..\ItemsFilter\Settings.cs" Link="Settings.cs" />
-    <Compile Include="..\ItemsFilter\ViewModel\FilterControlVm.cs" Link="ViewModel\FilterControlVm.cs" />
-    <Compile Include="..\ItemsFilter\ViewModel\ViewModel.cs" Link="ViewModel\ViewModel.cs" />
-    <Compile Include="..\ItemsFilter\View\ComparableFilterView.cs" Link="View\ComparableFilterView.cs" />
-    <Compile Include="..\ItemsFilter\View\Converters\FilterControlVmToVisibilityConverter.cs" Link="View\Converters\FilterControlVmToVisibilityConverter.cs" />
-    <Compile Include="..\ItemsFilter\View\Converters\SimplePropertyConverter.cs" Link="View\Converters\SimplePropertyConverter.cs" />
-    <Compile Include="..\ItemsFilter\View\FilterViewBase.cs" Link="View\FilterViewBase.cs" />
-    <Compile Include="..\ItemsFilter\View\IFilterView.cs" Link="View\IFilterView.cs" />
-    <Compile Include="..\ItemsFilter\View\ModelViewAttribute.cs" Link="View\ModelViewAttribute.cs" />
-    <Compile Include="..\ItemsFilter\View\MultiValueFilterView.cs" Link="View\MultiValueFilterView.cs" />
-    <Compile Include="..\ItemsFilter\View\RangeFilterView.cs" Link="View\RangeFilterView.cs" />
-    <Compile Include="..\ItemsFilter\View\StringFilterView.cs" Link="View\StringFilterView.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-    <Folder Include="Themes\" />
     <Folder Include="Model\" />
     <Folder Include="Initializer\" />
-    <Folder Include="Design\" />
     <Folder Include="View\Converters\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Include="..\ItemsFilter\Themes\Generic.xaml" Link="Themes\Generic.xaml">
+  <ItemGroup><!--<Page Include="..\ItemsFilter\Themes\Generic.xaml" Link="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Content Include="..\ItemsFilter\Themes\ItemsFilterStyle.xaml" Link="Themes\ItemsFilterStyle.xaml">
       <Generator></Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Content>-->
+  
+    <Page Remove="Themes\Generic.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
   </ItemGroup>
 
   <ItemGroup>

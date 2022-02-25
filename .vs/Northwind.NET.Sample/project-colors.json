@@ -35,12 +35,7 @@
       "ProjectGuid": "0fd5fb82-3b4f-4c3f-8e03-e2464422a170",
       "DisplayName": "Nortwind.Sample.net6",
       "ColorIndex": 5
-    },
-    "6619d8b7-515f-40a2-ba09-4dcb0966a35d": {
-      "ProjectGuid": "6619d8b7-515f-40a2-ba09-4dcb0966a35d",
-      "DisplayName": "Northwind.ViewModel.net6",
-      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 6
 }

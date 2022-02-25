@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Northwind.NET.Sample.ViewModel {
     public class CustomersTreeFilterInitializer : FilterInitializer {
 
-        public override Filter NewFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
+        public override Filter TrygetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
             if (key != null && key is string && filterPresenter.CollectionView.SourceCollection is CustomersTreeVm) {
                 return new CountriesTreeFilter((string)key);
             }
@@ -15,7 +15,7 @@ namespace Northwind.NET.Sample.ViewModel {
     }
     public class CityItemFilterInitializer : FilterInitializer {
 
-        public override Filter NewFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
+        public override Filter TrygetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
             if (key != null && key is string && filterPresenter.CollectionView.SourceCollection is IEnumerable<CityCustomersTreeItem>) {
                 return new CitiesTreeFilter((string)key);
             }
@@ -24,7 +24,7 @@ namespace Northwind.NET.Sample.ViewModel {
     }
     public class CustomerFilterInitializer : FilterInitializer {
 
-        public override Filter NewFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
+        public override Filter TrygetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
             if (key != null && key is string && filterPresenter.CollectionView.SourceCollection is IEnumerable<Customer>) {
                 return new CustomersTreeFilter((string)key);
             }
