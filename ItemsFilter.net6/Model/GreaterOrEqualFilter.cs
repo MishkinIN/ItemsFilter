@@ -5,10 +5,8 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using BolapanControl.ItemsFilter.View;
 using System;
 using System.ComponentModel;
-using System.Reflection;
 
 namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
@@ -16,8 +14,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// </summary>
     /// <typeparam name="T">IComparable structure.</typeparam>
     public class GreaterOrEqualFilter<T> : LessOrEqualFilter<T>, IComparableFilter<T>
-        where T : struct,  IComparable<T>
-    {
+        where T : struct, IComparable<T> {
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GreaterOrEqualFilter"/> class.
@@ -25,7 +22,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <param name="propertyInfo">The property info.</param>
         public GreaterOrEqualFilter(ItemPropertyInfo propertyInfo)
             : base(propertyInfo) {
-              base.Name = "Greater or equal:";
+            base.Name = "Greater or equal:";
         }
 
         /// <summary>
@@ -35,7 +32,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <param name="compareTo">The compare to initial value.</param>
         public GreaterOrEqualFilter(ItemPropertyInfo propertyInfo, T compareTo)
             : this(propertyInfo) {
-            base.CompareTo=  compareTo;
+            base.CompareTo = compareTo;
         }
 
         /// <summary>
@@ -68,6 +65,6 @@ namespace BolapanControl.ItemsFilter.Model {
 
         #endregion
 
-        
+
     }
 }

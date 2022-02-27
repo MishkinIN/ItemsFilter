@@ -5,13 +5,10 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using System.Collections.Generic;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
 using BolapanControl.ItemsFilter.Model;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace BolapanControl.ItemsFilter.View {
     /// <summary>
@@ -39,10 +36,10 @@ namespace BolapanControl.ItemsFilter.View {
         /// Create new instance of StringFilterView and accept IStringFilter model.
         /// </summary>
         /// <param name="model"></param>
-        public StringFilterView(object model){
+        public StringFilterView(object model) {
             base.Model = model as IStringFilter;
         }
-   
+
         /// <summary>
         /// Called when the control template is applied to this control
         /// </summary>

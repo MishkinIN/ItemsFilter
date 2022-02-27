@@ -6,11 +6,7 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using BolapanControl.ItemsFilter.Model;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace BolapanControl.ItemsFilter.Initializer {
     /// <summary>

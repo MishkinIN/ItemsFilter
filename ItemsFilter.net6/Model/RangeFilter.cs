@@ -8,8 +8,8 @@
 using BolapanControl.ItemsFilter.View;
 using System;
 using System.ComponentModel;
-using System.Reflection;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
@@ -18,33 +18,38 @@ namespace BolapanControl.ItemsFilter.Model {
     /// <typeparam name="T"></typeparam>
     [View(typeof(RangeFilterView))]
     public class RangeFilter<T> : Filter, IRangeFilter<T>
-        where T :struct, IComparable {
-        Func<object, T> getter;
+        where T : struct, IComparable {
+        private new readonly Func<object?, T?> getter;
         private T? _compareTo = null;
         private T? _compareFrom = null;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item values to compare.</param>
-        protected RangeFilter(Func<object?, T?> getter):base(getter) {
-            Debug.Assert(getter != null, "getter is null.");
+        protected RangeFilter(Func<object?, T?> getter) : base(o => getter(o)) {
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(getter, "getter is null.");
+#endif
             this.getter = getter;
+            base.Name = "In range:";
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RangeFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="propertyInfo">The property info.</param>
         public RangeFilter(ItemPropertyInfo propertyInfo)
-            : base() {
+            : base(((PropertyDescriptor)propertyInfo.Descriptor).GetValue) {
             //if (!typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType))
             //    throw new ArgumentOutOfRangeException("propertyInfo", "typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType) return False.");
-            Debug.Assert(propertyInfo != null, "propertyInfo is null.");
-            Debug.Assert(typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType), "The typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType) return False.");
-            base.PropertyInfo = propertyInfo;
-            Func<object, object> getterItem = ((PropertyDescriptor)(PropertyInfo.Descriptor)).GetValue;
-            getter = t => ((T)getterItem(t));
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(typeof(T).IsAssignableFrom(propertyInfo.PropertyType), "The typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType) return False.");
+
+#endif            
+            //base.PropertyInfo = propertyInfo;
+            getter = t => (T?)((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue(t);
             base.Name = "In range:";
         }
 
@@ -56,17 +61,16 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <param name="CompareTo">Maximum value.</param>
         public RangeFilter(ItemPropertyInfo propertyInfo, T CompareFrom, T CompareTo)
             : this(propertyInfo) {
-                _compareTo = CompareTo;
+            _compareTo = CompareTo;
             _compareFrom = CompareFrom;
-            RefreshIsActive(); 
+            RefreshIsActive();
         }
 
         /// <summary>
         /// Get or set the minimum value used in the comparison. 
         /// If CompareFrom and CompareTo is null, filter deactivated.
         /// </summary>
-        public T? CompareFrom
-        {
+        public T? CompareFrom {
             get {
                 return _compareFrom;
             }
@@ -75,25 +79,22 @@ namespace BolapanControl.ItemsFilter.Model {
                     _compareFrom = value;
                     RefreshIsActive();
                     OnIsActiveChanged();
-                    RaisePropertyChanged("CompareFrom");
-                 }
+                    RaisePropertyChanged(nameof(CompareFrom));
+                }
             }
         }
         /// <summary>
         /// Get or set the maximum value used in the comparison.  
         /// If CompareFrom and CompareTo is null, filter deactivated.
         /// </summary>
-        public T? CompareTo
-        {
+        public T? CompareTo {
             get { return _compareTo; }
-            set
-            {
-                if (!Object.Equals(_compareTo, value))
-                {
+            set {
+                if (!Object.Equals(_compareTo, value)) {
                     _compareTo = value;
-                    RefreshIsActive(); 
+                    RefreshIsActive();
                     OnIsActiveChanged();
-                    RaisePropertyChanged("CompareTo");
+                    RaisePropertyChanged(nameof(CompareTo));
                 }
             }
         }
@@ -113,37 +114,31 @@ namespace BolapanControl.ItemsFilter.Model {
         /// </summary>
         public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
             if (e.Accepted) {
-                if (e.Item == null)
-                    e.Accepted = false;
+                if (e.Item != null && getter(e.Item) is T value)
+                    e.Accepted = (!_compareFrom.HasValue || value.CompareTo(_compareFrom) >= 0)
+                        && (!_compareTo.HasValue || value.CompareTo(_compareTo) <= 0);
                 else {
-                    T value = getter(e.Item);
-                    e.Accepted = (Object.ReferenceEquals(_compareFrom, null)| value.CompareTo(_compareFrom) >= 0)
-                        && (Object.ReferenceEquals(_compareTo, null) | value.CompareTo(_compareTo) <= 0);
+                    e.Accepted = false;
                 }
             }
         }
-        private void RefreshIsActive()
-        {
-            base.IsActive = !(Object.ReferenceEquals(_compareFrom, null) && Object.ReferenceEquals(_compareTo, null));
+        private void RefreshIsActive() {
+            base.IsActive = _compareFrom.HasValue || _compareTo.HasValue;
 
         }
 
-        
+
         #region IRangeFilter Members
 
-        object IRangeFilter.CompareFrom {
-            get {
-                return CompareFrom;
-            }
+        object? IRangeFilter.CompareFrom {
+            get => CompareFrom;
             set {
-                CompareFrom=(T?)value;
+                CompareFrom = (T?)value;
             }
         }
 
-        object IRangeFilter.CompareTo {
-            get {
-                return CompareFrom;
-            }
+        object? IRangeFilter.CompareTo {
+            get => CompareFrom;
             set {
                 CompareFrom = (T?)value;
             }

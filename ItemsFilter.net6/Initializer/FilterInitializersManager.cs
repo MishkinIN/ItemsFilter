@@ -7,22 +7,18 @@
 // ****************************************************************************
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Markup;
 
 namespace BolapanControl.ItemsFilter.Initializer {
     /// <summary>
     /// Define a class that represent set of filter initializers.
     /// </summary>
-    public  class FilterInitializersManager : List<FilterInitializer>, IList<FilterInitializer>,IEnumerable<FilterInitializer> {
-        private static Lazy<FilterInitializersManager> _lzdefault = new Lazy<FilterInitializersManager>(GetDefaults);
+    public class FilterInitializersManager : List<FilterInitializer>, IList<FilterInitializer>, IEnumerable<FilterInitializer> {
+        private static readonly Lazy<FilterInitializersManager> _lzdefault = new Lazy<FilterInitializersManager>(GetDefaults);
         /// <summary>
         /// Represent default instance of FilterInitializersManager that include common used initializers.
         /// </summary>
         public static IEnumerable<FilterInitializer> Default {
-            get{
+            get {
                 return _lzdefault.Value;
             }
         }
@@ -48,9 +44,9 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <param name="initializers">Enumerable of IFilterInitializer to add.</param>
         public FilterInitializersManager(IEnumerable<FilterInitializer> initializers)
             : base() {
-                foreach (var item in initializers) {
-                    Add(item);
-                }
+            foreach (var item in initializers) {
+                Add(item);
+            }
         }
     }
 }

@@ -5,23 +5,17 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
-namespace BolapanControl.ItemsFilter.Model
-{
+namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
     /// Base class for filter that use property of item.
     /// </summary>
     public abstract class PropertyFilter : Filter/*, IPropertyFilter*/
     {
-        private ItemPropertyInfo _propertyInfo;
-        protected PropertyFilter(ItemPropertyInfo propertyInfo): base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
-            _propertyInfo= propertyInfo;
+        private readonly ItemPropertyInfo _propertyInfo;
+        protected PropertyFilter(ItemPropertyInfo propertyInfo) : base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
+            _propertyInfo = propertyInfo;
         }
         ///// <summary>
         ///// Gets the property info whose property name is filtered.

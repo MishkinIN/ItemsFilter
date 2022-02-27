@@ -5,11 +5,9 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using System;
-using System.Linq;
-using System.ComponentModel;
 using BolapanControl.ItemsFilter.Model;
-using System.Diagnostics;
+using System;
+using System.ComponentModel;
 
 namespace BolapanControl.ItemsFilter.Initializer {
     /// <summary>
@@ -26,17 +24,16 @@ namespace BolapanControl.ItemsFilter.Initializer {
         protected override PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo); 
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
 #endif
 
             Type propertyType = propertyInfo.PropertyType;
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
                 && typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType)
                 && propertyInfo.PropertyType != typeof(String)
-                && propertyInfo.PropertyType!= typeof(bool)
+                && propertyInfo.PropertyType != typeof(bool)
                 && !propertyType.IsEnum
-                )
-            {
+                ) {
                 return Activator.CreateInstance(typeof(LessOrEqualFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as PropertyFilter;
             }
             return null;

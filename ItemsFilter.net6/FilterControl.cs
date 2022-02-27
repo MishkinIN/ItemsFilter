@@ -11,11 +11,7 @@ using BolapanControl.ItemsFilter.View;
 using BolapanControl.ItemsFilter.ViewModel;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -62,7 +58,7 @@ namespace BolapanControl.ItemsFilter {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FilterControl),
                 new FrameworkPropertyMetadata(typeof(FilterControl)));
         }
-        private bool isLoaded=false;
+        private bool isLoaded = false;
 
         /// <summary>
         /// Instance of FilterPresenter that attached to FilterControl.
@@ -292,7 +288,7 @@ namespace BolapanControl.ItemsFilter {
         //     Specified item.
         protected override void PrepareContainerForItemOverride(DependencyObject container, object item) {
             base.PrepareContainerForItemOverride(container, item);
-            if (item != null && container is ContentPresenter) {
+            if (item != null && container is ContentPresenter presenter) {
                 Type itemType = item.GetType();
                 object[] viewAttr = itemType.GetCustomAttributes(typeof(ViewAttribute), true);
                 if (viewAttr.Length > 0) {
@@ -311,7 +307,7 @@ namespace BolapanControl.ItemsFilter {
                             else {
                                 view = Activator.CreateInstance(viewType, item) as UIElement;
                             }
-                            ((ContentPresenter)container).Content = view ?? new Control();
+                            presenter.Content = view ?? new Control();
                         }
                     }
                     catch (Exception ex) {

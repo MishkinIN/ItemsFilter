@@ -6,10 +6,8 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using BolapanControl.ItemsFilter.Model;
-using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace BolapanControl.ItemsFilter.View {
@@ -19,7 +17,7 @@ namespace BolapanControl.ItemsFilter.View {
     [ModelView]
     [TemplatePart(Name = PART_Input, Type = typeof(TextBox))]
     public class ComparableFilterView : FilterViewBase<IComparableFilter> {
-        const string PART_Input = "PART_Input";
+        private const string PART_Input = "PART_Input";
         static ComparableFilterView() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ComparableFilterView),
                 new FrameworkPropertyMetadata(typeof(ComparableFilterView)));

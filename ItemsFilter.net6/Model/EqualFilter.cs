@@ -8,7 +8,6 @@
 using BolapanControl.ItemsFilter.View;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -21,11 +20,11 @@ namespace BolapanControl.ItemsFilter.Model {
     public abstract class EqualFilter : Filter, IMultiValueFilter, IFilter {
         private readonly ObservableCollection<object> selectedValues;
         private readonly ReadOnlyObservableCollection<object> _selectedValues;
-        
+
         /// <summary>
         /// Initialize new instance of EqualFilter from deriver class.
         /// </summary>
-        protected EqualFilter(Func<object?, object?> getter) :base(getter) {
+        protected EqualFilter(Func<object?, object?> getter) : base(getter) {
             selectedValues = new ObservableCollection<object>();
             _selectedValues = new ReadOnlyObservableCollection<object>(selectedValues);
             base.Name = "Equal:";
@@ -68,16 +67,15 @@ namespace BolapanControl.ItemsFilter.Model {
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class EqualFilter<T> : EqualFilter, IMultiValueFilter
-        where T:IEquatable<T>
-        {
-        IEnumerable availableValues;
-        
+        where T : IEquatable<T> {
+        private IEnumerable availableValues;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item values to compare.</param>
-        protected EqualFilter(Func<object?, object?> getter):base(getter) {
+        protected EqualFilter(Func<object?, object?> getter) : base(getter) {
             //this.getter = getter;
             availableValues = Array.Empty<object>();
         }
@@ -134,7 +132,7 @@ namespace BolapanControl.ItemsFilter.Model {
                 if (value == null)
                     e.Accepted = false;
                 else
-                    e.Accepted = SelectedValues.Any(val=>val.Equals(value));
+                    e.Accepted = SelectedValues.Any(val => val.Equals(value));
             }
         }
     }

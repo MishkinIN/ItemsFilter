@@ -11,12 +11,11 @@ namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
     /// Defines the contract for a range filter.
     /// </summary>
-    public interface IRangeFilter : IFilter
-    {
+    public interface IRangeFilter : IFilter {
         /// <summary>
         /// Gets or sets the minimum value.
         /// </summary>
-        object CompareFrom {
+        object? CompareFrom {
             get;
             set;
         }
@@ -24,7 +23,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <summary>
         /// Gets or sets the maximum value.
         /// </summary>
-        object CompareTo {
+        object? CompareTo {
             get;
             set;
         }
@@ -35,7 +34,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// </summary>
     /// <typeparam name="T">Comparable value Type.</typeparam>
     public interface IRangeFilter<T> : IRangeFilter//, INotifyPropertyChanged
-        where T :struct, IComparable {
+        where T : struct, IComparable {
         /// <summary>
         /// Gets or sets the minimum value.
         /// </summary>

@@ -7,17 +7,13 @@
 // ****************************************************************************
 using BolapanControl.ItemsFilter.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Data;
 
 namespace BolapanControl.ItemsFilter.View {
     [ValueConversion(typeof(System.Windows.Visibility), typeof(FilterControlVm))]
     public class FilterControlVmToVisibilityConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
-            if (value is FilterControlVm) {
-                FilterControlVm vm = (FilterControlVm)value;
+            if (value is FilterControlVm vm) {
                 return vm.IsEnable ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
             }
             else

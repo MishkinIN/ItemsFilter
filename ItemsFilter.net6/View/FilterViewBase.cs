@@ -5,11 +5,10 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
+using BolapanControl.ItemsFilter.Model;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using BolapanControl.ItemsFilter.Model;
 using System.Windows.Input;
 
 namespace BolapanControl.ItemsFilter.View {
@@ -19,8 +18,7 @@ namespace BolapanControl.ItemsFilter.View {
     /// <typeparam name="T"></typeparam>
     [TemplatePart(Name = FilterViewBase<T>.PART_Name, Type = typeof(TextBlock))]
     public abstract class FilterViewBase<T> : Control, IFilterView
-        where T:IFilter
-    {
+        where T : IFilter {
         public const string PART_Name = "PART_Name";
 
         static FilterViewBase() {
@@ -53,14 +51,13 @@ namespace BolapanControl.ItemsFilter.View {
         /// </summary>
         public static readonly DependencyProperty ModelProperty =
             DependencyProperty.Register("Model", typeof(T), typeof(FilterViewBase<T>),
-                new FrameworkPropertyMetadata(default(T),  
+                new FrameworkPropertyMetadata(default(T),
                     new PropertyChangedCallback(OnModelChanged)));
 
         /// <summary>
         /// Gets or sets the VievModel.
         /// </summary>
-        public T? Model
-        {
+        public T? Model {
             get { return (T)GetValue(ModelProperty); }
             set { SetValue(ModelProperty, value); }
         }
@@ -68,8 +65,7 @@ namespace BolapanControl.ItemsFilter.View {
         /// <summary>
         /// Handles changes to the VievModel.
         /// </summary>
-        private static void OnModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
+        private static void OnModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             FilterViewBase<T> target = (FilterViewBase<T>)d;
             T oldModel = (T)e.OldValue;
             T newModel = (T)e.NewValue;
@@ -79,13 +75,12 @@ namespace BolapanControl.ItemsFilter.View {
         /// <summary>
         /// Provides derived classes an opportunity to handle changes to the Model property.
         /// </summary>
-        protected virtual void OnModelChanged(T oldModel, T newModel)
-        {
+        protected virtual void OnModelChanged(T oldModel, T newModel) {
         }
 
         #endregion
 
-     
+
         IFilter? IFilterView.Model {
             get { return Model; }
         }
@@ -103,14 +98,13 @@ namespace BolapanControl.ItemsFilter.View {
         /// </summary>
         private void InitializeBindings() {
             if (_txtName != null) {
-                _txtName.SetBinding(TextBlock.TextProperty, new Binding("Model.Name")
-                {
+                _txtName.SetBinding(TextBlock.TextProperty, new Binding("Model.Name") {
                     Mode = BindingMode.OneWay,
                     Source = this,
                 });
             }
         }
-       
+
 
     }
 }

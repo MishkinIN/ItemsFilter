@@ -5,9 +5,6 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using BolapanControl.ItemsFilter.ViewModel;
-using System;
-using System.ComponentModel;
 
 namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
@@ -27,5 +24,5 @@ namespace BolapanControl.ItemsFilter.Model {
         /// </summary>
         void IsMatch(FilterPresenter sender, FilterEventArgs e);
     }
-    
+
 }

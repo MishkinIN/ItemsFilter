@@ -5,10 +5,6 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -31,7 +27,7 @@ namespace BolapanControl.ItemsFilter {
             Show = new RoutedUICommand("Show QuickFilter menu.", "Show", typeof(FilterCommand));
             Show.InputGestures.Add(new KeyGesture(Key.F, ModifierKeys.Control | ModifierKeys.Alt));
             Clear = new RoutedUICommand("Clear filter.", "Clear", typeof(FilterCommand));
- 
+
         }
         /// <summary>
         /// Seek first parent of type T in visual tree.

@@ -6,40 +6,29 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using BolapanControl.ItemsFilter.Model;
-#if DEBUG
-using Microsoft.VisualStudio.TestTools.UnitTesting; 
-#endif
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
-namespace BolapanControl.ItemsFilter.Initializer
-{
+namespace BolapanControl.ItemsFilter.Initializer {
     /// <summary>
     /// Filter initializer for EnumFilter.
     /// </summary>
-    public class EnumFilterInitializer:PropertyFilterInitializer
-    {
+    public class EnumFilterInitializer : PropertyFilterInitializer {
         /// <summary>
         /// Generate new instance of EnumFilter class, if it is possible for a pair of filterPresenter and propertyInfo.
         /// </summary>
         /// <param name="filterPresenter">FilterPresenter, which can be attached Filter</param>
         /// <param name="key">Key, used as the name for binding property in filterPresenter.Parent collection.</param>
         /// <returns>Instance of EnumFilter class or null.</returns>
-        protected override PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo)
-        {
+        protected override PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
 #if DEBUG
-            Assert.IsNotNull(filterPresenter);
-            Assert.IsNotNull(propertyInfo); 
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
 #endif
             Type propertyType = propertyInfo.PropertyType;
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
                 && propertyType.IsEnum
-                )
-            {
+                ) {
                 return Activator.CreateInstance(typeof(EnumFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as PropertyFilter;
             }
             return null;

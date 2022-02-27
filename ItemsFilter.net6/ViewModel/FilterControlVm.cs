@@ -7,11 +7,8 @@
 // ****************************************************************************
 using BolapanControl.ItemsFilter.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
 namespace BolapanControl.ItemsFilter.ViewModel {
     public delegate void FilterControlStateChangedEventHandler(FilterControlVm sender, FilterControl.State newValue);
@@ -22,32 +19,27 @@ namespace BolapanControl.ItemsFilter.ViewModel {
     /// prepares a model for FilterControl, as IEnumerable&lt;Filter&gt;, where each Filter instance bound to FilterControlVm for the transmission of changes.
     /// Usually, instance of FilterControlVm created by FilterControl when it need this and disposed on raise Unload event.
     /// </summary>
-    public class FilterControlVm:ObservableCollection<Filter>,IDisposable {
+    public class FilterControlVm : ObservableCollection<Filter>, IDisposable {
         private static readonly Lazy<FilterControlVm> lzEmpty = new(() => new EmptyFilterControlVm());
         public static FilterControlVm Empty { get => lzEmpty.Value; }
-        private readonly object lockFlag=new();
+        private readonly object lockFlag = new();
         private bool isDisposed = false;
         private bool isActive = false;
         private bool isOpen = false;
-        private bool isEnable=false;
+        private bool isEnable = false;
         private FilterControl.State state = FilterControl.State.Enable;
         internal FilterControlVm() { }
         /// <summary>
         /// Get FilterControl state.
         /// </summary>
-        public FilterControl.State State
-        {
+        public FilterControl.State State {
             get { return state; }
-            private set
-            {
-                if (state != value)
-                {
+            private set {
+                if (state != value) {
                     state = value;
                     var handler = StateChanged;
-                    if (handler != null)
-                    {
-                        lock (handler)
-                        {
+                    if (handler != null) {
+                        lock (handler) {
                             handler(this, state);
                         }
                     };
@@ -99,11 +91,11 @@ namespace BolapanControl.ItemsFilter.ViewModel {
             set {
                 if (isActive != value) {
                     isActive = value;
-                     if (value)
-                         State |= FilterControl.State.Active;
+                    if (value)
+                        State |= FilterControl.State.Active;
                     else
-                         State &= ~FilterControl.State.Active;
-                   OnPropertyChanged(new PropertyChangedEventArgs(nameof(IsActive)));
+                        State &= ~FilterControl.State.Active;
+                    OnPropertyChanged(new PropertyChangedEventArgs(nameof(IsActive)));
                 }
             }
         }
@@ -125,8 +117,7 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         //
         //   item:
         //     The object to insert.
-        protected override void InsertItem(int index, Filter filter)
-        {
+        protected override void InsertItem(int index, Filter filter) {
             if (!isDisposed) {
                 base.InsertItem(index, filter);
                 filter.Attach(this);
@@ -136,10 +127,8 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         //
         // Summary:
         //    Detach FilterControlVm from all filters and remove all filters from collection.
-        protected override void ClearItems()
-        {
-            foreach (var item in base.Items)
-            {
+        protected override void ClearItems() {
+            foreach (var item in base.Items) {
                 item.Detach(this);
             }
             RaiseFilterChanged();
@@ -156,8 +145,7 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         //
         //   item:
         //     The new value for the element at the specified index.
-        protected override void SetItem(int index, Filter filter)
-        {
+        protected override void SetItem(int index, Filter filter) {
             if (!isDisposed) {
                 base[index].Detach(this);
                 base.SetItem(index, filter);
@@ -175,10 +163,9 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         //
         //   newIndex:
         //     The zero-based index specifying the new location of the item.
-        protected override void MoveItem(int oldIndex, int newIndex)
-        {
+        protected override void MoveItem(int oldIndex, int newIndex) {
             if (!isDisposed) {
-                base.MoveItem(oldIndex, newIndex); 
+                base.MoveItem(oldIndex, newIndex);
             }
         }
         //
@@ -188,8 +175,7 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         // Parameters:
         //   index:
         //     The zero-based index of the element to remove.
-        protected override void RemoveItem(int index)
-        {
+        protected override void RemoveItem(int index) {
             if (!isDisposed) {
                 base[index].Detach(this);
                 base.RemoveItem(index);

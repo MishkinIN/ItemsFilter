@@ -5,9 +5,7 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using System;
-namespace BolapanControl.ItemsFilter.Model
-{
+namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
     /// Defines the contract for a string filter.
     /// </summary>
@@ -20,6 +18,6 @@ namespace BolapanControl.ItemsFilter.Model
         /// <summary>
         /// Gets or sets the value to look for.
         /// </summary>
-        string Value { get; set; }
+        string? Value { get; set; }
     }
 }

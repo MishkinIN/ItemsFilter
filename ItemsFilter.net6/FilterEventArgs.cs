@@ -6,16 +6,13 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BolapanControl.ItemsFilter {
     /// <summary>
     /// Provides information and event data that is associated with the BolapanControl.ItemsFilter.FilterPresenter.Filter event.
     /// </summary>
     public class FilterEventArgs : EventArgs {
-        private object item;
+        private readonly object item;
 
         internal FilterEventArgs(object item) {
             this.item = item;

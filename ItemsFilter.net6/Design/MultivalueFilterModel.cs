@@ -6,16 +6,12 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using BolapanControl.ItemsFilter.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 
 namespace BolapanControl.ItemsFilter.Design {
-    class MultiValueFilterModel : IMultiValueFilter {
+    internal class MultiValueFilterModel : IMultiValueFilter {
 
-        private string[] values;
+        private readonly string[] values;
         private readonly ObservableCollection<object> selectedValues;
         public MultiValueFilterModel() {
             values = new string[]{

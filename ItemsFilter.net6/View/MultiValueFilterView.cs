@@ -12,17 +12,15 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace BolapanControl.ItemsFilter.View
-{
+namespace BolapanControl.ItemsFilter.View {
     /// <summary>
     /// Defile View control for IMultiValueFilter model.
     /// </summary>
     [ModelView]
     [TemplatePart(Name = MultiValueFilterView.PART_ItemsTemplateName, Type = typeof(ListBox))]
-    public class MultiValueFilterView : FilterViewBase<IMultiValueFilter>
-    {
-          public const string PART_ItemsTemplateName = "PART_Items";
-         static MultiValueFilterView() {
+    public class MultiValueFilterView : FilterViewBase<IMultiValueFilter> {
+        public const string PART_ItemsTemplateName = "PART_Items";
+        static MultiValueFilterView() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MultiValueFilterView),
                 new FrameworkPropertyMetadata(typeof(MultiValueFilterView)));
         }
@@ -31,8 +29,7 @@ namespace BolapanControl.ItemsFilter.View
         /// <summary>
         /// Create new instance of MultiValueFilterView;
         /// </summary>
-        public MultiValueFilterView()
-        {
+        public MultiValueFilterView() {
             this.Unloaded += MultiValueFilterView_Unloaded;
             this.Loaded += MultiValueFilterView_Loaded;
         }
@@ -40,40 +37,34 @@ namespace BolapanControl.ItemsFilter.View
         /// Create new instance of MultiValueFilterView and accept model.
         /// </summary>
         /// <param name="model">IMultiValueFilter model</param>
-        public MultiValueFilterView(object model):this()
-        {
+        public MultiValueFilterView(object model) : this() {
             base.Model = model as IMultiValueFilter;
         }
 
         /// <summary>
         /// Provides derived classes an opportunity to handle changes to the Model property.
         /// </summary>
-        protected override void OnModelChanged(IMultiValueFilter oldModel, IMultiValueFilter newModel)
-        {
+        protected override void OnModelChanged(IMultiValueFilter oldModel, IMultiValueFilter newModel) {
             DetachModel(_itemsCtrl, oldModel);
             AttachModel(_itemsCtrl, newModel);
         }
         /// <summary>
         /// When overridden in a derived class, is invoked whenever application code or internal processes (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
         /// </summary>
-        public override void OnApplyTemplate()
-        {
+        public override void OnApplyTemplate() {
             DetachModel(_itemsCtrl, Model);
             base.OnApplyTemplate();
             _itemsCtrl = GetTemplateChild(MultiValueFilterView.PART_ItemsTemplateName) as ListBox;
-            AttachModel(_itemsCtrl, Model); 
-        }
-        private void MultiValueFilterView_Loaded(object sender, RoutedEventArgs e)
-        {
             AttachModel(_itemsCtrl, Model);
         }
-        private void MultiValueFilterView_Unloaded(object sender, RoutedEventArgs e)
-        {
+        private void MultiValueFilterView_Loaded(object sender, RoutedEventArgs e) {
+            AttachModel(_itemsCtrl, Model);
+        }
+        private void MultiValueFilterView_Unloaded(object sender, RoutedEventArgs e) {
             DetachModel(_itemsCtrl, Model);
         }
-        private void AttachModel(ListBox itemsCtrl, IMultiValueFilter newModel)
-        {
-            if (!isModelAttached && _itemsCtrl != null && newModel != null)  {
+        private void AttachModel(ListBox itemsCtrl, IMultiValueFilter newModel) {
+            if (!isModelAttached && _itemsCtrl != null && newModel != null) {
                 if (DesignerProperties.GetIsInDesignMode(this)) {
                     var enumerator = newModel.AvailableValues.GetEnumerator();
                     if (enumerator.MoveNext())
@@ -82,8 +73,7 @@ namespace BolapanControl.ItemsFilter.View
                 }
                 IList selectedItems = _itemsCtrl.SelectedItems;
                 selectedItems.Clear();
-                foreach (var item in newModel.SelectedValues)
-                {
+                foreach (var item in newModel.SelectedValues) {
                     selectedItems.Add(item);
                 }
                 _itemsCtrl.SelectionChanged += newModel.SelectedValuesChanged;
@@ -92,8 +82,7 @@ namespace BolapanControl.ItemsFilter.View
                 isModelAttached = true;
             }
         }
-        private void MultiValueFilterView_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
+        private void MultiValueFilterView_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
             _itemsCtrl.SelectionChanged -= Model.SelectedValuesChanged;
             if (e.Action == NotifyCollectionChangedAction.Reset) {
                 _itemsCtrl.SelectedItems.Clear();
@@ -116,10 +105,8 @@ namespace BolapanControl.ItemsFilter.View
             }
             _itemsCtrl.SelectionChanged += Model.SelectedValuesChanged;
         }
-        private void DetachModel(ListBox itemsCtrl, IMultiValueFilter oldModel)
-        {
-            if (isModelAttached && _itemsCtrl != null && oldModel != null)
-            {
+        private void DetachModel(ListBox itemsCtrl, IMultiValueFilter oldModel) {
+            if (isModelAttached && _itemsCtrl != null && oldModel != null) {
                 ((INotifyCollectionChanged)(oldModel.SelectedValues)).CollectionChanged -= MultiValueFilterView_CollectionChanged;
                 _itemsCtrl.SelectionChanged -= oldModel.SelectedValuesChanged;
                 isModelAttached = false;

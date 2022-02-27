@@ -5,9 +5,9 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
+using BolapanControl.ItemsFilter.Model;
 using System;
 using System.ComponentModel;
-using BolapanControl.ItemsFilter.Model;
 using System.Diagnostics;
 
 namespace BolapanControl.ItemsFilter.Initializer {
@@ -28,8 +28,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
                 && propertyType != typeof(String)
                 && propertyType != typeof(bool)
                 && !propertyType.IsEnum
-                )
-            {
+                ) {
                 return (PropertyFilter)Activator.CreateInstance(typeof(RangeFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo);
             }
             return null;

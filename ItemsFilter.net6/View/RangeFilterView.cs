@@ -6,10 +6,8 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using BolapanControl.ItemsFilter.Model;
-using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace BolapanControl.ItemsFilter.View {
@@ -18,11 +16,10 @@ namespace BolapanControl.ItemsFilter.View {
     /// </summary>
     [ModelView]
     [TemplatePart(Name = PART_From, Type = typeof(TextBox))]
-    [TemplatePart(Name=PART_To,Type=typeof(TextBox))]
-    public class RangeFilterView : FilterViewBase<IRangeFilter>
-    {
-        const string PART_From = "PART_From";
-        const string PART_To = "PART_To";
+    [TemplatePart(Name = PART_To, Type = typeof(TextBox))]
+    public class RangeFilterView : FilterViewBase<IRangeFilter> {
+        private const string PART_From = "PART_From";
+        private const string PART_To = "PART_To";
         static RangeFilterView() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RangeFilterView),
                 new FrameworkPropertyMetadata(typeof(RangeFilterView)));
@@ -32,14 +29,13 @@ namespace BolapanControl.ItemsFilter.View {
         /// <summary>
         /// Initializes a new instance of the <see cref="RangeFilterView"/> class.
         /// </summary>
-        public RangeFilterView():base() {
+        public RangeFilterView() : base() {
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="RangeFilterView"/> class and accept model.
         /// </summary>
         /// <param name="model">IRangeFilter model</param>
-        public RangeFilterView(object model)
-        {
+        public RangeFilterView(object model) {
             base.Model = model as IRangeFilter;
         }
 

@@ -7,7 +7,7 @@
 // ****************************************************************************
 
 namespace BolapanControl.ItemsFilter.Model {
-    
+
     /// <summary>
     /// String filter compare mode.
     /// </summary>

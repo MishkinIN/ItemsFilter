@@ -5,25 +5,18 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
-namespace BolapanControl.ItemsFilter.Model
-{
+namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
     /// Defines the contract for Property filter.
     /// </summary>
-    public interface IPropertyFilter : IFilter
-    {
+    public interface IPropertyFilter : IFilter {
         /// <summary>
         /// Gets the property info that use to get property value from item.
         /// </summary>
         /// <value>The property info.</value>
-        ItemPropertyInfo PropertyInfo
-        {
+        ItemPropertyInfo PropertyInfo {
             get;
         }
     }

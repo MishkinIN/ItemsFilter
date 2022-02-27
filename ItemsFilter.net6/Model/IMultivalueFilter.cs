@@ -6,7 +6,6 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace BolapanControl.ItemsFilter.Model {
@@ -26,6 +25,6 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Receive SelectionChanged event for synchronize the collection SelectedValues.
         /// </summary>
         void SelectedValuesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e);
-        
+
     }
 }

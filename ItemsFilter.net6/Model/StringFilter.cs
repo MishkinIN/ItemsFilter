@@ -16,19 +16,17 @@ namespace BolapanControl.ItemsFilter.Model {
     /// Defines a string filter 
     /// </summary>
     [View(typeof(StringFilterView))]
-    public class StringFilter : PropertyFilter, IStringFilter{
-
-        Func<object, string> getter;
-        private StringFilterMode _filterMode=StringFilterMode.Contains;
-        private string _value;
+    public class StringFilter : Filter, IStringFilter {
+        //private readonly Func<object?, string?> getter;
+        private StringFilterMode _filterMode = StringFilterMode.Contains;
+        private string? _value;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StringFilter"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item string value to compare.</param>
-        protected StringFilter(Func<object, string> getter) {
-            Debug.Assert(getter != null, "getter is null.");
-            this.getter = getter;
+        protected StringFilter(Func<object?, string?> getter) : base(getter) {
+            //this.getter = getter;
         }
 
         /// <summary>
@@ -37,15 +35,17 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <param name="propertyInfo">The property info.</param>
         /// <param name="filterMode">The filter mode.</param>
         public StringFilter(ItemPropertyInfo propertyInfo, StringFilterMode filterMode = StringFilterMode.Contains)
-            : base() {
+            : base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
             //if (!typeof(string).IsAssignableFrom(propertyInfo.PropertyType))
             //    throw new ArgumentOutOfRangeException("propertyInfo", "typeof(string).IsAssignableFrom(propertyInfo.PropertyType) return False.");
-            Debug.Assert(propertyInfo != null, "propertyInfo is null.");
-            Debug.Assert(typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType), "The typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType) return False.");
-            base.PropertyInfo = propertyInfo;
+            //Debug.Assert(propertyInfo != null, "propertyInfo is null.");
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType));
+#endif
+            //base.PropertyInfo = propertyInfo;
             _filterMode = filterMode;
-            Func<object, object> getterItem = ((PropertyDescriptor)(PropertyInfo.Descriptor)).GetValue;
-            this.getter = t => ((string)(getterItem(t)));
+            //Func<object, object> getterItem = ((PropertyDescriptor)(PropertyInfo.Descriptor)).GetValue;
+            //this.getter = t => ((string)(getterItem(t)));
             base.Name = "String";
         }
 
@@ -70,10 +70,10 @@ namespace BolapanControl.ItemsFilter.Model {
                 return _filterMode;
             }
             set {
-                if (_filterMode!=value) {
+                if (_filterMode != value) {
                     _filterMode = value;
                     OnIsActiveChanged();
-                    RaisePropertyChanged("Mode");
+                    RaisePropertyChanged(nameof(Mode));
                 }
             }
         }
@@ -82,16 +82,16 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Gets or sets the value to look for.
         /// </summary>
         /// <value>The value.</value>
-        public string Value {
+        public string? Value {
             get {
                 return _value;
             }
             set {
                 if (_value != value) {
                     _value = value;
-                    base.IsActive = !String.IsNullOrEmpty(value);
+                    base.IsActive = !string.IsNullOrEmpty(value);
                     OnIsActiveChanged();
-                    RaisePropertyChanged("Value");
+                    RaisePropertyChanged(nameof(Value));
                 }
             }
         }
@@ -100,7 +100,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// </summary>
         protected override void OnIsActiveChanged() {
             if (!IsActive)
-                Value = null;
+                Value = string.Empty;
             base.OnIsActiveChanged();
         }
 
@@ -108,27 +108,19 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Determines whether the specified target is a match.
         /// </summary>
         public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
-            if (e.Accepted) {
-                if (e.Item == null)
-                    e.Accepted = false;
+            if (e.Accepted & !string.IsNullOrEmpty(_value)) {
+                string? toCompare = getter(e.Item)?.ToString();
+                if (!string.IsNullOrEmpty(toCompare))
+#pragma warning disable CS8604 // Possible null reference argument.
+                    e.Accepted = _filterMode switch {
+                        StringFilterMode.Contains => toCompare.Contains(_value),
+                        StringFilterMode.StartsWith => toCompare.StartsWith(_value),
+                        StringFilterMode.EndsWith => toCompare.EndsWith(_value),
+                        _ => toCompare.Equals(_value),
+                    };
+#pragma warning restore CS8604 // Possible null reference argument.
                 else {
-                    string toCompare = getter(e.Item);
-                    if (String.IsNullOrEmpty(toCompare))
-                        e.Accepted = false;
-                    else switch (_filterMode) {
-                        case StringFilterMode.Contains:
-                            e.Accepted = toCompare.Contains(_value);
-                            break;
-                        case StringFilterMode.StartsWith:
-                            e.Accepted = toCompare.StartsWith(_value);
-                            break;
-                        case StringFilterMode.EndsWith:
-                            e.Accepted = toCompare.EndsWith(_value);
-                            break;
-                        default:
-                            e.Accepted = toCompare.Equals(_value);
-                            break;
-                    }
+                    e.Accepted = false;
                 }
             }
         }

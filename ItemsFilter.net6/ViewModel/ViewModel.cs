@@ -6,18 +6,16 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace BolapanControl.ItemsFilter.ViewModel {
     /// <summary>
     /// Provide INotifyPropertyChanged implementation for derived class.
     /// </summary>
-    public class ViewModel:INotifyPropertyChanged {
-        
+    public class ViewModel : INotifyPropertyChanged {
+
         #region Члены INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -44,22 +42,18 @@ namespace BolapanControl.ItemsFilter.ViewModel {
             if (!string.IsNullOrEmpty(propertyName)
                 && myType.GetProperty(propertyName) == null) {
 #if !SILVERLIGHT
-                var descriptor = this as ICustomTypeDescriptor;
 
-                if (descriptor != null) {
+                if (this is ICustomTypeDescriptor descriptor) {
                     if (descriptor.GetProperties()
                         .Cast<PropertyDescriptor>()
                         .Any(property => property.Name == propertyName)) {
                         return;
                     }
                 }
-#endif
-
                 throw new ArgumentException("Property not found", propertyName);
             }
 #endif
         }
-        #endregion
-   
+
     }
 }

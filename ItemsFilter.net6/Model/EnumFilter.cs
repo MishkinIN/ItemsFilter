@@ -5,15 +5,9 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using BolapanControl.ItemsFilter.View;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
@@ -21,13 +15,11 @@ namespace BolapanControl.ItemsFilter.Model {
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class EnumFilter<T> : EqualFilter<T>, IMultiValueFilter
-        where T: Enum, IEquatable<T> 
-        {
+        where T : Enum, IEquatable<T> {
         private static readonly Lazy<IEnumerable> lz_enumValues = new(() => {
             Type enumType = typeof(T);
-                return enumType.GetEnumValues();
+            return enumType.GetEnumValues();
         });
-        Array? allValues;
         /// <summary>
         /// Create new instance of EnumFilter.
         /// </summary>

@@ -8,7 +8,6 @@
 using BolapanControl.ItemsFilter.View;
 using System;
 using System.ComponentModel;
-using System.Reflection;
 //using System.Diagnostics;
 
 namespace BolapanControl.ItemsFilter.Model {
@@ -26,7 +25,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item IComparable value to compare.</param>
-        protected LessOrEqualFilter(Func<object?, T?> getter):base(o=> getter(o)) {
+        protected LessOrEqualFilter(Func<object?, T?> getter) : base(o => getter(o)) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(getter);
 #endif

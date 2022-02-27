@@ -5,16 +5,14 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using System;
+using BolapanControl.ItemsFilter.Initializer;
+using BolapanControl.ItemsFilter.ViewModel;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
-using BolapanControl.ItemsFilter;
-using BolapanControl.ItemsFilter.Initializer;
-using BolapanControl.ItemsFilter.ViewModel;
-using System.Collections.Generic;
 
 namespace BolapanControl.ItemsFilter {
     /// <summary>
