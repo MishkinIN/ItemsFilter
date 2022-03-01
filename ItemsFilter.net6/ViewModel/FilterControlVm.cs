@@ -188,8 +188,9 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         public void Dispose() {
             lock (lockFlag) {
                 if (!isDisposed) {
-                    isDisposed = true;
                     Clear();
+                    isDisposed = true;
+                    GC.SuppressFinalize(this);
                 }
             }
         }

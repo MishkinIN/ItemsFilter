@@ -40,9 +40,9 @@ namespace GalaSoft.MvvmLight.Command {
     ////  UrlContacts = "http://www.galasoft.ch/contact_en.html",
     ////  Email = "laurent@galasoft.ch")]
     public class RelayCommand : ICommand {
-        private readonly WeakAction _execute;
+        private readonly WeakAction? _execute;
 
-        private readonly WeakFunc<bool> _canExecute;
+        private readonly WeakFunc<bool>? _canExecute;
 
         /// <summary>
         /// Initializes a new instance of the RelayCommand class that 
@@ -60,9 +60,9 @@ namespace GalaSoft.MvvmLight.Command {
         /// <param name="execute">The execution logic.</param>
         /// <param name="canExecute">The execution status logic.</param>
         /// <exception cref="ArgumentNullException">If the execute argument is null.</exception>
-        public RelayCommand(Action execute, Func<bool> canExecute) {
+        public RelayCommand(Action? execute, Func<bool>? canExecute) {
             if (execute == null) {
-                throw new ArgumentNullException("execute");
+                throw new ArgumentNullException(nameof(execute));
             }
 
             _execute = new WeakAction(execute);
@@ -87,7 +87,7 @@ namespace GalaSoft.MvvmLight.Command {
         /// <summary>
         /// Occurs when changes occur that affect whether the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged {
+        public event EventHandler? CanExecuteChanged {
             add {
                 if (_canExecute != null) {
                     CommandManager.RequerySuggested += value;
@@ -135,7 +135,7 @@ namespace GalaSoft.MvvmLight.Command {
         /// </summary>
         /// <param name="parameter">This parameter will always be ignored.</param>
         /// <returns>true if this command can be executed; otherwise, false.</returns>
-        public bool CanExecute(object parameter) {
+        public bool CanExecute(object? parameter) {
             return _canExecute == null
                 ? true
                 : (_canExecute.IsStatic || _canExecute.IsAlive)
@@ -147,7 +147,7 @@ namespace GalaSoft.MvvmLight.Command {
         /// Defines the method to be called when the command is invoked. 
         /// </summary>
         /// <param name="parameter">This parameter will always be ignored.</param>
-        public virtual void Execute(object parameter) {
+        public virtual void Execute(object? parameter) {
             if (CanExecute(parameter)
                 && _execute != null
                 && (_execute.IsStatic || _execute.IsAlive)) {

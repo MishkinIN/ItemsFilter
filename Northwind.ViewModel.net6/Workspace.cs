@@ -22,11 +22,15 @@ namespace Northwind.NET.Sample {
     public static class Workspace {
         private static NorthwindNETEntities? northwindModel;
         private static WorkspaceInstance? thisInstance;
-        public static WorkspaceInstance? This {
+        public static WorkspaceInstance This {
             get {
-                if (thisInstance == null)
-                    thisInstance = Application.Current.Resources["Workspace"] as WorkspaceInstance;
-                return thisInstance;
+                if (thisInstance == null) {
+                    thisInstance = Application.Current.Resources["Workspace"] as WorkspaceInstance??
+                        new WorkspaceInstance();
+                    return thisInstance;
+                }
+                else
+                    return thisInstance;
             }
         }
         internal static readonly string CallingAssemblyShortName;

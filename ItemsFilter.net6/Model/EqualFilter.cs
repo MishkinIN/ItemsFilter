@@ -63,6 +63,81 @@ namespace BolapanControl.ItemsFilter.Model {
     }
 
     /// <summary>
+    /// Defines the logic for reference equality filter.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class ReferenceEqualFilter : EqualFilter, IMultiValueFilter {
+        private IEnumerable availableValues;
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
+        /// </summary>
+        /// <param name="getter">Func that return from item values to compare.</param>
+        protected ReferenceEqualFilter(Func<object?, object?> getter) : base(getter) {
+            //this.getter = getter;
+            availableValues = Array.Empty<object>();
+        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
+        /// </summary>
+        /// <param name="getter">Func that return values to compare from item.</param>
+        /// <param name="availableValues">Predefined set of available values.</param>
+        protected internal ReferenceEqualFilter(Func<object?, object?> getter, IEnumerable availableValues)
+            : this(getter) {
+            this.availableValues = availableValues;
+        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
+        /// </summary>
+        /// <param name="propertyInfo">The property info.</param>
+        public ReferenceEqualFilter(ItemPropertyInfo propertyInfo)
+            : base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(typeof(object), propertyInfo.PropertyType);
+
+#endif 
+            availableValues = Array.Empty<object>();
+        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class
+        /// </summary>
+        /// <param name="propertyInfo">The property info.</param>
+        /// <param name="availableValues">Predefined set of available values.</param>
+        public ReferenceEqualFilter(ItemPropertyInfo propertyInfo, IEnumerable availableValues)
+            : this(propertyInfo) {
+            this.availableValues = availableValues;
+        }
+        /// <summary>
+        /// Set of available values that can be include in filter.
+        /// </summary>
+        public override IEnumerable AvailableValues {
+            get {
+                return availableValues;
+            }
+            set {
+                if (availableValues != value) {
+                    availableValues = value;
+                }
+            }
+        }
+        /// <summary>
+        /// Determines whether the specified target is a match.
+        /// </summary>
+        public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
+            if (e.Accepted) {
+                object? value = getter(e.Item);
+                if (value == null)
+                    e.Accepted = false;
+                else
+                    e.Accepted = SelectedValues.Any(val => val==value);
+            }
+        }
+    }
+
+
+    /// <summary>
     /// Defines the logic for equality filter.
     /// </summary>
     /// <typeparam name="T"></typeparam>

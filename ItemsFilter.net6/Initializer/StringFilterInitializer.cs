@@ -18,9 +18,11 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <summary>
         /// Create new instance of StringFilter, if it is possible for filterPresenter in current state and key.
         /// </summary>
-        protected override PropertyFilter NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
-            Debug.Assert(filterPresenter != null);
-            Debug.Assert(propertyInfo != null);
+        protected override Filter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
+#endif
             Type propertyType = propertyInfo.PropertyType;
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
                 && typeof(String).IsAssignableFrom(propertyInfo.PropertyType)

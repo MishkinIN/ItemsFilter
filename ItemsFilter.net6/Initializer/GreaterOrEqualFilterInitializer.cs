@@ -15,7 +15,9 @@ namespace BolapanControl.ItemsFilter.Initializer {
     /// </summary>
     public class GreaterOrEqualFilterInitializer : LessOrEqualFilterInitializer {
 
+#pragma warning disable IDE0051 // Remove unused private members
         private const string _filterName = "Greater or Equal";
+#pragma warning restore IDE0051 // Remove unused private members
         /// <summary>
         /// Create PropertyFilter for instance of FilterPresenter, if it is possible.
         /// </summary>

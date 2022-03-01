@@ -25,7 +25,7 @@ namespace BolapanControl.ItemsFilter.View {
                 new FrameworkPropertyMetadata(typeof(RangeFilterView)));
 
         }
-        private TextBox txtBoxFrom, textBoxTo;
+        private TextBox? txtBoxFrom, textBoxTo;
         /// <summary>
         /// Initializes a new instance of the <see cref="RangeFilterView"/> class.
         /// </summary>

@@ -5,6 +5,7 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
+using BolapanControl.ItemsFilter;
 using BolapanControl.ItemsFilter.Initializer;
 using BolapanControl.ItemsFilter.Model;
 using Northwind.NET.EF6Model;
@@ -12,9 +13,9 @@ using System;
 using System.Linq;
 
 namespace Northwind.NET.Sample.ViewModel {
-    public class UnitPriceEqualFilter:EqualFilter<decimal?> {
+    public class UnitPriceEqualFilter:EqualFilter<decimal> {
         public UnitPriceEqualFilter() : base(
-            value => ((Product)value).UnitPrice
+            value => (value as Product)?.UnitPrice
             ) { }
         protected override void OnAttachPresenter(BolapanControl.ItemsFilter.FilterPresenter presenter) {
             base.OnAttachPresenter(presenter);
@@ -23,11 +24,11 @@ namespace Northwind.NET.Sample.ViewModel {
     }
     public class UnitPriceRangeFilter : RangeFilter<decimal> {
         public UnitPriceRangeFilter()
-            : base((value) => ((Product)value).UnitPrice.HasValue?((Product)value).UnitPrice.Value:Decimal.Zero) {
+            : base((value) => value==null? Decimal.Zero: (((Product)value).UnitPrice ?? Decimal.Zero)) {
         }
     }
     public class UnitPriceFilterInitializer : FilterInitializer {
-        public override Filter TrygetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
+        public override Filter TrygetFilter(FilterPresenter filterPresenter, object key) {
             return new UnitPriceEqualFilter();
         }
     }

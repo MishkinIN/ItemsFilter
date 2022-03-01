@@ -40,7 +40,17 @@
       "ProjectGuid": "6619d8b7-515f-40a2-ba09-4dcb0966a35d",
       "DisplayName": "Northwind.ViewModel.net6",
       "ColorIndex": 6
+    },
+    "9347d882-007a-44d9-bb04-d82b1dd99108": {
+      "ProjectGuid": "9347d882-007a-44d9-bb04-d82b1dd99108",
+      "DisplayName": "ItemsFilter.net6.Test",
+      "ColorIndex": 7
+    },
+    "79e0610f-ad68-434e-9a17-36897479feec": {
+      "ProjectGuid": "79e0610f-ad68-434e-9a17-36897479feec",
+      "DisplayName": "ItemsFilter.net6.Test",
+      "ColorIndex": 8
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 9
 }

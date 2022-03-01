@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 
 namespace Northwind.NET.Sample.View {
     class TextToImageSourceConverter : IValueConverter {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+        public object? Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             try {
                 string picName = (((string)value).Split('.'))[0];
                 return new BitmapImage(

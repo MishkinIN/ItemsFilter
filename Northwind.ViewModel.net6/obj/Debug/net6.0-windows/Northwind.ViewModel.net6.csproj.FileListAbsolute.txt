@@ -3,7 +3,6 @@ G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-window
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\Northwind.ViewModel.net6.AssemblyInfoInputs.cache
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\Northwind.ViewModel.net6.AssemblyInfo.cs
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\Northwind.ViewModel.net6.csproj.CoreCompileInputs.cache
-G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\bin\Debug\net6.0-windows\Themes\ItemsFilterStyle.xaml
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\bin\Debug\net6.0-windows\Northwind.ViewModel.net6.deps.json
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\bin\Debug\net6.0-windows\Northwind.ViewModel.net6.dll
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\bin\Debug\net6.0-windows\ref\Northwind.ViewModel.net6.dll

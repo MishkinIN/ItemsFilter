@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nortwind.Model.net6", "Nort
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nortwind.Sample.net6", "Nortwind.Sample.net6\Nortwind.Sample.net6.csproj", "{0FD5FB82-3B4F-4C3F-8E03-E2464422A170}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.ViewModel.net6", "Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj", "{6619D8B7-515F-40A2-BA09-4DCB0966A35D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.ViewModel.net6", "Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj", "{6619D8B7-515F-40A2-BA09-4DCB0966A35D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsFilter.net6.Test", "ItemsFilter.net6.Test\ItemsFilter.net6.Test.csproj", "{79E0610F-AD68-434E-9A17-36897479FEEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{6619D8B7-515F-40A2-BA09-4DCB0966A35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6619D8B7-515F-40A2-BA09-4DCB0966A35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6619D8B7-515F-40A2-BA09-4DCB0966A35D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E0610F-AD68-434E-9A17-36897479FEEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E0610F-AD68-434E-9A17-36897479FEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E0610F-AD68-434E-9A17-36897479FEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E0610F-AD68-434E-9A17-36897479FEEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

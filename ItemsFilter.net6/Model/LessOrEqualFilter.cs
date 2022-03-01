@@ -42,7 +42,7 @@ namespace BolapanControl.ItemsFilter.Model {
             //if (!typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType))
             //    throw new ArgumentOutOfRangeException("propertyInfo", "typeof(IComparable).IsAssignableFrom(propertyInfo.PropertyType) return False.");
 #if DEBUG
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo != null, "propertyInfo is null.");
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(typeof(IComparable<T>).IsAssignableFrom(propertyInfo.PropertyType));
 #endif 
             //base.PropertyInfo = propertyInfo;

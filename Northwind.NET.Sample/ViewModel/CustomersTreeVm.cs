@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Northwind.NET.Sample.ViewModel {
     public class CustomersTreeVm:IEnumerable<CountryCustomersTreeItem> {
-        private IEnumerable<CountryCustomersTreeItem> query;
+        private readonly IEnumerable<CountryCustomersTreeItem> query;
         public int Count {
             get {
                 if (query is CountryCustomersTreeItem[])
@@ -33,13 +33,13 @@ namespace Northwind.NET.Sample.ViewModel {
         }
     }
     public class CountryCustomersTreeItem {
-        public string Country { get; set; }
+        public string? Country { get; set; }
         public int Count { get; set; }
-        public IEnumerable<CityCustomersTreeItem> Cities { get; set; }
+        public IEnumerable<CityCustomersTreeItem>? Cities { get; set; }
     }
     public class CityCustomersTreeItem {
-        public string City { get; set; }
+        public string? City { get; set; }
         public int Count { get; set; }
-        public IEnumerable<Customer> Customers { get; set; }
+        public IEnumerable<Customer>? Customers { get; set; }
     }
 }

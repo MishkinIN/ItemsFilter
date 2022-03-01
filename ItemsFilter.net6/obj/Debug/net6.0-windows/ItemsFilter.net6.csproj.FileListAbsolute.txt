@@ -12,6 +12,6 @@ G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsF
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6_MarkupCompile.cache
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6_MarkupCompile.lref
-G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\Themes\Generic.baml
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\Themes\ItemsFilterStyle.baml
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.g.resources
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.csproj.AssemblyReference.cache

@@ -25,7 +25,7 @@ namespace BolapanControl.ItemsFilter.View {
                 new FrameworkPropertyMetadata(typeof(MultiValueFilterView)));
         }
         private bool isModelAttached;
-        private ListBox _itemsCtrl;
+        private ListBox? _itemsCtrl;
         /// <summary>
         /// Create new instance of MultiValueFilterView;
         /// </summary>
@@ -45,25 +45,26 @@ namespace BolapanControl.ItemsFilter.View {
         /// Provides derived classes an opportunity to handle changes to the Model property.
         /// </summary>
         protected override void OnModelChanged(IMultiValueFilter oldModel, IMultiValueFilter newModel) {
-            DetachModel(_itemsCtrl, oldModel);
-            AttachModel(_itemsCtrl, newModel);
+            DetachModel( oldModel);
+            AttachModel( newModel);
         }
         /// <summary>
         /// When overridden in a derived class, is invoked whenever application code or internal processes (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
         /// </summary>
         public override void OnApplyTemplate() {
-            DetachModel(_itemsCtrl, Model);
+            DetachModel( Model);
             base.OnApplyTemplate();
-            _itemsCtrl = GetTemplateChild(MultiValueFilterView.PART_ItemsTemplateName) as ListBox;
-            AttachModel(_itemsCtrl, Model);
+            _itemsCtrl = (GetTemplateChild(MultiValueFilterView.PART_ItemsTemplateName) as ListBox);
+            AttachModel( Model);
         }
         private void MultiValueFilterView_Loaded(object sender, RoutedEventArgs e) {
-            AttachModel(_itemsCtrl, Model);
+            AttachModel( Model);
         }
         private void MultiValueFilterView_Unloaded(object sender, RoutedEventArgs e) {
-            DetachModel(_itemsCtrl, Model);
+            DetachModel( Model);
         }
-        private void AttachModel(ListBox itemsCtrl, IMultiValueFilter newModel) {
+
+        private void AttachModel(IMultiValueFilter? newModel) {
             if (!isModelAttached && _itemsCtrl != null && newModel != null) {
                 if (DesignerProperties.GetIsInDesignMode(this)) {
                     var enumerator = newModel.AvailableValues.GetEnumerator();
@@ -82,30 +83,36 @@ namespace BolapanControl.ItemsFilter.View {
                 isModelAttached = true;
             }
         }
-        private void MultiValueFilterView_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
-            _itemsCtrl.SelectionChanged -= Model.SelectedValuesChanged;
-            if (e.Action == NotifyCollectionChangedAction.Reset) {
-                _itemsCtrl.SelectedItems.Clear();
-            }
-            else {
-                if (e.OldItems != null) {
-                    foreach (var item in e.OldItems) {
-                        int itemIndex = _itemsCtrl.SelectedItems.IndexOf(item);
-                        if (itemIndex >= 0)
-                            _itemsCtrl.SelectedItems.RemoveAt(itemIndex);
+        private void MultiValueFilterView_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (_itemsCtrl!=null) {
+                if (Model != null) {
+                    _itemsCtrl.SelectionChanged -= Model.SelectedValuesChanged;
+                }
+                if (e.Action == NotifyCollectionChangedAction.Reset) {
+                    _itemsCtrl.SelectedItems.Clear();
+                }
+                else {
+                    if (e.OldItems != null) {
+                        foreach (var item in e.OldItems) {
+                            int itemIndex = _itemsCtrl.SelectedItems.IndexOf(item);
+                            if (itemIndex >= 0)
+                                _itemsCtrl.SelectedItems.RemoveAt(itemIndex);
+                        }
+                    }
+                    if (e.NewItems != null) {
+                        foreach (var item in e.NewItems) {
+                            int itemIndex = _itemsCtrl.SelectedItems.IndexOf(item);
+                            if (itemIndex < 0)
+                                _itemsCtrl.SelectedItems.Add(item);
+                        }
                     }
                 }
-                if (e.NewItems != null) {
-                    foreach (var item in e.NewItems) {
-                        int itemIndex = _itemsCtrl.SelectedItems.IndexOf(item);
-                        if (itemIndex < 0)
-                            _itemsCtrl.SelectedItems.Add(item);
-                    }
-                }
+                if (Model != null) {
+                    _itemsCtrl.SelectionChanged += Model.SelectedValuesChanged;
+                } 
             }
-            _itemsCtrl.SelectionChanged += Model.SelectedValuesChanged;
         }
-        private void DetachModel(ListBox itemsCtrl, IMultiValueFilter oldModel) {
+        private void DetachModel(IMultiValueFilter? oldModel) {
             if (isModelAttached && _itemsCtrl != null && oldModel != null) {
                 ((INotifyCollectionChanged)(oldModel.SelectedValues)).CollectionChanged -= MultiValueFilterView_CollectionChanged;
                 _itemsCtrl.SelectionChanged -= oldModel.SelectedValuesChanged;

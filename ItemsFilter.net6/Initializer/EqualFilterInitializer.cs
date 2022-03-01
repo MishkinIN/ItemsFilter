@@ -16,24 +16,36 @@ namespace BolapanControl.ItemsFilter.Initializer {
     /// <summary>
     /// Define EqualFilter initializer.
     /// </summary>
-    public class EqualFilterInitializer : PropertyFilterInitializer {
+    public class EqualFilterInitializer : FilterInitializer {
 #pragma warning disable IDE0051 // Remove unused private members
         private const string _filterName = "Equality";
 #pragma warning restore IDE0051 // Remove unused private members
 
-        protected override PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
-            Debug.Assert(filterPresenter != null);
-            Debug.Assert(propertyInfo != null);
+        public override Filter? TrygetFilter(FilterPresenter filterPresenter, object key) {
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key);
+#endif
+            if (key is ItemPropertyInfo info)
+                return NewFilter(filterPresenter, info);
+            if (key is string str
+                && filterPresenter.ItemProperties.FirstOrDefault(item => item.Name == str) is ItemPropertyInfo propertyInfo) {
+                return NewFilter(filterPresenter, propertyInfo);
+            }
+            return null;
+        }
+        protected static Filter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
 
             Type propertyType = propertyInfo.PropertyType;
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
                 && !propertyType.IsEnum
                 ) {
-                PropertyFilter? filter = Activator.CreateInstance(
-                    typeof(EqualFilter<>).MakeGenericType(propertyInfo.PropertyType),
-                    propertyInfo,
-                    GetAvailableValuesQuery(filterPresenter, propertyInfo)
-                ) as PropertyFilter;
+                //PropertyFilter? filter = Activator.CreateInstance(
+                //    typeof(ReferenceEqualFilter).MakeGenericType(propertyInfo.PropertyType),
+                //    propertyInfo,
+                //    GetAvailableValuesQuery(filterPresenter, propertyInfo)
+                //) as PropertyFilter;
+                var filter = new ReferenceEqualFilter(propertyInfo, GetAvailableValuesQuery(filterPresenter, propertyInfo));
                 return filter;
             }
             return null;

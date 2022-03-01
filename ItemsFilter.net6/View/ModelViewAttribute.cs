@@ -11,6 +11,7 @@ namespace BolapanControl.ItemsFilter.View {
     /// <summary>
     /// Indicate that class can be use as View, have property Model and constructor width single parameter Model.
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class,AllowMultiple =false)]
     public class ModelViewAttribute : Attribute {
     }
 }

@@ -15,6 +15,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
     /// Specify the [ModelView] class that present model.
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class ViewAttribute : Attribute {
         private readonly Type viewType;
 

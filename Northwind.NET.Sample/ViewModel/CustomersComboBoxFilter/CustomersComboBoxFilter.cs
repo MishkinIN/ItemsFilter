@@ -15,12 +15,12 @@ namespace Northwind.NET.Sample.ViewModel {
     [View(typeof(StringFilterView))]
     // Define specialized filter for CustomersComboBox.
     public sealed class CustomersComboBoxFilter : StringFilter, IFilter {
-        private static StringBuilder sb = new StringBuilder();
+        private static readonly StringBuilder sb = new();
         internal CustomersComboBoxFilter()
             // To search for combine the values of several properties.
             : base(item => 
             {
-                Customer customer = (Customer)item;
+                Customer? customer = item as Customer;
                 if (customer!=null) {
                     sb.Clear();
                     sb.Append(customer.City);

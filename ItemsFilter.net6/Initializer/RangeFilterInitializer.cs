@@ -15,13 +15,16 @@ namespace BolapanControl.ItemsFilter.Initializer {
     /// Define RangeFilter initializer.
     /// </summary>
     public class RangeFilterInitializer : PropertyFilterInitializer {
+#pragma warning disable IDE0051 // Remove unused private members
         private const string _filterName = "Between";
+#pragma warning restore IDE0051 // Remove unused private members
         #region IPropertyFilterInitializer Members
 
-        protected override PropertyFilter NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
-            Debug.Assert(filterPresenter != null);
-            Debug.Assert(propertyInfo != null);
-
+        protected override PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
+#endif
             Type propertyType = propertyInfo.PropertyType;
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
                 && typeof(IComparable).IsAssignableFrom(propertyType)
@@ -29,7 +32,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
                 && propertyType != typeof(bool)
                 && !propertyType.IsEnum
                 ) {
-                return (PropertyFilter)Activator.CreateInstance(typeof(RangeFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo);
+                return Activator.CreateInstance(typeof(RangeFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as PropertyFilter;
             }
             return null;
         }

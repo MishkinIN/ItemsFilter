@@ -32,13 +32,13 @@ namespace GalaSoft.MvvmLight.Helpers {
 #if SILVERLIGHT
         private Action _action;
 #endif
-        private Action _staticAction;
+        private Action? _staticAction;
 
         /// <summary>
         /// Gets or sets the <see cref="MethodInfo" /> corresponding to this WeakAction's
         /// method passed in the constructor.
         /// </summary>
-        protected MethodInfo Method {
+        protected MethodInfo? Method {
             get;
             set;
         }
@@ -65,7 +65,7 @@ namespace GalaSoft.MvvmLight.Helpers {
 
                 return string.Empty;
 #else
-                return Method.Name;
+                return Method?.Name?? String.Empty;
 #endif
             }
         }
@@ -76,7 +76,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// <see cref="Reference" />, for example if the
         /// method is anonymous.
         /// </summary>
-        protected WeakReference ActionReference {
+        protected WeakReference? ActionReference {
             get;
             set;
         }
@@ -87,7 +87,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// <see cref="ActionReference" />, for example if the
         /// method is anonymous.
         /// </summary>
-        protected WeakReference Reference {
+        protected WeakReference? Reference {
             get;
             set;
         }
@@ -103,11 +103,11 @@ namespace GalaSoft.MvvmLight.Helpers {
             }
         }
 
-        /// <summary>
-        /// Initializes an empty instance of the <see cref="WeakAction" /> class.
-        /// </summary>
-        protected WeakAction() {
-        }
+        ///// <summary>
+        ///// Initializes an empty instance of the <see cref="WeakAction" /> class.
+        ///// </summary>
+        //protected WeakAction() {
+        //}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WeakAction" /> class.
@@ -122,10 +122,9 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// </summary>
         /// <param name="target">The action's owner.</param>
         /// <param name="action">The action that will be associated to this instance.</param>
-        public WeakAction(object target, Action action) {
+        public WeakAction(object? target, Action action) {
             if (action.Method.IsStatic) {
                 _staticAction = action;
-
                 if (target != null) {
                     // Keep a reference to the target to control the
                     // WeakAction's lifetime.
@@ -173,20 +172,16 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// </summary>
         public virtual bool IsAlive {
             get {
-                if (_staticAction == null
-                    && Reference == null) {
-                    return false;
+                if (_staticAction == null) {
+                    return Reference != null && Reference.IsAlive;
                 }
-
-                if (_staticAction != null) {
+                else {
                     if (Reference != null) {
                         return Reference.IsAlive;
                     }
 
                     return true;
                 }
-
-                return Reference.IsAlive;
             }
         }
 
@@ -194,12 +189,11 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// Gets the Action's owner. This object is stored as a 
         /// <see cref="WeakReference" />.
         /// </summary>
-        public object Target {
+        public object? Target {
             get {
                 if (Reference == null) {
                     return null;
                 }
-
                 return Reference.Target;
             }
         }
@@ -207,7 +201,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// <summary>
         /// 
         /// </summary>
-        protected object ActionTarget {
+        protected object? ActionTarget {
             get {
                 if (ActionReference == null) {
                     return null;

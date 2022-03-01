@@ -38,6 +38,6 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <summary>
         /// Create instance of PropertyFilter for  filterPresenter and key, if it is possible.
         /// </summary>
-        protected abstract PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo key);
+        protected abstract Filter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo key);
     }
 }

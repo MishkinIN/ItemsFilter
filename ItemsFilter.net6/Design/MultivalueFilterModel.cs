@@ -18,8 +18,10 @@ namespace BolapanControl.ItemsFilter.Design {
                 "Item 1",
                 "Item2"
             };
-            selectedValues = new ObservableCollection<object>();
-            selectedValues.Add(values[0]);
+            ObservableCollection<object> observableCollection = new() {
+                values[0]
+            };
+            selectedValues = observableCollection;
         }
         public System.Collections.IEnumerable AvailableValues {
             get {
@@ -38,21 +40,21 @@ namespace BolapanControl.ItemsFilter.Design {
             ;
         }
 
-        public void Attach(FilterPresenter presenter) {
-            ;
-        }
+        //public void Attach(FilterPresenter presenter) {
+        //    ;
+        //}
 
-        public void Detach(FilterPresenter presenter) {
-            ;
-        }
+        //public void Detach(FilterPresenter presenter) {
+        //    ;
+        //}
 
-        public void Attach(ViewModel.FilterControlVm vm) {
-            ;
-        }
+        //public void Attach(ViewModel.FilterControlVm vm) {
+        //    ;
+        //}
 
-        public void Detach(ViewModel.FilterControlVm vm) {
-            ;
-        }
+        //public void Detach(ViewModel.FilterControlVm vm) {
+        //    ;
+        //}
 
         public bool IsActive {
             get {
@@ -63,7 +65,9 @@ namespace BolapanControl.ItemsFilter.Design {
             }
         }
 
+#pragma warning disable CA1822 // Mark members as static
         public string Name {
+#pragma warning restore CA1822 // Mark members as static
             get {
                 return "Equality:";
             }

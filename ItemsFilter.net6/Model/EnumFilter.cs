@@ -8,14 +8,15 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BolapanControl.ItemsFilter.Model {
     /// <summary>
     /// Define the logic for Enum values filter.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class EnumFilter<T> : EqualFilter<T>, IMultiValueFilter
-        where T : Enum, IEquatable<T> {
+    public class EnumFilter<T> : EqualFilter, IMultiValueFilter
+        where T : Enum/*, IEquatable<T>*/ {
         private static readonly Lazy<IEnumerable> lz_enumValues = new(() => {
             Type enumType = typeof(T);
             return enumType.GetEnumValues();
@@ -25,7 +26,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// </summary>
         /// <param name="propertyInfo">propertyInfo, used to access a property of the collection item</param>
         public EnumFilter(ItemPropertyInfo propertyInfo)
-            : base(propertyInfo) {
+            : base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
         }
         /// <summary>
         /// TryGet list of defined enum values.
@@ -39,15 +40,18 @@ namespace BolapanControl.ItemsFilter.Model {
                 throw new NotImplementedException();
             }
         }
-        //public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
-        //    if (e.Accepted) {
-        //        object? value = base.getter(e.Item);
-        //        if (value == null)
-        //            e.Accepted = false;
-        //        else {
-        //            e.Accepted = base.SelectedValues.Contains(value);
-        //        }
-        //    }
-        //}
+        /// <summary>
+        /// Determines whether the specified target is a match.
+        /// </summary>
+        public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
+            if (e.Accepted) {
+                object? value = getter(e.Item);
+                if (value == null)
+                    e.Accepted = false;
+                else
+                    e.Accepted = SelectedValues.Any(val => val == value);
+            }
+        }
+
     }
 }

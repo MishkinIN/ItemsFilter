@@ -18,15 +18,13 @@ namespace BolapanControl.ItemsFilter.ViewModel {
 
         #region Члены INotifyPropertyChanged
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void RaisePropertyChanged(string propertyName) {
             VerifyPropertyName(propertyName);
 
-            var handler = PropertyChanged;
-            if (handler != null) {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
         [Conditional("DEBUG")]
         [DebuggerStepThrough]
         public void VerifyPropertyName(string propertyName) {
@@ -52,6 +50,7 @@ namespace BolapanControl.ItemsFilter.ViewModel {
                 }
                 throw new ArgumentException("Property not found", propertyName);
             }
+#endif
 #endif
         }
 

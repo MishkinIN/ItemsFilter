@@ -25,28 +25,7 @@ namespace BolapanControl.ItemsFilter.View {
     [ValueConversion(typeof(Enum), typeof(String))]
     [ValueConversion(typeof(bool), typeof(String))]
     public class SimplePropertyConverter : IValueConverter {
-        private static readonly SimplePropertyConverter _This = new SimplePropertyConverter();
-
-        private static CultureInfo GetCulture(FrameworkElement element) {
-            CultureInfo culture;
-            if (element != null && DependencyPropertyHelper.GetValueSource(element, FrameworkElement.LanguageProperty).BaseValueSource != BaseValueSource.Default) {
-                culture = GetCultureInfo(element);
-            }
-            else {
-                culture = CultureInfo.CurrentCulture;
-            }
-            return culture;
-        }
-        private static CultureInfo GetCultureInfo(DependencyObject element) {
-            XmlLanguage language = (XmlLanguage)element.GetValue(FrameworkElement.LanguageProperty);
-            try {
-                return language.GetSpecificCulture();
-            }
-            catch (InvalidOperationException) {
-                // We default to en-US if no part of the language tag is recognized.
-                return CultureInfo.ReadOnly(new CultureInfo("en-us", false));
-            }
-        }
+        private static readonly SimplePropertyConverter _This = new();
 
         public static SimplePropertyConverter This {
             get {
@@ -59,10 +38,10 @@ namespace BolapanControl.ItemsFilter.View {
             try {
                 if (converter.CanConvertTo(null, typeof(string))) {
                     //return converter.ConvertTo(value, typeof(string));
-                    return converter.ConvertTo(null, CultureInfo.CurrentCulture, value, typeof(string));
+                    return converter.ConvertTo(null, CultureInfo.CurrentCulture, value, typeof(string))?? String.Empty;
                 }
                 else {
-                    return value.ToString();
+                    return value.ToString()?? String.Empty;
                 }
             }
             catch (Exception) {
@@ -75,10 +54,10 @@ namespace BolapanControl.ItemsFilter.View {
             try {
 
                 if (converter.CanConvertFrom(null, value.GetType())) {
-                    return converter.ConvertFrom(null, CultureInfo.CurrentCulture, value);
+                    return converter.ConvertFrom(null, CultureInfo.CurrentCulture, value) ?? String.Empty;
                 }
                 else {
-                    return converter.ConvertFrom(value.ToString());
+                    return converter.ConvertFrom(value.ToString()?? String.Empty) ?? String.Empty;
                 }
             }
             catch (Exception) {

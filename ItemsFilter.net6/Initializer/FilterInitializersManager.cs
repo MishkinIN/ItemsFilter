@@ -13,7 +13,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
     /// Define a class that represent set of filter initializers.
     /// </summary>
     public class FilterInitializersManager : List<FilterInitializer>, IList<FilterInitializer>, IEnumerable<FilterInitializer> {
-        private static readonly Lazy<FilterInitializersManager> _lzdefault = new Lazy<FilterInitializersManager>(GetDefaults);
+        private static readonly Lazy<FilterInitializersManager> _lzdefault = new(GetDefaults);
         /// <summary>
         /// Represent default instance of FilterInitializersManager that include common used initializers.
         /// </summary>

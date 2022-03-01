@@ -17,7 +17,7 @@ using System.Windows.Input;
 
 namespace Northwind.NET.Sample.ViewModel {
     public class OrdersVm : INotifyPropertyChanged {
-        private readonly CollectionViewSource cvs = new CollectionViewSource();
+        private readonly CollectionViewSource cvs = new();
         private readonly ICollectionView ordersView;
 
         private readonly ICommand moveFirstCommand, moveToPreviousCommand, moveToNextCommand, moveToNewCommand, moveToLastCommand;
@@ -105,14 +105,10 @@ namespace Northwind.NET.Sample.ViewModel {
             ordersView.MoveCurrentToFirst();
         }
         #region Члены INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void RaisePropertyChanged(string propertyName) {
             VerifyPropertyName(propertyName);
-
-            var handler = PropertyChanged;
-            if (handler != null) {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         [Conditional("DEBUG")]
         [DebuggerStepThrough]
@@ -129,9 +125,7 @@ namespace Northwind.NET.Sample.ViewModel {
             if (!string.IsNullOrEmpty(propertyName)
                 && myType.GetProperty(propertyName) == null) {
 #if !SILVERLIGHT
-                var descriptor = this as ICustomTypeDescriptor;
-
-                if (descriptor != null) {
+                if (this is ICustomTypeDescriptor  descriptor) {
                     if (descriptor.GetProperties()
                         .Cast<PropertyDescriptor>()
                         .Any(property => property.Name == propertyName)) {
@@ -139,7 +133,6 @@ namespace Northwind.NET.Sample.ViewModel {
                     }
                 }
 #endif
-
                 throw new ArgumentException("Property not found", propertyName);
             }
 #endif

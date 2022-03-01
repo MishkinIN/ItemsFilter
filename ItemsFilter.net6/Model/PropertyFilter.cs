@@ -13,7 +13,9 @@ namespace BolapanControl.ItemsFilter.Model {
     /// </summary>
     public abstract class PropertyFilter : Filter/*, IPropertyFilter*/
     {
+#pragma warning disable IDE0052 // Remove unread private members
         private readonly ItemPropertyInfo _propertyInfo;
+#pragma warning restore IDE0052 // Remove unread private members
         protected PropertyFilter(ItemPropertyInfo propertyInfo) : base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
             _propertyInfo = propertyInfo;
         }

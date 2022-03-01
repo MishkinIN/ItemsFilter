@@ -26,7 +26,7 @@ namespace BolapanControl.ItemsFilter.View {
         /// <summary>
         /// Instance of a selector allowing to choose the filtering mode
         /// </summary>
-        private Selector _selectorFilterType;
+        private Selector? _selectorFilterType;
 
         /// <summary>
         /// Create new instance of StringFilterView.
@@ -50,7 +50,7 @@ namespace BolapanControl.ItemsFilter.View {
                 _selectorFilterType.ItemsSource = GetFilterModes();
             }
         }
-        private IEnumerable<StringFilterMode> GetFilterModes() {
+        private static IEnumerable<StringFilterMode> GetFilterModes() {
             foreach (var item in typeof(StringFilterMode).GetEnumValues()) {
                 yield return (StringFilterMode)item;
             }
