@@ -12,7 +12,6 @@ using System.Windows.Controls;
 
 namespace ItemsFilter.net6.Test.Model {
     internal class EnumFilter {
-        private static EnumContentElement ui_content = new();
         private string[]? enumNames;
         [SetUp]
         public void Setup() {

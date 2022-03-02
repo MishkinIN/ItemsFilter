@@ -21,7 +21,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
         private const string _filterName = "Equality";
 #pragma warning restore IDE0051 // Remove unused private members
 
-        public override Filter? TrygetFilter(FilterPresenter filterPresenter, object key) {
+        public override Filter? TryGetFilter(FilterPresenter filterPresenter, object key) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key);

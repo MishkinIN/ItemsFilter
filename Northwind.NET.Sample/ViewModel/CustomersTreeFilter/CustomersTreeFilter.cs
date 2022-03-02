@@ -5,65 +5,72 @@ using System.Windows.Data;
 
 namespace Northwind.NET.Sample.ViewModel {
     public class CustomersTreeFilter : Filter, IFilter {
-        private string key;
-        private string contactCompareTo;
-        private string nameCompareTo;
+        private readonly string key;
+        private string? contactCompareTo;
+        private string? nameCompareTo;
         private bool isNameCompareActive;
         private bool isContactCompareActive;
-        CollectionView collectionView;
-        internal protected CustomersTreeFilter(string key) {
+        CollectionView? collectionView;
+        internal protected CustomersTreeFilter(string key) : base(o => o) {
             this.key = key;
         }
         public string Key {
             get { return key; }
         }
-         public string ContactCompareTo {
+        public string? ContactCompareTo {
             get { return contactCompareTo; }
             set {
                 if (contactCompareTo != value) {
                     contactCompareTo = value;
-                    isContactCompareActive = !String.IsNullOrEmpty(value);
-                    IDisposable defer = this.FilterPresenter == null ? null : this.FilterPresenter.DeferRefresh();
-                    SendChangesToChild();
-                    IsActive= CheckIsActive();
-                    RaiseFilterChanged();
-                     if (defer != null)
-                        defer.Dispose();
-                    RaisePropertyChanged("ContactCompareTo");
-                }
-            }
-        }
-         public int Count {
-             get { return collectionView == null ? 0 : collectionView.Count; }
-         }
-
-        public string NameCompareTo {
-            get { return nameCompareTo; }
-            set {
-                if (nameCompareTo != value) {
-                    nameCompareTo = value;
-                    isNameCompareActive = !String.IsNullOrEmpty(value);
-                    IDisposable defer = this.FilterPresenter == null ? null : this.FilterPresenter.DeferRefresh();
+                    isContactCompareActive = !String.IsNullOrEmpty(contactCompareTo);
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     SendChangesToChild();
                     IsActive = CheckIsActive();
                     RaiseFilterChanged();
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged("NameCompareTo");
+                    RaisePropertyChanged(nameof(ContactCompareTo));
+                }
+            }
+        }
+        public int Count {
+            get { return collectionView == null ? 0 : collectionView.Count; }
+        }
+
+        public string? NameCompareTo {
+            get { return nameCompareTo; }
+            set {
+                if (nameCompareTo != value) {
+                    nameCompareTo = value;
+                    isNameCompareActive = !String.IsNullOrEmpty(nameCompareTo);
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
+                    SendChangesToChild();
+                    IsActive = CheckIsActive();
+                    RaiseFilterChanged();
+                    if (defer != null)
+                        defer.Dispose();
+                    RaisePropertyChanged(nameof(NameCompareTo));
                 }
             }
         }
         public override void IsMatch(BolapanControl.ItemsFilter.FilterPresenter sender, BolapanControl.ItemsFilter.FilterEventArgs e) {
             if (IsActive & e.Accepted) {
-                if (e.Item == null)
-                    e.Accepted = false;
-                else {
-                    Customer customer = ((Customer)e.Item);
+                if (e.Item is Customer customer) {
                     if (isNameCompareActive)
-                        e.Accepted = customer.Name != null & customer.Name.Contains(nameCompareTo);
+                        e.Accepted = customer.Name != null
+#pragma warning disable CS8604 // Possible null reference argument.
+                            && customer.Name.Contains(nameCompareTo);
+#pragma warning restore CS8604 // Possible null reference argument.
                     if (isContactCompareActive)
-                        e.Accepted &= customer.ContactName != null && customer.ContactName.Contains(contactCompareTo);
-               }
+                        e.Accepted &= customer.ContactName != null
+#pragma warning disable CS8604 // Possible null reference argument.
+                            && customer.ContactName.Contains(contactCompareTo);
+#pragma warning restore CS8604 // Possible null reference argument.
+
+                }
+                else {
+                    e.Accepted = false;
+                }
             }
         }
         protected override void OnAttachPresenter(BolapanControl.ItemsFilter.FilterPresenter presenter) {
@@ -79,12 +86,12 @@ namespace Northwind.NET.Sample.ViewModel {
                 ContactCompareTo = null;
             }
         }
-         protected virtual void SendChangesToChild() {
-           
+        protected virtual void SendChangesToChild() {
+
         }
-       protected virtual bool CheckIsActive() {
+        protected virtual bool CheckIsActive() {
             return isNameCompareActive | isContactCompareActive;
-            
+
         }
     }
 }

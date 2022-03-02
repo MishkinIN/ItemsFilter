@@ -3,7 +3,8 @@
 //      changes to this file can cause errors.
 namespace Expression.Blend.SampleData.CategoriesFilter
 {
-	using System; 
+    using Northwind.NET.Sample;
+    using System; 
 
 // To significantly reduce the sample data footprint in your production application, you can set
 // the DISABLE_SAMPLE_DATA conditional compilation constant and disable sample data at runtime.
@@ -13,21 +14,18 @@ namespace Expression.Blend.SampleData.CategoriesFilter
 
 	public class EqualFilter : System.ComponentModel.INotifyPropertyChanged
 	{
-		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		public event System.ComponentModel.PropertyChangedEventHandler? PropertyChanged;
 
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
-			if (this.PropertyChanged != null)
-			{
-				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-			}
-		}
+            PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        }
 
 		public EqualFilter()
 		{
 			try
 			{
-				System.Uri resourceUri = new System.Uri("/Northwind.NET.Sample;component/SampleData/CategoriesFilter/CategoriesFilter.xaml", System.UriKind.Relative);
+				System.Uri resourceUri = new Uri($"/{Workspace.CallingAssemblyShortName};component/SampleData/CategoriesFilter/CategoriesFilter.xaml", System.UriKind.Relative);
 				if (System.Windows.Application.GetResourceStream(resourceUri) != null)
 				{
 					System.Windows.Application.LoadComponent(this, resourceUri);
@@ -52,7 +50,7 @@ namespace Expression.Blend.SampleData.CategoriesFilter
 				if (this._CountAttachedFilterControls != value)
 				{
 					this._CountAttachedFilterControls = value;
-					this.OnPropertyChanged("CountAttachedFilterControls");
+					this.OnPropertyChanged(nameof(CountAttachedFilterControls));
 				}
 			}
 		}
@@ -71,7 +69,7 @@ namespace Expression.Blend.SampleData.CategoriesFilter
 				if (this._Name != value)
 				{
 					this._Name = value;
-					this.OnPropertyChanged("Name");
+					this.OnPropertyChanged(nameof(Name));
 				}
 			}
 		}
@@ -90,43 +88,40 @@ namespace Expression.Blend.SampleData.CategoriesFilter
 				if (this._IsActive != value)
 				{
 					this._IsActive = value;
-					this.OnPropertyChanged("IsActive");
+					this.OnPropertyChanged(nameof(IsActive));
 				}
 			}
 		}
 
-		private CategoryCollection _AvailableValues = new CategoryCollection();
+		private readonly CategoryCollection availableValues = new();
 
 		public CategoryCollection AvailableValues
 		{
 			get
 			{
-				return this._AvailableValues;
+				return this.availableValues;
 			}
 		}
 
-		private CategoryCollection _SelectedValues = new CategoryCollection();
+		private readonly CategoryCollection selectedValues = new();
 
 		public CategoryCollection SelectedValues
 		{
 			get
 			{
-				return this._SelectedValues;
+				return this.selectedValues;
 			}
 		}
 	}
 
 	public class Category : System.ComponentModel.INotifyPropertyChanged
 	{
-		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		public event System.ComponentModel.PropertyChangedEventHandler? PropertyChanged;
 
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
-			if (this.PropertyChanged != null)
-			{
-				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-			}
-		}
+            PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        }
 
 		private string _Name = string.Empty;
 
@@ -142,45 +137,45 @@ namespace Expression.Blend.SampleData.CategoriesFilter
 				if (this._Name != value)
 				{
 					this._Name = value;
-					this.OnPropertyChanged("Name");
+					this.OnPropertyChanged(nameof(Name));
 				}
 			}
 		}
 
-		private string _Description = string.Empty;
+		private string description = string.Empty;
 
 		public string Description
 		{
 			get
 			{
-				return this._Description;
+				return this.description;
 			}
 
 			set
 			{
-				if (this._Description != value)
+				if (this.description != value)
 				{
-					this._Description = value;
-					this.OnPropertyChanged("Description");
+					this.description = value;
+					this.OnPropertyChanged(nameof(Description));
 				}
 			}
 		}
 
-		private System.Windows.Media.ImageSource _Picture = null;
+		private System.Windows.Media.ImageSource picture = null;
 
 		public System.Windows.Media.ImageSource Picture
 		{
 			get
 			{
-				return this._Picture;
+				return this.picture;
 			}
 
 			set
 			{
-				if (this._Picture != value)
+				if (this.picture != value)
 				{
-					this._Picture = value;
-					this.OnPropertyChanged("Picture");
+					this.picture = value;
+					this.OnPropertyChanged(nameof(Picture));
 				}
 			}
 		}

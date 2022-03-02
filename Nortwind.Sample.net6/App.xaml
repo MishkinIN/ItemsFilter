@@ -2,9 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Northwind.NET.Sample"
-             xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel"
-             xmlns:vw="clr-namespace:Northwind.NET.Sample.View"
-            StartupUri="MainWindow.xaml">
+             xmlns:vw="clr-namespace:Northwind.NET.Sample.View" 
+             xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel;assembly=Northwind.ViewModel.net6"
+             
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -13,10 +14,10 @@
                 <ResourceDictionary Source="Themes/CustomerComboBoxStyle.xaml" />
                 <ResourceDictionary Source="ProjectDataSources.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <local:WorkspaceInstance x:Key="Workspace" />
+            <!--<local:WorkspaceInstance x:Key="Workspace" />
             <DataTemplate DataType="{x:Type vm:OrdersVm}">
                 <vw:OrdersView />
-            </DataTemplate>
+            </DataTemplate>-->
         </ResourceDictionary>
 
     </Application.Resources>

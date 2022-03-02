@@ -28,12 +28,12 @@ namespace Northwind.NET.Sample.ViewModel {
         }
     }
     public class UnitPriceFilterInitializer : FilterInitializer {
-        public override Filter TrygetFilter(FilterPresenter filterPresenter, object key) {
+        public override Filter TryGetFilter(FilterPresenter filterPresenter, object key) {
             return new UnitPriceEqualFilter();
         }
     }
     public class UnitPriceRangeFilterInitializer : FilterInitializer {
-        public override Filter TrygetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
+        public override Filter TryGetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
             return new UnitPriceRangeFilter();
         }
     }

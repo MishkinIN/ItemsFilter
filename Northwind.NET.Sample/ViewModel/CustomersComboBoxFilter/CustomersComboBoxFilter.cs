@@ -20,8 +20,7 @@ namespace Northwind.NET.Sample.ViewModel {
             // To search for combine the values of several properties.
             : base(item => 
             {
-                Customer? customer = item as Customer;
-                if (customer!=null) {
+                if (item is Customer customer) {
                     sb.Clear();
                     sb.Append(customer.City);
                     sb.Append(',');
@@ -33,7 +32,7 @@ namespace Northwind.NET.Sample.ViewModel {
                     sb.Append(',');
                     sb.Append(customer.Name);
                     sb.Append(',');
-                    sb.Append(customer.Region); 
+                    sb.Append(customer.Region);
                 }
                 return sb.ToString();
             }) {

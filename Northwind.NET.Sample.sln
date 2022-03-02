@@ -17,7 +17,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nortwind.Sample.net6", "Nor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.ViewModel.net6", "Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj", "{6619D8B7-515F-40A2-BA09-4DCB0966A35D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsFilter.net6.Test", "ItemsFilter.net6.Test\ItemsFilter.net6.Test.csproj", "{79E0610F-AD68-434E-9A17-36897479FEEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsFilter.net6.Test", "ItemsFilter.net6.Test\ItemsFilter.net6.Test.csproj", "{79E0610F-AD68-434E-9A17-36897479FEEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49DFB628-00A6-4F8F-ABD9-A854C5030A2C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

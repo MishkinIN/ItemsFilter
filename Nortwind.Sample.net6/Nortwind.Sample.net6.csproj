@@ -16,7 +16,6 @@
 
 	<ItemGroup>
 		<Compile Include="..\Northwind.NET.Sample\SampleData\CategoriesCollection.cs" Link="SampleData\CategoriesCollection.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter.xaml.cs" Link="SampleData\CategoriesFilter\CategoriesFilter.xaml.cs" />
 		<Compile Include="..\Northwind.NET.Sample\SampleData\Category.cs" Link="SampleData\Category.cs" />
 		<Compile Include="..\Northwind.NET.Sample\SampleData\Customers.cs" Link="SampleData\Customers.cs" />
 		<Compile Include="..\Northwind.NET.Sample\SampleData\Employes.cs" Link="SampleData\Employes.cs" />
@@ -27,28 +26,6 @@
 		<Compile Include="..\Northwind.NET.Sample\SampleData\Suppliers.cs" Link="SampleData\Suppliers.cs">
 			<Generator></Generator>
 		</Compile>
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CitiesTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CitiesTreeFilter.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CityItemFilter.cs" Link="ViewModel\CustomersTreeFilter\CityItemFilter.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CoutnriesTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CoutnriesTreeFilter.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomerItemFilter.cs" Link="ViewModel\CustomersTreeFilter\CustomerItemFilter.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomersTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CustomersTreeFilter.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomersTreeFilterInitializers.cs" Link="ViewModel\CustomersTreeFilter\CustomersTreeFilterInitializers.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeVm.cs" Link="ViewModel\CustomersTreeVm.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\FilterInitializerManager.cs" Link="ViewModel\FilterInitializerManager.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\OrdersVm.cs" Link="ViewModel\OrdersVm.cs" />
-		<Compile Include="..\Northwind.NET.Sample\ViewModel\UnitPriceFilter.cs" Link="ViewModel\UnitPriceFilter.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\CategoriesView.xaml.cs" Link="View\CategoriesView.xaml.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\CategoryFilterView.xaml.cs" Link="View\CategoryFilterView.xaml.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\CustomersComboBoxFIM.cs" Link="View\CustomersComboBoxFIM.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\CustomersTreeFilterView.cs" Link="View\CustomersTreeFilterView.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\CustomersTreeFilterViewTemplate.xaml.cs" Link="View\CustomersTreeFilterViewTemplate.xaml.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\CustomersView.xaml.cs" Link="View\CustomersView.xaml.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\DetailOrderCategory.cs" Link="View\DetailOrderCategory.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\EmployeesView.xaml.cs" Link="View\EmployeesView.xaml.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\EmployesView.xaml.cs" Link="View\EmployesView.xaml.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\OrdersView.xaml.cs" Link="View\OrdersView.xaml.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\ProductsView.xaml.cs" Link="View\ProductsView.xaml.cs" />
-		<Compile Include="..\Northwind.NET.Sample\View\SupplierNameFIM.cs" Link="View\SupplierNameFIM.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -86,61 +63,13 @@
 		<Folder Include="Fonts\" />
 		<Folder Include="Resources\" />
 		<Folder Include="SampleData\CategoriesFilter\CategoriesFilter_Files\" />
-		<Folder Include="Themes\" />
-		<Folder Include="ViewModel\CustomersTreeFilter\" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter.xsd" Link="SampleData\CategoriesFilter\CategoriesFilter.xsd" />
-		<None Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeList.cd" Link="ViewModel\CustomersTreeList.cd" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Page Include="..\ItemsFilter\Themes\ItemsFilterStyle.xaml" Link="Themes\ItemsFilterStyle.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
 		<DesignDataWithDesignTimeCreatableTypes Include="..\Northwind.NET.Sample\SampleData\Customer.xaml" Link="SampleData\Customer.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</DesignDataWithDesignTimeCreatableTypes>
 		<DesignDataWithDesignTimeCreatableTypes Include="SampleData\Order.xaml" />
-		<Page Include="..\Northwind.NET.Sample\SampleData\Workspace.xaml" Link="SampleData\Workspace.xaml">
-			<Generator>XamlIntelliSenseFileGenerator</Generator>
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter.xaml" Link="SampleData\CategoriesFilter\CategoriesFilter.xaml">
-		  <Generator>XamlIntelliSenseFileGenerator</Generator>
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\Themes\CustomerComboBoxStyle.xaml" Link="Themes\CustomerComboBoxStyle.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\Themes\Generic.xaml" Link="Themes\Generic.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\View\CategoriesView.xaml" Link="View\CategoriesView.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\View\CategoryFilterView.xaml" Link="View\CategoryFilterView.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\View\CustomersTreeFilterViewTemplate.xaml" Link="View\CustomersTreeFilterViewTemplate.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\View\CustomersView.xaml" Link="View\CustomersView.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\View\EmployeesView.xaml" Link="View\EmployeesView.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\View\EmployesView.xaml" Link="View\EmployesView.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\View\OrdersView.xaml" Link="View\OrdersView.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="..\Northwind.NET.Sample\View\ProductsView.xaml" Link="View\ProductsView.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
 	</ItemGroup>
 
 	<ItemGroup>

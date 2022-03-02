@@ -20,27 +20,23 @@
     <Compile Include="..\Northwind.NET.Sample\Shaders\MonochromeEffect.cs" Link="Shaders\MonochromeEffect.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersComboBoxFilter\CustomersComboBoxFilter.cs" Link="ViewModel\CustomersComboBoxFilter\CustomersComboBoxFilter.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersComboBoxFilter\CustomersComboBoxFilterInitializer.cs" Link="ViewModel\CustomersComboBoxFilter\CustomersComboBoxFilterInitializer.cs" />
+    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CitiesTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CitiesTreeFilter.cs" />
+    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CityItemFilter.cs" Link="ViewModel\CustomersTreeFilter\CityItemFilter.cs" />
+    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CoutnriesTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CoutnriesTreeFilter.cs" />
+    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomerItemFilter.cs" Link="ViewModel\CustomersTreeFilter\CustomerItemFilter.cs" />
+    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomersTreeFilter.cs" Link="ViewModel\CustomersTreeFilter\CustomersTreeFilter.cs" />
+    <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeFilter\CustomersTreeFilterInitializers.cs" Link="ViewModel\CustomersTreeFilter\CustomersTreeFilterInitializers.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeVm.cs" Link="ViewModel\CustomersTreeVm.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\FilterInitializerManager.cs" Link="ViewModel\FilterInitializerManager.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\OrdersVm.cs" Link="ViewModel\OrdersVm.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\UnitPriceFilter.cs" Link="ViewModel\UnitPriceFilter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\View\Converters\BoolToEffectConverter.cs" Link="ViewModel\Converters\BoolToEffectConverter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\View\Converters\NullToUnsetValueConverter.cs" Link="ViewModel\Converters\NullToUnsetValueConverter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\View\Converters\ObjectToCustomerConverter.cs" Link="ViewModel\Converters\ObjectToCustomerConverter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\View\Converters\ProductToNameConverter.cs" Link="ViewModel\Converters\ProductToNameConverter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\View\Converters\ProductToProductConverter.cs" Link="ViewModel\Converters\ProductToProductConverter.cs" />
-    <Compile Include="..\Northwind.NET.Sample\View\Converters\TextToImageSourceConverter.cs" Link="ViewModel\Converters\TextToImageSourceConverter.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Command\" />
     <Folder Include="Shaders\" />
-    <Folder Include="ViewModel\Converters\" />
     <Folder Include="ViewModel\CustomersComboBoxFilter\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\Northwind.NET.Sample\ViewModel\CustomersTreeList.cd" Link="ViewModel\CustomersTreeList.cd" />
+    <Folder Include="ViewModel\CustomersTreeFilter\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,14 +14,14 @@ namespace Northwind.NET.Sample.ViewModel {
         private readonly IEnumerable<CountryCustomersTreeItem> query;
         public int Count {
             get {
-                if (query is CountryCustomersTreeItem[])
-                    return ((CountryCustomersTreeItem[])query).Length;
+                if (query is CountryCustomersTreeItem[] v)
+                    return v.Length;
                 else
                     return
                         query.Count();
             }
         }
-        internal CustomersTreeVm(IEnumerable<CountryCustomersTreeItem> query) {
+        public CustomersTreeVm(IEnumerable<CountryCustomersTreeItem> query) {
             this.query = query;
         }
         public IEnumerator<CountryCustomersTreeItem> GetEnumerator() {

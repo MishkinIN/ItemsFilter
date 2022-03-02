@@ -21,7 +21,7 @@ namespace BolapanControl.ItemsFilter {
     // <summary>
     // FilterPresenter performs the role of a manager that manages the instantiation of filters and their connection to the CollectionView.
     // </summary>
-    public sealed class FilterPresenter : DependencyObject {
+    public sealed class FilterPresenter  {
         private static readonly Dictionary<ICollectionView, WeakReference> filterPresenters = new();
         private readonly ReadOnlyCollection<ItemPropertyInfo> itemProperties;
         private int itemsDeferRefreshCount = 0;
@@ -44,15 +44,14 @@ namespace BolapanControl.ItemsFilter {
             ICollectionView sourceCollectionView = (source as ICollectionView) ?? CollectionViewSource.GetDefaultView(source);
             FilterPresenter? instance = null;
             //GC.Collect();
-            foreach (var entry in filterPresenters.ToArray()) {
-                if (!entry.Value.IsAlive)
+            foreach (var entry in filterPresenters.Where(kvp=>kvp.Value.IsAlive).ToArray()) {
                     filterPresenters.Remove(entry.Key);
             }
             if (filterPresenters.ContainsKey(sourceCollectionView)) {
                 var wr = filterPresenters[sourceCollectionView];
                 instance = wr.Target as FilterPresenter;
             }
-            if (instance == null) {
+            else {
                 instance = new FilterPresenter(sourceCollectionView);
                 filterPresenters[sourceCollectionView] = new WeakReference(instance);
             }
@@ -115,7 +114,7 @@ namespace BolapanControl.ItemsFilter {
                     if (filtersEntry.ContainsKey(filterKey))
                         filter = filtersEntry[filterKey];
                     else {
-                        filter = initializer.TrygetFilter(this, viewKey);
+                        filter = initializer.TryGetFilter(this, viewKey);
                         if (filter != null)
                             filtersEntry[filterKey] = filter;
                     }
@@ -149,7 +148,7 @@ namespace BolapanControl.ItemsFilter {
                 if (filtersEntry.ContainsKey(filterKey))
                     filter = filtersEntry[filterKey];
                 else {
-                    filter = initializer.TrygetFilter(this, viewKey);
+                    filter = initializer.TryGetFilter(this, viewKey);
                     if (filter != null)
                         filtersEntry[filterKey] = filter;
                 }

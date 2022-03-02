@@ -23,5 +23,4 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.ViewModel")]
 [assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Initializer")]
 [assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Model")]
-//[assembly: XmlnsDefinition("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "BolapanControl.ItemsFilter.Presentation")]
 [assembly: XmlnsPrefix("http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter", "bsFilter")]

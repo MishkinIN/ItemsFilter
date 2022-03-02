@@ -1,56 +1,59 @@
 ﻿using BolapanControl.ItemsFilter.Model;
-using Northwind.NET.Sample.View;
 using System;
 using System.Collections.Generic;
 
 namespace Northwind.NET.Sample.ViewModel {
-    [View(typeof(CustomersTreeFilterView))]
+    [View("CustomersTreeFilterView")]
     public class CountriesTreeFilter : CitiesTreeFilter, IFilter {
-        private static CityItemFilterInitializer citiItemFilterInitializer = new CityItemFilterInitializer();
-        private string countryCompareTo;
+        private static readonly CityItemFilterInitializer citiItemFilterInitializer = new();
+        private string? countryCompareTo;
         private bool isCountryCompareActive;
-        private Dictionary<CountryCustomersTreeItem, CitiesTreeFilter> cityFilters = new Dictionary<CountryCustomersTreeItem, CitiesTreeFilter>();
-        internal CountriesTreeFilter(string key):base(key) {
+        private readonly Dictionary<CountryCustomersTreeItem, CitiesTreeFilter> cityFilters = new();
+        internal CountriesTreeFilter(string key) : base(key) {
         }
 
 
-        public string CountryCompareTo {
+        public string? CountryCompareTo {
             get { return countryCompareTo; }
             set {
                 if (countryCompareTo != value) {
                     countryCompareTo = value;
                     isCountryCompareActive = !String.IsNullOrEmpty(value);
-                    IDisposable defer = this.FilterPresenter == null ? null : this.FilterPresenter.DeferRefresh();
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     IsActive = CheckIsActive();
                     RaiseFilterChanged();
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged("CountryCompareTo");
+                    RaisePropertyChanged(nameof(CountryCompareTo));
                 }
             }
         }
         public override void IsMatch(BolapanControl.ItemsFilter.FilterPresenter sender, BolapanControl.ItemsFilter.FilterEventArgs e) {
             if (IsActive && e.Accepted) {
-                if (e.Item == null)
-                    e.Accepted = false;
-                else {
-                    CountryCustomersTreeItem item =(CountryCustomersTreeItem)e.Item;
-                    if(isCountryCompareActive)
-                        e.Accepted &=item.Country!=null && item.Country.Contains(countryCompareTo);
+                if (e.Item is CountryCustomersTreeItem item) {
+                    if (isCountryCompareActive)
+                        e.Accepted &= item.Country != null
+#pragma warning disable CS8604 // Possible null reference argument.
+                            && item.Country.Contains(countryCompareTo);
+#pragma warning restore CS8604 // Possible null reference argument.
                     if (e.Accepted)
                         e.Accepted = cityFilters[item].Count > 0;
+                }
+                else {
+                    e.Accepted = false;
                 }
             }
         }
         protected override void OnAttachPresenter(BolapanControl.ItemsFilter.FilterPresenter presenter) {
             foreach (CountryCustomersTreeItem country in ((CustomersTreeVm)(presenter.CollectionView.SourceCollection))) {
-                BolapanControl.ItemsFilter.FilterPresenter citiesPresenter = BolapanControl.ItemsFilter.FilterPresenter.TryGet(country.Cities);
-                CitiesTreeFilter cityFilter =  citiesPresenter.TryGetFilter(Key, citiItemFilterInitializer) as CitiesTreeFilter;
-                if (cityFilter!=null) {
-                    cityFilter.CityCompareTo = CityCompareTo;
-                    cityFilter.NameCompareTo = NameCompareTo;
-                    cityFilter.ContactCompareTo = ContactCompareTo;
-                    cityFilters[country] = cityFilter; 
+                if (country.Cities is not null) {
+                    BolapanControl.ItemsFilter.FilterPresenter? citiesPresenter = BolapanControl.ItemsFilter.FilterPresenter.TryGet(country.Cities);
+                    if (citiesPresenter?.TryGetFilter(Key, citiItemFilterInitializer) is CitiesTreeFilter cityFilter) {
+                        cityFilter.CityCompareTo = CityCompareTo;
+                        cityFilter.NameCompareTo = NameCompareTo;
+                        cityFilter.ContactCompareTo = ContactCompareTo;
+                        cityFilters[country] = cityFilter;
+                    } 
                 }
             }
         }

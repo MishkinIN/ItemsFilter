@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 
 namespace Northwind.NET.Sample.SampleData {
-    class Category:Northwind.NET.EF6Model.Category {
+    public class Category :Northwind.NET.EF6Model.Category {
         public string PictureAsString {
             get {
                 return Convert.ToBase64String(base.Picture);

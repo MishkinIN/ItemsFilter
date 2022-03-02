@@ -8,6 +8,7 @@
 using GalaSoft.MvvmLight.Command;
 using Northwind.NET.EF6Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -23,15 +24,15 @@ namespace Northwind.NET.Sample.ViewModel {
         private readonly ICommand moveFirstCommand, moveToPreviousCommand, moveToNextCommand, moveToNewCommand, moveToLastCommand;
 
         public OrdersVm() {
-            try {
-                cvs.Source = Workspace.This.Orders
-                        .OrderBy(ord => ord.Employee == null ? -1 : ord.Employee.Id)
-                        .Select(ord => ord)
-                        .ToList();
-            }
-            catch (Exception ex) {
-                //App.LogException(ex);
-            }
+            //try {
+            //    cvs.Source = Workspace.This.Orders
+            //            .OrderBy(ord => ord.Employee == null ? -1 : ord.Employee.Id)
+            //            .Select(ord => ord)
+            //            .ToList();
+            //}
+            //catch (Exception ex) {
+            //    //App.LogException(ex);
+            //}
             ordersView = cvs.View;
             moveFirstCommand = new RelayCommand(MoveToFirst, CanMoveToFirst);
             moveToPreviousCommand = new RelayCommand(MoveToPrevious, CanMoveToPrevious);
@@ -39,6 +40,13 @@ namespace Northwind.NET.Sample.ViewModel {
             moveToNewCommand = new RelayCommand(MoveToNew);
             moveToLastCommand = new RelayCommand(MoveToLast, CanMoveToLast);
 
+        }
+        public IEnumerable<Order>? ItemsSource {
+            get { return cvs.Source as IEnumerable<Order>; }
+            set {
+                if (value is IEnumerable<Order> source)
+                    cvs.Source = source;
+            }
         }
         public ICollectionView OrdersCollectionView {
             get { return ordersView; }
@@ -69,13 +77,12 @@ namespace Northwind.NET.Sample.ViewModel {
 
         private void MoveToNew() {
 
-            ((ObservableCollection<Order>)(ordersView.SourceCollection))
-                .Add(new Order
-                {
-                    Employee = ((Order)(ordersView.CurrentItem)).Employee,
-                    Id = Workspace.This.Orders.Select(order => order.Id).Max(),
-                    OrderDate = DateTime.Now
-                });
+            //((ObservableCollection<Order>)(ordersView.SourceCollection))
+            //    .Add(new Order {
+            //        Employee = ((Order)(ordersView.CurrentItem)).Employee,
+            //        Id = Workspace.This.Orders.Select(order => order.Id).Max(),
+            //        OrderDate = DateTime.Now
+            //    });
 
         }
 
@@ -125,7 +132,7 @@ namespace Northwind.NET.Sample.ViewModel {
             if (!string.IsNullOrEmpty(propertyName)
                 && myType.GetProperty(propertyName) == null) {
 #if !SILVERLIGHT
-                if (this is ICustomTypeDescriptor  descriptor) {
+                if (this is ICustomTypeDescriptor descriptor) {
                     if (descriptor.GetProperties()
                         .Cast<PropertyDescriptor>()
                         .Any(property => property.Name == propertyName)) {

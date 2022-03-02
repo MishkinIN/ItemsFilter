@@ -98,3 +98,11 @@ D:\Projects\ItemsFilter.github.com\Nortwind.Sample.net6\obj\Debug\net6.0-windows
 D:\Projects\ItemsFilter.github.com\Nortwind.Sample.net6\obj\Debug\net6.0-windows\Nortwind.Sample.net6_MarkupCompile.cache
 D:\Projects\ItemsFilter.github.com\Nortwind.Sample.net6\obj\Debug\net6.0-windows\Nortwind.Sample.net6_MarkupCompile.lref
 D:\Projects\ItemsFilter.github.com\Nortwind.Sample.net6\obj\Debug\net6.0-windows\MainWindow.baml
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\Themes\Generic.baml
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\CategoriesView.g.cs
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\CategoryFilterView.g.cs
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\CustomersView.g.cs
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\EmployeesView.g.cs
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\EmployesView.g.cs
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\OrdersView.g.cs
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\ProductsView.g.cs

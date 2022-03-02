@@ -20,7 +20,6 @@ G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0\Northwind.NET.EF6Model.pdb
 G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\Northwind.NET.EF6Model.dll
 G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\ref\Northwind.NET.EF6Model.dll
 G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\Northwind.NET.EF6Model.pdb
-G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.csproj.AssemblyReference.cache
 D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0\Northwind.NET.EF6Model.deps.json
 D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0\Northwind.NET.EF6Model.runtimeconfig.json
 D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0\Northwind.NET.EF6Model.dll

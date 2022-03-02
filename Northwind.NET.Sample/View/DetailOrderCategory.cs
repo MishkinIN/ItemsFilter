@@ -51,7 +51,7 @@ namespace Northwind.NET.Sample.View
     }
     class DetailOrderCategoryFilterInitializer : BolapanControl.ItemsFilter.Initializer.FilterInitializer
     {
-        public override Filter TrygetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key)
+        public override Filter TryGetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key)
         {
             if (key is string && (string)key == "Product.Category.Name")
             {

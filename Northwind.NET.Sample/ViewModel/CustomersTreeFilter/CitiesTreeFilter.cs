@@ -6,16 +6,15 @@ using System.Linq;
 
 namespace Northwind.NET.Sample.ViewModel {
     public class CitiesTreeFilter : CustomersTreeFilter, IFilter {
-        private static Func<int> NullCount = () => 0;
         private bool isCityCompareActive;
-        private string cityCompareTo;
-        private Dictionary<CityCustomersTreeItem, CustomersTreeFilter> customerFilters = new Dictionary<CityCustomersTreeItem, CustomersTreeFilter>();
-        private CustomerFilterInitializer customerFilterInitializer = new CustomerFilterInitializer();
-        
+        private string? cityCompareTo;
+        private readonly Dictionary<CityCustomersTreeItem, CustomersTreeFilter> customerFilters = new();
+        private readonly CustomerFilterInitializer customerFilterInitializer = new();
+
         internal protected CitiesTreeFilter(string key)
             : base(key) {
         }
-        public string CityCompareTo {
+        public string? CityCompareTo {
             get { return cityCompareTo; }
             set {
                 if (cityCompareTo != value) {
@@ -25,35 +24,37 @@ namespace Northwind.NET.Sample.ViewModel {
                     SendChangesToChild();
                     IsActive = CheckIsActive();
                     RaiseFilterChanged();
-                     if (defer != null)
+                    if (defer != null)
                         defer.Dispose();
-                   RaisePropertyChanged(nameof(CityCompareTo));
+                    RaisePropertyChanged(nameof(CityCompareTo));
                 }
             }
         }
         public override void IsMatch(BolapanControl.ItemsFilter.FilterPresenter sender, BolapanControl.ItemsFilter.FilterEventArgs e) {
             if (IsActive && e.Accepted) {
-                if (e.Item == null)
-                    e.Accepted = false;
-                else {
-                    CityCustomersTreeItem item = (CityCustomersTreeItem)e.Item;
+                if (e.Item is CityCustomersTreeItem item) {
                     if (isCityCompareActive)
-                        e.Accepted = item.City != null && item.City.Contains(cityCompareTo);
-                    if (e.Accepted)
-                        e.Accepted = customerFilters[item].Count > 0;
-                    
+                        e.Accepted = item.City != null
+#pragma warning disable CS8604 // Possible null reference argument.
+                            && item.City.Contains(cityCompareTo)
+#pragma warning restore CS8604 // Possible null reference argument.
+                            && customerFilters[item].Count > 0;
+                }
+                else {
+                    e.Accepted = false;
                 }
             }
         }
         protected override void OnAttachPresenter(BolapanControl.ItemsFilter.FilterPresenter presenter) {
             base.OnAttachPresenter(presenter);
             foreach (CityCustomersTreeItem item in presenter.CollectionView.SourceCollection) {
-                BolapanControl.ItemsFilter.FilterPresenter customersPresenter = BolapanControl.ItemsFilter.FilterPresenter.TryGet(item.Customers);
-                CustomersTreeFilter customerFilter = customersPresenter.TryGetFilter(Key, customerFilterInitializer) as CustomersTreeFilter;
-                if (customerFilter != null) {
-                    customerFilter.NameCompareTo = NameCompareTo;
-                    customerFilter.ContactCompareTo = ContactCompareTo;
-                    customerFilters[item] = customerFilter;
+                if (item.Customers is not null) {
+                    BolapanControl.ItemsFilter.FilterPresenter? customersPresenter = BolapanControl.ItemsFilter.FilterPresenter.TryGet(item.Customers);
+                    if (customersPresenter?.TryGetFilter(Key, customerFilterInitializer) is CustomersTreeFilter customerFilter) {
+                        customerFilter.NameCompareTo = NameCompareTo;
+                        customerFilter.ContactCompareTo = ContactCompareTo;
+                        customerFilters[item] = customerFilter;
+                    }
                 }
             }
 

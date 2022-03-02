@@ -14,7 +14,7 @@ using System.Windows;
 using System.Windows.Data;
 
 namespace Northwind.NET.Sample.View {
-    class ProductToNameConverter:IValueConverter {
+    public class ProductToNameConverter :IValueConverter {
         // Summary:
         //     Converts a value.
         //
