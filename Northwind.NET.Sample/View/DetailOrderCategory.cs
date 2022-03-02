@@ -21,24 +21,18 @@ namespace Northwind.NET.Sample.View
             Add(new DetailOrderCategoryFilterInitializer());
         }
     }
-    public class DetailOrderCategoryFilter : EqualFilter<OrderDetail>
+    public class DetailOrderCategoryFilter : ReferenceEqualFilter
     {
-        internal DetailOrderCategoryFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter)
+        internal DetailOrderCategoryFilter(FilterPresenter filterPresenter)
             : base(CategoryNameGetter, GetAvailableValuesQuery(filterPresenter))
         {
 
         }
        
-        private static string CategoryNameGetter(object orderDetail)
+        private static string CategoryNameGetter(object? orderDetail)
         {
-            OrderDetail detail =  (OrderDetail)orderDetail;
-            if (detail==null) return "";
-            Product product = detail.Product;
-            if (product == null) return "";
-            Category category = product.Category;
-            if (category == null) return "";
-            string name = category.Name;
-            return name == null ? "" : name;
+            OrderDetail? detail =  orderDetail as OrderDetail;
+            return detail?.Product?.Category?.Name ?? string.Empty;
         }
         /// <summary>
         /// Returns a query that returns the unique item property values in the ItemsSource collection..

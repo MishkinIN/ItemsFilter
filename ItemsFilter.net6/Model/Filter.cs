@@ -62,9 +62,11 @@ namespace BolapanControl.ItemsFilter.Model {
             set {
                 if (isActive != value) {
                     isActive = value;
-                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
-                    OnIsActiveChanged();
-                    defer?.Dispose();
+                    if (this.FilterPresenter!=null) {
+                        using (IDisposable defer = this.FilterPresenter.DeferRefresh()) {
+                            OnIsActiveChanged();
+                        } 
+                    }
                     RaisePropertyChanged(nameof(IsActive));
                 }
             }

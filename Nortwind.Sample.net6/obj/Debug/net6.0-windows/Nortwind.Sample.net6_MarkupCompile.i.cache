@@ -16,5 +16,5 @@ G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\App.xaml
 2191851350263
 MainWindow.xaml;ProjectDataSources.xaml;..\ItemsFilter\Themes\ItemsFilterStyle.xaml;..\Northwind.NET.Sample\SampleData\Workspace.xaml;..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter.xaml;..\Northwind.NET.Sample\Themes\CustomerComboBoxStyle.xaml;..\Northwind.NET.Sample\Themes\Generic.xaml;..\Northwind.NET.Sample\View\CategoriesView.xaml;..\Northwind.NET.Sample\View\CategoryFilterView.xaml;..\Northwind.NET.Sample\View\CustomersTreeFilterViewTemplate.xaml;..\Northwind.NET.Sample\View\CustomersView.xaml;..\Northwind.NET.Sample\View\EmployeesView.xaml;..\Northwind.NET.Sample\View\EmployesView.xaml;..\Northwind.NET.Sample\View\OrdersView.xaml;..\Northwind.NET.Sample\View\ProductsView.xaml;
 
-False
+True
 

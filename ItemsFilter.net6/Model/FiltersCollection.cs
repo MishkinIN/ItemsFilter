@@ -23,24 +23,24 @@ namespace BolapanControl.ItemsFilter.Model {
                 return (Filter)dictionary[key];
             }
             set {
-                var defer = parent.DeferRefresh();
-                Filter filter;
-                if (dictionary.ContainsKey(key)) {
-                    filter = (Filter)dictionary[key];
-                    filter.Detach(parent);
+                using (var defer = parent.DeferRefresh()) {
+                    Filter filter;
+                    if (dictionary.ContainsKey(key)) {
+                        filter = (Filter)dictionary[key];
+                        filter.Detach(parent);
+                    }
+                    dictionary[key] = filter = value;
+                    filter.Attach(parent);
                 }
-                dictionary[key] = filter = value;
-                filter.Attach(parent);
-                defer.Dispose();
             }
         }
         internal void Remove(Type key) {
             if (dictionary.ContainsKey(key)) {
-                var defer = parent.DeferRefresh();
-                Filter filter = (Filter)dictionary[key];
-                filter.Detach(parent);
-                dictionary.Remove(key);
-                defer.Dispose();
+                using (var defer = parent.DeferRefresh()) {
+                    Filter filter = (Filter)dictionary[key];
+                    filter.Detach(parent);
+                    dictionary.Remove(key);
+                }
             }
         }
         //internal void Remove(Filter filter) {

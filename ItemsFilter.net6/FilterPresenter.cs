@@ -83,8 +83,9 @@ namespace BolapanControl.ItemsFilter {
             }
             set {
                 if (isFilterActive != value) {
-                    isFilterActive = value;
-                    DeferRefresh().Dispose();
+                    using (var defer = DeferRefresh()) {
+                        isFilterActive = value; 
+                    }
                 }
             }
         }
@@ -160,20 +161,16 @@ namespace BolapanControl.ItemsFilter {
             add {
                 if (filterFunction == null)
                     filterFunction = new Predicate<object>(FilterFunction);
-                var deferRefresh = DeferRefresh();
+                using var deferRefresh = DeferRefresh();
                 FilterAction += value;
                 IsFilterActive = true;
-                deferRefresh.Dispose();
             }
             remove {
-                var deferRefresh = DeferRefresh();
+                using var deferRefresh = DeferRefresh();
                 FilterAction -= value;
-                //if (itemsControl != null && _Filter==null)
-                //    itemsControl.Items.PropertyFilter = null;
                 IsFilterActive = FilterAction != null;
                 if (FilterAction == null)
                     filterFunction = null;
-                deferRefresh.Dispose();
             }
         }
 
@@ -203,11 +200,11 @@ namespace BolapanControl.ItemsFilter {
         /// </summary>
         /// <param name="filter"></param>
         internal void ReceiveFilterChanged(IFilter filter) {
-            var defer = DeferRefresh();
-            Filter -= filter.IsMatch;
-            if (filter.IsActive)
-                Filter += filter.IsMatch;
-            defer.Dispose();
+            using (var defer = DeferRefresh()) {
+                Filter -= filter.IsMatch;
+                if (filter.IsActive)
+                    Filter += filter.IsMatch;
+            }
         }
         private void RaiseFiltered() {
             lock (filteredEventArgs) {
@@ -227,6 +224,9 @@ namespace BolapanControl.ItemsFilter {
             private readonly FilterPresenter filterPr;
             private bool isDisposed = false;
             internal DisposeItemsDeferRefresh(FilterPresenter filterpr) {
+#if DEBUG
+                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPr);
+#endif
                 this.filterPr = filterpr;
                 if (filterPr.CollectionView is IEditableCollectionView cv) {
                     if (cv.IsAddingNew)

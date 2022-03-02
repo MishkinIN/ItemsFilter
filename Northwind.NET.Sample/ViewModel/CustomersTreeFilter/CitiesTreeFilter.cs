@@ -21,13 +21,13 @@ namespace Northwind.NET.Sample.ViewModel {
                 if (cityCompareTo != value) {
                     cityCompareTo = value;
                     isCityCompareActive = !String.IsNullOrEmpty(value);
-                    IDisposable defer = this.FilterPresenter == null ? null : this.FilterPresenter.DeferRefresh();
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     SendChangesToChild();
                     IsActive = CheckIsActive();
                     RaiseFilterChanged();
                      if (defer != null)
                         defer.Dispose();
-                   RaisePropertyChanged("CityCompareTo");
+                   RaisePropertyChanged(nameof(CityCompareTo));
                 }
             }
         }

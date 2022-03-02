@@ -46,14 +46,17 @@ namespace BolapanControl.ItemsFilter.Model {
             base.OnIsActiveChanged();
         }
         public void SelectedValuesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
-            if (e.AddedItems != null) {
-                foreach (var item in e.AddedItems) {
+            SelectedValuesChanged(e.AddedItems, e.RemovedItems);
+        }
+        internal void SelectedValuesChanged(IList? addedItems, IList? removedItems) {
+            if (addedItems != null) {
+                foreach (var item in addedItems) {
                     selectedValues.Add(item);
                 }
                 IsActive = true;
             }
-            if (e.RemovedItems != null) {
-                foreach (var item in e.RemovedItems) {
+            if (removedItems != null) {
+                foreach (var item in removedItems) {
                     selectedValues.Remove(item);
                 }
                 IsActive = selectedValues.Count > 0;
@@ -97,7 +100,7 @@ namespace BolapanControl.ItemsFilter.Model {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(typeof(object), propertyInfo.PropertyType);
 
-#endif 
+#endif
             availableValues = Array.Empty<object>();
         }
         /// <summary>
@@ -131,7 +134,7 @@ namespace BolapanControl.ItemsFilter.Model {
                 if (value == null)
                     e.Accepted = false;
                 else
-                    e.Accepted = SelectedValues.Any(val => val==value);
+                    e.Accepted = SelectedValues.Any(val => val == value);
             }
         }
     }
@@ -173,7 +176,7 @@ namespace BolapanControl.ItemsFilter.Model {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(typeof(T), propertyInfo.PropertyType);
 
-#endif 
+#endif
             availableValues = Array.Empty<object>();
         }
         /// <summary>
