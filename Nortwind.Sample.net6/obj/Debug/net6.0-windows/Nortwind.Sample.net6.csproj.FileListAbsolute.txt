@@ -106,3 +106,4 @@ G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\Vi
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\EmployesView.g.cs
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\OrdersView.g.cs
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\ProductsView.g.cs
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\CustomersTreeFilterViewTemplate.baml

@@ -25,8 +25,8 @@ namespace Northwind.NET.Sample {
         public static WorkspaceInstance This {
             get {
                 if (thisInstance == null) {
-                    thisInstance = Application.Current.Resources["Workspace"] as WorkspaceInstance
-                        //?? new WorkspaceInstance()
+                    thisInstance = Application.Current.Resources["WorkspaceInstance"] as WorkspaceInstance
+                        ?? new WorkspaceInstance()
                         ;
                     return thisInstance;
                 }

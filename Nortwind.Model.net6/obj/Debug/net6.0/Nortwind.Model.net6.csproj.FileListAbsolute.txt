@@ -34,3 +34,4 @@ D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Northwin
 D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\ref\Northwind.NET.EF6Model.dll
 D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Northwind.NET.EF6Model.pdb
 D:\Projects\ItemsFilter.github.com\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.genruntimeconfig.cache
+G:\Projects\DcSokod\itemsfilter\Nortwind.Model.net6\obj\Debug\net6.0\Nortwind.Model.net6.csproj.AssemblyReference.cache
