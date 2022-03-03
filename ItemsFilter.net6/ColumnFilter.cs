@@ -59,8 +59,8 @@ namespace BolapanControl.ItemsFilter {
         /// Initializers Attached Dependency Property
         /// </summary>
         public static readonly DependencyProperty InitializersProperty =
-            DependencyProperty.RegisterAttached("Initializers", typeof(FilterInitializersManager), typeof(ColumnFilter),
-                new FrameworkPropertyMetadata(null));
+            DependencyProperty.RegisterAttached(nameof(Initializers), typeof(FilterInitializersManager), typeof(ColumnFilter),
+                new FrameworkPropertyMetadata(FilterInitializersManager.Default));
 
         /// <summary>
         /// Gets the FilterInitializersManager  that used for generate ColumnFilter.Model. 
@@ -72,12 +72,15 @@ namespace BolapanControl.ItemsFilter {
         /// <summary>
         /// Sets the FilterInitializersManager that used for generate ColumnFilter.Model.
         /// </summary>
-        public static void SetInitializers(DependencyObject d, bool value) {
+        public static void SetInitializers(DependencyObject d, FilterInitializersManager value) {
             d.SetValue(InitializersProperty, value);
         }
-
+        public FilterInitializersManager Initializers {
+            get => (FilterInitializersManager)GetValue(InitializersProperty);
+            set => SetValue(InitializersProperty, value);
+        }
         #endregion
-
+        
 
         static ColumnFilter() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ColumnFilter), new FrameworkPropertyMetadata(typeof(ColumnFilter)));

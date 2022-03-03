@@ -23,18 +23,7 @@
     <Folder Include="View\Converters\" />
   </ItemGroup>
 
-  <ItemGroup><!--<Page Include="..\ItemsFilter\Themes\Generic.xaml" Link="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Content Include="..\ItemsFilter\Themes\ItemsFilterStyle.xaml" Link="Themes\ItemsFilterStyle.xaml">
-      <Generator></Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>-->
-  
-    <Page Remove="Themes\Generic.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
+   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
@@ -51,6 +40,12 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Themes\ItemsFilterStyle.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
 
 </Project>

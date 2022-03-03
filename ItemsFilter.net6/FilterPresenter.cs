@@ -224,7 +224,7 @@ namespace BolapanControl.ItemsFilter {
             private bool isDisposed = false;
             internal DisposeItemsDeferRefresh(FilterPresenter filterpr) {
 #if DEBUG
-                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPr);
+                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterpr);
 #endif
                 this.filterPr = filterpr;
                 if (filterPr.CollectionView is IEditableCollectionView cv) {

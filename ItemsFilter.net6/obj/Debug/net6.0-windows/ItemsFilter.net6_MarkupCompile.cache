@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 
-1989956410
+21194262179
 
 501356446323
 196-454257995
-Themes\ItemsFilterStyle.xaml;
+Themes\Generic.xaml;Themes\ItemsFilterStyle.xaml;
 
 False
 

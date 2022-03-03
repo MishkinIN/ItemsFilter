@@ -25,12 +25,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <vw:CategoryFilterView />
+        <!--<vw:CategoryFilterView />-->
         <DataGrid x:Name="productDataGrid"
                   Grid.Row="1"
                   AutoGenerateColumns="False"
                   ItemsSource="{Binding Path=Products,
-                                        Source={StaticResource Workspace}}">
+                                        Source={StaticResource vm:Workspace}}">
             <DataGrid.Resources>
                 <DataTemplate DataType="{x:Type model:Category}">
                     <TextBlock Text="{Binding Name}" />

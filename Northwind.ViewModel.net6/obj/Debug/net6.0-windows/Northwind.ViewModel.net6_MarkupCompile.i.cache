@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 
-380915649
+4394445907
 
-32-251309840
+33-1051830807
 218-1656871449
-SampleData\CategoriesFilter\EqualFilter.xaml;SampleData\Customer.xaml;WorkspaceInstance.xaml;
+SampleData\CategoriesFilter\EqualFilter.xaml;SampleData\Customer.xaml;SampleData\Order.xaml;WorkspaceInstance.xaml;
 
-True
+False
 

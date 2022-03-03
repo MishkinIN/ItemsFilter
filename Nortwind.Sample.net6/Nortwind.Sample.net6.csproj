@@ -8,6 +8,8 @@
 		<RootNamespace>Northwind.NET.Sample</RootNamespace>
 		<ApplicationIcon>ItemsFilter.ico</ApplicationIcon>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<BaseOutputPath>..\bin</BaseOutputPath>
+
 	</PropertyGroup>
 
 	<ItemGroup>

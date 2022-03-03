@@ -18,7 +18,7 @@
              xmlns:vw="clr-namespace:Northwind.NET.Sample.View"
              x:Name="UserControl"
              DataContext="{Binding Path=CustomersTreeList,
-                                   Source={StaticResource Workspace}}"
+                                   Source={StaticResource vm:Workspace}}"
              d:DesignHeight="591.192"
              d:DesignWidth="866.126"
              mc:Ignorable="d">

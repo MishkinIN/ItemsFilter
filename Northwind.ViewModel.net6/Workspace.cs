@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Reflection;
+using System.Windows.Resources;
 //using Northwind.NET.Sample.ViewModel;
 
 namespace Northwind.NET.Sample.ViewModel {
@@ -40,6 +41,10 @@ namespace Northwind.NET.Sample.ViewModel {
             CallingAssemblyShortName = Assembly.GetCallingAssembly().FullName.Split(',')[0];
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+        public static string ViewModelAssemblyName  =>Assembly.GetAssembly(typeof(WorkspaceInstance)).FullName.Split(',')[0];
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+        
         public static NorthwindNETEntities NorthwindModel {
             get {
                 if (northwindModel == null)
@@ -199,9 +204,9 @@ namespace Northwind.NET.Sample.ViewModel {
 
         internal static WorkspaceInstance LoadInstance(WorkspaceInstance instance) {
             try {
-                System.Uri resourceUri = new ($"/{Workspace.CallingAssemblyShortName};component/SampleData/Workspace.xaml", System.UriKind.Relative);
+                System.Uri resourceUri = new ($"/{Workspace.ViewModelAssemblyName};component/WorkspaceInstance.xaml", System.UriKind.Relative);
                  //System.Uri resourceUri = new System.Uri($"ms-appx:///SampleData/Workspace.xaml");
-               if (System.Windows.Application.GetResourceStream(resourceUri) != null) {
+               if (System.Windows.Application.GetResourceStream(resourceUri) is StreamResourceInfo sri) {
                     System.Windows.Application.LoadComponent(instance, resourceUri);
                     if (instance.Products!=null && instance.Categories!=null && instance.Suppliers!=null) {
                         foreach (Product product in instance.Products) {

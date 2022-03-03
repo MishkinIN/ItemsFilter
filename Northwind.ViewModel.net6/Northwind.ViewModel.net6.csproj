@@ -4,6 +4,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+	<BaseOutputPath>..\bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,9 +14,7 @@
     <Page Remove="ViewModel\CustomersTreeFilter\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Remove="SampleData\Order.xaml" />
-  </ItemGroup>
+ 
 
   <ItemGroup>
     <Compile Include="..\Northwind.NET.Sample\Command\RelayCommand.cs" Link="Command\RelayCommand.cs" />

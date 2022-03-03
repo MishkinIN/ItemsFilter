@@ -98,7 +98,7 @@ namespace BolapanControl.ItemsFilter.Model {
             : base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(typeof(object), propertyInfo.PropertyType);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(typeof(object).IsAssignableFrom(propertyInfo.PropertyType));
 
 #endif
             availableValues = Array.Empty<object>();

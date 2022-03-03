@@ -14,3 +14,5 @@ G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsF
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.dll
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ref\ItemsFilter.net6.dll
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.pdb
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.csproj.AssemblyReference.cache
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\Themes\Generic.baml
