@@ -14,10 +14,10 @@
                 <ResourceDictionary Source="Themes/CustomerComboBoxStyle.xaml" />
                 <ResourceDictionary Source="ProjectDataSources.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <local:WorkspaceInstance x:Key="Workspace" />
-            <!--<DataTemplate DataType="{x:Type vm:OrdersVm}">
-                <vw:OrdersView />
-            </DataTemplate>-->
+            <vm:WorkspaceInstance x:Key="Workspace" />
+            <DataTemplate DataType="{x:Type vm:OrdersVm}">
+                <!--<vw:OrdersView />-->
+            </DataTemplate>
         </ResourceDictionary>
 
     </Application.Resources>

@@ -2,6 +2,7 @@
 using BolapanControl.ItemsFilter.Initializer;
 using BolapanControl.ItemsFilter.Model;
 using BolapanControl.ItemsFilter.View;
+using Northwind.NET.Sample.ViewModel;
 using System.Windows.Controls;
 
 namespace Northwind.NET.Sample.View {

@@ -2,6 +2,11 @@ G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\ItemsFilter.net6.deps.j
 G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\ItemsFilter.net6.dll
 G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\ref\ItemsFilter.net6.dll
 G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\ItemsFilter.net6.pdb
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6_MarkupCompile.cache
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6_MarkupCompile.lref
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\Themes\ItemsFilterStyle.baml
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.g.resources
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.GeneratedMSBuildEditorConfig.editorconfig
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.AssemblyInfoInputs.cache
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.AssemblyInfo.cs
@@ -9,8 +14,3 @@ G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsF
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.dll
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ref\ItemsFilter.net6.dll
 G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.pdb
-G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6_MarkupCompile.cache
-G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6_MarkupCompile.lref
-G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\Themes\ItemsFilterStyle.baml
-G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\ItemsFilter.net6.g.resources

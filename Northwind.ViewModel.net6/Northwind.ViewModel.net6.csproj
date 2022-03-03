@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="SampleData\Order.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="..\Northwind.NET.Sample\Command\RelayCommand.cs" Link="Command\RelayCommand.cs" />
     <Compile Include="..\Northwind.NET.Sample\Command\WeakAction.cs" Link="Command\WeakAction.cs" />
     <Compile Include="..\Northwind.NET.Sample\Command\WeakFunc.cs" Link="Command\WeakFunc.cs" />
@@ -33,7 +37,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DesignDataWithDesignTimeCreatableTypes Include="..\Northwind.NET.Sample\SampleData\Customer.xaml" Link="SampleData\Customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </DesignDataWithDesignTimeCreatableTypes>
+    <DesignDataWithDesignTimeCreatableTypes Include="SampleData\Order.xaml">
+      <SubType>Designer</SubType>
+    </DesignDataWithDesignTimeCreatableTypes>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Command\" />
+    <Folder Include="SampleData\CategoriesFilter\CategoriesFilter_Files\" />
     <Folder Include="Shaders\" />
     <Folder Include="ViewModel\CustomersComboBoxFilter\" />
     <Folder Include="ViewModel\CustomersTreeFilter\" />
@@ -45,9 +60,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image01.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image01.png" />
+    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image02.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image02.png" />
+    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image03.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image03.png" />
+    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image04.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image04.png" />
+    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image05.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image05.png" />
     <Resource Include="..\Northwind.NET.Sample\Shaders\MonochromeEffect.ps" Link="Shaders\MonochromeEffect.ps">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="WorkspaceInstance.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
 </Project>

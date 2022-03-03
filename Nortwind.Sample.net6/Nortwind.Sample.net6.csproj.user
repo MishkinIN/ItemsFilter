@@ -7,25 +7,19 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <DesignDataWithDesignTimeCreatableTypes Update="..\Northwind.NET.Sample\SampleData\Customer.xaml">
-      <SubType>Designer</SubType>
-    </DesignDataWithDesignTimeCreatableTypes>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ProjectDataSources.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SampleData\CategoriesFilter\CategoriesFilter.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SampleData\WorkspaceInstance.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Themes\CustomerComboBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ItemsFilterStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CategoriesView.xaml">
@@ -52,8 +46,5 @@
     <Page Update="View\ProductsView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <DesignDataWithDesignTimeCreatableTypes Update="SampleData\Order.xaml">
-      <SubType>Designer</SubType>
-    </DesignDataWithDesignTimeCreatableTypes>
   </ItemGroup>
 </Project>

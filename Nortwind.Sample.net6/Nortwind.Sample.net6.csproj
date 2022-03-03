@@ -11,24 +11,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Page Remove="SampleData\Order.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Include="..\Northwind.NET.Sample\SampleData\CategoriesCollection.cs" Link="SampleData\CategoriesCollection.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\Category.cs" Link="SampleData\Category.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\Customers.cs" Link="SampleData\Customers.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\Employes.cs" Link="SampleData\Employes.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\OrderDetails.cs" Link="SampleData\OrderDetails.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\OrderDetailsCollection.cs" Link="SampleData\OrderDetailsCollection.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\Orders.cs" Link="SampleData\Orders.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\Products.cs" Link="SampleData\Products.cs" />
-		<Compile Include="..\Northwind.NET.Sample\SampleData\Suppliers.cs" Link="SampleData\Suppliers.cs">
-			<Generator></Generator>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 		<!--<Content Include="..\Northwind.NET.Sample\Fonts\vijaya.ttf" Link="Fonts\vijaya.ttf" />
     <Content Include="..\Northwind.NET.Sample\Fonts\vijayab.ttf" Link="Fonts\vijayab.ttf" />-->
 		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID1.gif" Link="Resources\EmpID1.gif" />
@@ -41,11 +23,6 @@
 		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID8.gif" Link="Resources\EmpID8.gif" />
 		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID9.gif" Link="Resources\EmpID9.gif" />
 		<Resource Include="..\Northwind.NET.Sample\Resources\StartupNorthwindLogo.jpg" Link="Resources\StartupNorthwindLogo.jpg" />
-		<Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image01.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image01.png" />
-		<Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image02.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image02.png" />
-		<Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image03.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image03.png" />
-		<Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image04.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image04.png" />
-		<Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image05.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image05.png" />
 		<Content Include="ItemsFilter.ico" />
 		<Content Include="..\Northwind.NET.Sample\Fonts\vijaya.ttf" Link="Fonts\vijaya.ttf">
 			<IsSystemFont>True</IsSystemFont>
@@ -62,20 +39,18 @@
 	<ItemGroup>
 		<Folder Include="Fonts\" />
 		<Folder Include="Resources\" />
-		<Folder Include="SampleData\CategoriesFilter\CategoriesFilter_Files\" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<DesignDataWithDesignTimeCreatableTypes Include="..\Northwind.NET.Sample\SampleData\Customer.xaml" Link="SampleData\Customer.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</DesignDataWithDesignTimeCreatableTypes>
-		<DesignDataWithDesignTimeCreatableTypes Include="SampleData\Order.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\ItemsFilter.net6\ItemsFilter.net6.csproj" />
-		<ProjectReference Include="..\Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj" />
-		<ProjectReference Include="..\Nortwind.Model.net6\Nortwind.Model.net6.csproj" />
+		<ProjectReference Include="..\ItemsFilter.net6\ItemsFilter.net6.csproj">
+		  <CopyLocal>True</CopyLocal>
+		</ProjectReference>
+		<ProjectReference Include="..\Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj">
+		  <CopyLocal>True</CopyLocal>
+		</ProjectReference>
+		<ProjectReference Include="..\Nortwind.Model.net6\Nortwind.Model.net6.csproj">
+		  <CopyLocal>True</CopyLocal>
+		</ProjectReference>
 	</ItemGroup>
 
 </Project>
