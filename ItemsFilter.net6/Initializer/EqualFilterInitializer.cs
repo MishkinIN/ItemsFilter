@@ -40,13 +40,21 @@ namespace BolapanControl.ItemsFilter.Initializer {
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
                 && !propertyType.IsEnum
                 ) {
-                //PropertyFilter? filter = Activator.CreateInstance(
-                //    typeof(ReferenceEqualFilter).MakeGenericType(propertyInfo.PropertyType),
-                //    propertyInfo,
-                //    GetAvailableValuesQuery(filterPresenter, propertyInfo)
-                //) as PropertyFilter;
-                var filter = new ReferenceEqualFilter(propertyInfo, GetAvailableValuesQuery(filterPresenter, propertyInfo));
-                return filter;
+                Type generic = typeof(IEquatable<>);
+                Type[] tArgs = new Type[] { propertyType };
+                Type iquatableType = generic.MakeGenericType(tArgs);
+                if (iquatableType.IsAssignableFrom(propertyType)) {
+                    Filter? filter = Activator.CreateInstance(
+                                        typeof(EqualFilter<>).MakeGenericType(propertyType),
+                                        propertyInfo,
+                                        GetAvailableValuesQuery(filterPresenter, propertyInfo)
+                                    ) as Filter;
+                    return filter;
+                }
+                {
+                    var filter = new ReferenceEqualFilter(propertyInfo, GetAvailableValuesQuery(filterPresenter, propertyInfo));
+                    return filter;
+                }
             }
             return null;
         }

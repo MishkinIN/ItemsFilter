@@ -50,7 +50,12 @@
       "ProjectGuid": "79e0610f-ad68-434e-9a17-36897479feec",
       "DisplayName": "ItemsFilter.net6.Test",
       "ColorIndex": 8
+    },
+    "1bdb7cba-939a-4546-aa25-fb389d9712f4": {
+      "ProjectGuid": "1bdb7cba-939a-4546-aa25-fb389d9712f4",
+      "DisplayName": "NortwindSample.net6",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 9
+  "NextColorIndex": 10
 }
