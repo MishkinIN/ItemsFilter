@@ -8,7 +8,11 @@ using System.Windows;
 namespace ItemsFilter.net6.Test.Model {
     public enum StateEnum  {
         State1,
-        State2
+        State2,
+        State3,
+        State4,
+        State5,
+        State6,
     }
 
     internal class EnumContentElement:ContentElement {

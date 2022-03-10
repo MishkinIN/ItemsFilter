@@ -2,7 +2,9 @@
 using BolapanControl.ItemsFilter.Initializer;
 using BolapanControl.ItemsFilter.Model;
 using BolapanControl.ItemsFilter.View;
+using Northwind.NET.EF6Model;
 using Northwind.NET.Sample.ViewModel;
+using System;
 using System.Windows.Controls;
 
 namespace Northwind.NET.Sample.View {
@@ -13,13 +15,14 @@ namespace Northwind.NET.Sample.View {
         public CategoryFilterView() {
             InitializeComponent();
             // Define Filter that must be use.
-            EqualFilterInitializer initializer = new EqualFilterInitializer();
+            EqualFilterInitializer initializer = new ();
             // Get FilterPresenter that connected to default collection view for Workspace.This.Products collection.
-            FilterPresenter productsCollectionViewFilterPresenter = FilterPresenter.TryGet(Workspace.This.Products);
+            FilterPresenter? fp = FilterPresenter.TryGet(Workspace.This.Products?? Array.Empty<Product>());
             // Get EqualFilter that use Category item property.
-            EqualFilter filter = ((EqualFilter)(productsCollectionViewFilterPresenter.TryGetFilter("Category", initializer)));
-            // Use instance of EqualFilter as Model.
-            Model = filter;
+            if (fp!=null && fp.TryGetFilter("Category", initializer) is EqualFilter filter) {
+                // Use instance of EqualFilter as Model.
+                Model = filter; 
+            }
         }
     }
 }

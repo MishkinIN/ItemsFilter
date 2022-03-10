@@ -56,7 +56,7 @@ namespace Northwind.NET.Sample.View {
         //
         // Returns:
         //     A converted value. If the method returns null, the valid null value is used.
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+        public object ConvertBack(object? value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             return DependencyProperty.UnsetValue;
         }
     }

@@ -291,16 +291,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ItemsFilter\ItemsFilter.csproj">
-      <Project>{aab57bb1-a448-457c-ad53-16b32a1c1f1d}</Project>
-      <Name>ItemsFilter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Northwind.NET.EF6Model\Northwind.NET.EF6Model.csproj">
-      <Project>{a7d88eef-3cd3-4acb-a460-151554d98bdf}</Project>
-      <Name>Northwind.NET.EF6Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\StartupNorthwindLogo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -381,8 +371,8 @@
   <ItemGroup>
     <Resource Include="ItemsFilter.ico" />
   </ItemGroup>
-<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!--<Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />-->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!--<Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />-->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

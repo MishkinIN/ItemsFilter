@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("itemsfilter.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("vijaya.ttf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("vijayab.ttf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fonts/vijaya.ttf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fonts/vijayab.ttf")]
 
 

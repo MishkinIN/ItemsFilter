@@ -5,16 +5,16 @@ winexe
 C#
 .cs
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\
-Northwind.NET.Sample
+Nortwind.Sample.net6
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\App.xaml
 12-1333149293
-3-715527498
+21009565264
 21414170976
 2191345250550
 MainWindow.xaml;ProjectDataSources.xaml;Themes\CustomerComboBoxStyle.xaml;Themes\Generic.xaml;Themes\ItemsFilterStyle.xaml;View\CategoriesView.xaml;View\CategoryFilterView.xaml;View\CustomersTreeFilterViewTemplate.xaml;View\CustomersView.xaml;View\EmployeesView.xaml;View\OrdersView.xaml;View\ProductsView.xaml;
 
-False
+True
 

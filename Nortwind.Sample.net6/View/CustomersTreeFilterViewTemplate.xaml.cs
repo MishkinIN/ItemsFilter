@@ -26,7 +26,7 @@ namespace Northwind.NET.Sample.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new ($"/{Workspace.CallingAssemblyShortName};component/View/CustomersTreeFilterViewTemplate.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Northwind.NET.Sample;component/View/CustomersTreeFilterViewTemplate.xaml", System.UriKind.Relative);
             System.Windows.Application.LoadComponent(this, resourceLocater);
         }
     }

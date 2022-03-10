@@ -837,7 +837,6 @@
 
     <Style x:Key="DataGridColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="VerticalContentAlignment" Value="Center" />
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
@@ -893,10 +892,9 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Padding" Value="-2,0" />
-
     </Style>
-    <Style TargetType="{x:Type DataGrid}">
+    <!--<Style TargetType="{x:Type DataGrid}">
         <Setter Property="ColumnHeaderStyle" Value="{StaticResource DataGridColumnHeaderStyle}" />
-    </Style>
+    </Style>-->
 
 </ResourceDictionary>

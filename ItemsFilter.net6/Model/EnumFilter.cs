@@ -43,13 +43,13 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <summary>
         /// Determines whether the specified target is a match.
         /// </summary>
-        public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
+        public override void IsMatch(FilterPresenter? sender, FilterEventArgs e) {
             if (e.Accepted) {
                 object? value = getter(e.Item);
                 if (value == null)
                     e.Accepted = false;
                 else
-                    e.Accepted = SelectedValues.Any(val => val == value);
+                    e.Accepted = SelectedValues.Any(val => val.Equals(value));
             }
         }
 

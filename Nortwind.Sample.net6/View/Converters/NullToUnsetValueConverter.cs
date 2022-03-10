@@ -14,12 +14,15 @@ using System.Windows.Data;
 
 namespace Northwind.NET.Sample.View {
     public class NullToUnsetValueConverter :IValueConverter {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+        public object? Convert(object? value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+            if (value == DependencyProperty.UnsetValue) {
+                return null;
+            }
             return value;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
-            if (Object.ReferenceEquals(null, value))
+        public object ConvertBack(object? value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+            if (value is null)
                 return DependencyProperty.UnsetValue;
             else
                 return value;

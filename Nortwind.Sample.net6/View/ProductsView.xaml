@@ -12,7 +12,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:bsFilter="http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Northwind.NET.Sample"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:model="clr-namespace:Northwind.NET.EF6Model;assembly=Northwind.NET.EF6Model"
              xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel;assembly=Northwind.ViewModel.net6"
@@ -25,12 +24,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <!--<vw:CategoryFilterView />-->
+        <vw:CategoryFilterView />
         <DataGrid x:Name="productDataGrid"
                   Grid.Row="1"
                   AutoGenerateColumns="False"
                   ItemsSource="{Binding Path=Products,
-                                        Source={StaticResource vm:Workspace}}">
+                                        Source={StaticResource Workspace}}">
             <DataGrid.Resources>
                 <DataTemplate DataType="{x:Type model:Category}">
                     <TextBlock Text="{Binding Name}" />
@@ -46,8 +45,9 @@
                                     Width="Auto"
                                     Binding="{Binding Supplier.Name}"
                                     Header="Supplier" >
+
                     <bsFilter:ColumnFilter.Initializers>
-                        <vw:SupplierNameFIM/>
+                        <vm:SupplierNameFIM/>
                     </bsFilter:ColumnFilter.Initializers>
                 </DataGridTextColumn>
                 <DataGridTextColumn x:Name="nameColumn"

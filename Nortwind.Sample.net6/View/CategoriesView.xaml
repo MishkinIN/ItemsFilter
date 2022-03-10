@@ -15,7 +15,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel;assembly=Northwind.ViewModel.net6"
              x:Name="UserControl"
-             d:DataContext="{Binding Path=Categories,
+             DataContext="{Binding Path=Categories,
                                    Source={x:Static vm:Workspace.This}}"
              d:DesignHeight="480"
              d:DesignWidth="640"

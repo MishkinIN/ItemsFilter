@@ -38,13 +38,13 @@ namespace BolapanControl.ItemsFilter {
         // </summary>
         // <param name="source">ICollectionView for source or source</param>
         // <returns>FilterPresenter, connected to source, or null if source is null.</returns>
-        public static FilterPresenter? TryGet(IEnumerable source) {
+        public static FilterPresenter? TryGet(IEnumerable? source) {
             if (source == null)
                 return null;
             ICollectionView sourceCollectionView = (source as ICollectionView) ?? CollectionViewSource.GetDefaultView(source);
             FilterPresenter? instance = null;
             //GC.Collect();
-            foreach (var entry in filterPresenters.Where(kvp=>kvp.Value.IsAlive).ToArray()) {
+            foreach (var entry in filterPresenters.Where(kvp=>!kvp.Value.IsAlive).ToArray()) {
                     filterPresenters.Remove(entry.Key);
             }
             if (filterPresenters.ContainsKey(sourceCollectionView)) {
@@ -136,11 +136,9 @@ namespace BolapanControl.ItemsFilter {
         public Filter? TryGetFilter(string viewKey, FilterInitializer initializer) {
             Filter? filter = null;
             if (viewKey != null) {
-                FiltersCollection filtersEntry;
+                FiltersCollection? filtersEntry;
                 // Get registered collection by key.
-                if (filters.ContainsKey(viewKey))
-                    filtersEntry = filters[viewKey];
-                else {
+                if (!filters.TryGetValue(viewKey, out filtersEntry)) {
                     filtersEntry = new FiltersCollection(this);
                     filters.Add(viewKey, filtersEntry);
                 }
@@ -155,6 +153,25 @@ namespace BolapanControl.ItemsFilter {
             }
             return filter;
         }
+
+        /// <summary>
+        ///  Enters a defer cycle that you can use to change filter of the view and delay automatic refresh.
+        /// </summary>
+        /// <returns> An System.IDisposable object that you can use to dispose of the calling object. </returns>
+        public IDisposable DeferRefresh() {
+            return new DisposeItemsDeferRefresh(this);
+        }
+        /// <summary>
+        /// Gets a collection that contains information about the properties that are
+        /// available on the items in a collection.
+        /// </summary>
+        public ReadOnlyCollection<ItemPropertyInfo> ItemProperties {
+            get { return itemProperties; }
+        }
+        /// <summary>
+        /// Occurs after filtration when changing the filter conditions.
+        /// </summary>
+        public EventHandler<FilteredEventArgs>? Filtered;
         // Represent a set of Predicate<Object> that used to generate filter function.
         internal event FilterEventHandler? Filter {
             add {
@@ -172,25 +189,6 @@ namespace BolapanControl.ItemsFilter {
                     filterFunction = null;
             }
         }
-
-        /// <summary>
-        ///  Enters a defer cycle that you can use to change filter of the view and delay automatic refresh.
-        /// </summary>
-        /// <returns> An System.IDisposable object that you can use to dispose of the calling object. </returns>
-        public IDisposable DeferRefresh() {
-            return new DisposeItemsDeferRefresh(this);
-        }
-        /// <summary>
-        /// Gets a collection that contains information about the properties that are
-        //     available on the items in a collection.
-        /// </summary>
-        public ReadOnlyCollection<ItemPropertyInfo> ItemProperties {
-            get { return itemProperties; }
-        }
-        /// <summary>
-        /// Occurs after filtration when changing the filter conditions.
-        /// </summary>
-        public EventHandler<FilteredEventArgs>? Filtered;
         // Сообщает FilterPresenter об изменении состояния фильтра.
         // Для экземпляра фильтра в активном состоянии, производится включение фильтра в условие фильтрации представления коллекции.
         // Для экземпляра фильтра в пассивном состоянии, производится исключение фильтра из условия фильтрации коллекции.
@@ -262,7 +260,7 @@ namespace BolapanControl.ItemsFilter {
                     isDisposed = true;
                 }
                 else
-                    throw new ObjectDisposedException("FilterPresenter(" + filterPr.CollectionView.ToString() + ").GetDeferRefresh()");
+                    throw new ObjectDisposedException(nameof(FilterPresenter.DisposeItemsDeferRefresh));
             }
         }
 

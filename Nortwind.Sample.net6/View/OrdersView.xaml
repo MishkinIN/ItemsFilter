@@ -44,7 +44,7 @@
                                   SnapsToDevicePixels="True">
                 <ComboBox DisplayMemberPath="Name"
                           ItemsSource="{Binding Products,
-                                                Source={x:Static local:Workspace.This}}"
+                                                Source={x:Static vm:Workspace.This}}"
                           SelectedItem="{Binding Product,
                                                  UpdateSourceTrigger=PropertyChanged}" />
             </Themes:ListBoxChrome>
@@ -299,7 +299,7 @@
 
                     <Grid x:Name="grid1"
                           Margin="5,8,5,5"
-                          DataContext="{Binding OrderDetails/Product}">
+                          DataContext="{Binding ItemsSource.OrderDetails.Product}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />

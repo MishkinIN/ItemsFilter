@@ -1,58 +1,68 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6.0-windows</TargetFramework>
-		<Nullable>enable</Nullable>
-		<UseWPF>true</UseWPF>
-		<RootNamespace>Northwind.NET.Sample</RootNamespace>
-		<ApplicationIcon>ItemsFilter.ico</ApplicationIcon>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<BaseOutputPath>..\bin</BaseOutputPath>
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
 
-	</PropertyGroup>
+  <ItemGroup>
+    <None Remove="Fonts\vijaya.ttf" />
+    <None Remove="Fonts\vijayab.ttf" />
+    <None Remove="Resources\EmpID1.gif" />
+    <None Remove="Resources\EmpID2.gif" />
+    <None Remove="Resources\EmpID3.gif" />
+    <None Remove="Resources\EmpID4.gif" />
+    <None Remove="Resources\EmpID5.gif" />
+    <None Remove="Resources\EmpID6.gif" />
+    <None Remove="Resources\EmpID7.gif" />
+    <None Remove="Resources\EmpID8.gif" />
+    <None Remove="Resources\EmpID9.gif" />
+    <None Remove="Resources\StartupNorthwindLogo.jpg" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<!--<Content Include="..\Northwind.NET.Sample\Fonts\vijaya.ttf" Link="Fonts\vijaya.ttf" />
-    <Content Include="..\Northwind.NET.Sample\Fonts\vijayab.ttf" Link="Fonts\vijayab.ttf" />-->
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID1.gif" Link="Resources\EmpID1.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID2.gif" Link="Resources\EmpID2.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID3.gif" Link="Resources\EmpID3.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID4.gif" Link="Resources\EmpID4.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID5.gif" Link="Resources\EmpID5.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID6.gif" Link="Resources\EmpID6.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID7.gif" Link="Resources\EmpID7.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID8.gif" Link="Resources\EmpID8.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\EmpID9.gif" Link="Resources\EmpID9.gif" />
-		<Resource Include="..\Northwind.NET.Sample\Resources\StartupNorthwindLogo.jpg" Link="Resources\StartupNorthwindLogo.jpg" />
-		<Content Include="ItemsFilter.ico" />
-		<Content Include="..\Northwind.NET.Sample\Fonts\vijaya.ttf" Link="Fonts\vijaya.ttf">
-			<IsSystemFont>True</IsSystemFont>
-			<All>True</All>
-			<AutoFill>True</AutoFill>
-		</Content>
-		<Content Include="..\Northwind.NET.Sample\Fonts\vijayab.ttf" Link="Fonts\vijayab.ttf">
-			<IsSystemFont>True</IsSystemFont>
-			<All>True</All>
-			<AutoFill>True</AutoFill>
-		</Content>
-	</ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\vijaya.ttf" />
+    <Content Include="Fonts\vijayab.ttf" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="Fonts\" />
-		<Folder Include="Resources\" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ItemsFilter.net6\ItemsFilter.net6.csproj" />
+    <ProjectReference Include="..\Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj" />
+    <ProjectReference Include="..\Nortwind.Model.net6\Nortwind.Model.net6.csproj" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\ItemsFilter.net6\ItemsFilter.net6.csproj">
-		  <CopyLocal>True</CopyLocal>
-		</ProjectReference>
-		<ProjectReference Include="..\Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj">
-		  <CopyLocal>True</CopyLocal>
-		</ProjectReference>
-		<ProjectReference Include="..\Nortwind.Model.net6\Nortwind.Model.net6.csproj">
-		  <CopyLocal>True</CopyLocal>
-		</ProjectReference>
-	</ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\EmpID1.gif" />
+    <Resource Include="Resources\EmpID2.gif" />
+    <Resource Include="Resources\EmpID3.gif" />
+    <Resource Include="Resources\EmpID4.gif" />
+    <Resource Include="Resources\EmpID5.gif" />
+    <Resource Include="Resources\EmpID6.gif" />
+    <Resource Include="Resources\EmpID7.gif" />
+    <Resource Include="Resources\EmpID8.gif" />
+    <Resource Include="Resources\EmpID9.gif" />
+    <Resource Include="Resources\StartupNorthwindLogo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ProjectDataSources.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\CustomerComboBoxStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ItemsFilterStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
 
 </Project>

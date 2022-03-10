@@ -7,9 +7,10 @@
 // ****************************************************************************
 using BolapanControl.ItemsFilter.Initializer;
 using BolapanControl.ItemsFilter.Model;
+using Northwind.NET.EF6Model;
 
 namespace Northwind.NET.Sample.View {
-    public class SupplierNameFIM:BolapanControl.ItemsFilter.Initializer.FilterInitializersManager {
+    public class SupplierNameFIM:FilterInitializersManager {
         public SupplierNameFIM() {
             Add(new SupplierNameStringFilterInitializer());
         }
@@ -19,13 +20,13 @@ namespace Northwind.NET.Sample.View {
             : base(NameGetter) {
 
     }
-        private static string NameGetter(object val) {
-            return ((Northwind.NET.EF6Model.Product)val).Supplier.Name;
+        private static string? NameGetter(object? val) {
+            return (val as Product)?.Supplier?.Name;
         }
     }
     class SupplierNameStringFilterInitializer : FilterInitializer {
-        public override Filter TryGetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
-            if (key is string && (string)key == "Supplier.Name") {
+        public override Filter? TryGetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
+            if (key is string @string && @string == "Supplier.Name") {
                 return new SupplierNameStringFilter();
             }
             return null;

@@ -75,8 +75,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="ReportsTo"
-                                    Header="ReportsTo"
+                <DataGridTextColumn Header="ReportsTo"
+                                    Width="Auto"
                                     Binding="{Binding ReportsTo}"/>
             </DataGrid.Columns>
         </bsFilter:FilterDataGrid>
@@ -84,8 +84,7 @@
               Grid.Row="1"
               Margin="5,10"
               Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-              DataContext="{Binding Path=/,
-                                    Source={StaticResource EmployeesViewSource}}">
+              DataContext="{Binding Mode=OneWay, Source={StaticResource EmployeesViewSource}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
@@ -252,8 +251,7 @@
               Grid.Column="1"
               Margin="5,10"
               Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-              DataContext="{Binding Path=/,
-                                    Source={StaticResource EmployeesViewSource}}">
+              DataContext="{Binding Mode=OneWay, Source={StaticResource EmployeesViewSource}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />

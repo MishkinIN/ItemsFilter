@@ -24,7 +24,7 @@ namespace Northwind.NET.Sample.View {
             return new Product();
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+        public object ConvertBack(object? value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             if (value == null || value is not Product)
                 return DependencyProperty.UnsetValue;
             return value;

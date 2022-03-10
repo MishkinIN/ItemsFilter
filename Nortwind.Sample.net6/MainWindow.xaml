@@ -10,7 +10,6 @@
 <Window x:Class="Northwind.NET.Sample.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:Northwind.NET.Sample"
         Title="ItemsFilter view sample."
         Width="900"
         Height="700"
