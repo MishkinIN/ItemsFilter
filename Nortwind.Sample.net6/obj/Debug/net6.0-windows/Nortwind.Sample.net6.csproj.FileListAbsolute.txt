@@ -156,3 +156,9 @@ G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\No
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\ref\Nortwind.Sample.net6.dll
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\Nortwind.Sample.net6.pdb
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\Nortwind.Sample.net6.genruntimeconfig.cache
+G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\Nortwind.Sample.net6.exe
+G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\Nortwind.Sample.net6.deps.json
+G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\Nortwind.Sample.net6.runtimeconfig.json
+G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\Nortwind.Sample.net6.dll
+G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\ref\Nortwind.Sample.net6.dll
+G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\Nortwind.Sample.net6.pdb

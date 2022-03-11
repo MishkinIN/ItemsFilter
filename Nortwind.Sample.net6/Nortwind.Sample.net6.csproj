@@ -1,68 +1,69 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<BaseOutputPath>..\bin</BaseOutputPath>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Fonts\vijaya.ttf" />
-    <None Remove="Fonts\vijayab.ttf" />
-    <None Remove="Resources\EmpID1.gif" />
-    <None Remove="Resources\EmpID2.gif" />
-    <None Remove="Resources\EmpID3.gif" />
-    <None Remove="Resources\EmpID4.gif" />
-    <None Remove="Resources\EmpID5.gif" />
-    <None Remove="Resources\EmpID6.gif" />
-    <None Remove="Resources\EmpID7.gif" />
-    <None Remove="Resources\EmpID8.gif" />
-    <None Remove="Resources\EmpID9.gif" />
-    <None Remove="Resources\StartupNorthwindLogo.jpg" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Fonts\vijaya.ttf" />
+		<None Remove="Fonts\vijayab.ttf" />
+		<None Remove="Resources\EmpID1.gif" />
+		<None Remove="Resources\EmpID2.gif" />
+		<None Remove="Resources\EmpID3.gif" />
+		<None Remove="Resources\EmpID4.gif" />
+		<None Remove="Resources\EmpID5.gif" />
+		<None Remove="Resources\EmpID6.gif" />
+		<None Remove="Resources\EmpID7.gif" />
+		<None Remove="Resources\EmpID8.gif" />
+		<None Remove="Resources\EmpID9.gif" />
+		<None Remove="Resources\StartupNorthwindLogo.jpg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Fonts\vijaya.ttf" />
-    <Content Include="Fonts\vijayab.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Fonts\vijaya.ttf" />
+		<Content Include="Fonts\vijayab.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ItemsFilter.net6\ItemsFilter.net6.csproj" />
-    <ProjectReference Include="..\Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj" />
-    <ProjectReference Include="..\Nortwind.Model.net6\Nortwind.Model.net6.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ItemsFilter.net6\ItemsFilter.net6.csproj" />
+		<ProjectReference Include="..\Northwind.ViewModel.net6\Northwind.ViewModel.net6.csproj" />
+		<ProjectReference Include="..\Nortwind.Model.net6\Nortwind.Model.net6.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Resources\EmpID1.gif" />
-    <Resource Include="Resources\EmpID2.gif" />
-    <Resource Include="Resources\EmpID3.gif" />
-    <Resource Include="Resources\EmpID4.gif" />
-    <Resource Include="Resources\EmpID5.gif" />
-    <Resource Include="Resources\EmpID6.gif" />
-    <Resource Include="Resources\EmpID7.gif" />
-    <Resource Include="Resources\EmpID8.gif" />
-    <Resource Include="Resources\EmpID9.gif" />
-    <Resource Include="Resources\StartupNorthwindLogo.jpg" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\EmpID1.gif" />
+		<Resource Include="Resources\EmpID2.gif" />
+		<Resource Include="Resources\EmpID3.gif" />
+		<Resource Include="Resources\EmpID4.gif" />
+		<Resource Include="Resources\EmpID5.gif" />
+		<Resource Include="Resources\EmpID6.gif" />
+		<Resource Include="Resources\EmpID7.gif" />
+		<Resource Include="Resources\EmpID8.gif" />
+		<Resource Include="Resources\EmpID9.gif" />
+		<Resource Include="Resources\StartupNorthwindLogo.jpg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="ProjectDataSources.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\CustomerComboBoxStyle.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\Generic.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\ItemsFilterStyle.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="ProjectDataSources.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Themes\CustomerComboBoxStyle.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Themes\Generic.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Themes\ItemsFilterStyle.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+	</ItemGroup>
 
 </Project>

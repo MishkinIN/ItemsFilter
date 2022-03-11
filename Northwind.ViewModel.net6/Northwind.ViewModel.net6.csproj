@@ -7,16 +7,16 @@
 	<BaseOutputPath>..\bin</BaseOutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Compile Remove="ViewModel\CustomersTreeFilter\**" />
     <EmbeddedResource Remove="ViewModel\CustomersTreeFilter\**" />
     <None Remove="ViewModel\CustomersTreeFilter\**" />
     <Page Remove="ViewModel\CustomersTreeFilter\**" />
-  </ItemGroup>
+  </ItemGroup>-->
 
  
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Compile Include="..\Northwind.NET.Sample\Command\RelayCommand.cs" Link="Command\RelayCommand.cs" />
     <Compile Include="..\Northwind.NET.Sample\Command\WeakAction.cs" Link="Command\WeakAction.cs" />
     <Compile Include="..\Northwind.NET.Sample\Command\WeakFunc.cs" Link="Command\WeakFunc.cs" />
@@ -33,10 +33,10 @@
     <Compile Include="..\Northwind.NET.Sample\ViewModel\FilterInitializerManager.cs" Link="ViewModel\FilterInitializerManager.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\OrdersVm.cs" Link="ViewModel\OrdersVm.cs" />
     <Compile Include="..\Northwind.NET.Sample\ViewModel\UnitPriceFilter.cs" Link="ViewModel\UnitPriceFilter.cs" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
-    <DesignDataWithDesignTimeCreatableTypes Include="..\Northwind.NET.Sample\SampleData\Customer.xaml" Link="SampleData\Customer.xaml">
+    <DesignDataWithDesignTimeCreatableTypes Include="SampleData\Customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignDataWithDesignTimeCreatableTypes>
@@ -59,12 +59,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image01.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image01.png" />
-    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image02.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image02.png" />
-    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image03.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image03.png" />
-    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image04.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image04.png" />
-    <Resource Include="..\Northwind.NET.Sample\SampleData\CategoriesFilter\CategoriesFilter_Files\image05.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image05.png" />
-    <Resource Include="..\Northwind.NET.Sample\Shaders\MonochromeEffect.ps" Link="Shaders\MonochromeEffect.ps">
+    <Resource Include="SampleData\CategoriesFilter\CategoriesFilter_Files\image01.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image01.png" />
+    <Resource Include="SampleData\CategoriesFilter\CategoriesFilter_Files\image02.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image02.png" />
+    <Resource Include="SampleData\CategoriesFilter\CategoriesFilter_Files\image03.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image03.png" />
+    <Resource Include="SampleData\CategoriesFilter\CategoriesFilter_Files\image04.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image04.png" />
+    <Resource Include="SampleData\CategoriesFilter\CategoriesFilter_Files\image05.png" Link="SampleData\CategoriesFilter\CategoriesFilter_Files\image05.png" />
+    <Resource Include="Shaders\MonochromeEffect.ps" Link="Shaders\MonochromeEffect.ps">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
