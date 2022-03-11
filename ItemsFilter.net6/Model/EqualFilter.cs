@@ -77,7 +77,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item values to compare.</param>
-        protected ReferenceEqualFilter(Func<object?, object?> getter) : base(getter) {
+        internal protected ReferenceEqualFilter(Func<object?, object?> getter) : base(getter) {
             //this.getter = getter;
             availableValues = Array.Empty<object>();
         }
@@ -153,7 +153,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item values to compare.</param>
-        protected EqualFilter(Func<object?, object?> getter) : base(getter) {
+        internal protected EqualFilter(Func<object?, object?> getter) : base(getter) {
             //this.getter = getter;
             availableValues = Array.Empty<object>();
         }

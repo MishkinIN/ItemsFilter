@@ -28,6 +28,7 @@ namespace BolapanControl.ItemsFilter.Model {
         public EnumFilter(ItemPropertyInfo propertyInfo)
             : base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
         }
+        internal EnumFilter(Func<object?, object?> getter) : base(getter) { }
         /// <summary>
         /// TryGet list of defined enum values.
         /// Throw <exception cref="NotImplementedException"/> if attempt to set value.

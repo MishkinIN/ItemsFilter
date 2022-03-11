@@ -13,35 +13,37 @@ using BolapanControl.ItemsFilter;
 using BolapanControl.ItemsFilter.Initializer;
 
 namespace ItemsFilter.net6.Test.Model {
-    public class EnumFilterTest {
-        private List<string> enumNames;
+    public class EqualFilterTest {
+        private List<int> source = new();
         [SetUp]
         public void Setup() {
-            enumNames = new List<string>( typeof(StateEnum).GetEnumNames());
+            source.AddRange(Enum.GetValues<StateEnum>().Cast<int>());
         }
         [Test]
         public void CTOR() {
-            EnumFilter<StateEnum> filter = GetEnumFilter<StateEnum>();
-            var values = filter.AvailableValues as Array;
-            Assert.IsNotNull(values);
-            Assert.AreEqual(enumNames?.Count, values?.Length);
+            EqualFilter<int> filter = GetEqualFilter<int>();
+            Assert.IsNotNull(filter);
+            
+            Assert.AreEqual(0, filter.SelectedValues.Count);
+            Assert.IsFalse(filter.IsActive);
         }
         [Test]
         public void TestAvailableValues() {
-            EnumFilter<StateEnum> filter = GetEnumFilter<StateEnum>();
-            Assert.IsFalse(filter.IsActive);
+            EqualFilter<int> filter = GetEqualFilter<int>();
+            filter.AvailableValues = source;
             CollectionViewSource cvs = new();
             cvs.Source = filter.AvailableValues;
             ICollectionView view = cvs.View;
             var currentView = GetCollection(view);
-            Assert.AreEqual(enumNames?.Count, currentView.Count);
+            Assert.AreEqual(source.Count, currentView.Count);
         }
         [Test]
         public void TestEnumFilterIsMatch() {
-            EnumFilter<StateEnum> filter = GetEnumFilter<StateEnum>();
+            EqualFilter<int> filter = GetEqualFilter<int>();
             CollectionViewSource cvs = new();
-            cvs.Source = filter.AvailableValues;
+            cvs.Source = source;
             ICollectionView view = cvs.View;
+            Assert.IsTrue(view.CanFilter);
             using (IDisposable defer = view.DeferRefresh()) {
                 view.Filter = el => {
                     BolapanControl.ItemsFilter.FilterEventArgs e = new(el);
@@ -51,8 +53,8 @@ namespace ItemsFilter.net6.Test.Model {
             }
             var filtered = GetCollection(view);
             Assert.AreEqual(0, filtered.Count);
-            List<StateEnum> selected = new(new StateEnum[] { StateEnum.State1, StateEnum.State4 });
-            List<StateEnum> unselected = new();
+            List<int> selected = new(new int[] { (int)StateEnum.State1, (int)StateEnum.State4 });
+            List<int> unselected = new();
             filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
             view.Refresh();
             filtered = GetCollection(view);
@@ -62,8 +64,8 @@ namespace ItemsFilter.net6.Test.Model {
         }
         [Test]
         public void TestAttach() {
-            EnumFilter<StateEnum> filter = GetEnumFilter<StateEnum>();
-            var filterPresenter = FilterPresenter.TryGet(filter.AvailableValues);
+            EqualFilter<int> filter = GetEqualFilter<int>();
+            var filterPresenter = FilterPresenter.TryGet(source);
             Assert.IsNotNull(filterPresenter);
             Assert.IsFalse(filter.IsActive);
 #pragma warning disable CS8604 // Possible null reference argument.
@@ -73,9 +75,9 @@ namespace ItemsFilter.net6.Test.Model {
             var view = filterPresenter.CollectionView;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
             var filtered = GetCollection(view);
-            Assert.AreEqual(enumNames.Count, filtered.Count);
-            List<StateEnum> selected = new(new StateEnum[] { StateEnum.State1, StateEnum.State4 });
-            List<StateEnum> unselected = new();
+            Assert.AreEqual(source.Count, filtered.Count);
+            List<int> selected = new(new int[] { (int)StateEnum.State1, (int)StateEnum.State4 });
+            List<int> unselected = new();
             filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
             Assert.IsTrue(filter.IsActive);
             filtered = GetCollection(view);
@@ -95,9 +97,9 @@ namespace ItemsFilter.net6.Test.Model {
             return currentView;
         }
 
-        private static EnumFilter<T> GetEnumFilter<T>()
-            where T:Enum{
-            EnumFilter<T> filter = new(o=>o);
+        private static EqualFilter<T> GetEqualFilter<T>()
+            where T: IEquatable<T> {
+            EqualFilter<T> filter = new(o=>o);
             return filter;
         }
     }
