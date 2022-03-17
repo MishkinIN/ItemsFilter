@@ -69,7 +69,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// Defines the logic for reference equality filter.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ReferenceEqualFilter : EqualFilter, IMultiValueFilter {
+    public class ObjectEqualFilter : EqualFilter, IMultiValueFilter {
         private IEnumerable availableValues;
 
 
@@ -77,7 +77,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item values to compare.</param>
-        internal protected ReferenceEqualFilter(Func<object?, object?> getter) : base(getter) {
+        internal protected ObjectEqualFilter(Func<object?, object?> getter) : base(getter) {
             //this.getter = getter;
             availableValues = Array.Empty<object>();
         }
@@ -86,7 +86,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// </summary>
         /// <param name="getter">Func that return values to compare from item.</param>
         /// <param name="availableValues">Predefined set of available values.</param>
-        protected internal ReferenceEqualFilter(Func<object?, object?> getter, IEnumerable availableValues)
+        protected internal ObjectEqualFilter(Func<object?, object?> getter, IEnumerable availableValues)
             : this(getter) {
             this.availableValues = availableValues;
         }
@@ -94,7 +94,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="propertyInfo">The property info.</param>
-        public ReferenceEqualFilter(ItemPropertyInfo propertyInfo)
+        public ObjectEqualFilter(ItemPropertyInfo propertyInfo)
             : base(((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
@@ -108,7 +108,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// </summary>
         /// <param name="propertyInfo">The property info.</param>
         /// <param name="availableValues">Predefined set of available values.</param>
-        public ReferenceEqualFilter(ItemPropertyInfo propertyInfo, IEnumerable availableValues)
+        public ObjectEqualFilter(ItemPropertyInfo propertyInfo, IEnumerable availableValues)
             : this(propertyInfo) {
             this.availableValues = availableValues;
         }
@@ -129,12 +129,9 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Determines whether the specified target is a match.
         /// </summary>
         public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
-            if (e.Accepted) {
+            if (IsActive && e.Accepted) {
                 object? value = getter(e.Item);
-                if (value == null)
-                    e.Accepted = false;
-                else
-                    e.Accepted = SelectedValues.Any(val => val == value);
+                e.Accepted = SelectedValues.Any<object>(val => Object.Equals(value,val));
             }
         }
     }
@@ -205,7 +202,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Determines whether the specified target is a match.
         /// </summary>
         public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
-            if (e.Accepted) {
+            if (IsActive && e.Accepted) {
                 object? value = getter(e.Item);
                 if (value == null)
                     e.Accepted = false;

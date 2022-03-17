@@ -27,7 +27,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IComparableFilter<T> : IFilter//: IComparableFilter
-        where T : struct, IComparable<T> {
+        where T :struct, IComparable<T> {
         /// <summary>
         /// Gets or sets the value used in the comparison.
         /// </summary>

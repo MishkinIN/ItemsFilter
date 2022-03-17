@@ -24,6 +24,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Page Remove="View\CustomersTreeFilterViewTemplate.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Content Include="Fonts\vijaya.ttf" />
 		<Content Include="Fonts\vijayab.ttf" />
 	</ItemGroup>
@@ -45,6 +49,7 @@
 		<Resource Include="Resources\EmpID8.gif" />
 		<Resource Include="Resources\EmpID9.gif" />
 		<Resource Include="Resources\StartupNorthwindLogo.jpg" />
+		<Resource Include="View\CustomersTreeFilterViewTemplate.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>

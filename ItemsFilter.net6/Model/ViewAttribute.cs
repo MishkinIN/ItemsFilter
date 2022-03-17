@@ -30,8 +30,8 @@ namespace BolapanControl.ItemsFilter.Model {
             viewType = ViewType;
         }
         public ViewAttribute(string typeName) {
-            Assembly assembly = Assembly.GetCallingAssembly();
-            viewType = assembly.GetType(typeName) ?? typeof(Control);
+            Assembly assembly = Assembly.GetEntryAssembly()?? Assembly.GetEntryAssembly();
+            viewType = assembly?.GetType(typeName) ?? typeof(Control);
         }
     }
 }

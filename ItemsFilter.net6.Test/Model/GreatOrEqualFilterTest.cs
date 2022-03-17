@@ -13,37 +13,29 @@ using BolapanControl.ItemsFilter;
 using BolapanControl.ItemsFilter.Initializer;
 
 namespace ItemsFilter.net6.Test.Model {
-    public class ReferenceEqualFilterTest {
-        private List<int?> source = new();
+    public class GreatOrEqualFilterTest {
+        private List<int> source = new();
         [SetUp]
         public void Setup() {
-            var intSource = Enum.GetValues<StateEnum>()
-                .Cast<int>()
-                .ToArray();
-            source.AddRange(intSource.Cast<int?>());
-            source.Add((int?)null);
+            source.AddRange(Enum.GetValues<StateEnum>().Cast<int>());
         }
         [Test]
         public void CTOR() {
-            ReferenceEqualFilter filter = GetEqualFilter();
+            GreaterOrEqualFilter<int> filter = GetGreaterOrEqualFilter<int>();
             Assert.IsNotNull(filter);
-            
-            Assert.AreEqual(0, filter.SelectedValues.Count);
+
+            Assert.AreEqual((int?)null, filter.CompareTo);
+            Assert.IsFalse(filter.IsActive);
+            filter.CompareTo = 4;
+            Assert.IsTrue(filter.IsActive);
+            filter.CompareTo = null;
             Assert.IsFalse(filter.IsActive);
         }
         [Test]
-        public void TestAvailableValues() {
-            ReferenceEqualFilter filter = GetEqualFilter();
-            filter.AvailableValues = source;
-            CollectionViewSource cvs = new();
-            cvs.Source = filter.AvailableValues;
-            ICollectionView view = cvs.View;
-            var currentView = GetCollection(view);
-            Assert.AreEqual(source.Count, currentView.Count);
-        }
-        [Test]
-        public void TestEnumFilterIsMatch() {
-            ReferenceEqualFilter filter = GetEqualFilter();
+        public void TestFilterIsMatch() {
+            int compareTo = (int)StateEnum.State3;
+            var expectedCollection = source.Where(v => v >= compareTo).ToArray();
+            GreaterOrEqualFilter<int> filter = GetGreaterOrEqualFilter<int>();
             CollectionViewSource cvs = new();
             cvs.Source = source;
             ICollectionView view = cvs.View;
@@ -55,20 +47,21 @@ namespace ItemsFilter.net6.Test.Model {
                     return e.Accepted;
                 };
             }
+            Assert.IsFalse(filter.IsActive);
             var filtered = GetCollection(view);
-            Assert.AreEqual(0, filtered.Count);
-            List<int?> selected = new(new int?[] { source[0], source[1] });
-            List<int?> unselected = new();
-            filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
+            Assert.AreEqual(source.Count, filtered.Count);
+            filter.CompareTo = compareTo;
+            Assert.IsTrue(filter.IsActive);
             view.Refresh();
             filtered = GetCollection(view);
-            Assert.AreEqual(selected.Count, filtered.Count);
-            Assert.AreEqual(selected[0], filtered[0]);
-            Assert.AreEqual(selected[1], filtered[1]);
+            Assert.AreEqual(expectedCollection.Length, filtered.Count);
+            for (int i = 0; i < expectedCollection.Length; i++) {
+                Assert.AreEqual(expectedCollection[i], filtered[i]);
+            }
         }
         [Test]
         public void TestAttach() {
-            ReferenceEqualFilter filter = GetEqualFilter();
+            GreaterOrEqualFilter<int> filter = GetGreaterOrEqualFilter<int>();
             var filterPresenter = FilterPresenter.TryGet(source);
             Assert.IsNotNull(filterPresenter);
             Assert.IsFalse(filter.IsActive);
@@ -80,14 +73,14 @@ namespace ItemsFilter.net6.Test.Model {
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
             var filtered = GetCollection(view);
             Assert.AreEqual(source.Count, filtered.Count);
-            List<int> selected = new(new int[] { (int)StateEnum.State1, (int)StateEnum.State4 });
-            List<int> unselected = new();
-            filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
+            filter.CompareTo = (int)StateEnum.State3;
+            var expectedCollection = source.Where(v => v >= filter.CompareTo).ToArray(); 
             Assert.IsTrue(filter.IsActive);
             filtered = GetCollection(view);
-            Assert.AreEqual(selected.Count, filtered.Count);
-            Assert.AreEqual(selected[0], filtered[0]);
-            Assert.AreEqual(selected[1], filtered[1]);
+            Assert.AreEqual(expectedCollection.Length, filtered.Count);
+            for (int i = 0; i < expectedCollection.Length; i++) {
+                Assert.AreEqual(expectedCollection[i], filtered[i]);
+            }
         }
 
 
@@ -101,8 +94,9 @@ namespace ItemsFilter.net6.Test.Model {
             return currentView;
         }
 
-        private static ReferenceEqualFilter GetEqualFilter() {
-            ReferenceEqualFilter filter = new(o=>o);
+        private static GreaterOrEqualFilter<T> GetGreaterOrEqualFilter<T>()
+            where T : struct, IComparable<T> {
+            GreaterOrEqualFilter<T> filter = new(o => (T?)o);
             return filter;
         }
     }

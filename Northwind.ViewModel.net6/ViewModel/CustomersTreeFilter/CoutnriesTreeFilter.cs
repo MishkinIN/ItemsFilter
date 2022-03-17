@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Northwind.NET.Sample.ViewModel {
-    [View("CustomersTreeFilterView")]
+    [View("Northwind.NET.Sample.View.CustomersTreeFilterView")]
     public class CountriesTreeFilter : CitiesTreeFilter, IFilter {
         private static readonly CityItemFilterInitializer citiItemFilterInitializer = new();
         private string? countryCompareTo;

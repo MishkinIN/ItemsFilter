@@ -26,7 +26,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key); 
 #endif
-            ReferenceEqualFilter filter = new(item => item, filterPresenter.CollectionView.SourceCollection);
+            ObjectEqualFilter filter = new(item => item, filterPresenter.CollectionView.SourceCollection);
             return filter;
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key);
 #endif
-            ReferenceEqualFilter filter = new(item => item, filterPresenter.CollectionView.SourceCollection);
+            ObjectEqualFilter filter = new(item => item, filterPresenter.CollectionView.SourceCollection);
             return filter;
         }
     }

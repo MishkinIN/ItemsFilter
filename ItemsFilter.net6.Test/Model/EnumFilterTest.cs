@@ -14,7 +14,7 @@ using BolapanControl.ItemsFilter.Initializer;
 
 namespace ItemsFilter.net6.Test.Model {
     public class EnumFilterTest {
-        private List<string> enumNames;
+        private List<string> enumNames=new();
         [SetUp]
         public void Setup() {
             enumNames = new List<string>( typeof(StateEnum).GetEnumNames());
@@ -24,7 +24,7 @@ namespace ItemsFilter.net6.Test.Model {
             EnumFilter<StateEnum> filter = GetEnumFilter<StateEnum>();
             var values = filter.AvailableValues as Array;
             Assert.IsNotNull(values);
-            Assert.AreEqual(enumNames?.Count, values?.Length);
+            Assert.AreEqual(enumNames.Count, values?.Length);
         }
         [Test]
         public void TestAvailableValues() {
@@ -34,10 +34,10 @@ namespace ItemsFilter.net6.Test.Model {
             cvs.Source = filter.AvailableValues;
             ICollectionView view = cvs.View;
             var currentView = GetCollection(view);
-            Assert.AreEqual(enumNames?.Count, currentView.Count);
+            Assert.AreEqual(enumNames.Count, currentView.Count);
         }
         [Test]
-        public void TestEnumFilterIsMatch() {
+        public void TestFilterIsMatch() {
             EnumFilter<StateEnum> filter = GetEnumFilter<StateEnum>();
             CollectionViewSource cvs = new();
             cvs.Source = filter.AvailableValues;
@@ -50,7 +50,7 @@ namespace ItemsFilter.net6.Test.Model {
                 };
             }
             var filtered = GetCollection(view);
-            Assert.AreEqual(0, filtered.Count);
+            Assert.AreEqual(enumNames.Count, filtered.Count);
             List<StateEnum> selected = new(new StateEnum[] { StateEnum.State1, StateEnum.State4 });
             List<StateEnum> unselected = new();
             filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);

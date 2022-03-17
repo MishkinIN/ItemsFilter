@@ -113,7 +113,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Determines whether the specified target is a match.
         /// </summary>
         public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
-            if (e.Accepted) {
+            if (IsActive && e.Accepted) {
                 if (e.Item != null && getter(e.Item) is T value)
                     e.Accepted = (!_compareFrom.HasValue || value.CompareTo(_compareFrom) >= 0)
                         && (!_compareTo.HasValue || value.CompareTo(_compareTo) <= 0);

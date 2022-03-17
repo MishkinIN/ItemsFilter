@@ -116,7 +116,7 @@
                 <TextBlock Grid.Column="2"
                            Margin="3"
                            VerticalAlignment="Center"
-                           FontFamily="/Northwind.NET.Sample;component/Fonts/#Vijaya"
+                           FontFamily="Fonts/#Vijaya"
                            FontSize="13.333"
                            Foreground="{DynamicResource FilterPressedPenColor}">
                     Find in Code, Name, ContactName, etc.

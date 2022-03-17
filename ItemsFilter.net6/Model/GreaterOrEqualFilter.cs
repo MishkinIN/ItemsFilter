@@ -24,22 +24,13 @@ namespace BolapanControl.ItemsFilter.Model {
             : base(propertyInfo) {
             base.Name = "Greater or equal:";
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GreaterOrEqualFilter&lt;T&gt;"/> class.
-        /// </summary>
-        /// <param name="propertyInfo">The property info.</param>
-        /// <param name="compareTo">The compare to initial value.</param>
-        public GreaterOrEqualFilter(ItemPropertyInfo propertyInfo, T compareTo)
-            : this(propertyInfo) {
-            base.CompareTo = compareTo;
-        }
+        internal protected GreaterOrEqualFilter(Func<object?, T?> getter) : base(o => getter(o)) { }
 
         /// <summary>
         /// Determines whether the specified target is a match.
         /// </summary>
         public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
-            if (e.Accepted) {
+            if (IsActive && e.Accepted) {
                 if (e.Item == null || !_compareTo.HasValue)
                     e.Accepted = false;
                 else {
@@ -47,24 +38,9 @@ namespace BolapanControl.ItemsFilter.Model {
                     if (!value.HasValue)
                         e.Accepted = false;
                     else
-                        e.Accepted = _compareTo.Value.CompareTo(value.Value) >= 0;
+                        e.Accepted = _compareTo.Value.CompareTo(value.Value) <= 0;
                 }
             }
         }
-
-        #region IComparableFilter Members
-
-        //object IComparableFilter.CompareTo {
-        //    get {
-        //        return CompareTo;
-        //    }
-        //    set {
-        //        CompareTo=(T?)value;
-        //    }
-        //}
-
-        #endregion
-
-
     }
 }

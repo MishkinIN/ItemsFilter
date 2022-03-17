@@ -55,7 +55,7 @@
                                 <TextBlock Margin="1"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
-                                           FontFamily="/Northwind.NET.Sample;component/Fonts/#Vijaya"
+                                           FontFamily="Fonts/#Vijaya"
                                            FontSize="18"
                                            Text="Country:"
                                            TextWrapping="Wrap" />
@@ -64,7 +64,7 @@
                                          Grid.Column="1"
                                          Margin="1"
                                          VerticalAlignment="Center"
-                                         FontFamily="/Northwind.NET.Sample;component/Fonts/#Vijaya"
+                                         FontFamily="Fonts/#Vijaya"
                                          FontSize="18"
                                          Padding="1,1,1,1"
                                          Text="{Binding Model.Value,

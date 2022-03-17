@@ -7,3 +7,6 @@
 
 /Northwind.NET.Sample/bin
 /Northwind.NET.Sample/obj
+/Nortwind.Sample.net6/obj/Debug/net6.0-windows/*.cache
+*.cache
+*.BuildWithSkipAnalyzers

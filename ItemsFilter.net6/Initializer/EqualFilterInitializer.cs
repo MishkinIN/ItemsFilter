@@ -52,7 +52,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
                     return filter;
                 }
                 {
-                    var filter = new ReferenceEqualFilter(propertyInfo, GetAvailableValuesQuery(filterPresenter, propertyInfo));
+                    var filter = new ObjectEqualFilter(propertyInfo, GetAvailableValuesQuery(filterPresenter, propertyInfo));
                     return filter;
                 }
             }

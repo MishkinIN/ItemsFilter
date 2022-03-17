@@ -19,13 +19,13 @@ namespace BolapanControl.ItemsFilter.Model {
     public class LessOrEqualFilter<T> : Filter, IComparableFilter<T>
         where T : struct, IComparable<T> {
         protected new readonly Func<object?, T?> getter;
-        protected T? _compareTo = null;
+        protected T? _compareTo = default;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EqualFilter&lt;T&gt;"/> class.
         /// </summary>
         /// <param name="getter">Func that return from item IComparable value to compare.</param>
-        protected LessOrEqualFilter(Func<object?, T?> getter) : base(o => getter(o)) {
+        internal protected LessOrEqualFilter(Func<object?, T?> getter) : base(o => getter(o)) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(getter);
 #endif
@@ -46,33 +46,18 @@ namespace BolapanControl.ItemsFilter.Model {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(typeof(IComparable<T>).IsAssignableFrom(propertyInfo.PropertyType));
 #endif 
             //base.PropertyInfo = propertyInfo;
-            getter = t => base.getter(t) as T?;
+            getter = t => (T?)base.getter(t);
             base.Name = "Less or equal:";
-        }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LessOrEqualFilter&lt;T&gt;"/> class.
-        /// </summary>
-        /// <param name="propertyInfo">The property info.</param>
-        /// <param name="compareTo">The compare to.</param>
-        public LessOrEqualFilter(ItemPropertyInfo propertyInfo, T compareTo)
-            : this(propertyInfo) {
-            _compareTo = compareTo;
-            RefreshIsActive();
-
         }
         /// <summary>
         /// Determines whether the specified target is a match.
         /// </summary>
         public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
-            if (e.Accepted) {
-                if (e.Item == null || !_compareTo.HasValue)
-                    e.Accepted = false;
+            if (IsActive && e.Accepted && _compareTo.HasValue) {
+                if (e.Item != null && getter(e.Item) is T value)
+                    e.Accepted = _compareTo.Value.CompareTo(value) >= 0;
                 else {
-                    T? value = getter(e.Item);
-                    if (!value.HasValue)
-                        e.Accepted = false;
-                    else
-                        e.Accepted = _compareTo.Value.CompareTo(value.Value) <= 0;
+                    e.Accepted = false;
                 }
             }
         }
@@ -84,10 +69,7 @@ namespace BolapanControl.ItemsFilter.Model {
                 return _compareTo;
             }
             set {
-                if (value.HasValue ^ _compareTo.HasValue
-#pragma warning disable CS8629 // Nullable value type may be null.
-                    || (value.HasValue & _compareTo.HasValue && _compareTo.Value.CompareTo(value.Value) != 0)) {
-#pragma warning restore CS8629 // Nullable value type may be null.
+                if (!Object.Equals(value, _compareTo)) {
                     _compareTo = value;
                     RefreshIsActive();
                     RaiseFilterChanged();

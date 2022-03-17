@@ -7,6 +7,7 @@ using System.Windows;
 
 namespace ItemsFilter.net6.Test.Model {
     public enum StateEnum  {
+        State0=0,
         State1,
         State2,
         State3,

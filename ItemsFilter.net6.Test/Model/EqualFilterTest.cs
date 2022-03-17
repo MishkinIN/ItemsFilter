@@ -38,7 +38,7 @@ namespace ItemsFilter.net6.Test.Model {
             Assert.AreEqual(source.Count, currentView.Count);
         }
         [Test]
-        public void TestEnumFilterIsMatch() {
+        public void TestFilterIsMatch() {
             EqualFilter<int> filter = GetEqualFilter<int>();
             CollectionViewSource cvs = new();
             cvs.Source = source;
@@ -52,7 +52,7 @@ namespace ItemsFilter.net6.Test.Model {
                 };
             }
             var filtered = GetCollection(view);
-            Assert.AreEqual(0, filtered.Count);
+            Assert.AreEqual(source.Count, filtered.Count);
             List<int> selected = new(new int[] { (int)StateEnum.State1, (int)StateEnum.State4 });
             List<int> unselected = new();
             filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);

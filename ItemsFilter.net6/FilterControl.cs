@@ -293,7 +293,7 @@ namespace BolapanControl.ItemsFilter {
                 object[] viewAttr = itemType.GetCustomAttributes(typeof(ViewAttribute), true);
                 if (viewAttr.Length > 0) {
 
-                    try {
+                    //try {
                         UIElement? view;
                         Type viewType = ((ViewAttribute)viewAttr[0]).ViewType;
                         if (viewType.GetCustomAttributes(typeof(ModelViewAttribute), true).Length > 0)
@@ -309,13 +309,13 @@ namespace BolapanControl.ItemsFilter {
                             }
                             presenter.Content = view ?? new Control();
                         }
-                    }
-                    catch (Exception ex) {
-#if DEBUG
-                        Debug.WriteLine(ex.Message);
-                        Debug.Indent();
-#endif
-                    }
+//                    }
+//                    catch (Exception ex) {
+//#if DEBUG
+//                        Debug.WriteLine(ex.Message);
+//                        Debug.Indent();
+//#endif
+//                    }
                 }
             }
         }

@@ -90,7 +90,7 @@ namespace BolapanControl.ItemsFilter.Model {
                 if (_value != value) {
                     _value = value;
                     base.IsActive = !string.IsNullOrEmpty(value);
-                    OnIsActiveChanged();
+                    //OnIsActiveChanged();
                     RaisePropertyChanged(nameof(Value));
                 }
             }
@@ -100,7 +100,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// </summary>
         protected override void OnIsActiveChanged() {
             if (!IsActive)
-                Value = string.Empty;
+                _value = string.Empty;
             base.OnIsActiveChanged();
         }
 
@@ -108,7 +108,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Determines whether the specified target is a match.
         /// </summary>
         public override void IsMatch(FilterPresenter sender, FilterEventArgs e) {
-            if (e.Accepted & !string.IsNullOrEmpty(_value)) {
+            if (IsActive && e.Accepted) {
                 string? toCompare = getter(e.Item)?.ToString();
                 if (!string.IsNullOrEmpty(toCompare))
 #pragma warning disable CS8604 // Possible null reference argument.
