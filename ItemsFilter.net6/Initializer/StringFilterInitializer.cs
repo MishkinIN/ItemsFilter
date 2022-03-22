@@ -28,7 +28,11 @@ namespace BolapanControl.ItemsFilter.Initializer {
                 && typeof(String).IsAssignableFrom(propertyInfo.PropertyType)
                 && !propertyType.IsEnum
                 ) {
-                return new StringFilter(propertyInfo);
+                var filter =  new StringFilter(propertyInfo);
+                if (filter != null) {
+                    filter.Attach(filterPresenter);
+                }
+                return filter;
             }
             return null;
         }

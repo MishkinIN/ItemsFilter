@@ -20,7 +20,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <param name="filterPresenter">FilterPresenter, which can be attached Filter</param>
         /// <param name="key">Key, used as the name for binding property in filterPresenter.Parent collection.</param>
         /// <returns>Instance of EnumFilter class or null.</returns>
-        protected override PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
+        protected override Filter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
@@ -29,7 +29,11 @@ namespace BolapanControl.ItemsFilter.Initializer {
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
                 && propertyType.IsEnum
                 ) {
-                return Activator.CreateInstance(typeof(EnumFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as PropertyFilter;
+                var filter =  Activator.CreateInstance(typeof(EnumFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as EqualFilter;
+                if (filter!=null) {
+                    filter.Attach(filterPresenter);
+                }
+                return filter;
             }
             return null;
         }

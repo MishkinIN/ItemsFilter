@@ -32,7 +32,11 @@ namespace BolapanControl.ItemsFilter.Initializer {
                 && propertyType != typeof(bool)
                 && !propertyType.IsEnum
                 ) {
-                return Activator.CreateInstance(typeof(RangeFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as PropertyFilter;
+                var filter = Activator.CreateInstance(typeof(RangeFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as PropertyFilter;
+                if (filter != null) {
+                    filter.Attach(filterPresenter);
+                }
+                return filter;
             }
             return null;
         }

@@ -20,29 +20,30 @@ namespace BolapanControl.ItemsFilter.Model {
         }
         internal Filter this[Type key] {
             get {
-                return (Filter)dictionary[key];
+                return dictionary[key];
             }
             set {
-                using (var defer = parent.DeferRefresh()) {
-                    Filter filter;
-                    if (dictionary.ContainsKey(key)) {
-                        filter = (Filter)dictionary[key];
-                        filter.Detach(parent);
-                    }
-                    dictionary[key] = filter = value;
-                    filter.Attach(parent);
-                }
+                dictionary[key] = value;
+                //using (var defer = parent.DeferRefresh()) {
+                //    Filter filter;
+                //    if (dictionary.ContainsKey(key)) {
+                //        filter = dictionary[key];
+                //        filter.Detach(parent);
+                //    }
+                //    dictionary[key] = filter = value;
+                //    filter.Attach(parent);
+                //}
             }
         }
-        internal void Remove(Type key) {
-            if (dictionary.ContainsKey(key)) {
-                using (var defer = parent.DeferRefresh()) {
-                    Filter filter = (Filter)dictionary[key];
-                    filter.Detach(parent);
-                    dictionary.Remove(key);
-                }
-            }
-        }
+        //internal void Remove(Type key) {
+        //    if (dictionary.ContainsKey(key)) {
+        //        using (var defer = parent.DeferRefresh()) {
+        //            Filter filter = dictionary[key];
+        //            filter.Detach(parent);
+        //            dictionary.Remove(key);
+        //        }
+        //    }
+        //}
         //internal void Remove(Filter filter) {
         //    var key = dictionary.FirstOrDefault(kvp => kvp.Value == filter).Key;
         //    if (key != null) {
@@ -52,9 +53,10 @@ namespace BolapanControl.ItemsFilter.Model {
         //}
         public IEnumerable<Filter> Filters {
             get {
-                var enumerator = dictionary.Values.GetEnumerator();
-                while (enumerator.MoveNext())
-                    yield return (Filter)enumerator.Current;
+                return dictionary.Values;
+                //var enumerator = dictionary.Values.GetEnumerator();
+                //while (enumerator.MoveNext())
+                //    yield return (Filter)enumerator.Current;
             }
         }
 

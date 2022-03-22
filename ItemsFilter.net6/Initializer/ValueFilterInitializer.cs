@@ -21,12 +21,13 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <param name="filterPresenter">FilterPresenter, which can be attached Filter</param>
         /// <param name="key">Key for generated Filter. For PropertyFilter, key used as the name for binding property in filterPresenter.Parent collection.</param>
         /// <returns>Instance of Filter class or null.</returns>
-        public override Model.Filter TryGetFilter(FilterPresenter filterPresenter, object key) {
+        internal override Model.Filter TryGetFilter(FilterPresenter filterPresenter, object key) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key); 
 #endif
             ObjectEqualFilter filter = new(item => item, filterPresenter.CollectionView.SourceCollection);
+            filter.Attach(filterPresenter);
             return filter;
         }
         /// <summary>
@@ -44,6 +45,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key);
 #endif
             ObjectEqualFilter filter = new(item => item, filterPresenter.CollectionView.SourceCollection);
+            filter.Attach(filterPresenter);
             return filter;
         }
     }

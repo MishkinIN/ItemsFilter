@@ -34,7 +34,7 @@ namespace ItemsFilter.net6.Test.Model {
             CollectionViewSource cvs = new();
             cvs.Source = filter.AvailableValues;
             ICollectionView view = cvs.View;
-            var currentView = GetCollection(view);
+            var currentView = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(source.Count, currentView.Count);
         }
         [Test]
@@ -51,13 +51,13 @@ namespace ItemsFilter.net6.Test.Model {
                     return e.Accepted;
                 };
             }
-            var filtered = GetCollection(view);
+            var filtered = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(source.Count, filtered.Count);
             List<int> selected = new(new int[] { (int)StateEnum.State1, (int)StateEnum.State4 });
             List<int> unselected = new();
             filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
             view.Refresh();
-            filtered = GetCollection(view);
+            filtered = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(selected.Count, filtered.Count);
             Assert.AreEqual(selected[0], filtered[0]);
             Assert.AreEqual(selected[1], filtered[1]);
@@ -74,13 +74,13 @@ namespace ItemsFilter.net6.Test.Model {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             var view = filterPresenter.CollectionView;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-            var filtered = GetCollection(view);
+            var filtered = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(source.Count, filtered.Count);
             List<int> selected = new(new int[] { (int)StateEnum.State1, (int)StateEnum.State4 });
             List<int> unselected = new();
             filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
             Assert.IsTrue(filter.IsActive);
-            filtered = GetCollection(view);
+            filtered = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(selected.Count, filtered.Count);
             Assert.AreEqual(selected[0], filtered[0]);
             Assert.AreEqual(selected[1], filtered[1]);
@@ -88,14 +88,6 @@ namespace ItemsFilter.net6.Test.Model {
 
 
 
-        private static List<object> GetCollection(ICollectionView view) {
-            List<object> currentView = new();
-            foreach (var item in view) {
-                currentView.Add(item);
-            }
-
-            return currentView;
-        }
 
         private static EqualFilter<T> GetEqualFilter<T>()
             where T: IEquatable<T> {

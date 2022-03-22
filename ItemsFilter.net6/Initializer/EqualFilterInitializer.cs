@@ -21,11 +21,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
         private const string _filterName = "Equality";
 #pragma warning restore IDE0051 // Remove unused private members
 
-        public override Filter? TryGetFilter(FilterPresenter filterPresenter, object key) {
-#if DEBUG
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key);
-#endif
+        internal override Filter? TryGetFilter(FilterPresenter filterPresenter, object key) {
             if (key is ItemPropertyInfo info)
                 return NewFilter(filterPresenter, info);
             if (key is string str
@@ -35,6 +31,10 @@ namespace BolapanControl.ItemsFilter.Initializer {
             return null;
         }
         protected static Filter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
+#endif
 
             Type propertyType = propertyInfo.PropertyType;
             if (filterPresenter.ItemProperties.Contains(propertyInfo)
@@ -43,18 +43,21 @@ namespace BolapanControl.ItemsFilter.Initializer {
                 Type generic = typeof(IEquatable<>);
                 Type[] tArgs = new Type[] { propertyType };
                 Type iquatableType = generic.MakeGenericType(tArgs);
+                Filter? filter = null;
                 if (iquatableType.IsAssignableFrom(propertyType)) {
-                    Filter? filter = Activator.CreateInstance(
+                    filter = Activator.CreateInstance(
                                         typeof(EqualFilter<>).MakeGenericType(propertyType),
                                         propertyInfo,
                                         GetAvailableValuesQuery(filterPresenter, propertyInfo)
                                     ) as Filter;
-                    return filter;
                 }
-                {
-                    var filter = new ObjectEqualFilter(propertyInfo, GetAvailableValuesQuery(filterPresenter, propertyInfo));
-                    return filter;
+                else {
+                    filter = new ObjectEqualFilter(propertyInfo, GetAvailableValuesQuery(filterPresenter, propertyInfo));
                 }
+                if (filter != null) {
+                    filter.Attach(filterPresenter);
+                }
+                return filter;
             }
             return null;
         }
