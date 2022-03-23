@@ -43,8 +43,8 @@ namespace Northwind.NET.Sample.View
 
         private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
             if (e.NewValue is OrdersVm vm) {
-                FilterPresenter? fpr = FilterPresenter.TryGet(vm.OrdersCollectionView);
-                filter = fpr?.TryGetFilter("Employee", new EqualFilterInitializer());
+                FilterPresenter fpr = FilterPresenter.Get(vm.OrdersCollectionView);
+                filter = fpr.TryGetFilter("Employee", new EqualFilterInitializer());
                 if (filter != null) {
                     if (filter.IsActive)
                         VisualStateManager.GoToState(this, "Filtered", false);

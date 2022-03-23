@@ -21,18 +21,18 @@ namespace GalaSoft.MvvmLight.Helpers {
     /// Stores a Func&lt;T&gt; without causing a hard reference
     /// to be created to the Func's owner. The owner can be garbage collected at any time.
     /// </summary>
-    ////[ClassInfo(typeof(WeakAction)]
+    //[ClassInfo(typeof(WeakAction)]
     public class WeakFunc<TResult> {
 #if SILVERLIGHT
         private Func<TResult> _func;
 #endif
-        private Func<TResult> _staticFunc;
+        private Func<TResult>? _staticFunc;
 
         /// <summary>
         /// Gets or sets the <see cref="MethodInfo" /> corresponding to this WeakFunc's
         /// method passed in the constructor.
         /// </summary>
-        protected MethodInfo Method {
+        protected MethodInfo? Method {
             get;
             set;
         }
@@ -70,7 +70,7 @@ namespace GalaSoft.MvvmLight.Helpers {
 
                 return string.Empty;
 #else
-                return Method.Name;
+                return Method?.Name ?? String.Empty;
 #endif
             }
         }
@@ -81,7 +81,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// <see cref="Reference" />, for example if the
         /// method is anonymous.
         /// </summary>
-        protected WeakReference FuncReference {
+        protected WeakReference? FuncReference {
             get;
             set;
         }
@@ -92,7 +92,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// <see cref="FuncReference" />, for example if the
         /// method is anonymous.
         /// </summary>
-        protected WeakReference Reference {
+        protected WeakReference? Reference {
             get;
             set;
         }
@@ -101,6 +101,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// Initializes an empty instance of the WeakFunc class.
         /// </summary>
         protected WeakFunc() {
+
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// </summary>
         /// <param name="target">The func's owner.</param>
         /// <param name="func">The func that will be associated to this instance.</param>
-        public WeakFunc(object target, Func<TResult> func) {
+        public WeakFunc(object? target, Func<TResult> func) {
             if (func.Method.IsStatic) {
                 _staticFunc = func;
 
@@ -167,20 +168,16 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// </summary>
         public virtual bool IsAlive {
             get {
-                if (_staticFunc == null
-                    && Reference == null) {
-                    return false;
-                }
-
                 if (_staticFunc != null) {
                     if (Reference != null) {
                         return Reference.IsAlive;
                     }
-
-                    return true;
+                    else
+                        return true;
                 }
-
-                return Reference.IsAlive;
+                else {
+                    return Reference != null && Reference.IsAlive;
+                }
             }
         }
 
@@ -188,13 +185,9 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// Gets the Func's owner. This object is stored as a 
         /// <see cref="WeakReference" />.
         /// </summary>
-        public object Target {
+        public object? Target {
             get {
-                if (Reference == null) {
-                    return null;
-                }
-
-                return Reference.Target;
+                return Reference?.Target;
             }
         }
 
@@ -204,7 +197,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// <see cref="Target" />, for example if the
         /// method is anonymous.
         /// </summary>
-        protected object FuncTarget {
+        protected object? FuncTarget {
             get {
                 if (FuncReference == null) {
                     return null;
@@ -218,7 +211,7 @@ namespace GalaSoft.MvvmLight.Helpers {
         /// Executes the action. This only happens if the func's owner
         /// is still alive.
         /// </summary>
-        public TResult Execute() {
+        public TResult? Execute() {
             if (_staticFunc != null) {
                 return _staticFunc();
             }
@@ -226,7 +219,9 @@ namespace GalaSoft.MvvmLight.Helpers {
             if (IsAlive) {
                 if (Method != null
                     && FuncReference != null) {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                     return (TResult)Method.Invoke(FuncTarget, null);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 }
 
 #if SILVERLIGHT
@@ -237,7 +232,7 @@ namespace GalaSoft.MvvmLight.Helpers {
 #endif
             }
 
-            return default(TResult);
+            return default;
         }
 
         /// <summary>

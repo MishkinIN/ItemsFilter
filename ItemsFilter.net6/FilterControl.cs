@@ -79,7 +79,7 @@ namespace BolapanControl.ItemsFilter {
         /// </summary>
         public static readonly DependencyProperty ParentCollectionProperty =
             DependencyProperty.Register("ParentCollection", typeof(IEnumerable), typeof(FilterControl),
-                new FrameworkPropertyMetadata(null,
+                new FrameworkPropertyMetadata(Array.Empty<object>(),
                     new PropertyChangedCallback(OnParentCollectionChanged)));
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace BolapanControl.ItemsFilter {
         /// <returns>Instance of FilterControlVm or null.</returns>
         protected virtual FilterControlVm CreateModel() {
             FilterControlVm vm;
-            filterPresenter = Parent == null ? null : FilterPresenter.TryGet(ParentCollection);
+            filterPresenter = Parent == null ? null : FilterPresenter.Get(ParentCollection);
             if (filterPresenter != null) {
                 vm = filterPresenter.TryGetFilterControlVm(Key, FilterInitializersManager);
                 return vm;

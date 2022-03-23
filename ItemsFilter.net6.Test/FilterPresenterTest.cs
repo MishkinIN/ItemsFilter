@@ -17,19 +17,19 @@ namespace ItemsFilter.net6.Test {
         [Test]
         public void CTOR() {
             int[] source = { 1, 2, 3 };
-            var fp_empty = FilterPresenter.TryGet(null);
+            var fp_empty = FilterPresenter.Get(null);
             Assert.IsNull(fp_empty);
-            var fp1 = FilterPresenter.TryGet(source);
+            var fp1 = FilterPresenter.Get(source);
             Assert.IsNotNull(fp1);
-            var fp2 = FilterPresenter.TryGet(source);
+            var fp2 = FilterPresenter.Get(source);
             Assert.AreSame(fp1, fp2);
         }
         [Test]
         public void Filter() {
-            var items = StateItem.All;
+            var items = (List<StateItem>)StateItem.All;
             ListCollectionView view = new(items);
             IEnumerable<FilterInitializer> initializers = FilterInitializersManager.Default;
-            FilterPresenter? filterPresenter = FilterPresenter.TryGet(view);
+            FilterPresenter? filterPresenter = FilterPresenter.Get(view);
             var vmId = filterPresenter.TryGetFilterControlVm(nameof(StateItem.Id), initializers);
             {
                 var filterTypes = vmId.Select(v => v.GetType()).ToList();
@@ -43,11 +43,28 @@ namespace ItemsFilter.net6.Test {
                 Assert.Contains(typeof(GreaterOrEqualFilter<int>), filterTypes);
                 Assert.Contains(typeof(RangeFilter<int>), filterTypes);
             }
-            var vm = filterPresenter.TryGetFilterControlVm(nameof(StateItem.State), initializers);
+            var vmState = filterPresenter.TryGetFilterControlVm(nameof(StateItem.State), initializers);
             {
-                var filterTypes = vm.Select(v => v.GetType()).ToList();
+                var filterTypes = vmState.Select(v => v.GetType()).ToList();
                 Assert.Contains(typeof(EnumFilter<StateEnum>), filterTypes);
             }
+            Assert.IsFalse(filterPresenter.IsFilterActive);
+            var filtered = GetCollection(view);
+            Assert.AreEqual(items.Count, filtered.Count);
+            var idLesssFilter = vmStateId.OfType<LessOrEqualFilter<int>>().First();
+            var compareId = (int)StateEnum.State5;
+            idLesssFilter.CompareTo = compareId;
+            Assert.IsTrue(filterPresenter.IsFilterActive);
+            filtered = GetCollection(view);
+            Assert.AreEqual(items.Where(v=>v.StateId<= compareId).Count(), filtered.Count);
+            
+            var stateEnumFilter = vmState.OfType<EnumFilter<StateEnum>>().First();
+            List<StateEnum> selected = new(new StateEnum[] { StateEnum.State1, StateEnum.State4, StateEnum.State6 });
+            List<StateEnum> unselected = new();
+
+            stateEnumFilter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
+            filtered = GetCollection(view);
+            Assert.AreEqual(2, filtered.Count);
 
         }
 

@@ -63,7 +63,7 @@ namespace ItemsFilter.net6.Test.Model {
         [Test]
         public void TestAttach() {
             EnumFilter<StateEnum> filter = GetEnumFilter<StateEnum>();
-            var filterPresenter = FilterPresenter.TryGet(filter.AvailableValues);
+            var filterPresenter = FilterPresenter.Get(filter.AvailableValues);
             Assert.IsNotNull(filterPresenter);
             Assert.IsFalse(filter.IsActive);
 #pragma warning disable CS8604 // Possible null reference argument.

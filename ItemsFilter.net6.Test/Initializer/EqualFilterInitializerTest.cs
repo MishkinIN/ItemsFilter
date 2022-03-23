@@ -23,7 +23,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             Assert.IsTrue(view.CanFilter);
             Assert.IsNotNull(view.ItemProperties);
          
-            FilterPresenter? filterPresenter = FilterPresenter.TryGet(view);
+            FilterPresenter? filterPresenter = FilterPresenter.Get(view);
             Assert.IsNotNull(filterPresenter);
             EqualFilterInitializer initializer = new();
             EqualFilter? filter = initializer.TryGetFilter(filterPresenter, nameof(StateItem.StateId)) as EqualFilter;

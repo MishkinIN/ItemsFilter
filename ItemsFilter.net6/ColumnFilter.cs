@@ -109,7 +109,7 @@ namespace BolapanControl.ItemsFilter {
         /// </summary>
         protected override FilterControlVm CreateModel() {
             FilterControlVm vm = FilterControlVm.Empty;
-            filterPresenter = Parent == null ? null : FilterPresenter.TryGet(ParentCollection);
+            filterPresenter = ParentCollection == null ? null : FilterPresenter.Get(ParentCollection);
             if (filterPresenter != null) {
                 if (Key == null) {
                     DataGridColumnHeader? columnHeader = this.GetParent<DataGridColumnHeader>();

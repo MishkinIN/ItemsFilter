@@ -20,7 +20,7 @@ namespace ItemsFilter.net6.Test.Initializer {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             var items = FilterPresenterTest.GetCollection(StateItem.All);
             ListCollectionView view = new(items);
-            FilterPresenter? filterPresenter = FilterPresenter.TryGet(view);
+            FilterPresenter? filterPresenter = FilterPresenter.Get(view);
             Assert.IsNotNull(filterPresenter);
             EqualFilterInitializer initializer = new();
             ObjectEqualFilter? filter = initializer.TryGetFilter(filterPresenter, nameof(StateItem.Box)) as ObjectEqualFilter;

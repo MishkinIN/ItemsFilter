@@ -49,7 +49,7 @@ namespace Northwind.NET.Sample.ViewModel {
             base.OnAttachPresenter(presenter);
             foreach (CityCustomersTreeItem item in presenter.CollectionView.SourceCollection) {
                 if (item.Customers is not null) {
-                    BolapanControl.ItemsFilter.FilterPresenter? customersPresenter = BolapanControl.ItemsFilter.FilterPresenter.TryGet(item.Customers);
+                    BolapanControl.ItemsFilter.FilterPresenter? customersPresenter = BolapanControl.ItemsFilter.FilterPresenter.Get(item.Customers);
                     if (customersPresenter?.TryGetFilter(Key, customerFilterInitializer) is CustomersTreeFilter customerFilter) {
                         customerFilter.NameCompareTo = NameCompareTo;
                         customerFilter.ContactCompareTo = ContactCompareTo;

@@ -24,15 +24,19 @@ namespace Northwind.NET.Sample.ViewModel {
         private readonly ICommand moveFirstCommand, moveToPreviousCommand, moveToNextCommand, moveToNewCommand, moveToLastCommand;
 
         public OrdersVm() {
-            //try {
-            //    cvs.Source = Workspace.This.Orders
-            //            .OrderBy(ord => ord.Employee == null ? -1 : ord.Employee.Id)
-            //            .Select(ord => ord)
-            //            .ToList();
-            //}
-            //catch (Exception ex) {
-            //    //App.LogException(ex);
-            //}
+            try {
+                if (Workspace.This.Orders != null) {
+                    cvs.Source = Workspace.This.Orders
+                                    .OrderBy(ord => ord.Employee == null ? -1 : ord.Employee.Id)
+                                    .Select(ord => ord)
+                                    .ToList();
+                }
+                else
+                    cvs.Source = Array.Empty<object>();
+            }
+            catch (Exception ex) {
+                //App.LogException(ex);
+            }
             ordersView = cvs.View;
             moveFirstCommand = new RelayCommand(MoveToFirst, CanMoveToFirst);
             moveToPreviousCommand = new RelayCommand(MoveToPrevious, CanMoveToPrevious);

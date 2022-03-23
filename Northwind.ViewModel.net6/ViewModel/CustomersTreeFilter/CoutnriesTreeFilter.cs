@@ -47,7 +47,7 @@ namespace Northwind.NET.Sample.ViewModel {
         protected override void OnAttachPresenter(BolapanControl.ItemsFilter.FilterPresenter presenter) {
             foreach (CountryCustomersTreeItem country in ((CustomersTreeVm)(presenter.CollectionView.SourceCollection))) {
                 if (country.Cities is not null) {
-                    BolapanControl.ItemsFilter.FilterPresenter? citiesPresenter = BolapanControl.ItemsFilter.FilterPresenter.TryGet(country.Cities);
+                    BolapanControl.ItemsFilter.FilterPresenter citiesPresenter = BolapanControl.ItemsFilter.FilterPresenter.Get(country.Cities);
                     if (citiesPresenter?.TryGetFilter(Key, citiItemFilterInitializer) is CitiesTreeFilter cityFilter) {
                         cityFilter.CityCompareTo = CityCompareTo;
                         cityFilter.NameCompareTo = NameCompareTo;

@@ -17,7 +17,7 @@ namespace ItemsFilter.net6.Test.ViewModel {
             var items = StateItem.All;
             ListCollectionView view = new(items);
             IEnumerable<FilterInitializer> initializers = FilterInitializersManager.Default;
-            FilterPresenter? filterPresenter = FilterPresenter.TryGet(view);
+            FilterPresenter? filterPresenter = FilterPresenter.Get(view);
             {
                 string key = nameof(StateItem.Id);
                 var vm = filterPresenter.TryGetFilterControlVm(key, initializers);

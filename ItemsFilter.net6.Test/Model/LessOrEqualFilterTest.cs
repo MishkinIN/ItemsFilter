@@ -62,7 +62,7 @@ namespace ItemsFilter.net6.Test.Model {
         [Test]
         public void TestAttach() {
             LessOrEqualFilter<int> filter = GetLessOrEqualFilter<int>();
-            var filterPresenter = FilterPresenter.TryGet(source);
+            var filterPresenter = FilterPresenter.Get(source);
             Assert.IsNotNull(filterPresenter);
             Assert.IsFalse(filter.IsActive);
 #pragma warning disable CS8604 // Possible null reference argument.

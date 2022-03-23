@@ -6,6 +6,7 @@
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
 using Northwind.NET.EF6Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,13 +34,19 @@ namespace Northwind.NET.Sample.ViewModel {
         }
     }
     public class CountryCustomersTreeItem {
+        public CountryCustomersTreeItem() {
+            Cities = Array.Empty<CityCustomersTreeItem>();
+        }
         public string? Country { get; set; }
         public int Count { get; set; }
-        public IEnumerable<CityCustomersTreeItem>? Cities { get; set; }
+        public IEnumerable<CityCustomersTreeItem> Cities { get; set; }
     }
     public class CityCustomersTreeItem {
+        public CityCustomersTreeItem() {
+            Customers = Array.Empty<Customer>();
+        }
         public string? City { get; set; }
         public int Count { get; set; }
-        public IEnumerable<Customer>? Customers { get; set; }
+        public IEnumerable<Customer> Customers { get; set; }
     }
 }

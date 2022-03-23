@@ -25,7 +25,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             ListCollectionView view = new(items);
             Assert.IsTrue(view.CanFilter);
             Assert.IsNotNull(view.ItemProperties);
-            FilterPresenter? filterPresenter = FilterPresenter.TryGet(view);
+            FilterPresenter? filterPresenter = FilterPresenter.Get(view);
             Assert.IsNotNull(filterPresenter);
 
             StringFilterInitializer initializer = new();

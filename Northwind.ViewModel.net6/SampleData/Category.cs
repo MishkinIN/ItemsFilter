@@ -11,12 +11,21 @@ using System.Linq;
 using System.Text;
 
 namespace Northwind.NET.Sample.SampleData {
-    public class Category :Northwind.NET.EF6Model.Category {
+    public class Category : Northwind.NET.EF6Model.Category {
         public string PictureAsString {
             get {
-                return Convert.ToBase64String(base.Picture);
+                if (base.Picture != null) {
+                    return Convert.ToBase64String(base.Picture);
+                }
+                return String.Empty;
             }
-            set { base.Picture = Convert.FromBase64String(value); }
+            set {
+                if (String.IsNullOrEmpty(value)) {
+                    base.Picture = Convert.FromBase64String(value);
+                }
+                else
+                    base.Picture = null;
+            }
         }
     }
 }

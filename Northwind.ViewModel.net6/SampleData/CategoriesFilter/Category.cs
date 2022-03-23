@@ -52,9 +52,9 @@ namespace Expression.Blend.SampleData.CategoriesFilter {
 			}
 		}
 
-		private System.Windows.Media.ImageSource picture = null;
+		private System.Windows.Media.ImageSource? picture = null;
 
-		public System.Windows.Media.ImageSource Picture
+		public System.Windows.Media.ImageSource? Picture
 		{
 			get
 			{

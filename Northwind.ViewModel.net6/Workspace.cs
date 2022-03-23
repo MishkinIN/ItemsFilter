@@ -29,10 +29,8 @@ namespace Northwind.NET.Sample.ViewModel {
                     thisInstance = Application.Current.Resources[nameof(WorkspaceInstance)] as WorkspaceInstance
                         ?? new WorkspaceInstance()
                         ;
-                    return thisInstance;
                 }
-                else
-                    return thisInstance;
+                return thisInstance;
             }
         }
         public static readonly string CallingAssemblyShortName;
@@ -42,9 +40,9 @@ namespace Northwind.NET.Sample.ViewModel {
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-        public static string ViewModelAssemblyName  =>Assembly.GetAssembly(typeof(WorkspaceInstance)).FullName.Split(',')[0];
+        public static string ViewModelAssemblyName => Assembly.GetAssembly(typeof(WorkspaceInstance)).FullName.Split(',')[0];
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-        
+
         public static NorthwindNETEntities NorthwindModel {
             get {
                 if (northwindModel == null)
@@ -59,7 +57,7 @@ namespace Northwind.NET.Sample.ViewModel {
                 if (products == null) {
                     try {
                         NorthwindModel.Products
-                            .Include(p=>p.Category)
+                            .Include(p => p.Category)
                             .Load();
                         products = NorthwindModel.Products.Local;
                     }
@@ -140,15 +138,13 @@ namespace Northwind.NET.Sample.ViewModel {
                         var listCustomersQuery = from cust in NorthwindModel.Customers
                                                  orderby cust.Country
                                                  group cust by cust.Country into countryGroup
-                                                 select new CountryCustomersTreeItem
-                                                 {
+                                                 select new CountryCustomersTreeItem {
                                                      Country = countryGroup.Key,
                                                      Count = countryGroup.Count(),
                                                      Cities = (
                                                      from country in countryGroup
                                                      group country by country.City into sityGroup
-                                                     select new CityCustomersTreeItem
-                                                     {
+                                                     select new CityCustomersTreeItem {
                                                          City = sityGroup.Key,
                                                          Count = sityGroup.Count(),
                                                          Customers = (from sity in sityGroup
@@ -200,15 +196,15 @@ namespace Northwind.NET.Sample.ViewModel {
                 return orders;
             }
         }
-       
+
 
         internal static WorkspaceInstance LoadInstance(WorkspaceInstance instance) {
             try {
-                System.Uri resourceUri = new ($"/{Workspace.ViewModelAssemblyName};component/WorkspaceInstance.xaml", System.UriKind.Relative);
-                 //System.Uri resourceUri = new System.Uri($"ms-appx:///SampleData/Workspace.xaml");
-               if (System.Windows.Application.GetResourceStream(resourceUri) is StreamResourceInfo sri) {
+                System.Uri resourceUri = new($"/{Workspace.ViewModelAssemblyName};component/WorkspaceInstance.xaml", System.UriKind.Relative);
+                //System.Uri resourceUri = new System.Uri($"ms-appx:///SampleData/Workspace.xaml");
+                if (System.Windows.Application.GetResourceStream(resourceUri) is StreamResourceInfo sri) {
                     System.Windows.Application.LoadComponent(instance, resourceUri);
-                    if (instance.Products!=null && instance.Categories!=null && instance.Suppliers!=null) {
+                    if (instance.Products != null && instance.Categories != null && instance.Suppliers != null) {
                         foreach (Product product in instance.Products) {
                             Category? category = instance.Categories.Where(cat => cat.Id == product.CategoryId).FirstOrDefault();
                             if (category != null) {
@@ -220,9 +216,9 @@ namespace Northwind.NET.Sample.ViewModel {
                                 supplier.Products.Add(product);
                                 product.Supplier = supplier;
                             }
-                        } 
+                        }
                     }
-                    if (instance.Products!=null &&instance.OrderDetails != null && instance.Orders != null ) {
+                    if (instance.Products != null && instance.OrderDetails != null && instance.Orders != null) {
                         foreach (OrderDetail orderDetail in instance.OrderDetails) {
                             Product? product = instance.Products.Where(prod => prod.Id == orderDetail.ProductId).FirstOrDefault();
                             if (product != null) {
@@ -234,7 +230,7 @@ namespace Northwind.NET.Sample.ViewModel {
                                 order.OrderDetails.Add(orderDetail);
                                 orderDetail.Order = order;
                             }
-                        } 
+                        }
                     }
                     if (instance.Employees != null && instance.Customers != null && instance.Orders != null) {
                         foreach (Order order in instance.Orders) {
@@ -248,22 +244,20 @@ namespace Northwind.NET.Sample.ViewModel {
                                 employee.Orders.Add(order);
                                 order.Employee = employee;
                             }
-                        } 
+                        }
                     }
                     CustomersTreeVm customersTreeList;
 
                     var listCustomersQuery = from cust in instance.Customers
                                              orderby cust.Country
                                              group cust by cust.Country into countryGroup
-                                             select new CountryCustomersTreeItem
-                                             {
+                                             select new CountryCustomersTreeItem {
                                                  Country = countryGroup.Key,
                                                  Count = countryGroup.Count(),
                                                  Cities = (
                                                  from country in countryGroup
                                                  group country by country.City into sityGroup
-                                                 select new CityCustomersTreeItem
-                                                 {
+                                                 select new CityCustomersTreeItem {
                                                      City = sityGroup.Key,
                                                      Count = sityGroup.Count(),
                                                      Customers = (from sity in sityGroup

@@ -21,7 +21,7 @@ namespace BolapanControl.ItemsFilter {
     // <summary>
     // FilterPresenter performs the role of a manager that manages the instantiation of filters and their connection to the CollectionView.
     // </summary>
-    public sealed class FilterPresenter  {
+    public sealed class FilterPresenter {
         private static readonly Dictionary<ICollectionView, WeakReference> filterPresenters = new();
         private readonly ReadOnlyCollection<ItemPropertyInfo> itemProperties;
         private int itemsDeferRefreshCount = 0;
@@ -29,7 +29,7 @@ namespace BolapanControl.ItemsFilter {
         private Predicate<object>? filterFunction;
         private bool isFilterActive;
         private readonly ICollectionView collectionView;
-        private readonly Dictionary<string, FiltersCollection> filters;
+        private readonly Dictionary<string, Dictionary<Type, Filter>> filters;
         private event FilterEventHandler? FilterAction;
         private readonly FilteredEventArgs filteredEventArgs;
         // <summary>
@@ -38,24 +38,27 @@ namespace BolapanControl.ItemsFilter {
         // </summary>
         // <param name="source">ICollectionView for source or source</param>
         // <returns>FilterPresenter, connected to source, or null if source is null.</returns>
-        public static FilterPresenter? TryGet(IEnumerable? source) {
-            if (source == null)
-                return null;
+        public static FilterPresenter Get(IEnumerable source) {
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(source);
+#endif
             ICollectionView sourceCollectionView = (source as ICollectionView) ?? CollectionViewSource.GetDefaultView(source);
-            FilterPresenter? instance = null;
+            //FilterPresenter? instance = null;
             //GC.Collect();
-            foreach (var entry in filterPresenters.Where(kvp=>!kvp.Value.IsAlive).ToArray()) {
-                    filterPresenters.Remove(entry.Key);
+            foreach (var entry in filterPresenters.Where(kvp => !kvp.Value.IsAlive).ToArray()) {
+                filterPresenters.Remove(entry.Key);
             }
-            if (filterPresenters.ContainsKey(sourceCollectionView)) {
-                var wr = filterPresenters[sourceCollectionView];
-                instance = wr.Target as FilterPresenter;
+            //WeakReference wr;
+            if (filterPresenters.TryGetValue(sourceCollectionView, out var wr)
+                && wr.IsAlive
+                && wr.Target is FilterPresenter instance) {
+                return instance;
             }
             else {
                 instance = new FilterPresenter(sourceCollectionView);
                 filterPresenters[sourceCollectionView] = new WeakReference(instance);
+                return instance;
             }
-            return instance;
         }
 
         private FilterPresenter(ICollectionView source) {
@@ -63,7 +66,7 @@ namespace BolapanControl.ItemsFilter {
             filteredEventArgs = new FilteredEventArgs(source);
             itemProperties = (source as IItemProperties)?.ItemProperties ?? new ReadOnlyCollection<ItemPropertyInfo>(Array.Empty<ItemPropertyInfo>());
             filterFunction = new Predicate<object>(FilterFunction);
-            filters = new Dictionary<string, FiltersCollection>();
+            filters = new Dictionary<string, Dictionary<Type, Filter>>();
         }
 
         // <summary>
@@ -83,7 +86,7 @@ namespace BolapanControl.ItemsFilter {
             set {
                 if (isFilterActive != value) {
                     using (var defer = DeferRefresh()) {
-                        isFilterActive = value; 
+                        isFilterActive = value;
                     }
                 }
             }
@@ -98,12 +101,12 @@ namespace BolapanControl.ItemsFilter {
             //string viewKey = view.Key;
             FilterControlVm viewModel = FilterControlVm.Empty;
             if (viewKey != null) {
-                FiltersCollection filtersEntry;
+                Dictionary<Type, Filter> filtersEntry;
                 // Get registered collection by key.
                 if (filters.ContainsKey(viewKey))
                     filtersEntry = filters[viewKey];
                 else {
-                    filtersEntry = new FiltersCollection(this);
+                    filtersEntry = new Dictionary<Type, Filter>();
                     filters.Add(viewKey, filtersEntry);
                 }
                 filterInitializers ??= FilterInitializersManager.Default;
@@ -136,10 +139,10 @@ namespace BolapanControl.ItemsFilter {
         public Filter? TryGetFilter(string viewKey, FilterInitializer initializer) {
             Filter? filter = null;
             if (viewKey != null) {
-                FiltersCollection? filtersEntry;
+                Dictionary<Type, Filter>? filtersEntry;
                 // Get registered collection by key.
                 if (!filters.TryGetValue(viewKey, out filtersEntry)) {
-                    filtersEntry = new FiltersCollection(this);
+                    filtersEntry = new Dictionary<Type, Filter>();
                     filters.Add(viewKey, filtersEntry);
                 }
                 Type filterKey = initializer.GetType();
