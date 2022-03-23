@@ -30,7 +30,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
         ///           && propertyInfo.PropertyType != typeof(bool)
         ///           && !propertyType.IsEnum
         ///  otherwise, null.</returns>
-        protected override PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
+        protected override Filter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
@@ -42,7 +42,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
                 && propertyInfo.PropertyType != typeof(bool)
                 && !propertyType.IsEnum
                ) {
-                var filter = Activator.CreateInstance(typeof(GreaterOrEqualFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as PropertyFilter;
+                var filter = Activator.CreateInstance(typeof(GreaterOrEqualFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as Filter;
                 if (filter != null) {
                     filter.Attach(filterPresenter);
                 }

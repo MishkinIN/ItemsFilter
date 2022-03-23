@@ -28,9 +28,9 @@
     <Page Update="View\CategoryFilterView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Resource Update="View\CustomersTreeFilterViewTemplate.xaml">
+    <Page Update="View\CustomersTreeFilterViewTemplate.xaml">
       <SubType>Designer</SubType>
-    </Resource>
+    </Page>
     <Page Update="View\CustomersView.xaml">
       <SubType>Designer</SubType>
     </Page>

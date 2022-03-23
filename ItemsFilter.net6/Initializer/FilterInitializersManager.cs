@@ -44,9 +44,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <param name="initializers">Enumerable of IFilterInitializer to add.</param>
         public FilterInitializersManager(IEnumerable<FilterInitializer> initializers)
             : base() {
-            foreach (var item in initializers) {
-                Add(item);
-            }
+            AddRange(initializers);
         }
     }
 }

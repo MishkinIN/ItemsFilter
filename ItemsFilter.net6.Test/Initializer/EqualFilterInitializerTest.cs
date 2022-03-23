@@ -22,6 +22,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             ListCollectionView view = new(items);
             Assert.IsTrue(view.CanFilter);
             Assert.IsNotNull(view.ItemProperties);
+         
             FilterPresenter? filterPresenter = FilterPresenter.TryGet(view);
             Assert.IsNotNull(filterPresenter);
             EqualFilterInitializer initializer = new();
@@ -29,18 +30,21 @@ namespace ItemsFilter.net6.Test.Initializer {
             Assert.IsNotNull(filter);
             Assert.IsFalse(filter.IsActive);
             Assert.AreSame(filterPresenter, filter.FilterPresenter);
-            Assert.AreEqual(view.Count, items.Count);
+            Assert.AreEqual(items.Count, view.Count);
+          
             List<int> selected = new(new int[] { (int)StateEnum.State1, (int)StateEnum.State4 });
             List<int> unselected = new();
             filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
             Assert.IsTrue(filter.IsActive);
+            
             var filtered = FilterPresenterTest.GetCollection(view);
-            Assert.AreEqual(filtered.Count, selected.Count);
+            
+            Assert.AreEqual(selected.Count, filtered.Count);
             Assert.AreEqual(selected[0], ((StateItem)filtered[0]).StateId);
             Assert.AreEqual(selected[1], ((StateItem)filtered[1]).StateId);
             filterPresenter.IsFilterActive = false;
             filtered = FilterPresenterTest.GetCollection(view);
-            Assert.AreEqual(filtered.Count, items.Count);
+            Assert.AreEqual(items.Count, filtered.Count);
 
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 #pragma warning restore CS8604 // Possible null reference argument.

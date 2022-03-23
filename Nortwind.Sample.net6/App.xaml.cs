@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace NortwindSample.net6 {
+namespace Nortwind.Sample.net6 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

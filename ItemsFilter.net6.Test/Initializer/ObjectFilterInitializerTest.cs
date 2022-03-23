@@ -44,7 +44,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             filterPresenter.IsFilterActive = false;
             
             filtered = FilterPresenterTest.GetCollection(view);
-            Assert.AreEqual(filtered.Count, items.Count);
+            Assert.AreEqual(items.Count, filtered.Count);
 
             selected.Clear();
             selected.Add(null);

@@ -161,3 +161,4 @@ G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\Nortwind.Sample.net6.ru
 G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\Nortwind.Sample.net6.dll
 G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\ref\Nortwind.Sample.net6.dll
 G:\Projects\DcSokod\itemsfilter\bin\Debug\net6.0-windows\Nortwind.Sample.net6.pdb
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\View\CustomersTreeFilterViewTemplate.baml

@@ -21,7 +21,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
         private const string _filterName = "Equality";
 #pragma warning restore IDE0051 // Remove unused private members
 
-        internal override Filter? TryGetFilter(FilterPresenter filterPresenter, object key) {
+        public override Filter? TryGetFilter(FilterPresenter filterPresenter, object key) {
             if (key is ItemPropertyInfo info)
                 return NewFilter(filterPresenter, info);
             if (key is string str
@@ -79,5 +79,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
             sourceQuery = sourceQuery.Distinct();
             return sourceQuery;
         }
+
+      
     }
 }

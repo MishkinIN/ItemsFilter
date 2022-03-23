@@ -20,7 +20,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
 #pragma warning restore IDE0051 // Remove unused private members
         #region IPropertyFilterInitializer Members
 
-        protected override PropertyFilter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
+        protected override Filter? NewFilter(FilterPresenter filterPresenter, ItemPropertyInfo propertyInfo) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(propertyInfo);
@@ -32,7 +32,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
                 && propertyType != typeof(bool)
                 && !propertyType.IsEnum
                 ) {
-                var filter = Activator.CreateInstance(typeof(RangeFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as PropertyFilter;
+                var filter = Activator.CreateInstance(typeof(RangeFilter<>).MakeGenericType(propertyInfo.PropertyType), propertyInfo) as Filter;
                 if (filter != null) {
                     filter.Attach(filterPresenter);
                 }

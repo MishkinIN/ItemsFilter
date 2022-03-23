@@ -6,14 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "NortwindSample.net6/1.0.0": {
+      "Nortwind.Sample.net6/1.0.0": {
         "dependencies": {
           "ItemsFilter.net6": "1.0.0",
           "Northwind.NET.EF6Model": "1.0.0",
           "Northwind.ViewModel.net6": "1.0.0"
         },
         "runtime": {
-          "NortwindSample.net6.dll": {}
+          "Nortwind.Sample.net6.dll": {}
         }
       },
       "Microsoft.CSharp/4.5.0": {},
@@ -1092,7 +1092,7 @@
     }
   },
   "libraries": {
-    "NortwindSample.net6/1.0.0": {
+    "Nortwind.Sample.net6/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

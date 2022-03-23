@@ -13,7 +13,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
     /// <summary>
     /// Define ValueFilter initializer.
     /// </summary>
-    public class ValueFilterInitializer : FilterInitializer {
+    public class ObjectFilterInitializer : FilterInitializer {
 
         /// <summary>
         /// Generate new instance of Filter class, if it is possible for filterPresenter and key.
@@ -21,7 +21,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
         /// <param name="filterPresenter">FilterPresenter, which can be attached Filter</param>
         /// <param name="key">Key for generated Filter. For PropertyFilter, key used as the name for binding property in filterPresenter.Parent collection.</param>
         /// <returns>Instance of Filter class or null.</returns>
-        internal override Model.Filter TryGetFilter(FilterPresenter filterPresenter, object key) {
+        public override Model.Filter TryGetFilter(FilterPresenter filterPresenter, object key) {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key); 
@@ -39,7 +39,7 @@ namespace BolapanControl.ItemsFilter.Initializer {
 #pragma warning disable CA1822 // Mark members as static
         public Model.Filter TrygetFilter<T>(FilterPresenter filterPresenter, T key)
 #pragma warning restore CA1822 // Mark members as static
-            where T : IEquatable<T> {
+            where T : class {
 #if DEBUG
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(filterPresenter);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(key);

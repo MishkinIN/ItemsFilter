@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace ItemsFilter.net6.Test.Model {
-    public enum StateEnum  {
+    public enum StateEnum:int  {
         State0=0,
         State1,
         State2,

@@ -15,6 +15,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:model="clr-namespace:Northwind.NET.EF6Model;assembly=Northwind.NET.EF6Model"
                     xmlns:vw="clr-namespace:Northwind.NET.Sample.View"
+                    xmlns:vm="clr-namespace:Northwind.NET.Sample.ViewModel;assembly=Northwind.ViewModel.net6"
                     mc:Ignorable="d">
     <LinearGradientBrush x:Key="ButtonNormalBackground" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#F3F3F3" />
@@ -210,10 +211,11 @@
                                                 <Style BasedOn="{StaticResource CustomerComboBox_StringFilterStyle}" TargetType="{x:Type bsFilter:StringFilterView}" />
                                             </bsFilter:FilterControl.Resources>
                                             <bsFilter:FilterControl.FilterInitializersManager>
-                                                <!--<bsFilter:FilterInitializersManager>
-                                                    <vm:CustomersComboBoxFilterInitializer />
-                                                </bsFilter:FilterInitializersManager>-->
-                                                <vw:CustomersComboBoxFIM/>
+                                                <!--<vw:CustomersComboBoxFIM/>-->
+                                                <bsFilter:FilterInitializersManager>
+                                                   <vm:CustomersComboBoxFilterInitializer /> 
+                                                </bsFilter:FilterInitializersManager>
+                                                
                                             </bsFilter:FilterControl.FilterInitializersManager>
                                         </bsFilter:FilterControl>
                                         <ScrollViewer Grid.Row="1" CanContentScroll="true">

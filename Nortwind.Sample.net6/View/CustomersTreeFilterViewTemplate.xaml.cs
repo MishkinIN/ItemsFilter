@@ -26,7 +26,9 @@ namespace Northwind.NET.Sample.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri($"/{Workspace.ViewModelAssemblyName};component/View/CustomersTreeFilterViewTemplate.xaml", System.UriKind.Relative);
+            //var thisAssembly = typeof(CustomersTreeFilterViewTemplate).Assembly.GetName().Name;
+            //System.Uri resourceLocater = new System.Uri($"{thisAssembly};component/View/CustomersTreeFilterViewTemplate.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri($"View/CustomersTreeFilterViewTemplate.xaml", System.UriKind.Relative);
             System.Windows.Application.LoadComponent(this, resourceLocater);
         }
     }
