@@ -100,7 +100,6 @@
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
     <DrawingImage x:Key="FilterOpenPressedImage">
         <DrawingImage.Drawing>
             <DrawingGroup>
@@ -132,7 +131,6 @@
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
     <DrawingImage x:Key="FilterOpenImage">
         <DrawingImage.Drawing>
             <DrawingGroup>
@@ -170,7 +168,6 @@
             <GeometryDrawing Brush="{StaticResource FilterHeaderForegroundBrush}" Geometry="M 1,2C 3.33333,3.33333 5.66667,4.66667 7.66667,6.66667C 9.66667,8.66666 11.3333,11.3333 12.1667,12.6667L 13,14M 1,15C 3,12 5,9 7.33333,6.66667C 9.66667,4.33333 12.3333,2.66667 13.6667,1.83333L 15,1" />
         </DrawingImage.Drawing>
     </DrawingImage>
-
     <DrawingBrush x:Key="FilterButtonDisable" Stretch="None">
         <DrawingBrush.Drawing>
             <DrawingGroup>
@@ -634,7 +631,8 @@
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           ContentStringFormat="G"
                                           RecognizesAccessKey="True"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          ContentSource="{TemplateBinding Content, Converter={x:Static bsvw:SimplePropertyConverter.Default}}" />
                     </CheckBox>
 
                     <ControlTemplate.Triggers>
@@ -807,8 +805,8 @@
                                Grid.Row="1"
                                Width="{Binding ActualWidth,
                                                Mode=OneWay,
-                                               RelativeSource={RelativeSource FindAncestor,
-                                                                              AncestorType={x:Type DataGridColumnHeader}}}"
+                                               RelativeSource={RelativeSource FindAncestor, AncestorLevel=2,
+                                                                              AncestorType={x:Type Grid}}}"
                                MinWidth="180"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Top"

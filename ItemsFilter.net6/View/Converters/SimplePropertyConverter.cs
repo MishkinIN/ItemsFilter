@@ -25,6 +25,8 @@ namespace BolapanControl.ItemsFilter.View {
     [ValueConversion(typeof(Enum), typeof(String))]
     [ValueConversion(typeof(bool), typeof(String))]
     public class SimplePropertyConverter : IValueConverter {
+        private static readonly Lazy<SimplePropertyConverter> lzDefault = new(() => new SimplePropertyConverter());
+        public static SimplePropertyConverter Default { get => lzDefault.Value; }
         private static readonly SimplePropertyConverter _This = new();
 
         public static SimplePropertyConverter This {
@@ -38,7 +40,7 @@ namespace BolapanControl.ItemsFilter.View {
             try {
                 if (converter.CanConvertTo(null, typeof(string))) {
                     //return converter.ConvertTo(value, typeof(string));
-                    return converter.ConvertTo(null, CultureInfo.CurrentCulture, value, typeof(string))?? String.Empty;
+                    return converter.ConvertTo(null, culture, value, typeof(string))?? String.Empty;
                 }
                 else {
                     return value.ToString()?? String.Empty;
@@ -50,11 +52,18 @@ namespace BolapanControl.ItemsFilter.View {
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+            var valueType = value?.GetType();
+            if (valueType==null) {
+                return null;
+            }
+            if (valueType==targetType) {
+                return value;
+            }
             TypeConverter converter = TypeDescriptor.GetConverter(targetType);
             try {
 
-                if (converter.CanConvertFrom(null, value.GetType())) {
-                    return converter.ConvertFrom(null, CultureInfo.CurrentCulture, value) ?? String.Empty;
+                if (converter.CanConvertFrom(null, valueType)) {
+                    return converter.ConvertFrom(null, culture, value) ?? String.Empty;
                 }
                 else {
                     return converter.ConvertFrom(value.ToString()?? String.Empty) ?? String.Empty;

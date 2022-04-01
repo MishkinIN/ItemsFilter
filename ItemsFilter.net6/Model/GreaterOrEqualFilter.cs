@@ -15,6 +15,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// <typeparam name="T">IComparable structure.</typeparam>
     public class GreaterOrEqualFilter<T> : LessOrEqualFilter<T>, IComparableFilter<T>
         where T : struct, IComparable<T> {
+        private static readonly Lazy<string> lzName = new(() => "Greater or equal:");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GreaterOrEqualFilter"/> class.
@@ -22,9 +23,11 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <param name="propertyInfo">The property info.</param>
         public GreaterOrEqualFilter(ItemPropertyInfo propertyInfo)
             : base(propertyInfo) {
-            base.Name = "Greater or equal:";
+            base.Name = lzName.Value;
         }
-        internal protected GreaterOrEqualFilter(Func<object?, T?> getter) : base(o => getter(o)) { }
+        internal protected GreaterOrEqualFilter(Func<object?, T?> getter) : base(o => getter(o)) {
+            base.Name = lzName.Value;
+        }
 
         /// <summary>
         /// Determines whether the specified target is a match.

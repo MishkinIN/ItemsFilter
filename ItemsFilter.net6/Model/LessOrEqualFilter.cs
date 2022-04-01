@@ -18,6 +18,7 @@ namespace BolapanControl.ItemsFilter.Model {
     [View(typeof(ComparableFilterView))]
     public class LessOrEqualFilter<T> : Filter, IComparableFilter<T>
         where T : struct, IComparable<T> {
+        private static readonly Lazy<string> lzName = new(() => "Less or equal:");
         protected new readonly Func<object?, T?> getter;
         protected T? _compareTo = default;
 
@@ -30,6 +31,7 @@ namespace BolapanControl.ItemsFilter.Model {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(getter);
 #endif
             this.getter = getter;
+            base.Name = lzName.Value;
         }
 
 
@@ -47,7 +49,7 @@ namespace BolapanControl.ItemsFilter.Model {
 #endif 
             //base.PropertyInfo = propertyInfo;
             getter = t => (T?)base.getter(t);
-            base.Name = "Less or equal:";
+            base.Name = lzName.Value;
         }
         /// <summary>
         /// Determines whether the specified target is a match.
@@ -87,6 +89,8 @@ namespace BolapanControl.ItemsFilter.Model {
                 CompareTo = value;
             }
         }
+
+        object? IComparableFilter.CompareTo { get => CompareTo; set => CompareTo=value as T?; }
         #endregion
 
         /// <summary>

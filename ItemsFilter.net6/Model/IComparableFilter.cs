@@ -26,13 +26,13 @@ namespace BolapanControl.ItemsFilter.Model {
     /// Defines the contract for a compare filter.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IComparableFilter<T> : IFilter//: IComparableFilter
+    public interface IComparableFilter<T> : IFilter, IComparableFilter
         where T :struct, IComparable<T> {
         /// <summary>
         /// Gets or sets the value used in the comparison.
         /// </summary>
         /// <value>The compare to.</value>
-        T? CompareTo {
+        new T? CompareTo {
             get;
             set;
         }
