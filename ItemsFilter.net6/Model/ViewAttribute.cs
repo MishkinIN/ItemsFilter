@@ -5,7 +5,6 @@
 // <project>ItemsFilter</project>
 // <license> GNU General Public License version 3 (GPLv3) </license>
 // ****************************************************************************
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Reflection;
 using System.Windows;
@@ -25,13 +24,20 @@ namespace BolapanControl.ItemsFilter.Model {
 
         public ViewAttribute(Type ViewType) {
 #if DEBUG
-            Assert.IsTrue(typeof(FrameworkElement).IsAssignableFrom(ViewType));
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(typeof(FrameworkElement).IsAssignableFrom(ViewType));
 #endif
             viewType = ViewType;
         }
         public ViewAttribute(string typeName) {
-            Assembly assembly = Assembly.GetEntryAssembly()?? Assembly.GetEntryAssembly();
-            viewType = assembly?.GetType(typeName) ?? typeof(Control);
+            Assembly? assembly = Assembly.GetEntryAssembly()?? Assembly.GetEntryAssembly();
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(assembly);
+#endif
+            var type= assembly?.GetType(typeName);
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(type);
+#endif
+            viewType = type;
         }
     }
 }

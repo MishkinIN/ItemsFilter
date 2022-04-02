@@ -14,10 +14,9 @@ using BolapanControl.ItemsFilter.Initializer;
 
 namespace ItemsFilter.net6.Test.Model {
     public class EqualFilterTest {
-        private List<int> source = new();
+        private readonly IEnumerable<int> enumSource = Enum.GetValues<StateEnum>().Cast<int>();
         [SetUp]
         public void Setup() {
-            source.AddRange(Enum.GetValues<StateEnum>().Cast<int>());
         }
         [Test]
         public void CTOR() {
@@ -30,6 +29,7 @@ namespace ItemsFilter.net6.Test.Model {
         [Test]
         public void TestAvailableValues() {
             EqualFilter<int> filter = GetEqualFilter<int>();
+            var source = enumSource.ToList();
             filter.AvailableValues = source;
             CollectionViewSource cvs = new();
             cvs.Source = filter.AvailableValues;
@@ -41,6 +41,7 @@ namespace ItemsFilter.net6.Test.Model {
         public void TestFilterIsMatch() {
             EqualFilter<int> filter = GetEqualFilter<int>();
             CollectionViewSource cvs = new();
+            var source = Enum.GetValues<StateEnum>().Cast<int>().ToList();
             cvs.Source = source;
             ICollectionView view = cvs.View;
             Assert.IsTrue(view.CanFilter);
@@ -65,15 +66,12 @@ namespace ItemsFilter.net6.Test.Model {
         [Test]
         public void TestAttach() {
             EqualFilter<int> filter = GetEqualFilter<int>();
+            var source = enumSource.ToList();
             var filterPresenter = FilterPresenter.Get(source);
             Assert.IsNotNull(filterPresenter);
             Assert.IsFalse(filter.IsActive);
-#pragma warning disable CS8604 // Possible null reference argument.
             filter.Attach(filterPresenter);
-#pragma warning restore CS8604 // Possible null reference argument.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             var view = filterPresenter.CollectionView;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             var filtered = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(source.Count, filtered.Count);
             List<int> selected = new(new int[] { (int)StateEnum.State1, (int)StateEnum.State4 });

@@ -90,7 +90,7 @@ namespace BolapanControl.ItemsFilter.Model {
             }
         }
 
-        object? IComparableFilter.CompareTo { get => CompareTo; set => CompareTo=value as T?; }
+        object? IComparableFilter.CompareTo { get =>(object?)CompareTo; set => CompareTo=value as T?; }
         #endregion
 
         /// <summary>

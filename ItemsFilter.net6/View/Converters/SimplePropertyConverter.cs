@@ -27,13 +27,6 @@ namespace BolapanControl.ItemsFilter.View {
     public class SimplePropertyConverter : IValueConverter {
         private static readonly Lazy<SimplePropertyConverter> lzDefault = new(() => new SimplePropertyConverter());
         public static SimplePropertyConverter Default { get => lzDefault.Value; }
-        private static readonly SimplePropertyConverter _This = new();
-
-        public static SimplePropertyConverter This {
-            get {
-                return _This;
-            }
-        }
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             TypeConverter converter = TypeDescriptor.GetConverter(targetType);
@@ -54,7 +47,7 @@ namespace BolapanControl.ItemsFilter.View {
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             var valueType = value?.GetType();
             if (valueType==null) {
-                return null;
+                return value;
             }
             if (valueType==targetType) {
                 return value;

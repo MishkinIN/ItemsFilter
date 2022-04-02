@@ -17,8 +17,8 @@ namespace ItemsFilter.net6.Test {
         [Test]
         public void CTOR() {
             int[] source = { 1, 2, 3 };
-            var fp_empty = FilterPresenter.Get(null);
-            Assert.IsNull(fp_empty);
+            //var fp_empty = FilterPresenter.Get(null);
+            //Assert.IsNull(fp_empty);
             var fp1 = FilterPresenter.Get(source);
             Assert.IsNotNull(fp1);
             var fp2 = FilterPresenter.Get(source);

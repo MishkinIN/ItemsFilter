@@ -14,10 +14,9 @@ using BolapanControl.ItemsFilter.Initializer;
 
 namespace ItemsFilter.net6.Test.Model {
     public class LessOrEqualFilterTest {
-        private List<int> source = new();
+        private readonly IEnumerable<int> enumSource = Enum.GetValues<StateEnum>().Cast<int>();
         [SetUp]
         public void Setup() {
-            source.AddRange(Enum.GetValues<StateEnum>().Cast<int>());
         }
         [Test]
         public void CTOR() {
@@ -34,6 +33,7 @@ namespace ItemsFilter.net6.Test.Model {
         [Test]
         public void TestFilterIsMatch() {
             int compareTo = (int)StateEnum.State3;
+            var source = enumSource.ToList();
             var expectedCollection = source.Where(v => v <= compareTo).ToArray();
             LessOrEqualFilter<int> filter = GetLessOrEqualFilter<int>();
             CollectionViewSource cvs = new();
@@ -62,15 +62,12 @@ namespace ItemsFilter.net6.Test.Model {
         [Test]
         public void TestAttach() {
             LessOrEqualFilter<int> filter = GetLessOrEqualFilter<int>();
+            var source = enumSource.ToList();
             var filterPresenter = FilterPresenter.Get(source);
             Assert.IsNotNull(filterPresenter);
             Assert.IsFalse(filter.IsActive);
-#pragma warning disable CS8604 // Possible null reference argument.
             filter.Attach(filterPresenter);
-#pragma warning restore CS8604 // Possible null reference argument.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             var view = filterPresenter.CollectionView;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             var filtered = GetCollection(view);
             Assert.AreEqual(source.Count, filtered.Count);
             filter.CompareTo = (int)StateEnum.State3;

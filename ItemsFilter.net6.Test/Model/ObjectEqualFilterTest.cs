@@ -14,14 +14,16 @@ using BolapanControl.ItemsFilter.Initializer;
 
 namespace ItemsFilter.net6.Test.Model {
     public class ObjectEqualFilterTest {
-        private List<int?> source = new();
+        private int?[] enumSource = Array.Empty<int?>();
         [SetUp]
         public void Setup() {
             var intSource = Enum.GetValues<StateEnum>()
                 .Cast<int>()
                 .ToArray();
+            List<int?> source = new();
             source.AddRange(intSource.Cast<int?>());
             source.Add((int?)null);
+            enumSource = source.ToArray();
         }
         [Test]
         public void CTOR() {
@@ -34,6 +36,7 @@ namespace ItemsFilter.net6.Test.Model {
         [Test]
         public void TestAvailableValues() {
             ObjectEqualFilter filter = GetEqualFilter();
+            var source = enumSource.ToList();
             filter.AvailableValues = source;
             CollectionViewSource cvs = new();
             cvs.Source = filter.AvailableValues;
@@ -45,6 +48,7 @@ namespace ItemsFilter.net6.Test.Model {
         public void TestFilterIsMatch() {
             ObjectEqualFilter filter = GetEqualFilter();
             CollectionViewSource cvs = new();
+            var source = enumSource.ToList();
             cvs.Source = source;
             ICollectionView view = cvs.View;
             Assert.IsTrue(view.CanFilter);
@@ -78,6 +82,7 @@ namespace ItemsFilter.net6.Test.Model {
         [Test]
         public void TestAttach() {
             ObjectEqualFilter filter = GetEqualFilter();
+            var source = enumSource.ToList();
             var filterPresenter = FilterPresenter.Get(source);
             Assert.IsNotNull(filterPresenter);
             Assert.IsFalse(filter.IsActive);

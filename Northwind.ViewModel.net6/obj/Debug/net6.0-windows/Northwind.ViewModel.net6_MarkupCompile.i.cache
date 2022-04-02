@@ -4,7 +4,7 @@
 library
 C#
 .cs
-G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\
+D:\Projects\ItemsFilter.github.com\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\
 Northwind.ViewModel.net6
 none
 false
@@ -13,7 +13,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 4394445907
 
 33348594224
-218-1656871449
+2181070289340
 SampleData\CategoriesFilter\EqualFilter.xaml;SampleData\Customer.xaml;SampleData\Order.xaml;WorkspaceInstance.xaml;
 
 True

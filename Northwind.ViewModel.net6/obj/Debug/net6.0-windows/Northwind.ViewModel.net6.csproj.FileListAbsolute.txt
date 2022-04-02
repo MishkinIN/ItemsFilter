@@ -46,3 +46,14 @@ G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-window
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\Northwind.ViewModel.net6.dll
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\ref\Northwind.ViewModel.net6.dll
 G:\Projects\DcSokod\itemsfilter\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\Northwind.ViewModel.net6.pdb
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0-windows\Northwind.ViewModel.net6.deps.json
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0-windows\Northwind.ViewModel.net6.dll
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0-windows\ref\Northwind.ViewModel.net6.dll
+D:\Projects\ItemsFilter.github.com\bin\Debug\net6.0-windows\Northwind.ViewModel.net6.pdb
+D:\Projects\ItemsFilter.github.com\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\SampleData\Customer.baml
+D:\Projects\ItemsFilter.github.com\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Projects\ItemsFilter.github.com\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\Northwind.ViewModel.net6_MarkupCompile.cache
+D:\Projects\ItemsFilter.github.com\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\Northwind.ViewModel.net6_MarkupCompile.lref
+D:\Projects\ItemsFilter.github.com\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\SampleData\CategoriesFilter\EqualFilter.baml
+D:\Projects\ItemsFilter.github.com\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\SampleData\Order.baml
+D:\Projects\ItemsFilter.github.com\Northwind.ViewModel.net6\obj\Debug\net6.0-windows\WorkspaceInstance.baml
