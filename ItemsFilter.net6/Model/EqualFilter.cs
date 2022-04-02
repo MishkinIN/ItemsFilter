@@ -27,7 +27,7 @@ namespace BolapanControl.ItemsFilter.Model {
         protected EqualFilter(Func<object?, object?> getter) : base(getter) {
             selectedValues = new ObservableCollection<object>();
             _selectedValues = new ReadOnlyObservableCollection<object>(selectedValues);
-            base.Name = "Equal:";
+            base.name = "Equal:";
         }
 
         public ReadOnlyObservableCollection<object> SelectedValues {
@@ -49,19 +49,22 @@ namespace BolapanControl.ItemsFilter.Model {
             SelectedValuesChanged(e.AddedItems, e.RemovedItems);
         }
         internal void SelectedValuesChanged(IList? addedItems, IList? removedItems) {
+            IDisposable? defer = this.FilterPresenter?.DeferRefresh();
+            bool isactive = IsActive;
             if (addedItems != null) {
                 foreach (var item in addedItems) {
                     selectedValues.Add(item);
+                    isactive = true;
                 }
-                IsActive = true;
             }
             if (removedItems != null) {
                 foreach (var item in removedItems) {
                     selectedValues.Remove(item);
                 }
-                IsActive = selectedValues.Count > 0;
+                isactive = selectedValues.Count > 0;
             }
-            OnIsActiveChanged();
+            IsActive = isactive;
+            defer?.Dispose();
         }
     }
 

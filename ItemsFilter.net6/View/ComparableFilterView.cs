@@ -39,18 +39,18 @@ namespace BolapanControl.ItemsFilter.View {
         /// <summary>
         /// When overridden in a derived class, is invoked whenever application code or internal processes (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
         /// </summary>
-        public override void OnApplyTemplate() {
-            if (_textBox != null) {
-                _textBox.RemoveHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown));
-                _textBox.RemoveHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus));
-            }
-            base.OnApplyTemplate();
-            _textBox = GetTemplateChild(PART_Input) as TextBox;
-            if (_textBox != null) {
-                _textBox.AddHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown), true);
-                _textBox.AddHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus), true);
-            }
-        }
+        //public override void OnApplyTemplate() {
+        //    if (_textBox != null) {
+        //        _textBox.RemoveHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown));
+        //        _textBox.RemoveHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus));
+        //    }
+        //    base.OnApplyTemplate();
+        //    _textBox = GetTemplateChild(PART_Input) as TextBox;
+        //    if (_textBox != null) {
+        //        _textBox.AddHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown), true);
+        //        _textBox.AddHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus), true);
+        //    }
+        //}
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e) {
             UpdateTextBoxSource((TextBox)sender);

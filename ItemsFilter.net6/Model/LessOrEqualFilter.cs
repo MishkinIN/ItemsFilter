@@ -31,7 +31,7 @@ namespace BolapanControl.ItemsFilter.Model {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(getter);
 #endif
             this.getter = getter;
-            base.Name = lzName.Value;
+            base.name = lzName.Value;
         }
 
 
@@ -49,7 +49,7 @@ namespace BolapanControl.ItemsFilter.Model {
 #endif 
             //base.PropertyInfo = propertyInfo;
             getter = t => (T?)base.getter(t);
-            base.Name = lzName.Value;
+            base.name = lzName.Value;
         }
         /// <summary>
         /// Determines whether the specified target is a match.
@@ -63,34 +63,36 @@ namespace BolapanControl.ItemsFilter.Model {
                 }
             }
         }
+        #region IComparableFilter Members
         /// <summary>
         /// Get or set the value used in the comparison. If assign null, filter deactivated.
         /// </summary>
-        public T? CompareTo {
+        public Nullable<T> CompareTo {
             get {
                 return _compareTo;
             }
             set {
                 if (!Object.Equals(value, _compareTo)) {
                     _compareTo = value;
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     RefreshIsActive();
-                    RaiseFilterChanged();
+                    //RaiseFilterChanged();
                     RaisePropertyChanged(nameof(CompareTo));
+                    if (defer != null)
+                        defer.Dispose();
                 }
             }
         }
-        #region IComparableFilter Members
 
-        T? IComparableFilter<T>.CompareTo {
-            get {
-                return CompareTo;
-            }
-            set {
-                CompareTo = value;
-            }
-        }
+        //T? IComparableFilter<T>.CompareTo {
+        //    get {
+        //        return CompareTo;
+        //    }
+        //    set {
+        //        CompareTo = value;
+        //    }
+        //}
 
-        object? IComparableFilter.CompareTo { get =>(object?)CompareTo; set => CompareTo=value as T?; }
         #endregion
 
         /// <summary>

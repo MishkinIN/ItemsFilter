@@ -23,10 +23,10 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <param name="propertyInfo">The property info.</param>
         public GreaterOrEqualFilter(ItemPropertyInfo propertyInfo)
             : base(propertyInfo) {
-            base.Name = lzName.Value;
+            base.name = lzName.Value;
         }
         internal protected GreaterOrEqualFilter(Func<object?, T?> getter) : base(o => getter(o)) {
-            base.Name = lzName.Value;
+            base.name = lzName.Value;
         }
 
         /// <summary>

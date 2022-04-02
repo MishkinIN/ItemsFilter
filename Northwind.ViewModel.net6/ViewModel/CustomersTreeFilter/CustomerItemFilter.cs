@@ -26,10 +26,10 @@ namespace Northwind.NET.Sample.ViewModel {
                     IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     SendChangesToChild();
                     IsActive = CheckIsActive();
-                    RaiseFilterChanged();
+                    //RaiseFilterChanged();
+                    RaisePropertyChanged(nameof(ContactCompareTo));
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged(nameof(ContactCompareTo));
                 }
             }
         }
@@ -46,10 +46,10 @@ namespace Northwind.NET.Sample.ViewModel {
                     IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     SendChangesToChild();
                     IsActive = CheckIsActive();
-                    RaiseFilterChanged();
+                    //RaiseFilterChanged();
+                    RaisePropertyChanged(nameof(NameCompareTo));
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged(nameof(NameCompareTo));
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace Northwind.NET.Sample.ViewModel {
 #pragma warning disable CS8604 // Possible null reference argument.
                         e.Accepted = customer.Name.Contains(nameCompareTo);
 #pragma warning restore CS8604 // Possible null reference argument.
-                    if (isContactCompareActive && customer.ContactName!=null)
+                    if (isContactCompareActive && customer.ContactName != null)
 #pragma warning disable CS8604 // Possible null reference argument.
                         e.Accepted &= customer.ContactName.Contains(contactCompareTo);
 #pragma warning restore CS8604 // Possible null reference argument.

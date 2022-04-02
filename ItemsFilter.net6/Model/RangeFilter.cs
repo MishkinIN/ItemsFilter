@@ -32,7 +32,7 @@ namespace BolapanControl.ItemsFilter.Model {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(getter, "getter is null.");
 #endif
             this.getter = getter;
-            base.Name = "In range:";
+            base.name = "In range:";
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace BolapanControl.ItemsFilter.Model {
 #endif            
             //base.PropertyInfo = propertyInfo;
             getter = t => (T?)((PropertyDescriptor)(propertyInfo.Descriptor)).GetValue(t);
-            base.Name = "In range:";
+            base.name = "In range:";
         }
 
         /// <summary>

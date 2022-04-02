@@ -17,7 +17,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// Base class for a filter.
     /// </summary>
     public abstract class Filter : IFilter, INotifyPropertyChanged {
-        private string name = "Filter:";
+        protected string name = "Filter:";
         private bool isActive;
         private FilterPresenter? filterPresenter;
         protected readonly Func<object?, object?> getter;
@@ -45,12 +45,12 @@ namespace BolapanControl.ItemsFilter.Model {
             get {
                 return name;
             }
-            set {
-                if (name != value) {
-                    name = value;
-                    RaisePropertyChanged(nameof(Name));
-                }
-            }
+            //set {
+            //    if (name != value) {
+            //        name = value;
+            //        RaisePropertyChanged(nameof(Name));
+            //    }
+            //}
         }
         /// <summary>
         /// Get or set value, determines is filter IsMatch action include in parentCollection filter.
@@ -62,12 +62,10 @@ namespace BolapanControl.ItemsFilter.Model {
             set {
                 if (isActive != value) {
                     isActive = value;
-                    if (this.FilterPresenter!=null) {
-                        using (IDisposable defer = this.FilterPresenter.DeferRefresh()) {
-                            OnIsActiveChanged();
-                        } 
-                    }
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     RaisePropertyChanged(nameof(IsActive));
+                    OnIsActiveChanged();
+                    defer?.Dispose();
                 }
             }
         }
@@ -91,7 +89,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <summary>
         /// Report attached listeners that filter changed.
         /// </summary>
-        protected void RaiseFilterChanged() {
+        private void RaiseFilterChanged() {
             if (filterPresenter != null)
                 filterPresenter.ReceiveFilterChanged(this);
             foreach (var vm in attachedFilterControlVmodels) {
@@ -128,8 +126,13 @@ namespace BolapanControl.ItemsFilter.Model {
         #region Члены INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void RaisePropertyChanged(string propertyName) {
+           
             VerifyPropertyName(propertyName);
-
+            if (this.FilterPresenter != null) {
+                using (IDisposable defer = this.FilterPresenter.DeferRefresh()) {
+                    RaiseFilterChanged();
+                }
+            }
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         [Conditional("DEBUG")]

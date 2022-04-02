@@ -21,10 +21,10 @@ namespace Northwind.NET.Sample.ViewModel {
                     isCountryCompareActive = !String.IsNullOrEmpty(value);
                     IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     IsActive = CheckIsActive();
-                    RaiseFilterChanged();
+                    //RaiseFilterChanged();
+                    RaisePropertyChanged(nameof(CountryCompareTo));
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged(nameof(CountryCompareTo));
                 }
             }
         }

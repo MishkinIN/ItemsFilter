@@ -44,7 +44,7 @@ namespace BolapanControl.ItemsFilter.View {
             }
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+        public object? ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             var valueType = value?.GetType();
             if (valueType==null) {
                 return value;

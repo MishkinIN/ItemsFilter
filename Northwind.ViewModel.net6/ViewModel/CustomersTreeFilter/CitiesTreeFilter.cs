@@ -23,10 +23,10 @@ namespace Northwind.NET.Sample.ViewModel {
                     IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     SendChangesToChild();
                     IsActive = CheckIsActive();
-                    RaiseFilterChanged();
+                    //RaiseFilterChanged();
+                    RaisePropertyChanged(nameof(CityCompareTo));
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged(nameof(CityCompareTo));
                 }
             }
         }

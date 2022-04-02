@@ -14,6 +14,7 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
                     mc:Ignorable="d">
     <!--xmlns:bsFilter="http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter"-->
     <!--  <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />  -->
@@ -525,8 +526,8 @@
                                      VerticalAlignment="Center"
                                      Padding="1,1,1,1"
                                      Text="{Binding Model.CompareFrom,
-                                                    Converter={StaticResource SimplePropertyConverter},
-                                                    UpdateSourceTrigger=Explicit,
+                                                    TargetNullValue={x:Static system:String.Empty},
+                                                    UpdateSourceTrigger=PropertyChanged,
                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                      TextWrapping="NoWrap" />
 
@@ -546,8 +547,8 @@
                                      VerticalAlignment="Center"
                                      Padding="1,1,1,1"
                                      Text="{Binding Model.CompareTo,
-                                                    Converter={StaticResource SimplePropertyConverter},
-                                                    UpdateSourceTrigger=Explicit,
+                                                    TargetNullValue={x:Static system:String.Empty},
+                                                    UpdateSourceTrigger=PropertyChanged,
                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                      TextWrapping="NoWrap" />
                             <Button Grid.Column="2" Style="{StaticResource FilterClearButtonStyle}">
@@ -586,7 +587,7 @@
                                        Grid.Column="0"
                                        Style="{StaticResource FilterNameStyle}"
                                        Text="{Binding Model.Name,
-                                                      Mode=OneWay,
+                                                      Mode=OneTime,
                                                       RelativeSource={RelativeSource TemplatedParent}}" />
 
                             <TextBox x:Name="PART_Input"
@@ -598,10 +599,12 @@
                                      VerticalAlignment="Center"
                                      Padding="1,1,1,1"
                                      Text="{Binding Model.CompareTo,
-                                                    UpdateSourceTrigger=Explicit,
-                                                    Converter={StaticResource SimplePropertyConverter},
+                                                    UpdateSourceTrigger=PropertyChanged,
+                                                    
+                                                    TargetNullValue={x:Static system:String.Empty},
                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                      TextWrapping="NoWrap" />
+                           
                             <Button Grid.Column="1" Style="{StaticResource FilterClearButtonStyle}">
                                 <Image Source="{StaticResource ClearImage}" />
                             </Button>
@@ -701,6 +704,7 @@
                            Grid.Column="0"
                            Style="{StaticResource FilterNameStyle}"
                            Text="{Binding Model.Name,
+                                          Mode=OneTime,
                                           RelativeSource={RelativeSource TemplatedParent}}" />
                 <Button Grid.Column="1" Style="{StaticResource FilterClearButtonStyle}">
                     <Image Source="{StaticResource ClearImage}" />

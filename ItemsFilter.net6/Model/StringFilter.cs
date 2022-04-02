@@ -46,7 +46,7 @@ namespace BolapanControl.ItemsFilter.Model {
             _filterMode = filterMode;
             //Func<object, object> getterItem = ((PropertyDescriptor)(PropertyInfo.Descriptor)).GetValue;
             //this.getter = t => ((string)(getterItem(t)));
-            base.Name = "String";
+            base.name = "String";
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace BolapanControl.ItemsFilter.Model {
             set {
                 if (_filterMode != value) {
                     _filterMode = value;
-                    OnIsActiveChanged();
+                    //OnIsActiveChanged();
                     RaisePropertyChanged(nameof(Mode));
                 }
             }
@@ -89,9 +89,11 @@ namespace BolapanControl.ItemsFilter.Model {
             set {
                 if (_value != value) {
                     _value = value;
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     base.IsActive = !string.IsNullOrEmpty(value);
                     //OnIsActiveChanged();
                     RaisePropertyChanged(nameof(Value));
+                    defer?.Dispose();
                 }
             }
         }
@@ -100,7 +102,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// </summary>
         protected override void OnIsActiveChanged() {
             if (!IsActive)
-                _value = string.Empty;
+                Value = string.Empty;
             base.OnIsActiveChanged();
         }
 

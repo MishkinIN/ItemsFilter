@@ -26,10 +26,10 @@ namespace Northwind.NET.Sample.ViewModel {
                     IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     SendChangesToChild();
                     IsActive = CheckIsActive();
-                    RaiseFilterChanged();
+                    //RaiseFilterChanged();
+                    RaisePropertyChanged(nameof(ContactCompareTo));
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged(nameof(ContactCompareTo));
                 }
             }
         }
@@ -46,10 +46,10 @@ namespace Northwind.NET.Sample.ViewModel {
                     IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     SendChangesToChild();
                     IsActive = CheckIsActive();
-                    RaiseFilterChanged();
+                    //RaiseFilterChanged();
+                    RaisePropertyChanged(nameof(NameCompareTo));
                     if (defer != null)
                         defer.Dispose();
-                    RaisePropertyChanged(nameof(NameCompareTo));
                 }
             }
         }

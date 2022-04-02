@@ -12,14 +12,7 @@ namespace BolapanControl.ItemsFilter.Model {
     /// Define the contract for compare property filter.
     /// </summary>
     public interface IComparableFilter : IFilter /*: IPropertyFilter*/ {
-        /// <summary>
-        /// Gets or sets the value used in the comparison.
-        /// </summary>
-        /// <value>The compare to.</value>
-        object CompareTo {
-            get;
-            set;
-        }
+        
     }
 
     /// <summary>
@@ -32,7 +25,7 @@ namespace BolapanControl.ItemsFilter.Model {
         /// Gets or sets the value used in the comparison.
         /// </summary>
         /// <value>The compare to.</value>
-        new T? CompareTo {
+        T? CompareTo {
             get;
             set;
         }
