@@ -600,7 +600,6 @@
                                      Padding="1,1,1,1"
                                      Text="{Binding Model.CompareTo,
                                                     UpdateSourceTrigger=PropertyChanged,
-                                                    
                                                     TargetNullValue={x:Static system:String.Empty},
                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                      TextWrapping="NoWrap" />

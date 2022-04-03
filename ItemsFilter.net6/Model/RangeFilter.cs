@@ -77,9 +77,11 @@ namespace BolapanControl.ItemsFilter.Model {
             set {
                 if (!Object.Equals(_compareFrom, value)) {
                     _compareFrom = value;
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     RefreshIsActive();
                     OnIsActiveChanged();
                     RaisePropertyChanged(nameof(CompareFrom));
+                    defer?.Dispose();
                 }
             }
         }
@@ -92,9 +94,11 @@ namespace BolapanControl.ItemsFilter.Model {
             set {
                 if (!Object.Equals(_compareTo, value)) {
                     _compareTo = value;
+                    IDisposable? defer = this.FilterPresenter?.DeferRefresh();
                     RefreshIsActive();
                     OnIsActiveChanged();
                     RaisePropertyChanged(nameof(CompareTo));
+                    defer?.Dispose();
                 }
             }
         }
@@ -130,19 +134,19 @@ namespace BolapanControl.ItemsFilter.Model {
 
         #region IRangeFilter Members
 
-        object? IRangeFilter.CompareFrom {
-            get => CompareFrom;
-            set {
-                CompareFrom = (T?)value;
-            }
-        }
+        //object? IRangeFilter.CompareFrom {
+        //    get => CompareFrom;
+        //    set {
+        //        CompareFrom = (T?)value;
+        //    }
+        //}
 
-        object? IRangeFilter.CompareTo {
-            get => CompareFrom;
-            set {
-                CompareFrom = (T?)value;
-            }
-        }
+        //object? IRangeFilter.CompareTo {
+        //    get => CompareFrom;
+        //    set {
+        //        CompareFrom = (T?)value;
+        //    }
+        //}
 
         #endregion
 

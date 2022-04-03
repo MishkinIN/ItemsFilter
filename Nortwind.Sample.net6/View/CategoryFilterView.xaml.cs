@@ -5,6 +5,7 @@ using BolapanControl.ItemsFilter.View;
 using Northwind.NET.EF6Model;
 using Northwind.NET.Sample.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace Northwind.NET.Sample.View {
@@ -14,15 +15,26 @@ namespace Northwind.NET.Sample.View {
     public partial class CategoryFilterView : MultiValueFilterView {
         public CategoryFilterView() {
             InitializeComponent();
-            // Define Filter that must be use.
-            EqualFilterInitializer initializer = new ();
-            // Get FilterPresenter that connected to default collection view for Workspace.This.Products collection.
-            FilterPresenter fp = FilterPresenter.Get(Workspace.This.Products?? Array.Empty<Product>());
-            // Get EqualFilter that use Category item property.
-            if (fp!=null && fp.TryGetFilter("Category", initializer) is EqualFilter filter) {
-                // Use instance of EqualFilter as Model.
-                Model = filter; 
+            DataContextChanged += CategoryFilterView_DataContextChanged;
+        }
+        private void CategoryFilterView_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e) {
+            if (DataContext is IList<Product> source) {
+                // Define Filter that must be use.
+                EqualFilterInitializer initializer = new();
+                FilterPresenter fp;
+                // Get FilterPresenter that connected to default collection view for Workspace.This.Products collection.
+                fp = FilterPresenter.Get(source);
+                // Get EqualFilter that use Category item property.
+                if (fp is not null
+                    && fp.TryGetFilter("Category", initializer) is EqualFilter filter) {
+                    // Use instance of EqualFilter as Model.
+                    Model = filter;
+                }
+            }
+            else {
+                Model = null;
             }
         }
+        
     }
 }

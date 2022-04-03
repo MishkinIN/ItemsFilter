@@ -526,8 +526,8 @@
                                      VerticalAlignment="Center"
                                      Padding="1,1,1,1"
                                      Text="{Binding Model.CompareFrom,
-                                                    Converter={StaticResource SimplePropertyConverter},
-                                                    UpdateSourceTrigger=Explicit,
+                                                    TargetNullValue={x:Static system:String.Empty},
+                                                    UpdateSourceTrigger=PropertyChanged,
                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                      TextWrapping="NoWrap" />
 
@@ -547,8 +547,8 @@
                                      VerticalAlignment="Center"
                                      Padding="1,1,1,1"
                                      Text="{Binding Model.CompareTo,
-                                                    Converter={StaticResource SimplePropertyConverter},
-                                                    UpdateSourceTrigger=Explicit,
+                                                    TargetNullValue={x:Static system:String.Empty},
+                                                    UpdateSourceTrigger=PropertyChanged,
                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                      TextWrapping="NoWrap" />
                             <Button Grid.Column="2" Style="{StaticResource FilterClearButtonStyle}">

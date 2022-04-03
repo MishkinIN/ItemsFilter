@@ -15,18 +15,18 @@ namespace BolapanControl.ItemsFilter.Model {
         /// <summary>
         /// Gets or sets the minimum value.
         /// </summary>
-        object? CompareFrom {
-            get;
-            set;
-        }
+        //object? CompareFrom {
+        //    get;
+        //    set;
+        //}
 
         /// <summary>
         /// Gets or sets the maximum value.
         /// </summary>
-        object? CompareTo {
-            get;
-            set;
-        }
+        //object? CompareTo {
+        //    get;
+        //    set;
+        //}
     }
 
     /// <summary>

@@ -19,17 +19,16 @@
              d:DesignHeight="373"
              d:DesignWidth="829"
              mc:Ignorable="d">
-    <Grid>
+    <Grid DataContext="{StaticResource Workspace}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <vw:CategoryFilterView />
+        <vw:CategoryFilterView DataContext="{Binding Products}" />
         <DataGrid x:Name="productDataGrid"
                   Grid.Row="1"
                   AutoGenerateColumns="False"
-                  ItemsSource="{Binding Path=Products,
-                                        Source={StaticResource Workspace}}">
+                  ItemsSource="{Binding Path=Products}">
             <DataGrid.Resources>
                 <DataTemplate DataType="{x:Type model:Category}">
                     <TextBlock Text="{Binding Name}" />

@@ -42,27 +42,27 @@ namespace BolapanControl.ItemsFilter.View {
         /// <summary>
         /// When overridden in a derived class, is invoked whenever application code or internal processes (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
         /// </summary>
-        public override void OnApplyTemplate() {
-            if (txtBoxFrom != null) {
-                txtBoxFrom.RemoveHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown));
-                txtBoxFrom.RemoveHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus));
-            }
-            if (textBoxTo != null) {
-                textBoxTo.RemoveHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown));
-                textBoxTo.RemoveHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus));
-            }
-            base.OnApplyTemplate();
-            textBoxTo = GetTemplateChild(PART_To) as TextBox;
-            txtBoxFrom = GetTemplateChild(PART_From) as TextBox;
-            if (txtBoxFrom != null) {
-                txtBoxFrom.AddHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown), true);
-                txtBoxFrom.AddHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus), true);
-            }
-            if (textBoxTo != null) {
-                textBoxTo.AddHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown), true);
-                textBoxTo.AddHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus), true);
-            }
-        }
+        //public override void OnApplyTemplate() {
+        //    if (txtBoxFrom != null) {
+        //        txtBoxFrom.RemoveHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown));
+        //        txtBoxFrom.RemoveHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus));
+        //    }
+        //    if (textBoxTo != null) {
+        //        textBoxTo.RemoveHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown));
+        //        textBoxTo.RemoveHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus));
+        //    }
+        //    base.OnApplyTemplate();
+        //    textBoxTo = GetTemplateChild(PART_To) as TextBox;
+        //    txtBoxFrom = GetTemplateChild(PART_From) as TextBox;
+        //    if (txtBoxFrom != null) {
+        //        txtBoxFrom.AddHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown), true);
+        //        txtBoxFrom.AddHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus), true);
+        //    }
+        //    if (textBoxTo != null) {
+        //        textBoxTo.AddHandler(TextBox.KeyDownEvent, new KeyEventHandler(TextBox_KeyDown), true);
+        //        textBoxTo.AddHandler(TextBox.LostFocusEvent, new RoutedEventHandler(TextBox_LostFocus), true);
+        //    }
+        //}
         private void TextBox_LostFocus(object sender, RoutedEventArgs e) {
             UpdateTextBoxSource((TextBox)sender);
         }

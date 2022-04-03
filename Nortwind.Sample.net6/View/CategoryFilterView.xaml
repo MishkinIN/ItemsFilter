@@ -64,7 +64,7 @@
                                          Grid.ColumnSpan="2"
                                          ItemsPanel="{StaticResource CategoryItemsPanelTemplate}"
                                          ItemsSource="{Binding AvailableValues}"
-                                         SelectionMode="Multiple">
+                                         SelectionMode="Multiple" >
                                     <ListBox.Background>
                                         <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
                                             <GradientStop Color="#FFFEFEFE" />
