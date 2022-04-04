@@ -35,15 +35,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="Resources\EmpID1.gif" />
-		<Resource Include="Resources\EmpID2.gif" />
-		<Resource Include="Resources\EmpID3.gif" />
-		<Resource Include="Resources\EmpID4.gif" />
-		<Resource Include="Resources\EmpID5.gif" />
-		<Resource Include="Resources\EmpID6.gif" />
-		<Resource Include="Resources\EmpID7.gif" />
-		<Resource Include="Resources\EmpID8.gif" />
-		<Resource Include="Resources\EmpID9.gif" />
+		<Resource Include="Resources\EmpId1.gif" />
+		<Resource Include="Resources\EmpId2.gif" />
+		<Resource Include="Resources\EmpId3.gif" />
+		<Resource Include="Resources\EmpId4.gif" />
+		<Resource Include="Resources\EmpId5.gif" />
+		<Resource Include="Resources\EmpId6.gif" />
+		<Resource Include="Resources\EmpId7.gif" />
+		<Resource Include="Resources\EmpId8.gif" />
+		<Resource Include="Resources\EmpId9.gif" />
 		<Resource Include="Resources\StartupNorthwindLogo.jpg" />
 	</ItemGroup>
 

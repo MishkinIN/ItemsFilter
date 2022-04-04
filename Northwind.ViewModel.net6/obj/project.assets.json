@@ -6404,25 +6404,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mivan\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Ivan\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\ItemsFilter.github.com\\Northwind.ViewModel.net6\\Northwind.ViewModel.net6.csproj",
+      "projectUniqueName": "G:\\Projects\\DcSokod\\itemsfilter\\Northwind.ViewModel.net6\\Northwind.ViewModel.net6.csproj",
       "projectName": "Northwind.ViewModel.net6",
-      "projectPath": "D:\\Projects\\ItemsFilter.github.com\\Northwind.ViewModel.net6\\Northwind.ViewModel.net6.csproj",
-      "packagesPath": "C:\\Users\\mivan\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\ItemsFilter.github.com\\Northwind.ViewModel.net6\\obj\\",
+      "projectPath": "G:\\Projects\\DcSokod\\itemsfilter\\Northwind.ViewModel.net6\\Northwind.ViewModel.net6.csproj",
+      "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
+      "outputPath": "G:\\Projects\\DcSokod\\itemsfilter\\Northwind.ViewModel.net6\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\mivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0-windows7.0"
@@ -6435,11 +6438,11 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "D:\\Projects\\ItemsFilter.github.com\\ItemsFilter.net6\\ItemsFilter.net6.csproj": {
-              "projectPath": "D:\\Projects\\ItemsFilter.github.com\\ItemsFilter.net6\\ItemsFilter.net6.csproj"
+            "G:\\Projects\\DcSokod\\itemsfilter\\ItemsFilter.net6\\ItemsFilter.net6.csproj": {
+              "projectPath": "G:\\Projects\\DcSokod\\itemsfilter\\ItemsFilter.net6\\ItemsFilter.net6.csproj"
             },
-            "D:\\Projects\\ItemsFilter.github.com\\Nortwind.Model.net6\\Nortwind.Model.net6.csproj": {
-              "projectPath": "D:\\Projects\\ItemsFilter.github.com\\Nortwind.Model.net6\\Nortwind.Model.net6.csproj"
+            "G:\\Projects\\DcSokod\\itemsfilter\\Nortwind.Model.net6\\Nortwind.Model.net6.csproj": {
+              "projectPath": "G:\\Projects\\DcSokod\\itemsfilter\\Nortwind.Model.net6\\Nortwind.Model.net6.csproj"
             }
           }
         }

@@ -42,6 +42,10 @@ namespace Northwind.NET.Sample.View
         }
 
         private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
+            if (filter is not null) {
+                filter.PropertyChanged -= filter_PropertyChanged;
+                filter = null;
+            }
             if (e.NewValue is OrdersVm vm) {
                 FilterPresenter fpr = FilterPresenter.Get(vm.OrdersCollectionView);
                 filter = fpr.TryGetFilter("Employee", new EqualFilterInitializer());
@@ -54,5 +58,5 @@ namespace Northwind.NET.Sample.View
                 }
             }
         }
-	}
+    }
 }

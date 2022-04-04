@@ -28,11 +28,11 @@ namespace Northwind.NET.Sample.ViewModel {
                 if (Workspace.This.Orders != null) {
                     cvs.Source = Workspace.This.Orders
                                     .OrderBy(ord => ord.Employee == null ? -1 : ord.Employee.Id)
-                                    .Select(ord => ord)
+                                    //.Select(ord => ord)
                                     .ToList();
                 }
                 else
-                    cvs.Source = Array.Empty<object>();
+                    cvs.Source = Array.Empty<Order>();
             }
             catch (Exception ex) {
                 //App.LogException(ex);
@@ -45,7 +45,7 @@ namespace Northwind.NET.Sample.ViewModel {
             moveToLastCommand = new RelayCommand(MoveToLast, CanMoveToLast);
 
         }
-        public IEnumerable<Order>? ItemsSource {
+        public IEnumerable<Order>? Orders {
             get { return cvs.Source as IEnumerable<Order>; }
             set {
                 if (value is IEnumerable<Order> source)

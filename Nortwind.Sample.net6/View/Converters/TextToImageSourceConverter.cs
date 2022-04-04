@@ -15,20 +15,13 @@ using System.Windows.Media.Imaging;
 
 namespace Northwind.NET.Sample.View {
     public class TextToImageSourceConverter : IValueConverter {
-        private readonly static Lazy<string> lz_callingAssemblyName = new(() => {
-            var assemblyName = Assembly.GetCallingAssembly().FullName;
-            if (assemblyName != null) {
-                return assemblyName.Split(',')[0];
-            }
-            else
-                return string.Empty;
-        });
         public object? Convert(object? value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             try {
                 if (value is string str) {
                     string picName = (str.Split('.'))[0];
-                    return new BitmapImage(
-                        new System.Uri($"/{lz_callingAssemblyName.Value};component/Resources/{picName}.gif", System.UriKind.Relative));
+                    var uri = new System.Uri($"../Resources/{picName}.gif", UriKind.Relative);
+                    var image = new BitmapImage(uri);
+                    return uri;
                 }
             }
             catch (Exception) {

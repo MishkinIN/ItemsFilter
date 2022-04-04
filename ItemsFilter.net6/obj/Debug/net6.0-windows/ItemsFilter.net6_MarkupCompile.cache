@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Projects\ItemsFilter.github.com\ItemsFilter.net6\obj\Debug\net6.0-windows\
+G:\Projects\DcSokod\itemsfilter\ItemsFilter.net6\obj\Debug\net6.0-windows\
 BolapanControl.ItemsFilter
 none
 false
@@ -13,7 +13,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 21194262179
 
 48-1774102428
-196-1203737013
+196-454257995
 Themes\Generic.xaml;Themes\ItemsFilterStyle.xaml;
 
 False

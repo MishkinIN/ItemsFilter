@@ -19,7 +19,6 @@ namespace ItemsFilter.net6.Test.Initializer {
 #pragma warning disable CS8604 // Possible null reference argument.
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             var items = StateItem.All;
-            var compareFrom = StateEnum.State2;
             var compareTo = StateEnum.State3;
             
             ListCollectionView view = new(items);

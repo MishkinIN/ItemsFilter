@@ -269,7 +269,7 @@ namespace BolapanControl.ItemsFilter {
         /// <returns>Instance of FilterControlVm or null.</returns>
         protected virtual FilterControlVm CreateModel() {
             FilterControlVm vm;
-            filterPresenter = Parent == null ? null : FilterPresenter.Get(ParentCollection);
+            filterPresenter = ParentCollection == null ? null : FilterPresenter.Get(ParentCollection);
             if (filterPresenter != null) {
                 vm = filterPresenter.TryGetFilterControlVm(Key, FilterInitializersManager);
                 return vm;

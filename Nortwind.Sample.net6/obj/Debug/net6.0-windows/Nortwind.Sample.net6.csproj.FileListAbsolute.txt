@@ -204,3 +204,4 @@ D:\Projects\ItemsFilter.github.com\Nortwind.Sample.net6\obj\Debug\net6.0-windows
 D:\Projects\ItemsFilter.github.com\Nortwind.Sample.net6\obj\Debug\net6.0-windows\ref\Nortwind.Sample.net6.dll
 D:\Projects\ItemsFilter.github.com\Nortwind.Sample.net6\obj\Debug\net6.0-windows\Nortwind.Sample.net6.pdb
 D:\Projects\ItemsFilter.github.com\Nortwind.Sample.net6\obj\Debug\net6.0-windows\Nortwind.Sample.net6.genruntimeconfig.cache
+G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\obj\Debug\net6.0-windows\SampleData\Order.baml

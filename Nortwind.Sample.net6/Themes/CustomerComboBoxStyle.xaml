@@ -208,13 +208,14 @@
                                                                 HorizontalAlignment="Left"
                                                                 ParentCollection="{TemplateBinding ItemsSource}">
                                             <bsFilter:FilterControl.Resources>
-                                                <Style BasedOn="{StaticResource CustomerComboBox_StringFilterStyle}" TargetType="{x:Type bsFilter:StringFilterView}" />
+                                                <Style BasedOn="{StaticResource CustomerComboBox_StringFilterStyle}" 
+                                                       TargetType="{x:Type bsFilter:StringFilterView}" />
                                             </bsFilter:FilterControl.Resources>
                                             <bsFilter:FilterControl.FilterInitializersManager>
-                                                <!--<vw:CustomersComboBoxFIM/>-->
-                                                <bsFilter:FilterInitializersManager>
+                                                <vw:CustomersComboBoxFIM/>
+                                                <!--<bsFilter:FilterInitializersManager>
                                                    <vm:CustomersComboBoxFilterInitializer /> 
-                                                </bsFilter:FilterInitializersManager>
+                                                </bsFilter:FilterInitializersManager>-->
                                                 
                                             </bsFilter:FilterControl.FilterInitializersManager>
                                         </bsFilter:FilterControl>

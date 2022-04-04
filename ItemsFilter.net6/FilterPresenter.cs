@@ -97,7 +97,7 @@ namespace BolapanControl.ItemsFilter {
         // <param name="viewKey">A string representing the key for a set of filters.</param>
         // <param name="filterInitializers"> Filter initialisers to determine permissible set of the filters in the FilterControlVm.</param>
         // <returns>Instance of FilterControlVm that was bind to view.</returns>
-        public FilterControlVm TryGetFilterControlVm(string viewKey, IEnumerable<FilterInitializer> filterInitializers) {
+        public FilterControlVm TryGetFilterControlVm(string viewKey, IEnumerable<FilterInitializer>? filterInitializers) {
             //string viewKey = view.Key;
             FilterControlVm viewModel = FilterControlVm.Empty;
             if (viewKey != null) {
@@ -118,12 +118,11 @@ namespace BolapanControl.ItemsFilter {
                         filter = filtersEntry[filterKey];
                     else {
                         filter = initializer.TryGetFilter(this, viewKey);
-                        if (filter != null)
+                        if (filter != null) {
                             filtersEntry[filterKey] = filter;
-                    }
-                    if (filter != null) {
-                        viewModel = viewModel == FilterControlVm.Empty ? new FilterControlVm() : viewModel;
-                        viewModel.Add(filter);
+                            viewModel = viewModel == FilterControlVm.Empty ? new FilterControlVm() : viewModel;
+                            viewModel.Add(filter);
+                        }
                     }
                 }
                 //view.ItemsSource = viewModel; 

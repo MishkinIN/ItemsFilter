@@ -114,7 +114,7 @@ namespace BolapanControl.ItemsFilter.Model {
                 OnDetachPresenter(presenter);
             }
         }
-        internal void Attach(FilterPresenter presenter) {
+        public void Attach(FilterPresenter presenter) {
             filterPresenter = presenter;
             if (filterPresenter != null)
                 filterPresenter.ReceiveFilterChanged(this);

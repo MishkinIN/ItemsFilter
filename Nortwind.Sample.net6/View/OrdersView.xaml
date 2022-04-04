@@ -25,7 +25,7 @@
              d:DataContext="{d:DesignInstance Type=vm:OrdersVm,
                                               IsDesignTimeCreatable=True}"
              d:DesignHeight="616.5"
-             d:DesignWidth="668.5"
+             d:DesignWidth="928"
              mc:Ignorable="d">
     <!--    -->
 
@@ -85,9 +85,10 @@
                 Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"
                 BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
                 BorderThickness="1"
-                CornerRadius="5">
-            <!--  d:DataContext="{d:DesignData Source=../SampleData/Order.xaml}"  -->
-            <Grid Margin="5" DataContext="{Binding OrdersCollectionView.CurrentItem}">
+                CornerRadius="5"
+                >
+            <Grid Margin="5" DataContext="{Binding OrdersCollectionView.CurrentItem}"
+                  d:DataContext="{d:DesignData Source=../SampleData/Order.xaml}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
@@ -104,7 +105,7 @@
                         BorderBrush="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"
                         BorderThickness="1,1,2,2"
                         CornerRadius="2">
-                    <Grid Width="100" Height="137.533">
+                    <Grid Width="100" Height="137.533" DataContext="{Binding Employee}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -120,8 +121,7 @@
                                    Text="Employee" />
                         <bsFilter:ColumnFilter Key="Employee"
                                                Grid.Column="1"
-                                               ParentCollection="{Binding DataContext.OrdersCollectionView,
-                                                                          ElementName=LayoutRoot}">
+                                               ParentCollection="{Binding DataContext.OrdersCollectionView, ElementName=LayoutRoot}">
                             <bsFilter:ColumnFilter.Resources>
                                 <DataTemplate DataType="{x:Type model:Employee}">
                                     <TextBlock><Run Text="{Binding FirstName}" /><Run Text=" " /><Run Text="{Binding LastName}" />
@@ -133,15 +133,14 @@
                                Grid.ColumnSpan="2"
                                Width="100"
                                Height="100"
-                               Source="{Binding Employee.Photo,
-                                                Converter={StaticResource TextToImageSourceConverter}}" />
+                               Source="{Binding Photo, Converter={StaticResource TextToImageSourceConverter}, Mode=OneWay}" />
                         <TextBlock Grid.Row="2"
                                    Grid.ColumnSpan="2"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Top"
                                    FontFamily="Times New Roman"
                                    FontStyle="Italic"
-                                   Text="{Binding Employee.FirstName}" />
+                                   Text="{Binding FirstName}" />
                     </Grid>
                 </Border>
                 <Grid x:Name="partOrderHeader"
@@ -254,7 +253,7 @@
                           EnableRowVirtualization="True"
                           IsSynchronizedWithCurrentItem="True"
                           ItemsSource="{Binding OrderDetails}"
-                          RowDetailsVisibilityMode="VisibleWhenSelected">
+                          RowDetailsVisibilityMode="VisibleWhenSelected" >
                     <DataGrid.Resources>
                         <Style x:Key="EditProductTextBoxStyle" TargetType="{x:Type TextBox}">
                             <Setter Property="BorderThickness" Value="0" />
@@ -299,7 +298,7 @@
 
                     <Grid x:Name="grid1"
                           Margin="5,8,5,5"
-                          DataContext="{Binding ItemsSource.OrderDetails.Product}">
+                          DataContext="{Binding OrderDetails/Product}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
