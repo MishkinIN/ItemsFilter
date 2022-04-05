@@ -28,7 +28,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             Assert.IsNotNull(filterPresenter);
 
             StringFilterInitializer initializer = new();
-            StringFilter? filter = initializer.TryGetFilter(filterPresenter, nameof(StateItem.StateText)) as StringFilter;
+            StringFilter? filter = initializer.TryCreateFilter(filterPresenter, nameof(StateItem.StateText)) as StringFilter;
             Assert.IsNotNull(filter);
             Assert.IsFalse(filter.IsActive);
             Assert.AreSame(filterPresenter, filter.FilterPresenter);

@@ -60,7 +60,7 @@ namespace BolapanControl.ItemsFilter {
         /// </summary>
         public static readonly DependencyProperty InitializersProperty =
             DependencyProperty.RegisterAttached(nameof(Initializers), typeof(FilterInitializersManager), typeof(ColumnFilter),
-                new FrameworkPropertyMetadata(FilterInitializersManager.Default));
+                new FrameworkPropertyMetadata(null));
 
         /// <summary>
         /// Gets the FilterInitializersManager  that used for generate ColumnFilter.Model. 
@@ -127,7 +127,7 @@ namespace BolapanControl.ItemsFilter {
                         return vm;
                     }
                     IEnumerable<FilterInitializer> initializers = GetInitializers(column) ?? FilterInitializersManager;
-                    string key = Key ?? GetColumnKey(column);
+                    string key = GetColumnKey(column);
                     vm = filterPresenter.TryGetFilterControlVm(key, initializers);
                 }
                 else {
@@ -155,8 +155,10 @@ namespace BolapanControl.ItemsFilter {
 
         }
         private static void CanShowFilter(object sender, CanExecuteRoutedEventArgs e) {
-            ColumnFilter filter = (ColumnFilter)sender;
-            e.CanExecute = filter.Model != null && filter.Model.IsEnable && filter.partFilterView != null;
+            ColumnFilter filterControl = (ColumnFilter)sender;
+            e.CanExecute = filterControl.Model != null 
+                && filterControl.Model.IsEnable 
+                && filterControl.partFilterView != null;
         }
 
         private static void DoShowFilter(object sender, ExecutedRoutedEventArgs e) {

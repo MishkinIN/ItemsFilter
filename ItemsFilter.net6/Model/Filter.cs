@@ -106,6 +106,9 @@ namespace BolapanControl.ItemsFilter.Model {
             if (!attachedFilterControlVmodels.Contains(vm))
                 attachedFilterControlVmodels.Add(vm);
         }
+        internal void Detach(FilterControlVm vm) {
+            attachedFilterControlVmodels.Remove(vm);
+        }
         internal void Detach(FilterPresenter presenter) {
             if (presenter != null) {
                 presenter.Filter -= IsMatch;
@@ -119,9 +122,6 @@ namespace BolapanControl.ItemsFilter.Model {
             if (filterPresenter != null)
                 filterPresenter.ReceiveFilterChanged(this);
             OnAttachPresenter(presenter);
-        }
-        internal void Detach(FilterControlVm vm) {
-            attachedFilterControlVmodels.Remove(vm);
         }
         #region Члены INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged;

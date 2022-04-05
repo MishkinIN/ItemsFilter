@@ -23,7 +23,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             FilterPresenter? filterPresenter = FilterPresenter.Get(view);
             Assert.IsNotNull(filterPresenter);
             EnumFilterInitializer initializer = new();
-            EnumFilter<StateEnum>? filter = initializer.TryGetFilter(filterPresenter, nameof(StateItem.State)) as EnumFilter<StateEnum>;
+            EnumFilter<StateEnum>? filter = initializer.TryCreateFilter(filterPresenter, nameof(StateItem.State)) as EnumFilter<StateEnum>;
             
             Assert.IsNotNull(filter);
             Assert.IsFalse(filter.IsActive);

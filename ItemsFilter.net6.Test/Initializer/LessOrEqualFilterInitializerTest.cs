@@ -31,7 +31,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             Assert.IsNotNull(filterPresenter);
 
             LessOrEqualFilterInitializer initializer = new();
-            LessOrEqualFilter<int>? filter = initializer.TryGetFilter(filterPresenter, nameof(StateItem.StateId)) as LessOrEqualFilter<int>;
+            LessOrEqualFilter<int>? filter = initializer.TryCreateFilter(filterPresenter, nameof(StateItem.StateId)) as LessOrEqualFilter<int>;
             Assert.IsNotNull(filter);
             Assert.IsFalse(filter.IsActive);
             Assert.AreSame(filterPresenter, filter.FilterPresenter);

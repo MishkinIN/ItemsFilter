@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BolapanControl.ItemsFilter.FilterPresenter">
+    <Position X="0.75" Y="1" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="BolapanControl.ItemsFilter.FilterPresenter.DisposeItemsDeferRefresh" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FilterPresenter.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEAABqABCAKgAADAgAgAAACBABEAAAABAAAAAEBAAAA=</HashCode>
+      <FileName>FilterPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BolapanControl.ItemsFilter.Model.Filter">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAGAAACAAAAAAIAEAAgARSAoIgUAABAAAAAAgAAAAI=</HashCode>
+      <FileName>Model\Filter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BolapanControl.ItemsFilter.Model.LessOrEqualFilter&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAAAQABAAAAACAAEAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\LessOrEqualFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BolapanControl.ItemsFilter.Model.RangeFilter&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAAAQAAAAAEACAAEAAAABAAAAAAAgAAAA=</HashCode>
+      <FileName>Model\RangeFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BolapanControl.ItemsFilter.Model.StringFilter" Collapsed="true">
+    <Position X="2.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAAAIAAAAAAAAAAACAAAAAAAABAAAAgAAAAAAA=</HashCode>
+      <FileName>Model\StringFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BolapanControl.ItemsFilter.Model.GreaterOrEqualFilter&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\GreaterOrEqualFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BolapanControl.ItemsFilter.ViewModel.FilterControlVm">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAEAABBACAABQAAEAMAABBAQAAAAAAEAAAABGAAACA=</HashCode>
+      <FileName>ViewModel\FilterControlVm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.ObjectModel.ObservableCollection&lt;T&gt;" Collapsed="true">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BolapanControl.ItemsFilter.FilterControl">
+    <Position X="7.75" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="BolapanControl.ItemsFilter.FilterControl.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FilterControl.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIBgAgEAQAgEIMLAGEAgEQAIAAAAhAAgAAAAA=</HashCode>
+      <FileName>FilterControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BolapanControl.ItemsFilter.ColumnFilter">
+    <Position X="9.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAQAAAEAAQAAEAgAAAQBAAEACACQhBAA=</HashCode>
+      <FileName>ColumnFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

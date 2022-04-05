@@ -48,13 +48,12 @@ namespace Northwind.NET.Sample.View
             }
             if (e.NewValue is OrdersVm vm) {
                 FilterPresenter fpr = FilterPresenter.Get(vm.OrdersCollectionView);
-                filter = fpr.TryGetFilter("Employee", new EqualFilterInitializer());
-                if (filter != null) {
-                    if (filter.IsActive)
-                        VisualStateManager.GoToState(this, "Filtered", false);
-                    else
-                        VisualStateManager.GoToState(this, "Unfiltered", false);
+                ;
+                if (fpr.TryGetFilter("Employee", new EqualFilterInitializer(), out filter)) {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                    VisualStateManager.GoToState(this, filter.IsActive? "Filtered": "Unfiltered", false);
                     filter.PropertyChanged += filter_PropertyChanged;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
             }
         }

@@ -32,7 +32,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             Assert.IsNotNull(filterPresenter);
 
             RangeFilterInitializer initializer = new();
-            RangeFilter<int>? filter = initializer.TryGetFilter(filterPresenter, nameof(StateItem.StateId)) as RangeFilter<int>;
+            RangeFilter<int>? filter = initializer.TryCreateFilter(filterPresenter, nameof(StateItem.StateId)) as RangeFilter<int>;
             Assert.IsNotNull(filter);
             Assert.IsFalse(filter.IsActive);
             Assert.AreSame(filterPresenter, filter.FilterPresenter);

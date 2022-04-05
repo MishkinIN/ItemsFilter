@@ -115,10 +115,10 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TextBlock Margin="5,0"
-                                   HorizontalAlignment="Right"
+                        <TextBlock Margin="21,0,0,100"
+                                   HorizontalAlignment="Left"
                                    FontSize="13.333"
-                                   Text="Employee" />
+                                   Text="Employee" Grid.RowSpan="2" />
                         <bsFilter:ColumnFilter Key="Employee"
                                                Grid.Column="1"
                                                ParentCollection="{Binding DataContext.OrdersCollectionView, ElementName=LayoutRoot}">
@@ -239,7 +239,7 @@
                                       SelectedItem="{Binding Customer,
                                                              Converter={StaticResource NullToUnsetValueConverter}}"
                                       Style="{DynamicResource ComboBoxStyle}" />
-                          
+
                         </StackPanel>
 
                     </Border>

@@ -70,7 +70,7 @@ namespace BolapanControl.ItemsFilter {
         }
 
         // <summary>
-        // Returns the connected  collection.
+        // Returns view of the source collection that have the functionalities of custom filtering.
         // </summary>
         public ICollectionView CollectionView {
             get { return collectionView; }
@@ -98,35 +98,21 @@ namespace BolapanControl.ItemsFilter {
         // <param name="filterInitializers"> Filter initialisers to determine permissible set of the filters in the FilterControlVm.</param>
         // <returns>Instance of FilterControlVm that was bind to view.</returns>
         public FilterControlVm TryGetFilterControlVm(string viewKey, IEnumerable<FilterInitializer>? filterInitializers) {
-            //string viewKey = view.Key;
-            FilterControlVm viewModel = FilterControlVm.Empty;
-            if (viewKey != null) {
-                Dictionary<Type, Filter> filtersEntry;
-                // Get registered collection by key.
-                if (filters.ContainsKey(viewKey))
-                    filtersEntry = filters[viewKey];
-                else {
-                    filtersEntry = new Dictionary<Type, Filter>();
-                    filters.Add(viewKey, filtersEntry);
-                }
-                filterInitializers ??= FilterInitializersManager.Default;
-
-                foreach (FilterInitializer initializer in filterInitializers) {
-                    Type filterKey = initializer.GetType();
-                    Filter? filter;
-                    if (filtersEntry.ContainsKey(filterKey))
-                        filter = filtersEntry[filterKey];
-                    else {
-                        filter = initializer.TryGetFilter(this, viewKey);
-                        if (filter != null) {
-                            filtersEntry[filterKey] = filter;
-                            viewModel = viewModel == FilterControlVm.Empty ? new FilterControlVm() : viewModel;
-                            viewModel.Add(filter);
-                        }
-                    }
-                }
-                //view.ItemsSource = viewModel; 
+            if (viewKey is null) {
+                return FilterControlVm.Empty;
             }
+            FilterControlVm viewModel = new();
+            var filtersEntry = GetFiltersEntry(viewKey);
+            filterInitializers ??= FilterInitializersManager.Default;
+
+            foreach (FilterInitializer initializer in filterInitializers) {
+                if (TryGetFilter(filtersEntry, initializer, viewKey, out Filter? filter)) {
+#pragma warning disable CS8604 // Possible null reference argument.
+                    viewModel.Add(filter);
+#pragma warning restore CS8604 // Possible null reference argument.
+                };
+            }
+            //view.ItemsSource = viewModel; 
             return viewModel;
         }
         /// <summary>
@@ -134,28 +120,38 @@ namespace BolapanControl.ItemsFilter {
         /// </summary>
         /// <param name="viewKey">A string representing a key of the set of filters.</param>
         /// <param name="initializer">Initialiser filter that defines filter in the collection of filters.</param>
-        /// <returns>FilterPresenter instance, if it is possible provide for couples viewKey and initializer. Otherwise, null.</returns>
-        public Filter? TryGetFilter(string viewKey, FilterInitializer initializer) {
-            Filter? filter = null;
+        /// <param name="filter">When this method returns, contains the instatce of filter for couples viewKey and initializer</param>
+        /// <returns>True, if Filter instance are created. Otherwise, false.</returns>
+        public bool TryGetFilter(string viewKey, FilterInitializer initializer, out Filter? filter) {
+#if DEBUG
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(initializer);
+#endif   
             if (viewKey != null) {
-                Dictionary<Type, Filter>? filtersEntry;
                 // Get registered collection by key.
-                if (!filters.TryGetValue(viewKey, out filtersEntry)) {
-                    filtersEntry = new Dictionary<Type, Filter>();
-                    filters.Add(viewKey, filtersEntry);
-                }
+                var filtersEntry = GetFiltersEntry(viewKey);
                 Type filterKey = initializer.GetType();
-                if (filtersEntry.ContainsKey(filterKey))
-                    filter = filtersEntry[filterKey];
-                else {
-                    filter = initializer.TryGetFilter(this, viewKey);
-                    if (filter != null)
-                        filtersEntry[filterKey] = filter;
+                return TryGetFilter(filtersEntry, initializer, viewKey, out filter);
+            }
+            filter = null;
+            return false;
+        }
+        private bool TryGetFilter(Dictionary<Type, Filter> filtersEntry, FilterInitializer initializer, string viewKey, out Filter? filter) {
+            Type filterKey = initializer.GetType();
+            if (!filtersEntry.TryGetValue(filterKey, out filter)) {
+                filter = initializer.TryCreateFilter(this, viewKey);
+                if (filter != null) {
+                    filtersEntry[filterKey] = filter;
                 }
             }
-            return filter;
+            return filter is not null;
         }
-
+        private Dictionary<Type, Filter> GetFiltersEntry(string viewKey) {
+            if (!filters.TryGetValue(viewKey, out Dictionary<Type, Filter>? entry)) {
+                entry = new Dictionary<Type, Filter>();
+                filters.Add(viewKey, entry);
+            }
+            return entry;
+        }
         /// <summary>
         ///  Enters a defer cycle that you can use to change filter of the view and delay automatic refresh.
         /// </summary>

@@ -26,7 +26,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             FilterPresenter? filterPresenter = FilterPresenter.Get(view);
             Assert.IsNotNull(filterPresenter);
             EqualFilterInitializer initializer = new();
-            EqualFilter? filter = initializer.TryGetFilter(filterPresenter, nameof(StateItem.StateId)) as EqualFilter;
+            EqualFilter? filter = initializer.TryCreateFilter(filterPresenter, nameof(StateItem.StateId)) as EqualFilter;
             Assert.IsNotNull(filter);
             Assert.IsFalse(filter.IsActive);
             Assert.AreSame(filterPresenter, filter.FilterPresenter);

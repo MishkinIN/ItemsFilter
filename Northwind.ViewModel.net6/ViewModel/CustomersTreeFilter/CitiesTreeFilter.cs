@@ -50,7 +50,8 @@ namespace Northwind.NET.Sample.ViewModel {
             foreach (CityCustomersTreeItem item in presenter.CollectionView.SourceCollection) {
                 if (item.Customers is not null) {
                     BolapanControl.ItemsFilter.FilterPresenter? customersPresenter = BolapanControl.ItemsFilter.FilterPresenter.Get(item.Customers);
-                    if (customersPresenter?.TryGetFilter(Key, customerFilterInitializer) is CustomersTreeFilter customerFilter) {
+                    if (customersPresenter?.TryGetFilter(Key, customerFilterInitializer, out var filter)==true 
+                        && filter is CustomersTreeFilter customerFilter) {
                         customerFilter.NameCompareTo = NameCompareTo;
                         customerFilter.ContactCompareTo = ContactCompareTo;
                         customerFilters[item] = customerFilter;

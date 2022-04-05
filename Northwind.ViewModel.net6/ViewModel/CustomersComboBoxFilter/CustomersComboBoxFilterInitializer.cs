@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace Northwind.NET.Sample.ViewModel {
     public class CustomersComboBoxFilterInitializer : FilterInitializer {
-        public override Filter? TryGetFilter(FilterPresenter filterPresenter, object key) {
+        public override Filter? TryCreateFilter(FilterPresenter filterPresenter, object key) {
             if (key != null && filterPresenter.CollectionView.SourceCollection is IEnumerable<Customer>) {
                 var filter= new CustomersComboBoxFilter();
                 filter.Attach(filterPresenter);

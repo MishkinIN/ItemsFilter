@@ -25,8 +25,8 @@ namespace Northwind.NET.Sample.View {
                 // Get FilterPresenter that connected to default collection view for Workspace.This.Products collection.
                 fp = FilterPresenter.Get(source);
                 // Get EqualFilter that use Category item property.
-                if (fp is not null
-                    && fp.TryGetFilter("Category", initializer) is EqualFilter filter) {
+                if (fp?.TryGetFilter("Category", initializer, out var f)==true
+                    && f is EqualFilter filter) {
                     // Use instance of EqualFilter as Model.
                     Model = filter;
                 }

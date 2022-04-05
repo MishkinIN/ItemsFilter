@@ -24,17 +24,22 @@ namespace Northwind.NET.Sample.ViewModel {
     }
     public class UnitPriceRangeFilter : RangeFilter<decimal> {
         public UnitPriceRangeFilter()
-            : base((value) => value==null? Decimal.Zero: (((Product)value).UnitPrice ?? Decimal.Zero)) {
+            : base(value => (value as Product)?.UnitPrice) {
         }
     }
     public class UnitPriceFilterInitializer : FilterInitializer {
-        public override Filter TryGetFilter(FilterPresenter filterPresenter, object key) {
-            return new UnitPriceEqualFilter();
+        public override Filter TryCreateFilter(FilterPresenter filterPresenter, object key) {
+            var filter = new UnitPriceEqualFilter();
+            filter.Attach(filterPresenter);
+            return filter;
         }
     }
     public class UnitPriceRangeFilterInitializer : FilterInitializer {
-        public override Filter TryGetFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
-            return new UnitPriceRangeFilter();
+        public override Filter TryCreateFilter(BolapanControl.ItemsFilter.FilterPresenter filterPresenter, object key) {
+
+            var filter= new UnitPriceRangeFilter();
+            filter.Attach(filterPresenter);
+            return filter;
         }
     }
 }
