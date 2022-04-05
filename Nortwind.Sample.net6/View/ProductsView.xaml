@@ -68,7 +68,7 @@
                                     Binding="{Binding ReorderLevel}"
                                     Header="Reorder Level" />
                 <DataGridTextColumn x:Name="unitPriceColumn"
-                                    Width="150"
+                                    Width="Auto"
                                     Binding="{Binding UnitPrice,
                                                       StringFormat=\{0:F2\}}"
                                     Header="Unit Price">
