@@ -50,7 +50,6 @@
     <Folder Include="SampleData\CategoriesFilter\CategoriesFilter_Files\" />
     <Folder Include="Shaders\" />
     <Folder Include="ViewModel\CustomersComboBoxFilter\" />
-    <Folder Include="ViewModel\CustomersTreeFilter\" />
   </ItemGroup>
 
   <ItemGroup>

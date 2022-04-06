@@ -307,7 +307,9 @@ namespace BolapanControl.ItemsFilter {
                             else {
                                 view = Activator.CreateInstance(viewType, item) as UIElement;
                             }
-                            presenter.Content = view ?? new Control();
+                        if (view is not null) {
+                            presenter.Content = view; 
+                        }
                         }
 //                    }
 //                    catch (Exception ex) {

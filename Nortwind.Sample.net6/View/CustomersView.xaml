@@ -120,7 +120,7 @@
                                                         ParentCollection="{TemplateBinding ItemsSource}">
                                     <bsFilter:FilterControl.FilterInitializersManager>
                                         <bsFilter:FilterInitializersManager>
-                                            <vm:CustomersTreeFilterInitializer />
+                                            <vw:CustomersTreeFilterInitializer/>
                                         </bsFilter:FilterInitializersManager>
                                     </bsFilter:FilterControl.FilterInitializersManager>
                                 </bsFilter:FilterControl>

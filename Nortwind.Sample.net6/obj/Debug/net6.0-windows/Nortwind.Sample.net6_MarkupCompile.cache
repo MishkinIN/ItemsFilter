@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 G:\Projects\DcSokod\itemsfilter\Nortwind.Sample.net6\App.xaml
-13-1019619035
+13-550625460
 21009565264
-19-193142775
+25-801503555
 2191345250550
-MainWindow.xaml;ProjectDataSources.xaml;SampleData\Order.xaml;Themes\CustomerComboBoxStyle.xaml;Themes\Generic.xaml;Themes\ItemsFilterStyle.xaml;View\CategoriesView.xaml;View\CategoryFilterView.xaml;View\CustomersTreeFilterViewTemplate.xaml;View\CustomersView.xaml;View\EmployeesView.xaml;View\OrdersView.xaml;View\ProductsView.xaml;
+MainWindow.xaml;ProjectDataSources.xaml;SampleData\Order.xaml;Themes\CustomerComboBoxStyle.xaml;Themes\Generic.xaml;Themes\ItemsFilterStyle.xaml;View\CategoriesView.xaml;View\CategoryFilterView.xaml;View\CountriesTreeFilterView.xaml;View\CustomersView.xaml;View\EmployeesView.xaml;View\OrdersView.xaml;View\ProductsView.xaml;
 
 False
 

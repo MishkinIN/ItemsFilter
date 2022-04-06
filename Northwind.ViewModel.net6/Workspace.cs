@@ -26,9 +26,7 @@ namespace Northwind.NET.Sample.ViewModel {
         public static WorkspaceInstance This {
             get {
                 if (thisInstance == null) {
-                    thisInstance = Application.Current.Resources[nameof(WorkspaceInstance)] as WorkspaceInstance
-                        ?? new WorkspaceInstance()
-                        ;
+                    thisInstance = new WorkspaceInstance();
                 }
                 return thisInstance;
             }
