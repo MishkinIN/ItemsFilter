@@ -1,5 +1,5 @@
 ﻿Northwind.ViewModel.net6
-1.0.0.0
+2.0.0.1
 
 library
 C#
@@ -16,5 +16,5 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 218-1656871449
 SampleData\CategoriesFilter\EqualFilter.xaml;SampleData\Customer.xaml;SampleData\Order.xaml;WorkspaceInstance.xaml;
 
-False
+True
 

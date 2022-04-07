@@ -11,7 +11,7 @@
                 <ResourceDictionary Source="Themes/Generic.xaml" />
                 <ResourceDictionary Source="Themes/ItemsFilterStyle.xaml" />
                 <ResourceDictionary Source="Themes/CustomerComboBoxStyle.xaml" />
-                <ResourceDictionary Source="ProjectDataSources.xaml" />
+                <!--<ResourceDictionary Source="ProjectDataSources.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
             <vm:WorkspaceInstance x:Key="Workspace" />
             <DataTemplate DataType="{x:Type vm:OrdersVm}">

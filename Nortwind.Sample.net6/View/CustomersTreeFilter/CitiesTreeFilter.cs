@@ -37,9 +37,10 @@ namespace Northwind.NET.Sample.View {
                     if (isCityCompareActive)
                         e.Accepted = item.City != null
 #pragma warning disable CS8604 // Possible null reference argument.
-                            && item.City.Contains(cityCompareTo)
+                            && item.City.Contains(cityCompareTo);
 #pragma warning restore CS8604 // Possible null reference argument.
-                            && customerFilters[item].Count > 0;
+                    if(e.Accepted)
+                        e.Accepted = customerFilters[item].Count > 0;
                 }
                 else {
                     e.Accepted = false;

@@ -53,7 +53,7 @@ namespace Northwind.NET.Sample.View {
                     BolapanControl.ItemsFilter.FilterPresenter citiesPresenter = BolapanControl.ItemsFilter.FilterPresenter.Get(country.Cities);
                     if (citiesPresenter?.TryGetFilter(Key, citiItemFilterInitializer, out var filter)==true
                         && filter is CitiesTreeFilter cityFilter) {
-                        filter.Attach(citiesPresenter);
+                        cityFilter.Attach(citiesPresenter);
                         cityFilter.CityCompareTo = CityCompareTo;
                         cityFilter.NameCompareTo = NameCompareTo;
                         cityFilter.ContactCompareTo = ContactCompareTo;

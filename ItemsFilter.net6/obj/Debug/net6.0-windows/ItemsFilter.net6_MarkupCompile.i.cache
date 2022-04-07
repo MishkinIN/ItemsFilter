@@ -1,5 +1,5 @@
 ﻿ItemsFilter.net6
-1.0.0.0
+2.0.0.1
 
 library
 C#
@@ -11,10 +11,10 @@ false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 
 21194262179
-
+1-1131718642
 48-40881671
 196-454257995
 Themes\Generic.xaml;Themes\ItemsFilterStyle.xaml;
 
-False
+True
 

@@ -235,7 +235,7 @@ namespace Northwind.NET.Sample.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Nortwind.Sample.net6;component/view/employeesview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Nortwind.Sample.net6;V2.0.0.1;component/view/employeesview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\EmployeesView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

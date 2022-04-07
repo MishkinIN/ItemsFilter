@@ -39,7 +39,15 @@
                 <DataGridTextColumn x:Name="iDColumn"
                                     Width="Auto"
                                     Binding="{Binding Id}"
-                                    Header="Id" />
+                                    Header="Id" >
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <!--<vm:UnitPriceFilterInitializer />-->
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
                 <DataGridTextColumn x:Name="supplier"
                                     Width="Auto"
                                     Binding="{Binding Supplier.Name}"
@@ -74,7 +82,7 @@
                                     Header="Unit Price">
                     <bsFilter:ColumnFilter.Initializers>
                         <bsFilter:FilterInitializersManager>
-                            <vm:UnitPriceFilterInitializer />
+                            <!--<vm:UnitPriceFilterInitializer />-->
                             <vm:UnitPriceRangeFilterInitializer />
                         </bsFilter:FilterInitializersManager>
                     </bsFilter:ColumnFilter.Initializers>

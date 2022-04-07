@@ -213,10 +213,10 @@
                                    Text="(cities: " />
                         <TextBlock Margin="3,0"
                                    FontStyle="Italic"
-                                   Text="{Binding Items.Count,
-                                                  Mode=OneWay,
-                                                  RelativeSource={RelativeSource FindAncestor,
-                                                                                 AncestorType={x:Type TreeViewItem}}}" />
+                                   Text="{Binding Items.Count, Mode=OneWay,
+                                            TargetNullValue=0,
+                                            RelativeSource={RelativeSource FindAncestor, 
+                                                AncestorType={x:Type TreeViewItem}}}" />
                         <TextBlock Margin="3,0"
                                    FontStyle="Italic"
                                    Text=")" />
@@ -226,7 +226,11 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="3,0" Text="{Binding City}" />
                                 <TextBlock Margin="3,0" Text="(customers: " />
-                                <TextBlock Margin="3,0" Text="{Binding Items.Count, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeViewItem}}}" />
+                                <TextBlock Margin="3,0" 
+                                           Text="{Binding Items.Count,
+                                                    TargetNullValue=0,
+                                                    Mode=OneWay, 
+                                                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeViewItem}}}" />
                                 <TextBlock Margin="3,0" Text=")" />
                             </StackPanel>
                             <HierarchicalDataTemplate.ItemTemplate>

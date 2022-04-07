@@ -127,7 +127,6 @@
     </ControlTemplate>
     <Style x:Key="CustomerComboBox_StringFilterStyle" TargetType="{x:Type bsFilter:StringFilterView}">
         <Setter Property="Template" Value="{StaticResource StringFilterViewControlTemplate}" />
-
     </Style>
 
     <DataTemplate x:Key="CustomerDataTemplate" DataType="{x:Type model:Customer}">
