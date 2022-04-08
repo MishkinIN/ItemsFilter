@@ -4,8 +4,8 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-	<BaseOutputPath>..\bin</BaseOutputPath>
-	<AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <BaseOutputPath>..\bin</BaseOutputPath>
+    <AssemblyVersion>2.0.0.1</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

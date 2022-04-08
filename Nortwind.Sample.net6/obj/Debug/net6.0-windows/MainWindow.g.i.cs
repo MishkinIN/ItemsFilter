@@ -9,6 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Northwind.NET.Sample.View;
+using Northwind.NET.Sample.ViewModel;
+using Nortwind.Sample.net6;
 using System;
 using System.Diagnostics;
 using System.Windows;
