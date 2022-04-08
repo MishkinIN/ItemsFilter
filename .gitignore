@@ -1,12 +1,11 @@
 /Bin
+/.vs
 /ItemsFilter/obj
 
-/Northwind.NET.EF6Model/bin
+*/bin
 
-/Northwind.NET.EF6Model/obj
-
-/Northwind.NET.Sample/bin
-/Northwind.NET.Sample/obj
-/Nortwind.Sample.net6/obj/Debug/net6.0-windows/*.cache
+*/obj
 *.cache
 *.BuildWithSkipAnalyzers
+*.pdb
+*.suo

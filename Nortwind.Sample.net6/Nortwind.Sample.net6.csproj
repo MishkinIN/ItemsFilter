@@ -10,6 +10,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="bin\**" />
+	  <EmbeddedResource Remove="bin\**" />
+	  <None Remove="bin\**" />
+	  <Page Remove="bin\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="Fonts\vijaya.ttf" />
 		<None Remove="Fonts\vijayab.ttf" />
 		<None Remove="Resources\EmpID1.gif" />

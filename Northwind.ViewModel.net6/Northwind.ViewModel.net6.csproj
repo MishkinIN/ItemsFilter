@@ -8,6 +8,13 @@
 	<AssemblyVersion>2.0.0.1</AssemblyVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+    <Page Remove="bin\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <DesignDataWithDesignTimeCreatableTypes Include="SampleData\Customer.xaml">
