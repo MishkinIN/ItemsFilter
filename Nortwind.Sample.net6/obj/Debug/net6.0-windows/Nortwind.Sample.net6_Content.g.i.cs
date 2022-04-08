@@ -10,5 +10,6 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fonts/vijaya.ttf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fonts/vijayab.ttf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("itemsfilter.ico")]
 
 

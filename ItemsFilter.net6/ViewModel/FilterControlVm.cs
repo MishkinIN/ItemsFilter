@@ -120,16 +120,17 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         protected override void InsertItem(int index, Filter filter) {
             if (!isDisposed) {
                 base.InsertItem(index, filter);
-                filter.Attach(this);
+                filter.PropertyChanged += Filter_PropertyChanged;
                 RaiseFilterChanged();
             }
         }
+
         //
         // Summary:
         //    Detach FilterControlVm from all filters and remove all filters from collection.
         protected override void ClearItems() {
-            foreach (var item in base.Items) {
-                item.Detach(this);
+            foreach (var filter in base.Items) {
+                filter.PropertyChanged -= Filter_PropertyChanged;
             }
             RaiseFilterChanged();
             base.ClearItems();
@@ -147,9 +148,9 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         //     The new value for the element at the specified index.
         protected override void SetItem(int index, Filter filter) {
             if (!isDisposed) {
-                base[index].Detach(this);
+                base[index].PropertyChanged -= Filter_PropertyChanged;
                 base.SetItem(index, filter);
-                filter.Attach(this);
+                filter.PropertyChanged += Filter_PropertyChanged;
                 RaiseFilterChanged();
             }
         }
@@ -177,11 +178,12 @@ namespace BolapanControl.ItemsFilter.ViewModel {
         //     The zero-based index of the element to remove.
         protected override void RemoveItem(int index) {
             if (!isDisposed) {
-                base[index].Detach(this);
+                base[index].PropertyChanged -= Filter_PropertyChanged;
                 base.RemoveItem(index);
                 RaiseFilterChanged();
             }
         }
+
         /// <summary>
         /// Detach FilterControlVm from all filters and remove all filters from collection.
         /// </summary>
@@ -200,6 +202,11 @@ namespace BolapanControl.ItemsFilter.ViewModel {
                 active |= item.IsActive;
             }
             IsActive = active;
+        }
+        private void Filter_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            if (e.PropertyName==nameof(Filter.IsActive)) {
+                RaiseFilterChanged(); 
+            }
         }
     }
 }

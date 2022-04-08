@@ -21,7 +21,6 @@ namespace BolapanControl.ItemsFilter.Model {
         private bool isActive;
         private FilterPresenter? filterPresenter;
         protected readonly Func<object?, object?> getter;
-        private readonly List<FilterControlVm> attachedFilterControlVmodels = new();
         protected Filter(Func<object?, object?> getter) {
             this.getter = getter;
         }
@@ -45,12 +44,6 @@ namespace BolapanControl.ItemsFilter.Model {
             get {
                 return name;
             }
-            //set {
-            //    if (name != value) {
-            //        name = value;
-            //        RaisePropertyChanged(nameof(Name));
-            //    }
-            //}
         }
         /// <summary>
         /// Get or set value, determines is filter IsMatch action include in parentCollection filter.
@@ -92,23 +85,8 @@ namespace BolapanControl.ItemsFilter.Model {
         private void RaiseFilterChanged() {
             if (filterPresenter != null)
                 filterPresenter.ReceiveFilterChanged(this);
-            foreach (var vm in attachedFilterControlVmodels) {
-                vm.RaiseFilterChanged();
-            }
         }
-        /// <summary>
-        /// Number attached to filter instances FilterControlVm.
-        /// </summary>
-        public int CountAttachedFilterControls {
-            get { return attachedFilterControlVmodels.Count; }
-        }
-        internal void Attach(FilterControlVm vm) {
-            if (!attachedFilterControlVmodels.Contains(vm))
-                attachedFilterControlVmodels.Add(vm);
-        }
-        internal void Detach(FilterControlVm vm) {
-            attachedFilterControlVmodels.Remove(vm);
-        }
+
         internal void Detach(FilterPresenter presenter) {
             if (presenter != null) {
                 presenter.Filter -= IsMatch;
