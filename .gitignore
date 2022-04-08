@@ -1,10 +1,7 @@
-/Bin
-/.vs
-/ItemsFilter/obj
+Bin/
+.vs/
+obj/
 
-*/bin
-
-*/obj
 *.cache
 *.BuildWithSkipAnalyzers
 *.pdb
