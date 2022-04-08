@@ -16,7 +16,7 @@
     <Company>Bolapansoft</Company>
     <RootNamespace>BolapanControl.ItemsFilter</RootNamespace>
     <ApplicationIcon>ItemsFilter.ico</ApplicationIcon>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>2.0.0.2</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

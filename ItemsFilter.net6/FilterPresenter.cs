@@ -27,7 +27,7 @@ namespace BolapanControl.ItemsFilter {
         private int itemsDeferRefreshCount = 0;
         private IDisposable? itemsDeferRefresh = null;
         private Predicate<object>? filterFunction;
-        private bool isFilterActive;
+        //private bool isFilterActive;
         private readonly ICollectionView collectionView;
         private readonly Dictionary<string, Dictionary<Type, Filter>> filters;
         private event FilterEventHandler? FilterAction;
@@ -63,9 +63,7 @@ namespace BolapanControl.ItemsFilter {
 
         private FilterPresenter(ICollectionView source) {
             collectionView = source;
-            //filteredEventArgs = new FilteredEventArgs(source);
             itemProperties = (source as IItemProperties)?.ItemProperties ?? new ReadOnlyCollection<ItemPropertyInfo>(Array.Empty<ItemPropertyInfo>());
-            filterFunction = new Predicate<object>(FilterFunction);
             filters = new Dictionary<string, Dictionary<Type, Filter>>();
         }
 
@@ -79,18 +77,23 @@ namespace BolapanControl.ItemsFilter {
         /// <summary>
         /// Get or set a value that indicates whether the defined filter set to attached ItemsControl.Items.PropertyFilter.
         /// </summary>
-        public bool IsFilterActive {
-            get {
-                return isFilterActive;
-            }
-            set {
-                if (isFilterActive != value) {
-                    using (var defer = DeferRefresh()) {
-                        isFilterActive = value;
-                    }
-                }
-            }
-        }
+        //public bool IsFilterActive {
+        //    get {
+        //        return isFilterActive;
+        //    }
+        //    set {
+        //        if (isFilterActive != value) {
+        //            using (var defer = DeferRefresh()) {
+        //                isFilterActive = value;
+        //                if (!isFilterActive) {
+        //                    foreach (var filter in filters) {
+
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
         // <summary>
         // Initializes and configures the ViewModel for FilterControl.
         // </summary>
@@ -166,23 +169,19 @@ namespace BolapanControl.ItemsFilter {
         public ReadOnlyCollection<ItemPropertyInfo> ItemProperties {
             get { return itemProperties; }
         }
-        ///// <summary>
-        ///// Occurs after filtration when changing the filter conditions.
-        ///// </summary>
-        //public EventHandler<FilteredEventArgs>? Filtered;
         // Represent a set of Predicate<Object> that used to generate filter function.
         internal event FilterEventHandler? Filter {
             add {
                 if (filterFunction == null)
-                    filterFunction = new Predicate<object>(FilterFunction);
+                    filterFunction = FilterFunction;
                 using var deferRefresh = DeferRefresh();
                 FilterAction += value;
-                IsFilterActive = true;
+                //IsFilterActive = true;
             }
             remove {
                 using var deferRefresh = DeferRefresh();
                 FilterAction -= value;
-                IsFilterActive = FilterAction != null;
+                //IsFilterActive = FilterAction != null;
                 if (FilterAction == null)
                     filterFunction = null;
             }
@@ -201,11 +200,6 @@ namespace BolapanControl.ItemsFilter {
                     Filter += filter.IsMatch;
             }
         }
-        //private void RaiseFiltered() {
-        //    lock (filteredEventArgs) {
-        //        Filtered?.Invoke(this, filteredEventArgs);
-        //    }
-        //}
         private bool FilterFunction(object obj) {
             if (FilterAction != null) {
                 FilterEventArgs args = new(obj);
@@ -244,12 +238,11 @@ namespace BolapanControl.ItemsFilter {
                             if (cv.IsEditingItem)
                                 cv.CancelEdit();
                         }
-                        if (filterPr.isFilterActive) {
-                            filterPr.CollectionView.Filter = filterPr.filterFunction;
-                        }
-                        else //if (filterVm.items.PropertyFilter==null)
-                            filterPr.CollectionView.Filter = null;
-                        //filterPr.RaiseFiltered();
+                        filterPr.CollectionView.Filter = filterPr.filterFunction;
+                        //if (filterPr.isFilterActive) {
+                        //}
+                        //else //if (filterVm.items.PropertyFilter==null)
+                        //    filterPr.CollectionView.Filter = null;
                         if (filterPr.itemsDeferRefresh != null) {
                             filterPr.itemsDeferRefresh.Dispose();
                         }

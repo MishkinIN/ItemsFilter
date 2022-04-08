@@ -42,7 +42,7 @@ namespace ItemsFilter.net6.Test.Initializer {
             Assert.AreEqual(selected.Count, filtered.Count);
             Assert.AreEqual(selected[0], ((StateItem)filtered[0]).StateId);
             Assert.AreEqual(selected[1], ((StateItem)filtered[1]).StateId);
-            filterPresenter.IsFilterActive = false;
+            //filterPresenter.IsFilterActive = false;
             filtered = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(items.Count, filtered.Count);
 

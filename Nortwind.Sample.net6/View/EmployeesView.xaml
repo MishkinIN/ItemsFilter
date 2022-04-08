@@ -20,6 +20,7 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <vw:TextToImageSourceConverter x:Key="TextToImageSourceConverter" />
+        <vw:NullToUnsetValueConverter x:Key="NullToEmptyConverter"/>
         <CollectionViewSource x:Key="EmployeesViewSource" Source="{Binding Path=Employees, Source={StaticResource Workspace}}" />
     </UserControl.Resources>
     <Grid DataContext="{StaticResource EmployeesViewSource}">
@@ -75,9 +76,9 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="ReportsTo"
+                <!--<DataGridTextColumn Header="ReportsTo"
                                     Width="Auto"
-                                    Binding="{Binding ReportsTo}"/>
+                                    Binding="{Binding ReportsTo, Converter={StaticResource NullToEmptyConverter}}"/>-->
             </DataGrid.Columns>
         </bsFilter:FilterDataGrid>
         <Grid x:Name="grid1"

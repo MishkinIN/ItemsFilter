@@ -41,15 +41,17 @@ namespace ItemsFilter.net6.Test.Initializer {
             Assert.AreEqual(selected[0], ((StateItem)filtered[0]).Box);
             Assert.AreEqual(selected[1], ((StateItem)filtered[1]).Box);
             
-            filterPresenter.IsFilterActive = false;
+            filter.IsActive = false;
             
             filtered = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(items.Count, filtered.Count);
 
-            selected.Clear();
+            //selected.Clear();
             selected.Add(null);
             ((StateItem)items[1]).Box = null;
             filter.SelectedValuesChanged(addedItems: selected, removedItems: unselected);
+            Assert.IsTrue(filter.IsActive);
+            //Assert.IsTrue(filterPresenter.IsFilterActive);
             filtered = FilterPresenterTest.GetCollection(view);
             Assert.AreEqual(3, filtered.Count);
             Assert.AreEqual(((StateItem)items[0]).Box, ((StateItem)filtered[0]).Box);
