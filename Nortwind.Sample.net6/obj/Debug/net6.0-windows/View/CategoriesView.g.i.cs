@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Microsoft.Windows.Themes;
 using Northwind.NET.Sample;
 using Northwind.NET.Sample.ViewModel;
 using System;

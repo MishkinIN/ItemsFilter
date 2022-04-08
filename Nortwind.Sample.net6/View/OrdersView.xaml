@@ -268,23 +268,27 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Width="Auto"
-                                            Binding="{Binding Product,
-                                                              Converter={StaticResource ProductToNameConverter}}"
-                                            EditingElementStyle="{StaticResource EditProductTextBoxStyle}"
-                                            Header="Product" />
+                                            Binding="{Binding Product.Name, Mode=OneWay}"
+                                            Header="Product"
+                                            IsReadOnly="True" 
+                                            bsFilter:ColumnFilter.BindingPath="Product">
+                        </DataGridTextColumn>
                         <DataGridTextColumn x:Name="discountColumn"
                                             Width="SizeToHeader"
+                                            IsReadOnly="True"
                                             Binding="{Binding Discount,
-                                                              Mode=TwoWay}"
+                                                              Mode=OneWay}"
                                             Header="Discount" />
                         <DataGridTextColumn x:Name="quantityColumn"
                                             Width="SizeToHeader"
+                                            IsReadOnly="True"
                                             Binding="{Binding Quantity,
-                                                              Mode=TwoWay}"
+                                                              Mode=OneWay}"
                                             Header="Quantity" />
                         <DataGridTextColumn x:Name="unitPriceColumn"
                                             Width="SizeToHeader"
-                                            Binding="{Binding UnitPrice}"
+                                            IsReadOnly="True"
+                                            Binding="{Binding UnitPrice, Mode=OneWay}"
                                             Header="Unit Price" />
                     </DataGrid.Columns>
                 </DataGrid>
