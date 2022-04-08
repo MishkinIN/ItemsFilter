@@ -31,7 +31,7 @@ namespace BolapanControl.ItemsFilter {
         private readonly ICollectionView collectionView;
         private readonly Dictionary<string, Dictionary<Type, Filter>> filters;
         private event FilterEventHandler? FilterAction;
-        private readonly FilteredEventArgs filteredEventArgs;
+        //private readonly FilteredEventArgs filteredEventArgs;
         // <summary>
         // Returns FilterPresenter, connected to a pass source .
         // If pass instance of ICollectionView, FilterPresenter connected to passed instance, otherwise, filterPresenter connected to default view for passed collection.
@@ -63,7 +63,7 @@ namespace BolapanControl.ItemsFilter {
 
         private FilterPresenter(ICollectionView source) {
             collectionView = source;
-            filteredEventArgs = new FilteredEventArgs(source);
+            //filteredEventArgs = new FilteredEventArgs(source);
             itemProperties = (source as IItemProperties)?.ItemProperties ?? new ReadOnlyCollection<ItemPropertyInfo>(Array.Empty<ItemPropertyInfo>());
             filterFunction = new Predicate<object>(FilterFunction);
             filters = new Dictionary<string, Dictionary<Type, Filter>>();
@@ -166,10 +166,10 @@ namespace BolapanControl.ItemsFilter {
         public ReadOnlyCollection<ItemPropertyInfo> ItemProperties {
             get { return itemProperties; }
         }
-        /// <summary>
-        /// Occurs after filtration when changing the filter conditions.
-        /// </summary>
-        public EventHandler<FilteredEventArgs>? Filtered;
+        ///// <summary>
+        ///// Occurs after filtration when changing the filter conditions.
+        ///// </summary>
+        //public EventHandler<FilteredEventArgs>? Filtered;
         // Represent a set of Predicate<Object> that used to generate filter function.
         internal event FilterEventHandler? Filter {
             add {
@@ -201,11 +201,11 @@ namespace BolapanControl.ItemsFilter {
                     Filter += filter.IsMatch;
             }
         }
-        private void RaiseFiltered() {
-            lock (filteredEventArgs) {
-                Filtered?.Invoke(this, filteredEventArgs);
-            }
-        }
+        //private void RaiseFiltered() {
+        //    lock (filteredEventArgs) {
+        //        Filtered?.Invoke(this, filteredEventArgs);
+        //    }
+        //}
         private bool FilterFunction(object obj) {
             if (FilterAction != null) {
                 FilterEventArgs args = new(obj);
@@ -249,7 +249,7 @@ namespace BolapanControl.ItemsFilter {
                         }
                         else //if (filterVm.items.PropertyFilter==null)
                             filterPr.CollectionView.Filter = null;
-                        filterPr.RaiseFiltered();
+                        //filterPr.RaiseFiltered();
                         if (filterPr.itemsDeferRefresh != null) {
                             filterPr.itemsDeferRefresh.Dispose();
                         }
