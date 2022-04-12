@@ -10,7 +10,7 @@ namespace Northwind.NET.EF6Model
     {
         public Order()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            OrderDetails = new List<OrderDetail>();
         }
 
         /// <summary>
@@ -53,6 +53,6 @@ namespace Northwind.NET.EF6Model
         public virtual Customer? Customer { get; set; }
         public virtual Employee? Employee { get; set; }
         public virtual Shipper? Shipper { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual IList<OrderDetail> OrderDetails { get; set; }
     }
 }

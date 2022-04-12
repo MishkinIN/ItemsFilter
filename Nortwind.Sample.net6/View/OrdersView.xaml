@@ -43,8 +43,7 @@
                                   RenderMouseOver="{TemplateBinding IsMouseOver}"
                                   SnapsToDevicePixels="True">
                 <ComboBox DisplayMemberPath="Name"
-                          ItemsSource="{Binding Products,
-                                                Source={x:Static vm:Workspace.This}}"
+                          ItemsSource="{Binding Products, Source={StaticResource Workspace}}"
                           SelectedItem="{Binding Product,
                                                  UpdateSourceTrigger=PropertyChanged}" />
             </Themes:ListBoxChrome>
@@ -253,7 +252,9 @@
                           EnableRowVirtualization="True"
                           IsSynchronizedWithCurrentItem="True"
                           ItemsSource="{Binding OrderDetails}"
-                          RowDetailsVisibilityMode="VisibleWhenSelected" >
+                          RowDetailsVisibilityMode="VisibleWhenSelected"
+                          AddingNewItem="orderDetailsDataGrid_AddingNewItem" 
+                          >
                     <DataGrid.Resources>
                         <Style x:Key="EditProductTextBoxStyle" TargetType="{x:Type TextBox}">
                             <Setter Property="BorderThickness" Value="0" />
@@ -268,22 +269,21 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Width="Auto"
-                                            Binding="{Binding Product.Name, Mode=OneWay}"
+                                            Binding="{Binding Product,
+                                                              Converter={StaticResource ProductToNameConverter}}"
+                                            EditingElementStyle="{StaticResource EditProductTextBoxStyle}"
                                             Header="Product"
-                                            IsReadOnly="True" 
                                             bsFilter:ColumnFilter.BindingPath="Product">
                         </DataGridTextColumn>
                         <DataGridTextColumn x:Name="discountColumn"
                                             Width="SizeToHeader"
-                                            IsReadOnly="True"
                                             Binding="{Binding Discount,
-                                                              Mode=OneWay}"
+                                                              Mode=TwoWay}"
                                             Header="Discount" />
                         <DataGridTextColumn x:Name="quantityColumn"
                                             Width="SizeToHeader"
-                                            IsReadOnly="True"
                                             Binding="{Binding Quantity,
-                                                              Mode=OneWay}"
+                                                              Mode=TwoWay}"
                                             Header="Quantity" />
                         <DataGridTextColumn x:Name="unitPriceColumn"
                                             Width="SizeToHeader"
