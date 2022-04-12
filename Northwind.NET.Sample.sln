@@ -18,6 +18,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nortwind.Sample.net6", "Nortwind.Sample.net6\Nortwind.Sample.net6.csproj", "{1BDB7CBA-939A-4546-AA25-FB389D9712F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{8E91E267-C0AA-4437-963E-ED9931228AEF}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\Readme.md = Documents\Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Picture", "Picture", "{66573341-D383-4475-848D-696C3C42B9DF}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\Picture\Pic1.gif = Documents\Picture\Pic1.gif
+		Documents\Picture\Pic10.gif = Documents\Picture\Pic10.gif
+		Documents\Picture\Pic2.gif = Documents\Picture\Pic2.gif
+		Documents\Picture\Pic3.gif = Documents\Picture\Pic3.gif
+		Documents\Picture\Pic4.gif = Documents\Picture\Pic4.gif
+		Documents\Picture\Pic5.gif = Documents\Picture\Pic5.gif
+		Documents\Picture\Pic6.gif = Documents\Picture\Pic6.gif
+		Documents\Picture\Pic7.gif = Documents\Picture\Pic7.gif
+		Documents\Picture\Pic8.gif = Documents\Picture\Pic8.gif
+		Documents\Picture\Pic9.gif = Documents\Picture\Pic9.gif
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +66,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8E91E267-C0AA-4437-963E-ED9931228AEF} = {49DFB628-00A6-4F8F-ABD9-A854C5030A2C}
+		{66573341-D383-4475-848D-696C3C42B9DF} = {8E91E267-C0AA-4437-963E-ED9931228AEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57E32A14-EF7C-432F-8C83-EB23E463C426}
