@@ -18,23 +18,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nortwind.Sample.net6", "Nortwind.Sample.net6\Nortwind.Sample.net6.csproj", "{1BDB7CBA-939A-4546-AA25-FB389D9712F4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{8E91E267-C0AA-4437-963E-ED9931228AEF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{8E91E267-C0AA-4437-963E-ED9931228AEF}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\Readme.md = Documentation\Readme.md
+		Docs\Readme.md = Docs\Readme.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Picture", "Picture", "{66573341-D383-4475-848D-696C3C42B9DF}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\Picture\Pic1.gif = Documentation\Picture\Pic1.gif
-		Documentation\Picture\Pic10.gif = Documentation\Picture\Pic10.gif
-		Documentation\Picture\Pic2.gif = Documentation\Picture\Pic2.gif
-		Documentation\Picture\Pic3.gif = Documentation\Picture\Pic3.gif
-		Documentation\Picture\Pic4.gif = Documentation\Picture\Pic4.gif
-		Documentation\Picture\Pic5.gif = Documentation\Picture\Pic5.gif
-		Documentation\Picture\Pic6.gif = Documentation\Picture\Pic6.gif
-		Documentation\Picture\Pic7.gif = Documentation\Picture\Pic7.gif
-		Documentation\Picture\Pic8.gif = Documentation\Picture\Pic8.gif
-		Documentation\Picture\Pic9.gif = Documentation\Picture\Pic9.gif
+		Docs\Picture\Pic1.gif = Docs\Picture\Pic1.gif
+		Docs\Picture\Pic10.gif = Docs\Picture\Pic10.gif
+		Docs\Picture\Pic2.gif = Docs\Picture\Pic2.gif
+		Docs\Picture\Pic3.gif = Docs\Picture\Pic3.gif
+		Docs\Picture\Pic4.gif = Docs\Picture\Pic4.gif
+		Docs\Picture\Pic5.gif = Docs\Picture\Pic5.gif
+		Docs\Picture\Pic6.gif = Docs\Picture\Pic6.gif
+		Docs\Picture\Pic7.gif = Docs\Picture\Pic7.gif
+		Docs\Picture\Pic8.gif = Docs\Picture\Pic8.gif
+		Docs\Picture\Pic9.gif = Docs\Picture\Pic9.gif
 	EndProjectSection
 EndProject
 Global
