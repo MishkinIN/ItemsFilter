@@ -20,7 +20,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nortwind.Sample.net6", "Nor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{8E91E267-C0AA-4437-963E-ED9931228AEF}"
 	ProjectSection(SolutionItems) = preProject
+		Docs\ALittleBackground.md = Docs\ALittleBackground.md
+		Docs\Examle1.EmployeesView.md = Docs\Examle1.EmployeesView.md
+		Docs\Examle2.CategoriesView.md = Docs\Examle2.CategoriesView.md
+		Docs\Examle3.ProductsView.md = Docs\Examle3.ProductsView.md
+		Docs\Examle4.ProductsView.md = Docs\Examle4.ProductsView.md
+		Docs\Examle5.OrdersView.md = Docs\Examle5.OrdersView.md
+		Docs\Examle6.OrdersView.md = Docs\Examle6.OrdersView.md
+		Docs\Examle7.CustomersView.md = Docs\Examle7.CustomersView.md
+		Docs\ExamplesOfQuickFilterView.md = Docs\ExamplesOfQuickFilterView.md
 		Docs\Readme.md = Docs\Readme.md
+		Docs\Summary.md = Docs\Summary.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Picture", "Picture", "{66573341-D383-4475-848D-696C3C42B9DF}"

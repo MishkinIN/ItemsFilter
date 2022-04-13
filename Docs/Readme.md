@@ -1,17 +1,25 @@
 # ItemsFilter
-Items filter добавляет в пользовательский интерфейс Вашего проекта средства для интерактивной фильтрации визуализируемого набора данных – везде, где это необходимо. Например, в заголовок стандартного WPF DataGrid через стиль добавляется кнопка быстрой фильтрации по содержимому колонки (примерно так, как это можно выполнять в Excel или в стандартном проводнике Windows в режиме таблицы):
+*ItemsFilter* добавляет в пользовательский интерфейс Вашего проекта средства для интерактивной фильтрации визуализируемого набора данных – везде, где это необходимо. 
+Проще говоря, если Вам в формах нужна быстрая фильтрация по столбцу `DataGrid`, содержимому `ListView` или `TreeView` или другая быстрая фильтрация отображаемой коллекции, библиотека *ItemsFilter* поможет это сделать с наименьшими затратами.
 
-![DataGrid column filter](Picture/Pic1.gif )
+Если согласны что лучше один раз увидеть, посмотрите на несколько примеров — [как это выглядит](ExamplesOfQuickFilterView.md "Несколько примеров, как могут выглядеть стандартные элементы управления с возможностью быстрой фильтрации.").
+Или ознакомьтесь с применением несколько подробнее:
 
-Если Вам большего и не надо, то достаточно добавить в проект ссылку на библиотеку ItemsFilter.net6.dll и в ресурсы приложения добавить стиль "ItemsFilterStyle.xaml", после чего все DataGrid в Ваших формах будут выглядеть так как на иллюстрации выше.
+1. [Введение](ALittleBackground.md "Немного предыстории: Предпосылки для использования. Детали реализации.").
+1. [`ItemsFilter.FilterDataGrid` — всё уже готово.](Examle1.EmployeesView.md "Использование готового элемента управления FilterDataGrid (EmployeesView)")
+1. [Внедрение через стиль.](Examle2.CategoriesView.md "Внедрение в DataGrid через стиль (CategoriesView)")
+1. [Настройка представления View для фильтра.](Examle3.ProductsView.md "Настройка внешнего вида фильтра. (ProductsView)")
+1. [Один фильтр на несколько форм.](Examle4.ProductsView.md "Использование представления коллекции c фильтром в нескольких местах. (ProductsView)")
+1. [Быстрый фильтр в пользовательском элементе управления.](Examle5.OrdersView.md "Фильтрация элементов в пользовательском элементе управления. (OrdersView)")
+1. [Фильрация в раскрываемом списке.](Examle6.OrdersView.md "Фильтрация элементов в ComboBox. (OrdersView)")
+1. [Быстрый фильтр в `TreeView`](Examle7.CustomersView.md "Фильтрация элементов в TreeView. (CustomersView)")
+1. [Резюме.](Summary.md "О библиотеке. Кратко и по существу")
 
-Но так же легко можно добавлять контролы для быстрого фильтра и в остальные элементы, наследующие от ItemsControl: ListBox, ComboBox, TreeView, Menu, TollBar, StatusBar и т.д.
+### Contact
 
-Например, вот так может выглядеть ComboBox:
+[Ivan Mishkin](mailto:Mishkin_Ivan@mail.ru)
 
-![ComboBox width quick filter](Picture/Pic2.gif )
+### License
 
-или TreeView:
-
-![TreeView width quick filter](Picture/Pic3.gif )
-
+Licensed under the [GNU General Public License version 3 (GPLv3)](https://www.gnu.org/licenses/gpl-3.0.html).
+The full license text is available in [LICENSE.txt](https://github.com/MishkinIN/ItemsFilter/blob/master/LICENSE).
