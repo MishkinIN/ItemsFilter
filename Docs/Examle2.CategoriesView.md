@@ -62,6 +62,6 @@ File *ItemsFilterStyle.xaml*:
 
 
 
-[Внедрение через стиль.](Examle2.CategoriesView.md "Внедрение в DataGrid через стиль (CategoriesView)") <<
+[Назад](Examle1.EmployeesView.md "Использование готового элемента управления FilterDataGrid (EmployeesView)") <<
 [Оглавление](Readme.md) >>
-[Настройка представления View для фильтра.](Examle3.ProductsView.md "Настройка внешнего вида фильтра. (ProductsView)")
+[Вперед](Examle3.ProductsView.md "Настройка внешнего вида фильтра. (ProductsView)")

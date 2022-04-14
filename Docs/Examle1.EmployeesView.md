@@ -21,6 +21,6 @@
 `bsFilter:ColumnFilter.BindingPath="<имя_свойства_элемента_коллекции>"`.
 
 
-[Использование ItemsFilter.FilterDataGrid](Examle1.EmployeesView.md "Использование готового элемента управления FilterDataGrid (EmployeesView)") <<
+[Назад](ALittleBackground.md "Немного предыстории: Предпосылки для использования. Детали реализации."). <<
 [Оглавление](Readme.md) >>
-[Внедрение через стиль.](Examle2.CategoriesView.md "Внедрение в DataGrid через стиль (CategoriesView)")
+[Вперед](Examle2.CategoriesView.md "Внедрение в DataGrid через стиль (CategoriesView)")

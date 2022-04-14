@@ -57,5 +57,5 @@
 в соответствующем разделе документации.
 
 [Оглавление](Readme.md) >>
-[Использование ItemsFilter.FilterDataGrid](Examle1.EmployeesView.md "Использование готового элемента управления FilterDataGrid (EmployeesView)")
+[Вперед](Examle1.EmployeesView.md "Использование готового элемента управления FilterDataGrid (EmployeesView)")
 

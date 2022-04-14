@@ -11,7 +11,7 @@
 1. [Настройка представления View для фильтра.](Examle3.ProductsView.md "Настройка внешнего вида фильтра. (ProductsView)")
 1. [Один фильтр на несколько форм.](Examle4.ProductsView.md "Использование представления коллекции c фильтром в нескольких местах. (ProductsView)")
 1. [Быстрый фильтр в пользовательском элементе управления.](Examle5.OrdersView.md "Фильтрация элементов в пользовательском элементе управления. (OrdersView)")
-1. [Фильрация в раскрываемом списке.](Examle6.OrdersView.md "Фильтрация элементов в ComboBox. (OrdersView)")
+1. [Фильтрация в раскрываемом списке.](Examle6.OrdersView.md "Фильтрация элементов в ComboBox. (OrdersView)")
 1. [Быстрый фильтр в `TreeView`](Examle7.CustomersView.md "Фильтрация элементов в TreeView. (CustomersView)")
 1. [Резюме.](Summary.md "О библиотеке. Кратко и по существу")
 
