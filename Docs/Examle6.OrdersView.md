@@ -9,7 +9,7 @@
 и его инициализатор `CustomersComboBoxFilterInitializer`:
 
 File *CustomersComboBoxFilter.cs*:
-
+``` c#
     [View(typeof(StringFilterView))]
     // Define specialized filter for CustomersComboBox.
     public sealed class CustomersComboBoxFilter: StringFilter, IFilter {
@@ -34,9 +34,9 @@ File *CustomersComboBoxFilter.cs*:
                 return sb.ToString();
             }) {}
     }
-
+```
 File *CustomersComboBoxFilterInitializer.cs*:
-
+``` c#
     class CustomersComboBoxFilterInitializer:FilterInitializer {
         public override BolapanControl.ItemsFilter.Model.Filter NewFilter(
                 FilterPresenter filterPresenter, 
@@ -48,11 +48,11 @@ File *CustomersComboBoxFilterInitializer.cs*:
             return null;
         }
     }
-
+```
 В шаблон элемента управления `ComboBox` вносим вновь созданный фильтр и  привязываем его к `ItemsSource`:
 
 File *CustomerComboBoxStyle.xaml*:
-
+``` xaml
     <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -72,19 +72,20 @@ File *CustomerComboBoxStyle.xaml*:
                         </bsFilter:FilterControl.FilterInitializersManager>
                     </bsFilter:FilterControl>
                     ...
-
+```
 Настраиваем отображение фильтра через стиль `СustomerComboBox_StringFilterStyle`.
 Готово.
 #### Как использовать
 В форме подключаем полученный стиль к элементу `ComboBox`.
 Файл *OrdersView.xaml*:
-
+``` xaml
     <ComboBox x:Name="customerComboBox"
        ItemsSource="{Binding Customers,
                                     Source={StaticResource Workspace}}"
               SelectedItem="{Binding Customer,
                                      Converter={StaticResource NullToUnsetValueConverter}}"
               Style="{DynamicResource ComboBoxStyle}" />
+```
 #### Как это выглядит
 ![OrdersView](Picture/Pic8.gif "Рис.8")
 

@@ -11,7 +11,7 @@
 
 В форме *CustomersView.xaml* в шаблоне для `TreeView` добавляем элемент управления `FilterControl` 
 и устанавливаем для него созданный инициализатор фильтра `CustomersTreeFilterInitializer`:
-
+``` xaml
     <bsFilter:FilterControl Key="Country"
                             Grid.Row="1"
                             Grid.Column="1"
@@ -23,7 +23,7 @@
             </bsFilter:FilterInitializersManager>
         </bsFilter:FilterControl.FilterInitializersManager>
     </bsFilter:FilterControl>
-
+```
 Готово.
 #### Результат:
 ![CustomersView](Picture/Pic10.gif "Рис.10")

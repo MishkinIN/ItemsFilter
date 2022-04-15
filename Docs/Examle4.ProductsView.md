@@ -18,30 +18,31 @@
 
 #### Как использовать
 File *ProductsView.xaml*:
-
+``` xaml
     ...
     <DataGrid x:Name="productDataGrid"
                       ItemsSource="{Binding Path=Products,
                                             Source={StaticResource Workspace}}">
     ...
-
+```
 File *CategoryFilterView.xaml.cs*:
-    
+``` c#    
     public partial class CategoryFilterView: MultiValueFilterView {
-            public CategoryFilterView() {
-                InitializeComponent();
-                // Define Filter that must be use.
-                EqualFilterInitializer initializer = new EqualFilterInitializer();
-                // Get FilterPresenter that connected to the same collection Workspace.This.Products.
-                FilterPresenter productsCollectionViewFilterPresenter = 
-                    FilterPresenter.TryGet(Workspace.This.Products);
-                // Get EqualFilter that use Category item property.
-                EqualFilter filter = 
-                    ((EqualFilter)(productsCollectionViewFilterPresenter.TryGetFilter("Category", initializer)));
-                // Use instance of EqualFilter as Model.
-                Model = filter;
-            }
+        public CategoryFilterView() {
+            InitializeComponent();
+            // Define Filter that must be use.
+            EqualFilterInitializer initializer = new EqualFilterInitializer();
+            // Get FilterPresenter that connected to the same collection Workspace.This.Products.
+            FilterPresenter productsCollectionViewFilterPresenter = 
+                FilterPresenter.TryGet(Workspace.This.Products);
+            // Get EqualFilter that use Category item property.
+            EqualFilter filter = 
+                ((EqualFilter)(productsCollectionViewFilterPresenter.TryGetFilter("Category", initializer)));
+            // Use instance of EqualFilter as Model.
+            Model = filter;
         }
+    }
+```
 #### Как это работает
 Экземпляр `FilterPresenter` всегда привязан к представлению коллекции, для которого он создан. 
 Поскольку в свойстве `DataGrid.ItemsSource` мы указываем непосредственно на саму коллекцию, 

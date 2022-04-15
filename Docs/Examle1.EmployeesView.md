@@ -5,12 +5,14 @@
 #### Как это выглядит
 ![DataGrid column filter](Picture/Pic1.gif "Рис.1")
 #### Как использовать
+``` xaml
     <UserControl x:Class="Northwind.NET.Sample.View.EmployeesView"
                  ...
                  xmlns:bsFilter="http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter"
                  ...>
     <bsFilter:FilterDataGrid  ItemsSource="{Binding}" ... />
     </UserControl>
+```
 #### Как это работает
 Элемент управления `ColumnFilter` внедрен в заголовок столбца `DataGrid`. При загрузке `ColumnFilter`
 извлекает значение привязки для столбца, в котором он расположен, и экземпляр представления коллекции, привязанной к родительскому `DataGrid`
