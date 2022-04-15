@@ -9,10 +9,12 @@
 выводящий результаты LINQ запроса к базе с использованием `CollectionView`. 
 Для добавления фильтра достаточно в форму добавить `ColumnFilter`.
 #### Как использовать
+``` xaml
     <bsFilter:ColumnFilter Key="Employee"
         ParentCollection="{Binding DataContext.OrdersView,
             ElementName=LayoutRoot}">
     </bsFilter:ColumnFilter>
+```
 #### Как это выглядит
 ![OrdersView](Picture/Pic7.gif "Рис.7")
 
