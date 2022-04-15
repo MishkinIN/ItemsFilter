@@ -10,7 +10,7 @@
 В ресурсы для приложения добавьте ссылку на *ItemsFilterStyle.xaml*.
 
 File *App.xaml*:
-
+``` xaml
     <Application x:Class="Northwind.NET.Sample.App"
                  ...
     >
@@ -24,13 +24,13 @@ File *App.xaml*:
             </ResourceDictionary>
         </Application.Resources>
     </Application>
-
+```
 #### Как это работает
 Производится внедрение элемента управления `ColumnFilter`в заголовок `DataGrid` через переопределение 
 стиля для `DataGridColumnHeader`.
 
 File *ItemsFilterStyle.xaml*:
-
+``` xaml
     <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -59,8 +59,7 @@ File *ItemsFilterStyle.xaml*:
                 Value="{StaticResource DataGridColumnHeaderStyle}" />
         </Style>
     </ResourceDictionary>
-
-
+```
 
 [Назад](Examle1.EmployeesView.md "Использование готового элемента управления FilterDataGrid (EmployeesView)") <<
 [Оглавление](Readme.md) >>
