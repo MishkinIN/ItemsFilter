@@ -58,10 +58,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Page Update="ProjectDataSources.xaml">
-			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-			<SubType>Designer</SubType>
-		</Page>
 		<Page Update="Themes\CustomerComboBoxStyle.xaml">
 			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 			<SubType>Designer</SubType>

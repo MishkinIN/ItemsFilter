@@ -11,6 +11,7 @@
                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                xmlns:bsFilter="http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter"
+                               xmlns:SampleData="clr-namespace:Expression.Blend.SampleData.CategoriesFilter;assembly=Northwind.ViewModel.net6"
                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                                xmlns:vw="clr-namespace:Northwind.NET.Sample.View"
@@ -23,7 +24,7 @@
         <ItemsPanelTemplate x:Key="CategoryItemsPanelTemplate">
             <StackPanel IsItemsHost="True" Orientation="Horizontal" />
         </ItemsPanelTemplate>
-
+        <SampleData:EqualFilter x:Key="CategoriesFilter" d:IsDataSource="True" />
     </bsFilter:MultiValueFilterView.Resources>
     <bsFilter:MultiValueFilterView.Style>
         <Style TargetType="{x:Type bsFilter:MultiValueFilterView}">
